@@ -31,7 +31,7 @@
 ## 3. ロードマップ（推奨進行順）
 
 1. **ドキュメント整備**  
-   - `LICENSE` を Apache-2.0 に更新し `NOTICE` を追加。  
+   - [`LICENSE`](../LICENSE) を Apache-2.0 に更新し [`NOTICE`](../NOTICE) を追加。
    - `docs/UPSTREAM.md` に subtree 運用手順を追記。  
    - `README.md` を起動手順・ENV・テーマ説明付きに拡充。  
    - `CONTRIBUTING.md` / `CODE_OF_CONDUCT.md` / `CODEOWNERS` を最終化。  
