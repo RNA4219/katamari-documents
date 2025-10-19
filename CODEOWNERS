@@ -1,6 +1,22 @@
-# 単純なレビュー担当のメモです。基本的にはメンテナーがすべて確認します。
+# CODEOWNERS は主要領域ごとにレビュー担当者を割り当てます。詳細は CONTRIBUTING.md を参照してください。
 
+# 既定の担当者
 * @katamari-org/maintainers
-/src/ @katamari-org/maintainers
-/tests/ @katamari-org/maintainers
-/docs/ @katamari-org/maintainers
+
+# アプリケーション実装
+/src/app.py @katamari-org/maintainers @katamari-org/runtime
+/src/core_ext/ @katamari-org/maintainers @katamari-org/runtime
+/src/providers/ @katamari-org/maintainers @katamari-org/integrations
+
+# テスト
+/tests/app/ @katamari-org/maintainers @katamari-org/qa
+/tests/core_ext/ @katamari-org/maintainers @katamari-org/qa
+/tests/providers/ @katamari-org/maintainers @katamari-org/qa
+
+# ドキュメントとナレッジ
+/docs/ @katamari-org/maintainers @katamari-org/docs
+/public/ @katamari-org/maintainers @katamari-org/frontend
+/themes/ @katamari-org/maintainers @katamari-org/design
+
+# 運用ツール
+/scripts/ @katamari-org/maintainers @katamari-org/devops
