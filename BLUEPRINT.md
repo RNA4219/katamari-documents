@@ -23,11 +23,11 @@
 - SSE 初期 p95 ≤ 1.0s、UI 反映遅延 ≤ 300ms の非機能要件が設計根拠で裏付けられている。
 - Provider 切替が `docs/addenda/F_Provider_Matrix.md` の互換ポリシーで保証される構成になっている。
 
-## 手順（設計フェーズ）
-1. `docs/ROADMAP_AND_SPECS.md` で対象フェーズと必須仕様を特定する。
+## 手順
+1. `docs/ROADMAP_AND_SPECS.md` で対象フェーズと必須仕様を特定し、Guardrails の節構成に沿って整理する。
 2. Guardrails の「目的→スコープ→I/O→AC→最小フロー」の順に、設計要素を `blueprint` セクションへ落とし込む。[third_party/Day8/workflow-cookbook/GUARDRAILS.md](third_party/Day8/workflow-cookbook/GUARDRAILS.md)。
 3. `docs/birdseye/index.json` / `caps/*.json` を更新し、依存ノードの最新化を確認する。
-4. 設計変更が CI・運用に影響する場合は `RUNBOOK.md`・`CHECKLISTS.md` を同時に更新する。
+4. 設計変更が CI・運用に影響する場合は `RUNBOOK.md`・`CHECKLISTS.md` を同時に更新し、`EVALUATION.md` の受入判断と整合させる。
 
 ## チェック項目
 - [ ] 主要ユースケースごとに I/O 契約（入力/出力の型・例）が定義されている。
