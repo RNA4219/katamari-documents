@@ -3,7 +3,7 @@
 ## Context
 - 背景: Persona 生成や context trimming では会話のトークン数を正確に把握する必要がある。
 - 課題: 既存実装は `len(text) / 4` の概算フォールバックを行っており、モデル上限付近で誤差が大きい。
-- 参考: OpenAI 公式トークナイザ `tiktoken` のドキュメント、および社内評価ログ。
+- 参考資料: OpenAI 公式トークナイザ `tiktoken` のドキュメント、および社内評価ログ。
 
 ## Decision
 - 方針: Python ランタイムに `tiktoken>=0.7.0` を必須依存関係として追加し、`core_ext/context_trimmer.py` 等の計測ロジックを tiktoken ベースに置き換える。
@@ -20,7 +20,7 @@
 - 最終更新日: 2025-02-14
 
 ## DoD
-- `requirements.txt` / `requirements-eval.txt` に tiktoken の固定バージョンを追加している。
-- トークンカウントを行うユニットテストが tiktoken を利用した実測値に基づき緑化している。
-- Gemini 等非対応プロバイダ向けフォールバック実装の仕様をドキュメント化している。
-- `core_ext/` の主要コンポーネントでトークンカウンタが単体テストされ、誤差しきい値（例: ±1 token）が明文化されている。
+- [ ] `requirements.txt` / `requirements-eval.txt` に tiktoken の固定バージョンを追加している。
+- [ ] トークンカウントを行うユニットテストが tiktoken を利用した実測値に基づき緑化している。
+- [ ] Gemini 等非対応プロバイダ向けフォールバック実装の仕様をドキュメント化している。
+- [ ] `core_ext/` の主要コンポーネントでトークンカウンタが単体テストされ、誤差しきい値（例: ±1 token）が明文化されている。

@@ -3,7 +3,7 @@
 ## Context
 - 背景: Katamari は OpenAI と Google Gemini など複数の LLM API を切り替えながら利用する。
 - 課題: `src/providers/` ではクライアント別実装が存在するが、Chainlit 本体の API 差異を吸収する薄い適配層が不足している。
-- 参考: `addenda/F_Provider_Matrix.md` にプロバイダ比較、既存実装の例外ポリシーは `src/providers/*` に記載。
+- 参考資料: [`addenda/F_Provider_Matrix.md`](../addenda/F_Provider_Matrix.md) にプロバイダ比較、既存実装の例外ポリシーは `src/providers/*` に記載。
 
 ## Decision
 - 方針: `providers` レイヤに `stream(model, messages, **opts)` と `complete(model, messages, **opts)` を持つ非同期インターフェースを定義し、各プロバイダがこれを実装する。
@@ -20,7 +20,7 @@
 - 最終更新日: 2025-02-14
 
 ## DoD
-- `BaseLLMProvider`（仮称）を定義し、OpenAI/Gemini 実装が継承している。
-- プロバイダ共通のエラーハンドリング仕様がテストで担保されている。
-- model registry からの動的設定読取が providers 層で実装され、ドキュメントに反映されている。
-- SDK 例外を Katamari の例外階層へ変換する際のルールが `CONTRIBUTING.md` と本 ADR の双方に記述されている。
+- [ ] `BaseLLMProvider`（仮称）を定義し、OpenAI/Gemini 実装が継承している。
+- [ ] プロバイダ共通のエラーハンドリング仕様がテストで担保されている。
+- [ ] model registry からの動的設定読取が providers 層で実装され、ドキュメントに反映されている。
+- [ ] SDK 例外を Katamari の例外階層へ変換する際のルールが `CONTRIBUTING.md` と本 ADR の双方に記述されている。
