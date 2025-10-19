@@ -60,15 +60,18 @@
 
 ## ローカル起動手順
 
-### 1. 依存インストールと初期セットアップ
+### Step 1: 依存インストールと初期セットアップ
 
 1. Python 3.11 系を用意し、任意の作業ディレクトリで仮想環境を作成する。
-2. `.env` を [`config/env.example`](config/env.example) からコピーし、後述の環境変数表を参考に値を設定する。
-3. `make dev` を実行して Python 依存関係を一括でインストールする（内部的には `pip install -r requirements.txt` を呼び出す）。
+2. リポジトリを取得してルートディレクトリ（`katamari/`）に移動する。
+3. `.env` を [`config/env.example`](config/env.example) からコピーし、後述の環境変数表を参考に値を設定する。
+4. `make dev` を実行して Python 依存関係を一括でインストールする（内部的には `pip install -r requirements.txt` を呼び出す）。
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
+git clone git@github.com:<your-org>/katamari.git
+cd katamari
 cp config/env.example .env
 make dev
 ```
@@ -76,7 +79,7 @@ make dev
 - GNU Make が利用できない環境では `pip install -r requirements.txt` を直接実行してもよい。
 - 依存パッケージを更新する際も同じコマンド（`make dev`）を再実行する。
 
-### 2. アプリのローカル起動
+### Step 2: アプリのローカル起動
 
 1. `.env` に必要な値を設定した状態で `make run` を実行する。
 2. Chainlit が `http://localhost:8787`（`PORT` を設定している場合はその値）で立ち上がる。
@@ -88,7 +91,7 @@ make run
 
 ## 環境変数一覧
 
-`.env` の初期値は [`config/env.example`](config/env.example) を参照してください。値の詳細や追加オプションは必要に応じて [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) も確認してください。
+`.env` の初期値は [`config/env.example`](config/env.example) を参照してください。設定の際はサンプルとの差分を最小限に保ちつつ、値の詳細や追加オプションを確認するために必要に応じて [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) も参照してください。
 
 | 種別 | 名称 | 用途 | 設定例 | 備考 |
 | ---- | ---- | ---- | ------ | ---- |
