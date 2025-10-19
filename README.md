@@ -4,14 +4,14 @@
 読む順番:
 1. docs/birdseye/index.json  …… ノード一覧・隣接関係（軽量）
 2. docs/birdseye/caps/<path>.json …… 必要ノードだけ point read（個別カプセル）
+3. docs/ROADMAP_AND_SPECS.md …… Birdseye 導線と仕様ハブを照合
+4. docs/birdseye/README.md …… Birdseye 整備予定ドキュメント
 
 フォーカス手順:
 - 直近変更ファイル±2hopのノードIDを index.json から取得
 - 対応する caps/*.json のみ読み込み
 
 補足リンク:
-- docs/ROADMAP_AND_SPECS.md …… Birdseye 導線と仕様ハブを照合
-- docs/birdseye/README.md …… Birdseye 整備予定ドキュメント
 - docs/birdseye/hot.json …… Birdseye ホットスポット一覧
 <!-- /LLM-BOOTSTRAP -->
 
