@@ -12,6 +12,13 @@
 3. コミットはテスト緑化後に行い、`git push --set-upstream origin <branch>` でリモート追随させます。
 4. レビュー中の修正は `git commit --amend` または `git rebase -i` で整え、強制プッシュ時は必ず `--force-with-lease` を使用します。
 
+#### ブランチ運用チェックリスト
+- [ ] 作業前に `git status` を確認し、未コミット差分がないことを確認した
+- [ ] `git pull --ff-only` で main を最新化した
+- [ ] Issue・タスク番号を含む新規ブランチ名を作成した
+- [ ] main と衝突しそうなファイルを CODEOWNERS と共有した
+- [ ] レビュー後は `git rebase main` で履歴を整理し、必要に応じてドラフト PR を更新した
+
 ### ブランチ保護ルール
 - `main` への直接 push・ウェブ編集は禁止です。必ず Pull Request 経由でマージしてください。
 - リリース作業は `release/<version>` ブランチを作成し、タグ付け (`git tag v<version>`) を行った上でマージします。
@@ -26,6 +33,13 @@
 - 迷った場合は `make test` を起点にし、CI の `pytest -q` と同一コマンドをローカルでも再現してください。
 - すべてのテストコマンド実行ログ（抜粋で可）を PR テンプレートの `## Test` セクションへ貼り付け、失敗時のリトライ理由をコメントに追記します。
 
+#### 標準テストシーケンス
+1. 依存関係を最新化：`pip install -r requirements.txt` / `pnpm install`
+2. Python ユニット：`pytest -q`
+3. Node/ESM 変更時：`cd upstream/chainlit && pnpm run test`
+4. 変更範囲に応じてマーカー指定（例：`pytest -q tests/path/test_x.py -k scenario`）で再現
+5. 失敗したテストは修正コミット後に同一コマンドで再実行し、ログを PR に貼付
+
 ### Lint / Type Check
 - Python は `ruff check .` で lint、`mypy --strict` で型チェックを通過させてください。差分に合わせて `ruff --fix` や `mypy --strict src/...` を活用し、型エラーを解消します。
 - `src/` 以下で ESM/TypeScript を触る場合は `pnpm run lint`（ESLint + TypeScript）と `pnpm run buildUi` でビルドが通ることを確認します。
@@ -33,6 +47,12 @@
 - 最低限 `ruff check . && mypy --strict && pytest -q` を同一シェルで実行し、成功ログを PR の `## Test` セクションへ貼り付けてください。
 - Lint/型チェック専用コミットを作成する場合は、そのコミット内での自動整形差分を必ず確認し、不要な大量変更を含めないようにしてください。
 - `ruff` の自動修正で対応できない警告は Issue としてトラッキングし、PR 説明の `## Notes` で対応方針を共有してください。
+
+#### Lint / 型チェックシーケンス
+1. ルートで `ruff check .` → 自動修正は `ruff --fix <files>` を限定的に使用
+2. Python 型検証：`mypy --strict`
+3. フロントエンド改修時：`pnpm run lint` と `pnpm run buildUi`
+4. 失敗時は該当コミットで修正し、再実行ログを PR に追記
 
 ## PR テンプレの使い方
 - PR 作成時は `.github/PULL_REQUEST_TEMPLATE.md` が自動で展開されます。各セクションに必ず記入し、空欄のまま提出しないでください。
@@ -42,6 +62,14 @@
 - テンプレ内の `## Checklist` が増えた場合は全項目の Yes/No を明確化し、未完了のものは着手予定日時をコメントで補足してください。
 - テンプレートの項目を削除・改変する場合は `## Notes` で理由を説明し、レビュアの同意を得てからマージしてください。
 - スクリーンショットやログなどの添付は GitHub の Markdown 形式で埋め込み、外部ストレージのリンクのみを共有しないでください。
+
+#### PR テンプレ記入チェックリスト
+- [ ] `## What` と `## Why` を 3 行以内で要約
+- [ ] `## Test` に実行コマンドと成功ログを貼付
+- [ ] `## Checklist` の各項目に明示的な Yes/No を記入
+- [ ] 影響範囲（UI/API/CLI 等）を `## Notes` に記述
+- [ ] 必要なスクリーンショット・動画・ログを Markdown で添付
+- [ ] レビュー観点・未決事項を `## Notes` に列挙し、追加調査があれば担当者を明示
 
 ## レビューとマージ
 - 少なくとも 1 名の CODEOWNERS レビュア承認が必要です。必要に応じてドラフト PR で早期フィードバックをもらってください。
@@ -53,6 +81,13 @@
 - Adhere to `.gitattributes` line ending policy (LF for shell/Python/Makefile, CRLF for PowerShell).
 - GitHub Review のステータスは `Comment` / `Approve` / `Request changes` を正しく使い分け、レビュー観点を箇条書きで残してください。
 - 仕様に関わる合意は PR 内のコメントまたはリンクされた Issue で記録し、マージ時に `## Notes` に最終判断を追記してください。
+
+#### レビュー合意フロー
+1. PR 作成者は主要な論点を `## Notes` に要約し、必要レビュアをメンション
+2. 各レビュアは `Request changes` 時に再現手順と修正期待値を明文化
+3. 修正後は作成者が解決コメントを追記し、レビュアの `Resolve conversation` を待つ
+4. すべてのブロッカーが解消されたら CODEOWNERS 最少 1 名 + 追加レビュア 1 名の承認を取得
+5. マージ前に最終テスト結果を `## Test` に追記し、Squash or Rebase 方針をコメントで共有
 ### ADR を追加・更新する手順
 1. `docs/adr/0000-template.md` をコピーし、次の連番（例: `0005-new-decision.md`）とタイトルを付与する。ファイル冒頭のステータスと更新日を必ず記入する。
 2. 「Context / Decision / Consequences / Status / DoD」に背景・決定理由・影響範囲・進捗状況を明示する。代替案を検討した場合は Decision セクションで触れる。
