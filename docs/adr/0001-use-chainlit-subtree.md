@@ -7,7 +7,7 @@
 
 ## Decision
 - 方針: `git subtree add --prefix upstream/chainlit https://github.com/Chainlit/chainlit main` で取り込み、以後も `git subtree pull` で同期する。
-- 決定理由: subtree は履歴と差分を保ったまま上流の更新を取り込めるため、独自改修と upstream の両立が容易になる。
+- 採用理由: subtree は履歴と差分を保ったまま上流の更新を取り込めるため、独自改修と upstream の両立が容易になる。
 - 運用: Katamari 側の恒久的変更は `core_ext/`, `providers/`, `themes/` など専用ディレクトリに配置し、`upstream/chainlit/` 直下には直接コミットしない。upstream に還元したい修正は本家 PR を経由する。
 
 ## Consequences
