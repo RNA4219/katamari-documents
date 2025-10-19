@@ -1,28 +1,16 @@
 # Changelog
 
-このプロジェクトの顕著な変更はこのファイルで管理します。フォーマットは
-[Keep a Changelog](https://keepachangelog.com/ja/1.1.0/) に準拠し、
-[セマンティック バージョニング](https://semver.org/spec/v2.0.0.html) を採用しています。
+このプロジェクトの顕著な変更はこのファイルで管理します。フォーマットは [Keep a Changelog](https://keepachangelog.com/ja/1.1.0/) に準拠し、[セマンティック バージョニング](https://semver.org/spec/v2.0.0.html) を採用しています。
 
 ## [Unreleased]
 
+<!-- 必要な分類のみ残し、各項目を最新の PR から追加してください -->
 ### Added
-- なし
-
 ### Changed
-- なし
-
 ### Deprecated
-- なし
-
 ### Removed
-- なし
-
 ### Fixed
-- なし
-
 ### Security
-- なし
 
 ## [0.1.0] - 2024-05-26
 
