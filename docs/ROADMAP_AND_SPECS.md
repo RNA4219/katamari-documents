@@ -20,8 +20,8 @@
 | 実装ディレクトリ | 主担当機能 | 関連仕様 / 参考資料 |
 | --- | --- | --- |
 | `src/app.py` | Chainlit アプリ本体、ステップ実行、UI 設定。 | 技術仕様 3章、`addenda/B_UI_Mock.md`、`addenda/J_Runbook.md` |
-| `src/core_ext/` | トリミング、ペルソナ解析、マルチステップ制御などの拡張。 | `addenda/D_Trim_Design.md`<br>`addenda/C_Persona_Schema.md`<br>ADR #0002 (予定) |
-| `src/providers/` | OpenAI/Gemini など LLM プロバイダ抽象化。 | `addenda/F_Provider_Matrix.md`<br>ADR #0003 (予定) |
+| `src/core_ext/` | トリミング、ペルソナ解析、マルチステップ制御などの拡張。 | `addenda/D_Trim_Design.md`<br>`addenda/C_Persona_Schema.md`<br>[ADR #0002](adr/0002-tokenization-with-tiktoken.md) |
+| `src/providers/` | OpenAI/Gemini など LLM プロバイダ抽象化。 | `addenda/F_Provider_Matrix.md`<br>[ADR #0003](adr/0003-provider-interface.md) |
 | `themes/` | Chainlit テーマ JSON。 | `README_PERSONAS_THEMES.md`<br>`addenda/B_UI_Mock.md` |
 | `tests/` | Pytest ベースの検証群。 | `docs/I_Test_Cases.md` |
 | `config/` | モデル登録、環境変数サンプル。 | `docs/L_Config_Reference.md` |
@@ -34,7 +34,7 @@
    - `README.md` を起動手順・ENV・テーマ説明付きに拡充。  
    - `CONTRIBUTING.md` / `CODE_OF_CONDUCT.md` / `CODEOWNERS` を最終化。  
    - `.gitattributes` で改行統一。  
-   - `docs/adr/` にテンプレートと初期3件（Chainlit subtree / tiktoken / Provider IF）を追加。  
+   - `docs/adr/` にテンプレートと初期3件（Chainlit subtree / tiktoken / Provider IF）を整備し、最新状態を維持。
    - M1〜M2.5 向け ADR + DoD を整理。
 
 2. **CI・自動化基盤**  

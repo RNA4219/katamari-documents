@@ -30,10 +30,12 @@
 - Keep diffs in `core_ext/` and `providers/` when possible.
 - Follow the issue templates.
 - Adhere to `.gitattributes` line ending policy (LF for shell/Python/Makefile, CRLF for PowerShell).
-- ADR を更新する場合は以下を遵守してください。
-  - 新規 ADR は `docs/adr/0000-template.md` をコピーし、連番と日付を付与する。
-  - 既存 ADR のステータス変更時は `docs/adr/README.md` の目次も同時に更新する。
-  - PR には ADR の背景・結論・影響範囲をサマリとして含め、レビュアが経緯を追跡できるようにする。
+### ADR を追加・更新する手順
+1. `docs/adr/0000-template.md` をコピーし、次の連番（例: `0005-new-decision.md`）とタイトルを付与する。ファイル冒頭のステータスと更新日を必ず記入する。
+2. 「Context / Decision / Consequences / DoD」に背景・決定理由・影響範囲を明示する。代替案を検討した場合は Decision セクションで触れる。
+3. `docs/adr/README.md` の目次テーブルへ新規 ADR を追加し、ステータス変更があれば同時に更新する。
+4. `docs/ROADMAP_AND_SPECS.md` や関連ドキュメントからの参照リンクを最新化する。マイルストーンや仕様の整合が必要な場合は同一 PR で対応する。
+5. PR 説明では対象 ADR の背景・結論・影響範囲をサマリとして記載し、レビュアが判断できる補足資料を添付する。
 
 ## ADR / 要件整合フロー
 - マイルストーン着手前に該当 ADR（`docs/adr/`）の目的・スコープ・DoD を確認し、差分がある場合は PR で更新する。
