@@ -1,61 +1,45 @@
-import sys
-from pathlib import Path
-from typing import List, Dict
-
-ROOT = Path(__file__).resolve().parents[2]
-SRC = ROOT / "src"
-if str(SRC) not in sys.path:
-    sys.path.insert(0, str(SRC))
+import math
+from typing import Dict, List
 
 import pytest
 
-from core_ext import retention
-from core_ext.context_trimmer import trim_messages
+from src.core_ext.context_trimmer import trim_messages
 
 
-def _build_messages(contents: List[str]) -> List[Dict[str, str]]:
-    msgs: List[Dict[str, str]] = [{"role": "system", "content": "sys"}]
-    roles = ["user", "assistant"]
-    for idx, text in enumerate(contents):
-        msgs.append({"role": roles[idx % 2], "content": text})
-    return msgs
+tiktoken = pytest.importorskip("tiktoken")
 
 
-def test_compute_semantic_retention_cosine_similarity():
-    before = _build_messages(["alpha", "omega"])
-    after = _build_messages(["alpha"])
+@pytest.mark.parametrize("model", ["gpt-5-main", "gpt-4o", "gpt-4"])
+def test_trim_messages_token_accuracy(model: str) -> None:
+    messages: List[Dict[str, str]] = [
+        {"role": "system", "content": "You are a concise assistant."},
+        {"role": "user", "content": "Summarize the Katamari history and mechanics."},
+        {"role": "assistant", "content": "Katamari Damacy is a puzzle-action game by Namco."},
+        {"role": "user", "content": "Provide bullet points and notable releases."},
+    ]
+    trimmed, metrics = trim_messages(messages, target_tokens=4096, model=model)
 
-    def fake_embed(text: str) -> List[float]:
-        table = {
-            "sys\nalpha\nomega": [1.0, 0.0],
-            "sys\nalpha": [0.5, 0.8660254],
-        }
-        return table[text]
+    counter_info = metrics["token_counter"]
+    assert counter_info["mode"] == "tiktoken"
+    encoding = tiktoken.get_encoding(counter_info["encoding"])
 
-    score = retention.compute_semantic_retention(before, after, embedder=fake_embed)
-    assert score == pytest.approx(0.5, rel=1e-3)
+    expected_total = sum(len(encoding.encode(message["content"])) for message in messages)
+    tolerance = max(1, math.ceil(expected_total * 0.05))
+
+    assert abs(metrics["input_tokens"] - expected_total) <= tolerance
+    assert abs(metrics["output_tokens"] - expected_total) <= tolerance
+    assert trimmed == messages
 
 
-def test_trim_messages_retention_toggle(monkeypatch):
-    monkeypatch.setenv("SEMANTIC_RETENTION_PROVIDER", "openai")
-    calls: List[int] = []
-    original_compute = retention.compute_semantic_retention
+def test_trim_messages_preserves_compress_ratio() -> None:
+    messages: List[Dict[str, str]] = [
+        {"role": "system", "content": "System"},
+        {"role": "user", "content": "x" * 200},
+        {"role": "assistant", "content": "y" * 200},
+        {"role": "user", "content": "z" * 200},
+    ]
+    _, metrics = trim_messages(messages, target_tokens=16, model="legacy-model")
 
-    def fake_compute(before, after, embedder=None):
-        calls.append(1)
-        return 0.42
-
-    monkeypatch.setattr(retention, "compute_semantic_retention", fake_compute)
-
-    msgs = _build_messages(["short", "reply", "next"])
-    trimmed, metrics = trim_messages(msgs, target_tokens=4096, model="gpt-5")
-
-    assert calls == [1]
-    assert metrics["semantic_retention"] == 0.42
-
-    monkeypatch.setattr(retention, "compute_semantic_retention", original_compute)
-    monkeypatch.setenv("SEMANTIC_RETENTION_PROVIDER", "none")
-
-    trimmed2, metrics2 = trim_messages(msgs, target_tokens=4096, model="gpt-5")
-
-    assert "semantic_retention" not in metrics2
+    assert metrics["token_counter"]["mode"] == "heuristic"
+    ratio = metrics["output_tokens"] / max(1, metrics["input_tokens"])
+    assert metrics["compress_ratio"] == round(ratio, 3)
