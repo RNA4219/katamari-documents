@@ -1,13 +1,13 @@
 # EVALUATION
 
 ## 目的
-- Katamari の成果物が仕様・非機能要件・Guardrails を満たしているか判断する枠組みを提供する。
+- Katamari の成果物が仕様・非機能要件・Guardrails を満たしているか、**個人運用** でも自分で判断できる枠組みを提供する。
 - 受入可否を明確にし、差分が残る場合は Task Seed へフォローアップを連携する。
 
 ## 担当ロール
-- QA / 品質保証: 受入判定を行い、DoD 達成状況を記録する。
-- Tech Lead / Reviewer: Guardrails の指標との整合を確認し、差分をタスク化する。
-- プロダクトオーナー: 判定結果をロードマップと照合し、次フェーズへの承認を行う。
+- 個人運用者（QA 帽子）: 受入判定を行い、DoD 達成状況を記録する。
+- 個人運用者（Reviewer 帽子）: Guardrails の指標との整合を確認し、差分をタスク化する。
+- 個人運用者（オーナー帽子）: 判定結果をロードマップと照合し、次フェーズへの承認を行う。
 
 ## スコープ
 ### In Scope
@@ -20,7 +20,7 @@
 - SLA/アラートの常時監視（SRE 評価に委譲）。
 
 ## 評価ステップ
-1. `RUNBOOK.md` に従って環境を起動し、`pytest` / `node:test` / `ruff` / `mypy --strict` を実行する。
+1. `RUNBOOK.md` に従って環境を起動し、`pytest` / `node:test` / `ruff` / `mypy --strict` を実行する。個人環境ではログ保存先を Task Seed に記入する。
 2. `scripts/perf/collect_metrics.py`（想定）や Chainlit ログから性能指標を取得し、要件値と比較する。
 3. `docs/Release_Checklist.md` と `docs/Security_Review_Checklist.md` の結果を確認し、未完了項目があれば Task Seed に登録する。
 4. 判定結果を Issue / PR / `CHANGELOG.md` に記録し、必要なら `RUNBOOK.md`・`CHECKLISTS.md` を更新する。

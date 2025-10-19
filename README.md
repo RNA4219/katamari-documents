@@ -6,8 +6,9 @@
 2. [`docs/birdseye/caps/<path>.json`](docs/birdseye/caps) …… 必要ノードだけ point read（個別カプセル）
 3. [`docs/ROADMAP_AND_SPECS.md`](docs/ROADMAP_AND_SPECS.md) …… Birdseye ノードと仕様ハブを突き合わせ、優先タスクを特定
 4. [`docs/birdseye/hot.json`](docs/birdseye/hot.json) …… 頻出エントリポイントの鮮度確認（`generated_at` は共通タイムスタンプで更新）
-5. [Day8 初回導線（HUB → Guardrails → Blueprint）](docs/ROADMAP_AND_SPECS.md#day8-sequence) …… Day8 資料は推奨シーケンスでまとめて確認
-6. Guardrails 基盤ドキュメント: [BLUEPRINT.md](BLUEPRINT.md)（設計指針）→ [RUNBOOK.md](RUNBOOK.md)（運用手順）→ [EVALUATION.md](EVALUATION.md)（受入判定）→ [CHECKLISTS.md](CHECKLISTS.md)（Dev→Ops チェックリスト）→ [TASK.<YYYY-MM-DD>-0001.md](TASK.2025-10-19-0001.md)（タスク追跡）
+5. [third_party/Day8/README.md](third_party/Day8/README.md) …… Day8 資料の総覧（詳細は `docs/day8/README.md`）
+6. Guardrails 基盤ドキュメント: [BLUEPRINT.md](BLUEPRINT.md)（設計指針・個人運用対応）→ [RUNBOOK.md](RUNBOOK.md)（運用手順・個人運用対応）→ [EVALUATION.md](EVALUATION.md)（受入判定・個人運用対応）→ [CHECKLISTS.md](CHECKLISTS.md)（Dev→Ops チェックリスト・個人運用対応）→ [TASK.<YYYY-MM-DD>-0001.md](TASK.2025-10-19-0001.md)（タスク追跡）
+7. Day8 オペレーション資料（推奨参照順）: [HUB.codex.md](third_party/Day8/workflow-cookbook/HUB.codex.md)（観測ハブ）→ [GUARDRAILS.md](third_party/Day8/workflow-cookbook/GUARDRAILS.md)（統制基準）→ [BLUEPRINT.md](third_party/Day8/workflow-cookbook/BLUEPRINT.md) 群（運用設計）
 
 > [`docs/birdseye/hot.json`](docs/birdseye/hot.json) の `generated_at` は頻出入口リストの生成時刻です。エントリポイントや依存関係を更新した際は `date -u '+%Y-%m-%dT%H:%M:%SZ'` で時刻を取得し、[`docs/birdseye/index.json`](docs/birdseye/index.json)・`docs/birdseye/caps/`・[`docs/birdseye/hot.json`](docs/birdseye/hot.json) を併せて更新してください。
 > 1. `date -u '+%Y-%m-%dT%H:%M:%SZ'` を実行して共通タイムスタンプを取得

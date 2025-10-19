@@ -17,7 +17,7 @@
 | Guardrails 連動ドキュメント | `BLUEPRINT.md`, `RUNBOOK.md`, `EVALUATION.md`, `CHECKLISTS.md`, `TASK.*.md` | Guardrails フローに沿った設計・運用・評価・追跡の基盤文書。 |
 | Day8 HUB / Guardrails | HUB: `third_party/Day8/workflow-cookbook/HUB.codex.md`（観測ハブ / エントリポイント）<br>Guardrails: `third_party/Day8/workflow-cookbook/GUARDRAILS.md`（統制基準 / 安全策） | Day8 オペレーションの入口と制御レールを定義する役割別ドキュメント。 |
 
-> Guardrails 連動ドキュメントの概要
+> Guardrails 連動ドキュメントの概要（いずれも個人運用向けに最適化）
 > - [BLUEPRINT.md](../BLUEPRINT.md): Persona/Trim/Reflect チェーンを中心としたアーキテクチャの目的・スコープ・I/O 契約を定義。
 > - [RUNBOOK.md](../RUNBOOK.md): 「準備→実行→検証」手順で起動・検証・障害対応を標準化。
 > - [EVALUATION.md](../EVALUATION.md): 受入判定手順と指標、チェック項目を整理。
@@ -39,9 +39,9 @@
   - [ADR #0007: M2.5 ハイブリッドメモリと永続化を整備する](adr/0007-m2-5-persistence-and-hybrid-memory.md)
 
 ### Guardrails ドキュメント更新フロー
-1. 設計変更を検討したら `BLUEPRINT.md` で影響範囲と担当ロールを確認し、設計判断の根拠を更新する。
-2. 運用手順が変わる場合は `RUNBOOK.md` と `CHECKLISTS.md` を同時に改訂し、担当ロールのチェック項目を最新化する。
-3. 受入基準や DoD に影響する場合は `EVALUATION.md` と該当 Task Seed (`TASK.*.md`) を更新し、証跡取得コマンドを追記する。
+1. 設計変更を検討したら `BLUEPRINT.md` で影響範囲と担当ロールを確認し、個人運用で実施可能な手順へ分解したうえで設計判断の根拠を更新する。
+2. 運用手順が変わる場合は `RUNBOOK.md` と `CHECKLISTS.md` を同時に改訂し、担当ロールのチェック項目を最新化する（同一人物でも帽子を被り替えてレビューする）。
+3. 受入基準や DoD に影響する場合は `EVALUATION.md` と該当 Task Seed (`TASK.*.md`) を更新し、証跡取得コマンドを追記する。個人実行で得たログは Task Seed にリンクする。
 4. 変更差分を Pull Request にまとめ、`CONTRIBUTING.md#guardrails-ドキュメント更新フロー` を参照してレビューと追跡を実施する。
 5. Birdseye 図および Guardrails 原典 (`third_party/Day8/workflow-cookbook/GUARDRAILS.md`) を確認し、役割と手順の齟齬がないことを保証する。
 | Day8 HUB | `third_party/Day8/workflow-cookbook/HUB.codex.md` | Day8 オペレーション全体を俯瞰する観測ハブ（入口）。 |
