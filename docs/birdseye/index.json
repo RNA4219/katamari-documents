@@ -1,65 +1,20 @@
 {
-  "generated_at": "2025-10-19T16:07:45Z",
-  "nodes": {
-    "src/app.py": {
+  "generated_at": "2025-10-19T16:41:01Z",
+  "nodes": [
+    {
+      "id": "src/app.py",
       "role": "entrypoint",
-      "caps": "docs/birdseye/caps/src.app.json",
-      "mtime": "2025-10-19T14:51:51Z"
+      "capsule_path": "docs/birdseye/caps/src_app.json"
     },
-    "src/core_ext/context_trimmer.py": {
+    {
+      "id": "src/core_ext/context_trimmer.py",
       "role": "core",
-      "caps": "docs/birdseye/caps/src.core_ext.context_trimmer.json",
-      "mtime": "2025-10-19T14:51:51Z"
+      "capsule_path": "docs/birdseye/caps/src.core_ext.context_trimmer.json"
     },
-    "src/core_ext/persona_compiler.py": {
-      "role": "core",
-      "caps": null,
-      "mtime": "2025-10-19T14:51:51Z"
-    },
-    "src/core_ext/prethought.py": {
-      "role": "core",
-      "caps": null,
-      "mtime": "2025-10-19T14:51:51Z"
-    },
-    "src/core_ext/multistep.py": {
-      "role": "core",
-      "caps": null,
-      "mtime": "2025-10-19T14:51:51Z"
-    },
-    "src/providers/openai_client.py": {
+    {
+      "id": "src/providers/openai_client.py",
       "role": "provider",
-      "caps": "docs/birdseye/caps/src.providers.openai_client.json",
-      "mtime": "2025-10-19T14:51:51Z"
+      "capsule_path": "docs/birdseye/caps/src.providers.openai_client.json"
     }
-  },
-  "edges": [
-    [
-      "src/app.py",
-      "src/core_ext/context_trimmer.py"
-    ],
-    [
-      "src/app.py",
-      "src/core_ext/persona_compiler.py"
-    ],
-    [
-      "src/app.py",
-      "src/core_ext/prethought.py"
-    ],
-    [
-      "src/app.py",
-      "src/core_ext/multistep.py"
-    ],
-    [
-      "src/app.py",
-      "src/providers/openai_client.py"
-    ],
-    [
-      "src/core_ext/context_trimmer.py",
-      "src/app.py"
-    ],
-    [
-      "src/providers/openai_client.py",
-      "src/app.py"
-    ]
   ]
 }

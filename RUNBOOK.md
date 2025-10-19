@@ -14,6 +14,8 @@
 - プロバイダ課金/秘密情報の管理（`docs/addenda/G_Security_Privacy.md` 参照）。
 
 ## 手順
+Guardrails の「準備→実行→検証」フローを章立てに対応させた構成。各ステップで `docs/ROADMAP_AND_SPECS.md` 3.章の該当項目を確認する。
+
 ### 1. 準備
 1. `python -m venv .venv && source .venv/bin/activate`
 2. `pip install -r requirements.txt` と `npm install`（必要時）。

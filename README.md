@@ -33,12 +33,17 @@
 
 ## ローカル起動手順
 
-1. Python 3.11 系を用意し、必要なら仮想環境を作成: `python -m venv .venv && source .venv/bin/activate`
-2. 依存パッケージを初期化: `pip install -r requirements.txt` または `make dev`（Makefile 経由で同コマンドを実行）
-3. 初回は `cp config/env.example .env` で `.env` を用意し、必要な環境変数を追記
-4. アプリ起動: `make run`（`http://localhost:8787` で UI が開きます）
-   - ホットリロード付きで開発する場合は、`make dev` を依存更新専用に使い、別ターミナルで `make run`
-5. 停止: 実行中のターミナルで `Ctrl + C`
+### 前提インストール
+
+- Python 3.11 系（`python -m venv .venv && source .venv/bin/activate` で仮想環境を推奨）
+- 依存パッケージ: `pip install -r requirements.txt`（または `make dev`）
+
+### 起動フロー
+
+1. `.env` を `cp config/env.example .env` で作成し、必要な値を埋める
+2. Chainlit を `make run` で起動（デフォルトは `http://localhost:8787`）
+   - 依存の再インストールは `make dev` を利用し、アプリ自体は別ターミナルで `make run`
+3. 終了は実行ターミナルで `Ctrl + C`
 
 ## 環境変数一覧
 
@@ -51,20 +56,18 @@
 | `CHAINLIT_AUTH_SECRET` | いいえ（本番推奨） | Chainlit セッション署名用シークレット | `CHAINLIT_AUTH_SECRET=change-me` | 本番は十分な長さに変更 |
 | `PORT` | いいえ | `make run` の待ち受けポート | `PORT=8787` | Docker 起動時は `-p <host>:<PORT>` と併用 |
 | `LOG_LEVEL` | いいえ | Chainlit ログ出力レベル | `LOG_LEVEL=info` | `debug`/`warning` などを指定可 |
-| `SEMANTIC_RETENTION_PROVIDER` | いいえ | 会話保持率メトリクス算出時の埋め込みプロバイダー | `SEMANTIC_RETENTION_PROVIDER=openai` | 集計無効化する場合は未設定で可 |
+| `SEMANTIC_RETENTION_PROVIDER` | いいえ | 会話保持率メトリクス算出時の埋め込みプロバイダー | `SEMANTIC_RETENTION_PROVIDER=openai` | 集計を無効にする場合は未設定で可 |
 | `SEMANTIC_RETENTION_OPENAI_MODEL` | いいえ | OpenAI 埋め込みモデル名 | `SEMANTIC_RETENTION_OPENAI_MODEL=text-embedding-3-large` | OpenAI プロバイダー指定時に利用 |
 | `SEMANTIC_RETENTION_GEMINI_MODEL` | いいえ | Google Gemini 埋め込みモデル名 | `SEMANTIC_RETENTION_GEMINI_MODEL=text-embedding-004` | Gemini プロバイダー指定時に利用 |
 | `GOOGLE_API_KEY` | いいえ | Gemini 埋め込み生成用 API キー（会話保持率用） | `GOOGLE_API_KEY=...` | `SEMANTIC_RETENTION_PROVIDER=google_gemini` 時に必要 |
 
-> すべての項目は `config/env.example` や `.env.example` が存在する場合はそちらを参照して `.env` にコピーできます。`.env` は Chainlit 実行時に自動読み込みされます。
+> すべての項目は [`config/env.example`](config/env.example) などのサンプルを `.env` にコピーし、必要な値だけ上書きしてください。
 
 ## テーマ切り替え
 
-1. Chainlit UI 右上の **Settings → Theme** からプリセット名を選択（`themes/` 配下の `.theme.json` と一致）。
-2. 新規テーマを追加する場合は、`themes/` に JSON を配置し、UI のテーマ一覧を再読み込み。
-   - UI からテーマをインポートする場合は、設定画面の **Theme → Import JSON** からファイルをアップロード。
-   - プリセットの一覧や JSON 編集例は [`themes/CATALOG.md`](themes/CATALOG.md) を参照。
-   - 詳細なカスタマイズ手順は [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) に集約しています。
+1. Chainlit UI 右上の **Settings → Theme** で `themes/` 配下のプリセット（`.theme.json`）を選択
+2. 追加したいテーマ JSON を `themes/` に配置し、UI の **Theme → Import JSON** から読み込む
+3. 詳細なカスタマイズやペルソナ連携は [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) を参照（JSON の雛形・設定例を掲載）
 
 - 本パックは「katamari」の要件定義・機能仕様・技術仕様・OpenAPI・初期設定を含むドキュメント集です。
 - まずは `docs/Katamari_Requirements_v3_ja.md` をご確認ください。
