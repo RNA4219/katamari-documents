@@ -92,7 +92,7 @@
 - 運用時のチェックは `Release_Checklist.md`（受入証跡/影響範囲/ラベル/CHANGELOG/NOTICE 同梱）と `Security_Review_Checklist.md` を使用。
 - <a id="day8-sequence"></a>Day8 系資料の推奨参照順: `third_party/Day8/workflow-cookbook/HUB.codex.md`（観測ハブ）→ `third_party/Day8/workflow-cookbook/GUARDRAILS.md`（統制基準）→ `third_party/Day8/workflow-cookbook/BLUEPRINT.md` 群（運用設計）を推奨シーケンスとして維持する。
 - `hot.json` を更新する際は `git log --name-only --since="30 days ago" | sort | uniq -c` などで直近の接触頻度を確認し、Birdseye index に含まれるノードから優先度の高いエントリポイントを抽出して理由付きで列挙する。`generated_at` は index/caps と揃える。
-- CHANGELOG 更新手順: [`README.md#変更履歴の更新ルール`](../README.md#%E5%A4%89%E6%9B%B4%E5%B1%A5%E6%AD%B4%E3%81%AE%E6%9B%B4%E6%96%B0%E3%83%AB%E3%83%BC%E3%83%AB)（完了済みタスクは `[Unreleased]` に移管し、ロードマップや `TASK.*.md` の重複を解消する）。
+- CHANGELOG 更新手順: [`README.md#変更履歴の更新ルール`](../README.md#%E5%A4%89%E6%9B%B4%E5%B1%A5%E6%AD%B4%E3%81%AE%E6%9B%B4%E6%96%B0%E3%83%AB%E3%83%BC%E3%83%AB)（Keep a Changelog 形式を遵守しつつ、完了済みタスクは `[Unreleased]` に移管してロードマップや `TASK.*.md` の重複を解消）。
 
 本ハブは開発フェーズ毎に更新し、未作成 ADR や追加仕様が発生した際は本書内のロードマップを最新化してください。
 
