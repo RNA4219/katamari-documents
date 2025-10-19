@@ -1,16 +1,17 @@
 {
   "id": "src/providers/openai_client.py",
   "role": "provider",
-  "summary": "OpenAI Chat Completions API へのストリーム・一括問い合わせを仲介するプロバイダー層。",
+  "summary": "OpenAI Chat Completions API を AsyncOpenAI クライアント経由で呼び出し、ストリーム/一括レスポンスを提供するアダプタ。",
   "deps": {
     "out": [
       "openai.AsyncOpenAI",
-      "os.getenv"
+      "os.getenv",
+      "AsyncIterator[str]"
     ],
     "in": [
       "src/app.py"
     ]
   },
   "tests": [],
-  "generated_at": "2025-10-19T20:45:00Z"
+  "generated_at": "2025-10-19T22:00:00Z"
 }

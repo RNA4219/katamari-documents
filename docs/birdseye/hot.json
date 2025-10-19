@@ -1,17 +1,17 @@
 {
-  "generated_at": "2025-10-19T20:45:00Z",
+  "generated_at": "2025-10-19T22:00:00Z",
   "entries": [
     {
       "id": "src/app.py",
-      "reason": "UI イベントとマルチステップ推論の起点となる実行時エントリポイント"
+      "reason": "Chainlit のチャット起動・設定同期・LLM 呼び出しを一手に担う実行時エントリポイント"
+    },
+    {
+      "id": "src/core_ext/multistep.py",
+      "reason": "マルチステップチェーンのステップ配列と system hint を決定する推論制御ロジック"
     },
     {
       "id": "src/core_ext/context_trimmer.py",
-      "reason": "各リクエストで履歴トークン数を制御する必須の共通ロジック"
-    },
-    {
-      "id": "src/providers/openai_client.py",
-      "reason": "既定 LLM プロバイダーのストリーム処理を担う外部連携層"
+      "reason": "履歴トークン予算を守るためのトリミング/計測を提供する共通ユーティリティ"
     }
   ]
 }

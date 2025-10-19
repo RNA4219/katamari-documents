@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-19T20:45:00Z",
+  "generated_at": "2025-10-19T22:00:00Z",
   "nodes": [
     {
       "id": "src/app.py",
@@ -8,8 +8,13 @@
     },
     {
       "id": "src/core_ext/context_trimmer.py",
-      "role": "core",
+      "role": "context-management",
       "capsule": "docs/birdseye/caps/src.core_ext.context_trimmer.json"
+    },
+    {
+      "id": "src/core_ext/multistep.py",
+      "role": "workflow",
+      "capsule": "docs/birdseye/caps/src.core_ext.multistep.json"
     },
     {
       "id": "src/providers/openai_client.py",
@@ -20,11 +25,18 @@
   "edges": [
     {
       "source": "src/app.py",
-      "target": "src/core_ext/context_trimmer.py"
+      "target": "src/core_ext/context_trimmer.py",
+      "relation": "uses"
     },
     {
       "source": "src/app.py",
-      "target": "src/providers/openai_client.py"
+      "target": "src/core_ext/multistep.py",
+      "relation": "uses"
+    },
+    {
+      "source": "src/app.py",
+      "target": "src/providers/openai_client.py",
+      "relation": "instantiates"
     }
   ]
 }
