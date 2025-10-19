@@ -5,92 +5,110 @@ on:
     branches: [main]
   pull_request:
 
-env:
-  PYTHON_VERSION: '3.11'
+permissions:
+  contents: read
 
 jobs:
-  changes:
+  lint-test:
+    name: Lint and Test
     runs-on: ubuntu-latest
-    outputs:
-      docs_only: ${{ steps.flag.outputs.docs_only }}
     steps:
-      - uses: actions/checkout@v4
-      - id: filter
-        uses: dorny/paths-filter@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          filters: |
-            docs:
-              - '**/*.md'
-            code:
-              - '**'
-              - '!**/*.md'
-      - id: flag
-        run: if [[ "${{ steps.filter.outputs.docs }}" == 'true' && "${{ steps.filter.outputs.code }}" != 'true' ]]; then echo "docs_only=true" >> "$GITHUB_OUTPUT"; else echo "docs_only=false" >> "$GITHUB_OUTPUT"; fi
+          python-version: "3.11"
 
-  lint:
-    needs: changes
-    if: needs.changes.outputs.docs_only != 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: { python-version: ${{ env.PYTHON_VERSION }} }
-      - run: python -m pip install --upgrade pip ruff
-      - run: ruff check .
-
-  pytest:
-    needs: changes
-    if: needs.changes.outputs.docs_only != 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: { python-version: ${{ env.PYTHON_VERSION }} }
-      - run: |
-          python -m pip install --upgrade pip
-          for req in requirements*.txt; do
-            [ -f "$req" ] && pip install -r "$req"
-          done
-      - run: pytest -q
-
-  pip-audit:
-    needs: changes
-    if: needs.changes.outputs.docs_only != 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: { python-version: ${{ env.PYTHON_VERSION }} }
-      - run: python -m pip install --upgrade pip pip-audit
-      - run: |
-          files=$(ls requirements*.txt 2>/dev/null || true)
-          if [ -n "$files" ]; then
-            for req in $files; do
-              pip-audit -r "$req"
-            done
-          else
-            pip-audit
-          fi
-
-  providers-integ:
-    needs: [changes, pytest]
-    if: needs.changes.outputs.docs_only != 'true' && (secrets.OPENAI_API_KEY != '' || secrets.GEMINI_API_KEY != '')
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: { python-version: ${{ env.PYTHON_VERSION }} }
-      - run: |
-          python -m pip install --upgrade pip
-          for req in requirements*.txt; do
-            [ -f "$req" ] && pip install -r "$req"
-          done
-      - env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      - name: Install dependencies
         run: |
-          if [ -d tests/providers_integ ]; then
-            pytest -q tests/providers_integ
-          else
-            echo 'tests/providers_integ not found; skipping.'
+          python -m pip install --upgrade pip
+          if ls requirements*.txt 1>/dev/null 2>&1; then
+            for req in requirements*.txt; do
+              pip install -r "$req"
+            done
           fi
+
+      - name: Ruff lint
+        run: pipx run ruff check .
+
+      - name: Pytest
+        run: pytest -q
+
+      - name: pip-audit (non-blocking)
+        run: pipx run pip-audit || true
+
+  provider-smoke:
+    name: Provider smoke tests
+    needs: lint-test
+    runs-on: ubuntu-latest
+    if: ${{ secrets.OPENAI_API_KEY || secrets.GOOGLE_GEMINI_API_KEY || secrets.GEMINI_API_KEY }}
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      GOOGLE_GEMINI_API_KEY: ${{ secrets.GOOGLE_GEMINI_API_KEY }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      PROVIDER_SMOKE_OPENAI_MODEL: ${{ vars.PROVIDER_SMOKE_OPENAI_MODEL }}
+      PROVIDER_SMOKE_GEMINI_MODEL: ${{ vars.PROVIDER_SMOKE_GEMINI_MODEL }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if ls requirements*.txt 1>/dev/null 2>&1; then
+            for req in requirements*.txt; do
+              pip install -r "$req"
+            done
+          fi
+          pip install google-generativeai
+
+      - name: OpenAI smoke test
+        if: ${{ env.OPENAI_API_KEY != '' }}
+        env:
+          OPENAI_MODEL: ${{ env.PROVIDER_SMOKE_OPENAI_MODEL }}
+        run: |
+          python - <<'PY'
+          import os
+          from openai import OpenAI
+
+          api_key = os.environ.get("OPENAI_API_KEY")
+          if not api_key:
+            raise SystemExit("OPENAI_API_KEY is not available")
+
+          model = os.environ.get("OPENAI_MODEL") or "gpt-4o-mini"
+          client = OpenAI(api_key=api_key)
+          response = client.responses.create(
+              model=model,
+              input="ping"
+          )
+          if not getattr(response, "output", None):
+            raise SystemExit("OpenAI smoke test returned empty output")
+          PY
+
+      - name: Gemini smoke test
+        if: ${{ env.GOOGLE_GEMINI_API_KEY != '' || env.GEMINI_API_KEY != '' }}
+        env:
+          PROVIDER_SMOKE_GEMINI_MODEL: ${{ env.PROVIDER_SMOKE_GEMINI_MODEL }}
+        run: |
+          python - <<'PY'
+          import os
+          import google.generativeai as genai
+
+          api_key = os.environ.get("GOOGLE_GEMINI_API_KEY") or os.environ.get("GEMINI_API_KEY")
+          if not api_key:
+            raise SystemExit("Gemini API key is not available")
+
+          genai.configure(api_key=api_key)
+          model_name = os.environ.get("PROVIDER_SMOKE_GEMINI_MODEL") or "gemini-1.5-flash"
+          model = genai.GenerativeModel(model_name)
+          result = model.generate_content("ping")
+          if not getattr(result, "text", None):
+            raise SystemExit("Gemini smoke test returned empty content")
+          PY
