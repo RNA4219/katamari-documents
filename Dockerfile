@@ -6,4 +6,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 ENV PORT=8787
 EXPOSE 8787
-CMD ["chainlit","run","src/app.py","-h","--host","0.0.0.0","--port","8787"]
+# デフォルトで Chainlit CLI をエントリポイントとして公開
+ENTRYPOINT ["chainlit","run"]
+CMD ["src/app.py","-h","--host","0.0.0.0","--port","8787"]
