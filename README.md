@@ -26,7 +26,7 @@
 - Guardrails 基盤ドキュメント: [`BLUEPRINT.md`](BLUEPRINT.md), [`RUNBOOK.md`](RUNBOOK.md), [`EVALUATION.md`](EVALUATION.md), [`CHECKLISTS.md`](CHECKLISTS.md), [`TASK.<YYYY-MM-DD>-0001.md`](TASK.2025-10-19-0001.md)
 - Birdseye 参照先（整備予定）: `docs/birdseye/README.md`
 - Birdseye 再生成フロー: `RUNBOOK.md` と [`third_party/Day8/workflow-cookbook/tools/codemap/update.py`](third_party/Day8/workflow-cookbook/tools/codemap/update.py)
-- CHANGELOG 更新フロー: [`CHANGELOG.md#更新手順`](CHANGELOG.md#%E6%9B%B4%E6%96%B0%E6%89%8B%E9%A0%86)
+- CHANGELOG 更新フロー: [`CHANGELOG.md#運用ルール`](CHANGELOG.md#%E9%81%8B%E7%94%A8%E3%83%AB%E3%83%BC%E3%83%AB)
 
 アップデート手順メモ:
 1. `date -u '+%Y-%m-%dT%H:%M:%SZ'` を実行して共通タイムスタンプを取得
@@ -52,7 +52,7 @@
 - 機能仕様: [`docs/Katamari_Functional_Spec_v1_ja.md`](docs/Katamari_Functional_Spec_v1_ja.md)
 - 技術仕様: [`docs/Katamari_Technical_Spec_v1_ja.md`](docs/Katamari_Technical_Spec_v1_ja.md)
 - OpenAPI: [`docs/openapi/katamari_openapi.yaml`](docs/openapi/katamari_openapi.yaml)
-- 変更履歴: [`CHANGELOG.md`](CHANGELOG.md)（更新フロー: [`CHANGELOG.md#更新手順`](CHANGELOG.md#%E6%9B%B4%E6%96%B0%E6%89%8B%E9%A0%86) / [`README.md#変更履歴の更新ルール`](README.md#%E5%A4%89%E6%9B%B4%E5%B1%A5%E6%AD%B4%E3%81%AE%E6%9B%B4%E6%96%B0%E3%83%AB%E3%83%BC%E3%83%AB)）
+- 変更履歴: [`CHANGELOG.md`](CHANGELOG.md)（更新フロー: [`CHANGELOG.md#運用ルール`](CHANGELOG.md#%E9%81%8B%E7%94%A8%E3%83%AB%E3%83%BC%E3%83%AB) / [`README.md#変更履歴の更新ルール`](README.md#%E5%A4%89%E6%9B%B4%E5%B1%A5%E6%AD%B4%E3%81%AE%E6%9B%B4%E6%96%B0%E3%83%AB%E3%83%BC%E3%83%AB)）
 - フォーク運用: [`docs/UPSTREAM.md`](docs/UPSTREAM.md), [`docs/FORK_NOTES.md`](docs/FORK_NOTES.md)
 - Day8 オペレーション資料（推奨参照順: HUB → Guardrails → Blueprint）: [`third_party/Day8/workflow-cookbook/HUB.codex.md`](third_party/Day8/workflow-cookbook/HUB.codex.md)（観測ハブ）→ [`third_party/Day8/workflow-cookbook/GUARDRAILS.md`](third_party/Day8/workflow-cookbook/GUARDRAILS.md)（統制基準）→ [`third_party/Day8/workflow-cookbook/BLUEPRINT.md`](third_party/Day8/workflow-cookbook/BLUEPRINT.md)（運用設計）
 
@@ -147,3 +147,4 @@ GitHub Container Registry への公開フローは [docs/addenda/H_Deploy_Guide.
 3. 各エントリの先頭に 4 桁ゼロ埋めの通番（例: `0001`）を付与し、既存の最大値から 1 ずつ繰り上げる。
 4. リリース確定時は `[Unreleased]` のエントリを新しいバージョン見出しへ移し、セマンティックバージョンと日付を付けてタグ作成と同じコミットで確定する。
 5. README やロードマップに散在する履歴は、該当リリースの見出しへ移管し、`docs/Release_Checklist.md` と併せて公開する。
+6. PR を送信する直前に [`CHANGELOG.md#運用ルール`](CHANGELOG.md#%E9%81%8B%E7%94%A8%E3%83%AB%E3%83%BC%E3%83%AB) を再確認し、通番と分類が最新ポリシーに沿っていることをチェックする。
