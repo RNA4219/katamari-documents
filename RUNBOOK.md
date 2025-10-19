@@ -22,6 +22,13 @@
 ## 手順
 Guardrails の「準備→実行→検証」順で進める。
 
+## ガードレール項目
+- AI アシスタントから提案を受けた手順は、必ず人が検証し Task Seed に採用可否と判断根拠を記載する。
+- `make dev` など副作用の大きいコマンドは仮想環境内で実行し、`RUNBOOK.md` の手順変更はガードレール最小差分原則で行う。
+- Secrets を扱う操作は `.env` ローカル管理に限定し、履歴に残さないことを再確認する。
+- 障害発生時は `EVALUATION.md` の指標と `CHECKLISTS.md` Ops セクションを同時に更新し、個人+AI の役割分担を明示する。
+- Birdseye や Guardrails 文書の更新を伴う場合は同日のコミットにまとめ、`docs/ROADMAP_AND_SPECS.md` へリンクする。
+
 ### 1. 準備
 1. `python -m venv .venv && source .venv/bin/activate`
 2. `pip install -r requirements.txt` と必要に応じて `npm install`。
@@ -57,7 +64,8 @@ Guardrails の「準備→実行→検証」順で進める。
 - [ ] Guardrails の最小読込手順（README → index.json → caps）を実施した。
 - [ ] Birdseye 更新日時が直近コミット以降になっている。
 - [ ] 失敗テストの理由と再実行計画が Task Seed に記録されている。
-- [ ] Guardrails RUNBOOK 節（`third_party/Day8/workflow-cookbook/GUARDRAILS.md`）の手順を参照した。
+- [ ] Guardrails RUNBOOK 節（`third_party/Day8/workflow-cookbook/GUARDRAILS.md`）の手順と本書のガードレール項目が一致する。
+- [ ] AI から提案された運用手順の採用可否を記録し、判断根拠を Task Seed に残した。
 
 ## 参照
 - [docs/ROADMAP_AND_SPECS.md](docs/ROADMAP_AND_SPECS.md)

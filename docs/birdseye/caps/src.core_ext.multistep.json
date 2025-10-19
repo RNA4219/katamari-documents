@@ -1,15 +1,20 @@
 {
   "id": "src/core_ext/multistep.py",
   "role": "workflow",
-  "summary": "マルチステップチェーンの段階構成と各フェーズ向けシステムヒントを定義し、Chainlit 実行時の推論制御に提供する。",
-  "deps": {
-    "out": [
-      "core_ext.multistep.CHAINS"
-    ],
-    "in": [
-      "src/app.py"
-    ]
-  },
+  "summary": "マルチステップチェーンの段階構成と各フェーズ向けヒントを提供し、Reflect チェーン実行の制御情報を返す。",
+  "public_api": [
+    "get_chain_steps()",
+    "system_hint_for_step()"
+  ],
+  "deps_out": [
+    "core_ext.multistep.CHAINS"
+  ],
+  "deps_in": [
+    "src/app.py"
+  ],
   "tests": [],
-  "generated_at": "2025-10-20T00:00:00Z"
+  "risks": [
+    "CHAINS に未知のキーを追加すると UI 側の選択肢と不整合になる"
+  ],
+  "generated_at": "2025-10-19T22:53:20Z"
 }

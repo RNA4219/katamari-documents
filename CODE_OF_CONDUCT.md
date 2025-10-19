@@ -1,67 +1,129 @@
-# Contributor Covenant 行動規範 v2.1
+# Contributor Covenant Code of Conduct
 
-## 私たちの約束
-私たちはメンバー、コントリビューター、リーダーとして、年齢、体格、目に見えるまたは目に見えない障害、民族性、性別、性自認および表現、経験のレベル、教育、社会経済的地位、国籍、容姿、人種、宗教、性的アイデンティティと指向に関わらず、コミュニティへの参加をハラスメントのない体験にすることを誓います。
+## Our Pledge
 
-私たちは、オープンで親しみやすく、多様で包括的で健全なコミュニティへの貢献と参加に向けて行動し、やりとりすることを誓います。
+We as members, contributors, and leaders pledge to make participation in our
+community a harassment-free experience for everyone, regardless of age, body
+size, visible or invisible disability, ethnicity, sex characteristics, gender
+identity and expression, level of experience, education, socio-economic status,
+nationality, personal appearance, race, caste, color, religion, or sexual identity
+and orientation.
 
-## 私たちの基準
-積極的な環境を作り上げることに貢献する行動の例:
+We pledge to act and interact in ways that contribute to an open, welcoming,
+diverse, inclusive, and healthy community.
 
-- 他人への思いやりと共感を示すこと
-- 異なる意見、視点、経験を尊重すること
-- 建設的なフィードバックを与え、優雅に受け入れること
-- 全体としてコミュニティにとって最善であることを優先すること
-- 他のコミュニティメンバーへの思いやりを持って行動すること
+## Our Standards
 
-容認できない行動の例:
+Examples of behavior that contributes to a positive environment for our
+community include:
 
-- 性的な言葉や画像の使用、およびあらゆる種類の性的関心や不適切な接触
-- あらゆる形態のいじめ、侮辱的または軽蔑的なコメント、個人的または政治攻撃
-- 公的または私的なハラスメント
-- 明示的な許可なき住所やメールアドレスなど、他者の個人情報の公開
-- 職業上不適切と見なされる、その他の行為
+* Demonstrating empathy and kindness toward other people
+* Being respectful of differing opinions, viewpoints, and experiences
+* Giving and gracefully accepting constructive feedback
+* Accepting responsibility and apologizing to those affected by our mistakes,
+  and learning from the experience
+* Focusing on what is best not just for us as individuals, but for the overall
+  community
 
-## 執行責任
-コミュニティリーダーは、受け入れ難い行為の結果について責任を持つとともに、不適切、脅迫的、攻撃的、または有害と見なされる行為を報告なしで修正、削除、拒否する権利と責任を有します。コミュニティリーダーは、この行動規範と整合しないと判断したコメント、コミット、コード、Wiki 編集、Issue、その他の貢献を削除・編集または拒否する理由を伝える義務があります。
+Examples of unacceptable behavior include:
 
-## 適用範囲
-この行動規範は、すべてのコミュニティスペース内で適用されます。また、個人がコミュニティを代表していると合理的に判断され得る公的スペースでの振る舞いにも適用されます。コミュニティを代表する例には、公式の電子メールアドレスの使用、公式ソーシャルメディアアカウントでの投稿、オンラインまたはオフラインイベントでの指名代表としての行動が含まれます。
+* The use of sexualized language or imagery, and sexual attention or advances of
+  any kind
+* Trolling, insulting or derogatory comments, and personal or political attacks
+* Public or private harassment
+* Publishing others' private information, such as a physical or email address,
+  without their explicit permission
+* Other conduct which could reasonably be considered inappropriate in a
+  professional setting
 
-## 報告
-虐待的、ハラスメント、またはそれ以外で容認できない行動の事例は、`conduct@katamari.dev` もしくは GitHub Issue からリポジトリオーナー（@RNA4219 / @katamari-bot）に報告してください。すべての苦情は迅速かつ公平な審査・調査を受けます。報告は 3 営業日以内に受領を確認し、1 週間以内に初動対応方針を共有します。
+## Enforcement Responsibilities
 
-## 執行手続き
-すべての苦情は迅速かつ公正に審査・調査されます。コミュニティリーダーはプライバシーと安全を尊重しながら状況を判断し、必要に応じて追加の CODEOWNERS や専門家を巻き込みます。調査時には事案の当事者に対して守秘義務を明確にし、報告者の匿名性を最大限保護します。
+Community leaders are responsible for clarifying and enforcing our standards of
+acceptable behavior and will take appropriate and fair corrective action in
+response to any behavior that they deem inappropriate, threatening, offensive,
+or harmful.
 
-## 執行ガイドライン
-コミュニティリーダーは、行動規範に違反したと判断された行為の結果として、次のコミュニティガイドラインを利用して行動を導きます。
+Community leaders have the right and responsibility to remove, edit, or reject
+comments, commits, code, wiki edits, issues, and other contributions that are
+not aligned to this Code of Conduct, and will communicate reasons for moderation
+decisions when appropriate.
 
-### 1. 更生
-**影響:** コミュニティ内で不適切または歓迎されないと見なされる言葉の使用や行動。
+## Scope
 
-**対応:** コミュニティリーダーからの非公開の書面による警告。違反の理由を明確にし、行動が不適切だった背景を説明します。公的謝罪を求める場合があります。
+This Code of Conduct applies within all community spaces, and also applies when
+an individual is officially representing the community in public spaces.
+Examples of representing our community include using an official e-mail address,
+posting via an official social media account, or acting as an appointed
+representative at an online or offline event.
 
-### 2. 警告
-**影響:** 個別の違反または継続的な行為によるコミュニティメンバーへの悪影響。
+## Enforcement
 
-**対応:** 行動の継続が許容されない旨を警告し、特定の行動条件を設定します。指定された期間に違反が再発した場合、さらに重い処分が適用されます。
+Instances of abusive, harassing, or otherwise unacceptable behavior may be
+reported to the community leaders responsible for enforcement at
+`conduct@katamari.dev`. You may also reach the repository owner (@RNA4219) via a
+confidential GitHub Issue or direct message if e-mail is not possible. All
+complaints will be reviewed and investigated promptly and fairly.
 
-### 3. 一時的な制限
-**影響:** 持続的で重大な違反。コミュニティの安全を損なう行動。
+All community leaders are obligated to respect the privacy and security of the
+reporter of any incident.
 
-**対応:** 一定期間、コミュニティのインタラクションや公開チャンネルへの参加を禁止します。条件を満たせば再参加が可能です。期間と条件はリーダーが決定し書面で通知します。
+## Enforcement Guidelines
 
-### 4. 永久的な退会
-**影響:** 持続的な嫌がらせ、差別的行為、または個人への暴力的脅迫。コミュニティの安全や評判に著しい損害を与える行為。
+Community leaders will follow these Community Impact Guidelines in determining
+the consequences for any action they deem in violation of this Code of Conduct:
 
-**対応:** コミュニティからの永久的な追放。追加のコミュニケーションは許可されません。
+### 1. Correction
 
-## 違反対応と連絡窓口
-1. 報告を受領したら、リポジトリオーナーは `conduct@katamari.dev` から確認メールを送付し、内部トラッカーに記録します。
-2. 関係者へのヒアリングと証跡の収集を行い、48 時間以内に暫定措置（必要ならコメントロックやアクセス制限）を実施します。
-3. 審議の結果を最大 14 日以内に報告者へフィードバックし、是正措置と再発防止策を共有します。AI オーナーが関与する場合も最終決裁は人間オーナーが行います。
-4. 処分が決定した場合は、対象者へ書面で通知し、再発時の対応やエスカレーション先（GitHub Trust & Safety 等）も併せて説明します。
+**Community Impact**: Use of inappropriate language or other behavior deemed
+unprofessional or unwelcome in the community.
 
-## 帰属
-この行動規範は [Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct.html) v2.1 に基づいています。FAQ や翻訳については <https://www.contributor-covenant.org/translations> を参照してください。追加のガイダンスや苦情処理に関するサポートは <https://www.contributor-covenant.org/faq> をご覧ください。英語版が原典であり、差異がある場合は英語版を優先します。
+**Consequence**: A private, written warning from community leaders, providing
+clarity around the nature of the violation and an explanation of why the
+behavior was inappropriate. A public apology may be requested.
+
+### 2. Warning
+
+**Community Impact**: A violation through a single incident or series of
+actions.
+
+**Consequence**: A warning with consequences for continued behavior. No
+interaction with the people involved, including unsolicited interaction with
+those enforcing the Code of Conduct, for a specified period of time. This
+includes avoiding interactions in community spaces as well as external channels
+like social media. Violating these terms may lead to a temporary or permanent
+ban.
+
+### 3. Temporary Ban
+
+**Community Impact**: A serious violation of community standards, including
+sustained inappropriate behavior.
+
+**Consequence**: A temporary ban from any sort of interaction or public
+communication with the community for a specified period of time. No public or
+private interaction with the people involved, including unsolicited interaction
+with those enforcing the Code of Conduct, is allowed during this period.
+Violating these terms may lead to a permanent ban.
+
+### 4. Permanent Ban
+
+**Community Impact**: Demonstrating a pattern of violation of community
+standards, including sustained inappropriate behavior, harassment of an
+individual, or aggression toward or disparagement of classes of individuals.
+
+**Consequence**: A permanent ban from any sort of public interaction within the
+community.
+
+## Attribution
+
+This Code of Conduct is adapted from the [Contributor Covenant][homepage],
+version 2.1, available at
+https://www.contributor-covenant.org/version/2/1/code_of_conduct.html.
+
+Community Impact Guidelines were inspired by [Mozilla's code of conduct
+enforcement ladder](https://github.com/mozilla/diversity).
+
+For answers to common questions about this code of conduct, see the [FAQ at the
+Contributor Covenant website](https://www.contributor-covenant.org/faq). Translations
+are available at https://www.contributor-covenant.org/translations.
+
+[homepage]: https://www.contributor-covenant.org

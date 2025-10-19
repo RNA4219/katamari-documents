@@ -4,15 +4,16 @@
 読む順番:
 1. docs/birdseye/index.json  …… ノード一覧・隣接関係（軽量）
 2. docs/birdseye/caps/<path>.json …… 必要ノードだけ point read（個別カプセル）
+3. docs/ROADMAP_AND_SPECS.md …… Birdseye 導線と仕様ハブを照合
+4. docs/birdseye/README.md …… Birdseye 整備予定ドキュメント
 
 フォーカス手順:
 - 直近変更ファイル±2hopのノードIDを index.json から取得
 - 対応する caps/*.json のみ読み込み
 
 補足リンク:
-- docs/ROADMAP_AND_SPECS.md …… Birdseye 導線と仕様ハブを照合
-- docs/birdseye/README.md …… Birdseye 整備予定ドキュメント
 - docs/birdseye/hot.json …… Birdseye ホットスポット一覧
+- Guardrails ドキュメント …… [`BLUEPRINT.md`](BLUEPRINT.md) / [`RUNBOOK.md`](RUNBOOK.md) / [`EVALUATION.md`](EVALUATION.md) / [`CHECKLISTS.md`](CHECKLISTS.md)（個人+AI運用向けガードレール）
 <!-- /LLM-BOOTSTRAP -->
 
 ## 同梱物
@@ -32,16 +33,21 @@
 - 機能仕様: [`docs/Katamari_Functional_Spec_v1_ja.md`](docs/Katamari_Functional_Spec_v1_ja.md)
 - 技術仕様: [`docs/Katamari_Technical_Spec_v1_ja.md`](docs/Katamari_Technical_Spec_v1_ja.md)
 - OpenAPI: [`docs/openapi/katamari_openapi.yaml`](docs/openapi/katamari_openapi.yaml)
-- 変更履歴: [`CHANGELOG.md`](CHANGELOG.md)（更新フロー: [`CHANGELOG.md#運用ルール`](CHANGELOG.md#%E9%81%8B%E7%94%A8%E3%83%AB%E3%83%BC%E3%83%AB) / [`README.md#変更履歴の更新ルール`](README.md#%E5%A4%89%E6%9B%B4%E5%B1%A5%E6%AD%B4%E3%81%AE%E6%9B%B4%E6%96%B0%E3%83%AB%E3%83%BC%E3%83%AB)）
+- 変更履歴: [`CHANGELOG.md`](CHANGELOG.md)（形式: Keep a Changelog / 更新フロー: [`CHANGELOG.md#運用ルール`](CHANGELOG.md#%E9%81%8B%E7%94%A8%E3%83%AB%E3%83%BC%E3%83%AB) ・ [`README.md#変更履歴の更新ルール`](README.md#%E5%A4%89%E6%9B%B4%E5%B1%A5%E6%AD%B4%E3%81%AE%E6%9B%B4%E6%96%B0%E3%83%AB%E3%83%BC%E3%83%AB)）
 - タスクシード: `TASK.*.md`（完了済みタスクは [`CHANGELOG.md#unreleased`](CHANGELOG.md#unreleased) へ移し、重複を解消）
 - フォーク運用: [`docs/UPSTREAM.md`](docs/UPSTREAM.md), [`docs/FORK_NOTES.md`](docs/FORK_NOTES.md)
-- Day8 初回導線（HUB → Guardrails → Blueprint）: [`docs/ROADMAP_AND_SPECS.md#day8-sequence`](docs/ROADMAP_AND_SPECS.md#day8-sequence)
+- Day8 初回導線（HUB → Guardrails → Blueprint）: HUB（[`third_party/Day8/workflow-cookbook/HUB.codex.md`](third_party/Day8/workflow-cookbook/HUB.codex.md)）→ Guardrails（[`third_party/Day8/workflow-cookbook/GUARDRAILS.md`](third_party/Day8/workflow-cookbook/GUARDRAILS.md)）→ Blueprint 群（[`third_party/Day8/workflow-cookbook/BLUEPRINT.md`](third_party/Day8/workflow-cookbook/BLUEPRINT.md) ほか）／導線概要: [`docs/ROADMAP_AND_SPECS.md#day8-sequence`](docs/ROADMAP_AND_SPECS.md#day8-sequence)
 
 ## ローカル起動手順
 
+### 前提
+
+- Python 3.11 系（`python -m venv` が利用できること）
+- `pip` / `GNU Make`
+
 ### Step 1: 依存インストールと初期セットアップ
 
-1. Python 3.11 系を用意し、任意の作業ディレクトリで仮想環境を作成する。
+1. 作業ディレクトリで仮想環境を作成し、アクティブ化する。
 2. リポジトリを取得してルートディレクトリ（`katamari/`）に移動する。
 3. `.env` を [`config/env.example`](config/env.example) からコピーし、後述の環境変数表を参考に値を設定する。
 4. `make dev` を実行して Python 依存関係を一括でインストールする（内部的には `pip install -r requirements.txt` を呼び出す）。
@@ -61,7 +67,7 @@ make dev
 ### Step 2: アプリのローカル起動
 
 1. `.env` に必要な値を設定した状態で `make run` を実行する。
-2. Chainlit が `http://localhost:8787` で立ち上がる（ポートを変更したい場合は `chainlit run src/app.py --host 0.0.0.0 --port <port>` を直接実行するか、`Makefile` の `run` ターゲットを調整する）。
+2. Chainlit が `http://localhost:8787` で立ち上がる。ポートを変更したい場合は `chainlit run src/app.py --host 0.0.0.0 --port <port>` を直接実行するか、`Makefile` の `run` ターゲットを調整する。
 3. 停止するときは実行ターミナルで `Ctrl + C` を送る。
 
 ```bash
@@ -70,7 +76,7 @@ make run
 
 ## 環境変数一覧
 
-`.env` の初期値は [`config/env.example`](config/env.example) を参照してください。設定の際はサンプルとの差分を最小限に保ちつつ、値の詳細や追加オプションを確認するために必要に応じて [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) も参照してください。
+`.env` の初期値は [`config/env.example`](config/env.example) を参照してください。サンプルとの差分を最小限に保ちながら、必要に応じて [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) も参照してください。
 
 | 種別 | 名称 | 用途 | 設定例 | 備考 |
 | ---- | ---- | ---- | ------ | ---- |
@@ -100,9 +106,8 @@ LOG_LEVEL=info
 
 ## テーマ切り替え
 
-1. Chainlit UI 右上の **Settings → Theme** から `themes/` 配下のプリセット（`.theme.json`）を選択する。
-2. テーマを追加する場合は `themes/` に `.theme.json` を配置し、同メニューの **Theme → Import JSON** で読み込む。
-3. ペルソナ連動などテーマの詳細設計は [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) を参照し、必要に応じてテーマ JSON とペルソナ設定を同期する。
+1. Chainlit UI 右上の **Settings → Theme** から `themes/` 配下のプリセット（`.theme.json`）を選ぶか、**Theme → Import JSON** でカスタムファイルを読み込む。
+2. 追加のテーマ設計やペルソナ連携の手順は [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) を参照し、必要に応じて `public/theme.json` や `personas/` 配下の設定と同期する。
 
 - 本パックは「katamari」の要件定義・機能仕様・技術仕様・OpenAPI・初期設定を含むドキュメント集です。
 - まずは `docs/Katamari_Requirements_v3_ja.md` をご確認ください。
