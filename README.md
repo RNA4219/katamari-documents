@@ -28,6 +28,7 @@
 
 - 本パックは「katamari」の要件定義・機能仕様・技術仕様・OpenAPI・初期設定を含むドキュメント集です。
 - まずは `docs/Katamari_Requirements_v3_ja.md` をご確認ください。
+- Day8 ワークフロー資料は `third_party/Day8/workflow-cookbook/HUB.codex.md` から辿ると Guardrails・Blueprint・Task Seeds へ一貫してアクセスできます。
 
 ## 同梱物
 - 要件: `docs/Katamari_Requirements_v3_ja.md`
@@ -38,6 +39,7 @@
 - 設定: `config/model_registry.json`, `config/env.example`
 - フォーク運用: `docs/UPSTREAM.md`, `docs/FORK_NOTES.md`
 - ADR: `docs/adr/README.md`
+- Day8 HUB / Guardrails（自動タスク分割・運用規約）: `third_party/Day8/workflow-cookbook/HUB.codex.md`, `third_party/Day8/workflow-cookbook/GUARDRAILS.md`
 
 ## Docker イメージの利用
 

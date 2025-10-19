@@ -11,6 +11,7 @@
 | 技術仕様 | `docs/Katamari_Technical_Spec_v1_ja.md` | システム構成、API、データフロー、例外ハンドリング方針。 |
 | OpenAPI | `docs/openapi/katamari_openapi.yaml` | HTTP インターフェース定義 (`/metrics`, `/healthz` 予定含む)。 |
 | 追加リファレンス | `docs/addenda/*.md` | UI モック、プロバイダ比較、テストケース、構成ファイル解説など。 |
+| Day8 HUB / Guardrails | `third_party/Day8/workflow-cookbook/HUB.codex.md`, `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | 自動タスク分割フローと運用ガードレールの統合ハブ。 |
 | フォーク運用 | `docs/UPSTREAM.md`, `docs/FORK_NOTES.md` | Chainlit subtree の取得・差分吸収手順。 |
 | リリース & セキュリティ | `docs/Release_Checklist.md`, `docs/Security_Review_Checklist.md` | 品質ゲートとリリース判定項目。 |
 
@@ -51,8 +52,9 @@
 ## 4. 参照クイックリンク
 
 - 実装開始時は `CONTRIBUTING.md` と `CODE_OF_CONDUCT.md` を必読。  
-- テスト駆動で進める場合は `tests/` を先に追加し、`I_Test_Cases.md` を参照。  
-- Subtree 同期は `docs/UPSTREAM.md` → `scripts/` の補助スクリプトを活用。  
+- テスト駆動で進める場合は `tests/` を先に追加し、`I_Test_Cases.md` を参照。
+- Subtree 同期は `docs/UPSTREAM.md` → `scripts/` の補助スクリプトを活用。
 - 運用時のチェックは `Release_Checklist.md` と `Security_Review_Checklist.md` を使用。
+- Day8 ワークフローを適用する際は `third_party/Day8/workflow-cookbook/GUARDRAILS.md` → `third_party/Day8/workflow-cookbook/BLUEPRINT.md` 群 → `third_party/Day8/workflow-cookbook/TASK.codex.md` の順で参照し、規範確認後にタスク種へ落とし込む。
 
 本ハブは開発フェーズ毎に更新し、未作成 ADR や追加仕様が発生した際は本書内のロードマップを最新化してください。
