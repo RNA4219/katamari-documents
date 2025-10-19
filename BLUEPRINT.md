@@ -1,13 +1,37 @@
 # BLUEPRINT
 
 ## 目的
-- Chainlit フォーク基盤上で、前処理・多段推論・評価機構を備えたリッチUIアシスタントを最短で構築し、Persona/Trim/Reflect チェーンを統合運用できる状態を作る。関連仕様: [Katamari 要件定義 v3](docs/Katamari_Requirements_v3_ja.md)、[機能仕様 v1](docs/Katamari_Functional_Spec_v1_ja.md)。
+- Chainlit ベースの Katamari アシスタント基盤について、前処理・多段推論・評価・UI の統合像を最短で共有する設計基準を示し、全員が同じ設計判断を下せるようにする。[docs/ROADMAP_AND_SPECS.md](docs/ROADMAP_AND_SPECS.md)、[Katamari 要件定義 v3](docs/Katamari_Requirements_v3_ja.md)。
 
-## 背景
-- プロジェクトは Chainlit 最新安定版をフォークして拡張差分を `core_ext/` と Provider 抽象層に隔離する方針で進行する。ステップごとの SSE 表示、トークン削減、Persona YAML の即時適用を重視し、M2 以降で評価・進化 API を段階投入する計画である。[Katamari 技術仕様 v1](docs/Katamari_Technical_Spec_v1_ja.md)、[ロードマップ & 仕様ハブ](docs/ROADMAP_AND_SPECS.md)。
-- 提供モデルは GPT-5 系と Gemini 2.5 系をプラガブルに扱い、Reasoning 拡張や推奨ファミリを比較しつつ Provider 差異を内部で吸収する。[付録F: Provider互換表](docs/addenda/F_Provider_Matrix.md)。
+## スコープ
+### In Scope
+- `src/app.py`・`src/core_ext/`・`src/providers/` の役割分離と依存関係。
+- SSE/Persona/Trim/Reflect チェーンの UI 表示とトークン制御。
+- Day8 Guardrails で定められた最小読込・タスク化プロセスの設計反映。[Guardrails](third_party/Day8/workflow-cookbook/GUARDRAILS.md)。
 
-## 制約
-- 非機能要件として SSE 初期トークン p95 ≤ 1.0s、UI 反映遅延 ≤ 300ms、ストリーミング 1 分継続時の切断率 < 1% を維持する。M1 で Header Auth、M1.5 で OAuth を必須化し、`/metrics`・`/healthz` を提供する。[Katamari 要件定義 v3](docs/Katamari_Requirements_v3_ja.md)。
-- セキュリティは API キーをサーバ環境変数に限定し、ログの PII マスク、CORS 制限、HTTPS/HTTP2、Rate Limit を徹底する。認証段階に応じた運用とし、保持データは最小限に抑制する。[付録G: セキュリティ & プライバシー指針](docs/addenda/G_Security_Privacy.md)。
-- アーキテクチャは Fork 先ライセンス（Apache-2.0）遵守と差分最小化を前提に、`app.py` は薄い配線、主要処理は `core_ext/` と Provider SPI に封じ込める。性能指標や評価器導入計画も段階リリースと整合させる。[Katamari 技術仕様 v1](docs/Katamari_Technical_Spec_v1_ja.md)。
+### Out of Scope
+- 特定 Provider 実装詳細（各 Provider SPI ドキュメントを参照）。
+- 個別テストケース・CI 設定（`docs/I_Test_Cases.md`, `TASK.*.md` に委譲）。
+
+## Acceptance Criteria
+- Persona/Trim/Reflect チェーンを含むアーキテクチャ図とデータフローが `docs/Katamari_Technical_Spec_v1_ja.md` と整合している。
+- SSE 初期 p95 ≤ 1.0s、UI 反映遅延 ≤ 300ms の非機能要件が設計根拠で裏付けられている。
+- Provider 切替が `docs/addenda/F_Provider_Matrix.md` の互換ポリシーで保証される構成になっている。
+
+## 手順（設計フェーズ）
+1. `docs/ROADMAP_AND_SPECS.md` で対象フェーズと必須仕様を特定する。
+2. Guardrails の「目的→スコープ→I/O→AC→最小フロー」の順に、設計要素を `blueprint` セクションへ落とし込む。[third_party/Day8/workflow-cookbook/GUARDRAILS.md](third_party/Day8/workflow-cookbook/GUARDRAILS.md)。
+3. `docs/birdseye/index.json` / `caps/*.json` を更新し、依存ノードの最新化を確認する。
+4. 設計変更が CI・運用に影響する場合は `RUNBOOK.md`・`CHECKLISTS.md` を同時に更新する。
+
+## チェック項目
+- [ ] 主要ユースケースごとに I/O 契約（入力/出力の型・例）が定義されている。
+- [ ] 例外パスと再試行可否が `Katamari_Technical_Spec_v1_ja.md` と矛盾しない。
+- [ ] Birdseye index/capsule が最新コミット時刻より新しい。
+- [ ] Guardrails で要求されるタスク分割と Task Seed 連携が成立している。
+
+## 参照リンク
+- [docs/ROADMAP_AND_SPECS.md](docs/ROADMAP_AND_SPECS.md)
+- [docs/Katamari_Functional_Spec_v1_ja.md](docs/Katamari_Functional_Spec_v1_ja.md)
+- [docs/Katamari_Technical_Spec_v1_ja.md](docs/Katamari_Technical_Spec_v1_ja.md)
+- [third_party/Day8/workflow-cookbook/GUARDRAILS.md](third_party/Day8/workflow-cookbook/GUARDRAILS.md)
