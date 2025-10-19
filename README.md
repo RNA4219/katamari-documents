@@ -9,6 +9,7 @@
 > **仕様ハブ**
 > - 初回導線: [`docs/ROADMAP_AND_SPECS.md`](docs/ROADMAP_AND_SPECS.md)
 > - Birdseye 再生成: `RUNBOOK.md` の更新手順、[`third_party/Day8/workflow-cookbook/tools/codemap/update.py`](third_party/Day8/workflow-cookbook/tools/codemap/update.py)
+> - Day8 ガードレール導線: [HUB.codex.md](third_party/Day8/workflow-cookbook/HUB.codex.md) → [GUARDRAILS.md](third_party/Day8/workflow-cookbook/GUARDRAILS.md) → [BLUEPRINT.md](third_party/Day8/workflow-cookbook/BLUEPRINT.md)
 
 読む順番:
 1. [`docs/birdseye/index.json`](docs/birdseye/index.json) …… ノード一覧・隣接関係（軽量）
