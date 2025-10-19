@@ -1,16 +1,22 @@
 {
   "id": "src/providers/openai_client.py",
   "role": "provider",
-  "summary": "OpenAI Chat Completions API を非同期で呼び出す薄いラッパー。API キーの読込とストリーム/一括応答を隠蔽。",
-  "deps": {
-    "outbound": [
-      "openai",
-      "os"
-    ],
-    "inbound": [
-      "src/app.py"
-    ]
-  },
+  "summary": "OpenAI Chat Completions API を AsyncOpenAI クライアントで呼び出し、ストリーム/一括応答を提供する。",
+  "public_api": [
+    "OpenAIProvider.stream(model, messages, **opts)",
+    "OpenAIProvider.complete(model, messages, **opts)"
+  ],
+  "deps_out": [
+    "openai.AsyncOpenAI",
+    "os.getenv"
+  ],
+  "deps_in": [
+    "src/app.py"
+  ],
   "tests": [],
-  "generated_at": "2025-10-19T16:07:45Z"
+  "risks": [
+    "OPENAI_API_KEY が未設定だとクライアント生成に失敗する",
+    "プロバイダー側の API 変更に依存"
+  ],
+  "generated_at": "2025-10-19T17:13:16Z"
 }
