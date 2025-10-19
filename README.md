@@ -39,9 +39,14 @@
 
 ## ローカル起動手順
 
+### 前提
+
+- Python 3.11 系（`python -m venv` が利用できること）
+- `pip` / `GNU Make`
+
 ### Step 1: 依存インストールと初期セットアップ
 
-1. Python 3.11 系を用意し、任意の作業ディレクトリで仮想環境を作成する。
+1. 作業ディレクトリで仮想環境を作成し、アクティブ化する。
 2. リポジトリを取得してルートディレクトリ（`katamari/`）に移動する。
 3. `.env` を [`config/env.example`](config/env.example) からコピーし、後述の環境変数表を参考に値を設定する。
 4. `make dev` を実行して Python 依存関係を一括でインストールする（内部的には `pip install -r requirements.txt` を呼び出す）。
@@ -61,7 +66,7 @@ make dev
 ### Step 2: アプリのローカル起動
 
 1. `.env` に必要な値を設定した状態で `make run` を実行する。
-2. Chainlit が `http://localhost:8787` で立ち上がる（ポートを変更したい場合は `chainlit run src/app.py --host 0.0.0.0 --port <port>` を直接実行するか、`Makefile` の `run` ターゲットを調整する）。
+2. Chainlit が `http://localhost:8787` で立ち上がる。ポートを変更したい場合は `chainlit run src/app.py --host 0.0.0.0 --port <port>` を直接実行するか、`Makefile` の `run` ターゲットを調整する。
 3. 停止するときは実行ターミナルで `Ctrl + C` を送る。
 
 ```bash
@@ -70,7 +75,7 @@ make run
 
 ## 環境変数一覧
 
-`.env` の初期値は [`config/env.example`](config/env.example) を参照してください。設定の際はサンプルとの差分を最小限に保ちつつ、値の詳細や追加オプションを確認するために必要に応じて [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) も参照してください。
+`.env` の初期値は [`config/env.example`](config/env.example) を参照してください。サンプルとの差分を最小限に保ちながら、必要に応じて [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) も参照してください。
 
 | 種別 | 名称 | 用途 | 設定例 | 備考 |
 | ---- | ---- | ---- | ------ | ---- |
@@ -100,9 +105,8 @@ LOG_LEVEL=info
 
 ## テーマ切り替え
 
-1. Chainlit UI 右上の **Settings → Theme** から `themes/` 配下のプリセット（`.theme.json`）を選択する。
-2. テーマを追加する場合は `themes/` に `.theme.json` を配置し、同メニューの **Theme → Import JSON** で読み込む。
-3. ペルソナ連動などテーマの詳細設計は [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) を参照し、必要に応じてテーマ JSON とペルソナ設定を同期する。
+1. Chainlit UI 右上の **Settings → Theme** から `themes/` 配下のプリセット（`.theme.json`）を選ぶか、**Theme → Import JSON** でカスタムファイルを読み込む。
+2. 追加のテーマ設計やペルソナ連携の手順は [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) を参照し、必要に応じて `public/theme.json` や `personas/` 配下の設定と同期する。
 
 - 本パックは「katamari」の要件定義・機能仕様・技術仕様・OpenAPI・初期設定を含むドキュメント集です。
 - まずは `docs/Katamari_Requirements_v3_ja.md` をご確認ください。
