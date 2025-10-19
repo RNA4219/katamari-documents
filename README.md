@@ -9,3 +9,8 @@
 - OpenAPI: `docs/openapi/katamari_openapi.yaml`
 - 設定: `config/model_registry.json`, `config/env.example`
 - フォーク運用: `docs/UPSTREAM.md`, `docs/FORK_NOTES.md`
+
+## 運用エンドポイント
+
+- `GET /healthz`: Chainlit アプリの Liveness。`{"status":"ok"}` を返却。
+- `GET /metrics`: Prometheus Text Format (`compress_ratio`, `semantic_retention`) を露出。
