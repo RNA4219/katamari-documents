@@ -1,44 +1,65 @@
 {
-  "generated_at": "2025-10-19T14:00:31Z",
+  "generated_at": "2025-10-19T14:53:17Z",
   "nodes": {
     "src/app.py": {
       "role": "entrypoint",
       "caps": "docs/birdseye/caps/src.app.json",
-      "mtime": "2025-10-19T13:58:58Z"
+      "mtime": "2025-10-19T12:49:08Z"
     },
     "src/core_ext/context_trimmer.py": {
       "role": "core",
       "caps": "docs/birdseye/caps/src.core_ext.context_trimmer.json",
-      "mtime": "2025-10-19T13:58:58Z"
+      "mtime": "2025-10-19T12:49:08Z"
     },
     "src/core_ext/persona_compiler.py": {
       "role": "core",
       "caps": null,
-      "mtime": "2025-10-19T11:50:16Z"
+      "mtime": "2025-10-19T12:49:08Z"
     },
     "src/core_ext/prethought.py": {
       "role": "core",
       "caps": null,
-      "mtime": "2025-10-19T11:50:16Z"
+      "mtime": "2025-10-19T12:49:08Z"
     },
     "src/core_ext/multistep.py": {
       "role": "core",
       "caps": null,
-      "mtime": "2025-10-19T11:50:16Z"
+      "mtime": "2025-10-19T12:49:08Z"
     },
     "src/providers/openai_client.py": {
       "role": "provider",
       "caps": "docs/birdseye/caps/src.providers.openai_client.json",
-      "mtime": "2025-10-19T11:50:16Z"
+      "mtime": "2025-10-19T12:49:08Z"
     }
   },
   "edges": [
-    ["src/app.py", "src/core_ext/context_trimmer.py"],
-    ["src/app.py", "src/core_ext/persona_compiler.py"],
-    ["src/app.py", "src/core_ext/prethought.py"],
-    ["src/app.py", "src/core_ext/multistep.py"],
-    ["src/app.py", "src/providers/openai_client.py"],
-    ["src/core_ext/context_trimmer.py", "src/app.py"],
-    ["src/providers/openai_client.py", "src/app.py"]
+    [
+      "src/app.py",
+      "src/core_ext/context_trimmer.py"
+    ],
+    [
+      "src/app.py",
+      "src/core_ext/persona_compiler.py"
+    ],
+    [
+      "src/app.py",
+      "src/core_ext/prethought.py"
+    ],
+    [
+      "src/app.py",
+      "src/core_ext/multistep.py"
+    ],
+    [
+      "src/app.py",
+      "src/providers/openai_client.py"
+    ],
+    [
+      "src/core_ext/context_trimmer.py",
+      "src/app.py"
+    ],
+    [
+      "src/providers/openai_client.py",
+      "src/app.py"
+    ]
   ]
 }
