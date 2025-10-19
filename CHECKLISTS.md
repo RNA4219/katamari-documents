@@ -39,8 +39,12 @@
 - [ ] Guardrails PR チェック項目と差異がないことを確認した。
 
 ### Release
-- [ ] `docs/Release_Checklist.md` の全項目が `PASS` になっている。
+- [ ] `docs/Release_Checklist.md` の優先項目（受入証跡・影響範囲・ラベル・CHANGELOG・`NOTICE`/`LICENSE` 同梱）がすべて `PASS`。
+- [ ] 受入基準の証跡を `EVALUATION.md` や PR に添付し、レビュー時に参照できる。
+- [ ] 影響範囲（依存モジュール・運用手順・インフラ）を再確認し、必要な同期ドキュメントを更新した。
+- [ ] PR に `type:*` / `semver:*` ラベルを付与し、リリースノート分類を確定した。
 - [ ] `CHANGELOG.md` にリリース内容を追記し、タグ発行準備ができている。
+- [ ] 配布物へ [`LICENSE`](LICENSE) / [`NOTICE`](NOTICE) を同梱する手順が `RUNBOOK.md` と一致する。
 - [ ] GHCR へのビルド/公開手順が `RUNBOOK.md` と一致する。
 
 ### Ops / Incident
