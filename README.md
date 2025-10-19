@@ -2,20 +2,17 @@
 
 <!-- LLM-BOOTSTRAP v1 -->
 読む順番:
-1. [`docs/birdseye/index.json`](docs/birdseye/index.json)  …… ノード一覧・隣接関係（軽量）
-2. [`docs/birdseye/caps/<path>.json`](docs/birdseye/caps) …… 必要ノードだけ point read（個別カプセル）
-3. [`docs/ROADMAP_AND_SPECS.md`](docs/ROADMAP_AND_SPECS.md) …… Birdseye 導線と仕様ハブを照合
-4. Day8 初回導線（HUB → Guardrails → Blueprint 群）: [`docs/ROADMAP_AND_SPECS.md#day8-sequence`](docs/ROADMAP_AND_SPECS.md#day8-sequence)
+1. docs/birdseye/index.json  …… ノード一覧・隣接関係（軽量）
+2. docs/birdseye/caps/<path>.json …… 必要ノードだけ point read（個別カプセル）
 
 フォーカス手順:
-- 直近変更ファイル±2hopのノードIDを [`docs/birdseye/index.json`](docs/birdseye/index.json) から取得
-- 対応する [`docs/birdseye/caps/*.json`](docs/birdseye/caps) のみ読み込み
+- 直近変更ファイル±2hopのノードIDを index.json から取得
+- 対応する caps/*.json のみ読み込み
 
 補足リンク:
-- Birdseye 整備予定ドキュメント: [`docs/birdseye/README.md`](docs/birdseye/README.md)
-- Birdseye ホットスポット一覧: [`docs/birdseye/hot.json`](docs/birdseye/hot.json)
-- Guardrails 個人運用パック: [`BLUEPRINT.md`](BLUEPRINT.md) / [`RUNBOOK.md`](RUNBOOK.md) / [`EVALUATION.md`](EVALUATION.md) / [`CHECKLISTS.md`](CHECKLISTS.md) / [`TASK.2025-10-19-0001.md`](TASK.2025-10-19-0001.md)（更新フロー: [`docs/ROADMAP_AND_SPECS.md#guardrails-ドキュメント更新フロー`](docs/ROADMAP_AND_SPECS.md#guardrails-%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E6%9B%B4%E6%96%B0%E3%83%95%E3%83%AD%E3%83%BC)）
-- Day8 初回導線を確認: [`docs/ROADMAP_AND_SPECS.md#day8-sequence`](docs/ROADMAP_AND_SPECS.md#day8-sequence)
+- docs/ROADMAP_AND_SPECS.md …… Birdseye 導線と仕様ハブを照合
+- docs/birdseye/README.md …… Birdseye 整備予定ドキュメント
+- docs/birdseye/hot.json …… Birdseye ホットスポット一覧
 <!-- /LLM-BOOTSTRAP -->
 
 ## 同梱物
