@@ -18,6 +18,7 @@
 1. 対象フェーズ開始時に該当セクションをコピーし、Issue / PR / Task に貼り付ける。
 2. 各項目の実施時に証跡（ログ、CI 結果、スクリーンショット）を残す。
 3. 未完了項目は Task Seed に転記し、`EVALUATION.md` で DoD 判定に利用する。
+4. `third_party/Day8/workflow-cookbook/GUARDRAILS.md` の該当フェーズ（Dev/PR/Release/Ops）に定義されたチェックと乖離がないか確認する。
 
 ## チェックリスト
 ### Development
@@ -30,6 +31,7 @@
 - [ ] 変更理由と影響範囲を `docs/ROADMAP_AND_SPECS.md` の該当項目にリンクした。
 - [ ] Task Seed を更新し、レビュー観点を共有した。
 - [ ] Guardrails の最小読込手順をレビュアーが再現できるよう案内した。
+- [ ] Guardrails PR チェック項目と差異がないことを確認した。
 
 ### Release
 - [ ] `docs/Release_Checklist.md` の全項目が `PASS` になっている。
@@ -40,6 +42,7 @@
 - [ ] 障害対応ログが `RUNBOOK.md` に沿って記録されている。
 - [ ] 再発防止策が Task Seed または Issue で管理されている。
 - [ ] セキュリティインシデントを `docs/Security_Review_Checklist.md` に追記した。
+- [ ] Guardrails Ops 項目の参照結果を Task Seed に反映した。
 
 ## 参照
 - [docs/ROADMAP_AND_SPECS.md](docs/ROADMAP_AND_SPECS.md)

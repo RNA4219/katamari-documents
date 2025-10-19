@@ -39,17 +39,20 @@ Guardrails の「準備→実行→検証」順で進める。
 2. 「準備→実行→検証」の順に手順を辿り、証跡を `CHECKLISTS.md` の該当フェーズへ転記する。
 3. 異常があれば `TASK.*.md` にフォローアップを登録し、再発防止策を検討する。
 4. 受入判断を `EVALUATION.md` の AC と照合し、満たない場合は再実行計画を記す。
+5. `third_party/Day8/workflow-cookbook/GUARDRAILS.md` の「RUNBOOK」節を参照し、標準手順から逸脱していないかレビューする。
 
 ## 受入基準
 - 起動直後に Persona 選択と Trim/Reflect チェーンが UI に表示される。
 - `ruff`・`mypy --strict`・`pytest`・`node:test` が成功、またはスキップ理由が記録されている。
 - SSE 遅延とトークン削減率が `docs/Katamari_Requirements_v3_ja.md` の目標を満たす。
+- Guardrails RUNBOOK の `Procedure / Acceptance` 記述と矛盾がない。
 
 ## チェック項目
 - [ ] Secrets を含む `.env` をリポジトリに残していない。
 - [ ] Guardrails の最小読込手順（README → index.json → caps）を実施した。
 - [ ] Birdseye 更新日時が直近コミット以降になっている。
 - [ ] 失敗テストの理由と再実行計画が Task Seed に記録されている。
+- [ ] Guardrails RUNBOOK 節（`third_party/Day8/workflow-cookbook/GUARDRAILS.md`）の手順を参照した。
 
 ## 参照
 - [docs/ROADMAP_AND_SPECS.md](docs/ROADMAP_AND_SPECS.md)

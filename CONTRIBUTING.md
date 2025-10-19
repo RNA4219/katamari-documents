@@ -86,6 +86,14 @@
 - [ ] 必要なスクリーンショット・動画・ログを Markdown で添付
 - [ ] レビュー観点・未決事項を `## Notes` に列挙し、追加調査があれば担当者を明示
 
+### Guardrails ドキュメント更新手順
+1. 変更の起点として `third_party/Day8/workflow-cookbook/GUARDRAILS.md` を開き、該当節（BLUEPRINT/RUNBOOK/EVALUATION/CHECKLISTS）
+   の Purpose・Scope・AC・Procedure を確認する。
+2. 各節の指針に従って `BLUEPRINT.md`・`RUNBOOK.md`・`EVALUATION.md`・`CHECKLISTS.md`・`TASK.<YYYY-MM-DD>-0001.md` を更新し、
+   目的・スコープ・受入基準・手順・確認項目が欠けないよう調整する。
+3. 更新後は `docs/ROADMAP_AND_SPECS.md` の Guardrails セクションと Task Seed を同期し、差分理由とフォローアップを明記する。
+4. PR の `## Notes` に参照した Guardrails 節と主要な判断を記録し、レビュアが原典と照合できるようリンクを添付する。
+
 ## レビューとマージ
 - 少なくとも 1 名の CODEOWNERS レビュア承認が必要です。必要に応じてドラフト PR で早期フィードバックをもらってください。
 - CODEOWNERS が複数いる場合は、最低 2 名の合意（Approve または LGTM コメント）が揃ったタイミングでマージ可能です。相反するレビューがあるときはディスカッションを解消し、関係者の合意をコメントで明記してください。
