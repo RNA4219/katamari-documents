@@ -1,11 +1,7 @@
 {
   "id": "src/providers/openai_client.py",
   "role": "provider",
-  "public_api": [
-    "OpenAIProvider.stream(model, messages, **opts)",
-    "OpenAIProvider.complete(model, messages, **opts)"
-  ],
-  "summary": "OpenAI Chat Completions API を非同期でラップし、ストリーム配信と一括完了呼び出しを提供するプロバイダー。",
+  "summary": "OpenAI Chat Completions API へのストリーム・一括問い合わせを仲介するプロバイダー層。",
   "deps": {
     "out": [
       "openai.AsyncOpenAI",
@@ -15,17 +11,6 @@
       "src/app.py"
     ]
   },
-  "deps_out": [
-    "openai.AsyncOpenAI",
-    "os.getenv"
-  ],
-  "deps_in": [
-    "src/app.py"
-  ],
-  "risks": [
-    "OPENAI_API_KEY が未設定だと初期化時に例外が発生する",
-    "API レートやネットワーク障害でストリームが中断する"
-  ],
   "tests": [],
-  "generated_at": "2025-10-19T19:36:50Z"
+  "generated_at": "2025-10-19T20:45:00Z"
 }

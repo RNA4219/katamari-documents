@@ -1,24 +1,30 @@
 {
-  "generated_at": "2025-10-19T19:36:50Z",
-  "nodes": {
-    "src/app.py": {
+  "generated_at": "2025-10-19T20:45:00Z",
+  "nodes": [
+    {
+      "id": "src/app.py",
       "role": "entrypoint",
-      "caps": "docs/birdseye/caps/src.app.json",
-      "mtime": "2025-10-19T12:23:58Z"
+      "capsule": "docs/birdseye/caps/src.app.json"
     },
-    "src/core_ext/context_trimmer.py": {
+    {
+      "id": "src/core_ext/context_trimmer.py",
       "role": "core",
-      "caps": "docs/birdseye/caps/src.core_ext.context_trimmer.json",
-      "mtime": "2025-10-19T12:22:34Z"
+      "capsule": "docs/birdseye/caps/src.core_ext.context_trimmer.json"
     },
-    "src/providers/openai_client.py": {
+    {
+      "id": "src/providers/openai_client.py",
       "role": "provider",
-      "caps": "docs/birdseye/caps/src.providers.openai_client.json",
-      "mtime": "2025-10-19T10:34:38Z"
+      "capsule": "docs/birdseye/caps/src.providers.openai_client.json"
     }
-  },
+  ],
   "edges": [
-    ["src/app.py", "src/core_ext/context_trimmer.py"],
-    ["src/app.py", "src/providers/openai_client.py"]
+    {
+      "source": "src/app.py",
+      "target": "src/core_ext/context_trimmer.py"
+    },
+    {
+      "source": "src/app.py",
+      "target": "src/providers/openai_client.py"
+    }
   ]
 }
