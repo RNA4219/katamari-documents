@@ -1,14 +1,8 @@
 {
   "id": "src/app.py",
+  "summary": "Chainlit ベースのフロントからチャットセッションを制御し、履歴トリミングとマルチステップ推論を統合する Katamari のメインエントリポイント。",
   "role": "entrypoint",
-  "summary": "Chainlit UI を起点にチャット設定、履歴トリミング、LLM 呼び出し、多段チェーンの実行、運用エンドポイント公開を担うメインアプリ。",
-  "public_api": [
-    "@cl.on_chat_start",
-    "@cl.on_message",
-    "GET /metrics",
-    "GET /healthz"
-  ],
-  "deps_out": [
+  "deps": [
     "core_ext.persona_compiler.compile_persona_yaml",
     "core_ext.context_trimmer.trim_messages",
     "core_ext.prethought.analyze_intent",
@@ -16,14 +10,8 @@
     "core_ext.multistep.system_hint_for_step",
     "providers.openai_client.OpenAIProvider"
   ],
-  "deps_in": [
-    "tests/app/test_metrics_healthz.py"
-  ],
   "tests": [
     "tests/app/test_metrics_healthz.py"
   ],
-  "risks": [
-    "Chainlit 設定や OPENAI_API_KEY が未設定の場合に起動が失敗する"
-  ],
-  "generated_at": "2025-10-19T17:13:16Z"
+  "generated_at": "2025-01-15T12:00:00Z"
 }
