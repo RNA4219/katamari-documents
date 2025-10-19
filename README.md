@@ -9,6 +9,13 @@
 5. [third_party/Day8/README.md](third_party/Day8/README.md) …… Day8 資料の総覧（詳細は `docs/day8/README.md`）
 6. Day8 オペレーション資料（推奨参照順）: [HUB.codex.md](third_party/Day8/workflow-cookbook/HUB.codex.md)（観測ハブ）→ [GUARDRAILS.md](third_party/Day8/workflow-cookbook/GUARDRAILS.md)（統制基準）→ [BLUEPRINT.md](third_party/Day8/workflow-cookbook/BLUEPRINT.md) 群（運用設計）
 
+> [`docs/birdseye/hot.json`](docs/birdseye/hot.json) の `generated_at` は頻出入口リストの生成時刻です。エントリポイントや依存関係を更新した際は `date -u '+%Y-%m-%dT%H:%M:%SZ'` で時刻を取得し、[`docs/birdseye/index.json`](docs/birdseye/index.json)・`docs/birdseye/caps/`・[`docs/birdseye/hot.json`](docs/birdseye/hot.json) を併せて更新してください。
+> 1. `date -u '+%Y-%m-%dT%H:%M:%SZ'` を実行して共通タイムスタンプを取得
+> 2. [`docs/birdseye/index.json`](docs/birdseye/index.json) の `generated_at` と対象ノードの `mtime` を更新
+> 3. 更新対象の `docs/birdseye/caps/*.json` と [`docs/birdseye/hot.json`](docs/birdseye/hot.json) に同じ `generated_at` を反映
+> 4. [`docs/birdseye/hot.json`](docs/birdseye/hot.json) には Chainlit 起動やプロバイダー呼び出しなど主要なエントリポイント ID を 3 件程度列挙し、理由を最新化
+> 5. 各カプセル JSON では `summary` / `role` / `deps` / `tests` を現行コードとテストに合わせて更新
+
 フォーカス手順:
 - 直近変更ファイル±2hopのノードIDを [`docs/birdseye/index.json`](docs/birdseye/index.json) から取得
 - 対応する `docs/birdseye/caps/*.json` のみ読み込み
