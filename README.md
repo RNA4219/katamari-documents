@@ -1,4 +1,31 @@
 # Katamari (Chainlit Fork) – 要件&仕様パック
+
+## ローカル起動手順
+
+1. 依存パッケージを初期化: `pip install -r requirements.txt`
+2. アプリ起動: `make run`（`http://localhost:8787` で UI が開きます）
+   - ホットリロード付きで開発する場合は `make dev` を先に実行して依存を揃えた後、別ターミナルで `make run`
+3. 停止: 実行中のターミナルで `Ctrl + C`
+
+## 環境変数一覧
+
+| 名称 | 必須 | 用途 | 設定例 |
+| ---- | ---- | ---- | ------ |
+| `OPENAI_API_KEY` | はい | OpenAI プロバイダー利用時の API キー | `OPENAI_API_KEY=sk-...` |
+| `GEMINI_API_KEY` | いいえ | Google Gemini プロバイダー利用時の API キー | `GEMINI_API_KEY=...` |
+| `DEFAULT_PROVIDER` | いいえ | 既定で使用する LLM プロバイダー識別子 | `DEFAULT_PROVIDER=openai` |
+| `CHAINLIT_AUTH_SECRET` | いいえ（本番推奨） | Chainlit セッション署名用シークレット | `CHAINLIT_AUTH_SECRET=change-me` |
+| `PORT` | いいえ | `make run` の待ち受けポート | `PORT=8787` |
+| `LOG_LEVEL` | いいえ | Chainlit ログ出力レベル | `LOG_LEVEL=info` |
+
+> すべての項目は `config/env.example` を参照して `.env` にコピーできます。
+
+## テーマ切り替え
+
+1. Chainlit UI 右上の **Settings → Theme** からプリセット名を選択（`themes/` 配下の `.theme.json` と一致）。
+2. 新規テーマを追加する場合は、`themes/` に JSON を配置し、UI のテーマ一覧を再読み込み。
+   - 既存プリセットの一覧は [`themes/CATALOG.md`](themes/CATALOG.md) を参照。
+
 - 本パックは「katamari」の要件定義・機能仕様・技術仕様・OpenAPI・初期設定を含むドキュメント集です。
 - まずは `docs/Katamari_Requirements_v3_ja.md` をご確認ください。
 
@@ -14,3 +41,22 @@
 
 Copyright (c) 2024 Katamari Contributors.
 本パックは Apache License 2.0 の下で提供されています。詳細は [LICENSE](LICENSE) を参照してください。
+- ADR: `docs/adr/README.md`
+
+## Docker イメージの利用
+
+リポジトリ同梱の `Dockerfile` は `chainlit run src/app.py` を既定コマンドとして公開しています。
+
+```bash
+# ビルド
+docker build -t katamari:dev .
+
+# 起動 (ポートは PORT 環境変数で変更可能)
+docker run --rm -e PORT=8787 -p 8787:8787 katamari:dev
+```
+
+GitHub Container Registry への公開フローは [docs/addenda/H_Deploy_Guide.md](docs/addenda/H_Deploy_Guide.md) を参照してください。
+## 運用エンドポイント
+
+- `GET /healthz`: Chainlit アプリの Liveness。`{"status":"ok"}` を返却。
+- `GET /metrics`: Prometheus Text Format (`compress_ratio`, `semantic_retention`) を露出。
