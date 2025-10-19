@@ -1,0 +1,8 @@
+Katamari
+
+本プロジェクトは Chainlit/chainlit (https://github.com/Chainlit/chainlit) を派生元としています。
+
+本リポジトリ固有の主な変更点:
+- docs/ 配下に Katamari 向け要件・機能・技術仕様および OpenAPI 資料を追加
+- docs/UPSTREAM.md や docs/FORK_NOTES.md によるフォーク運用ルールの整備
+- config/ 配下の Katamari 用設定テンプレートおよびモデルレジストリの提供

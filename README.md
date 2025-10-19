@@ -9,3 +9,8 @@
 - OpenAPI: `docs/openapi/katamari_openapi.yaml`
 - 設定: `config/model_registry.json`, `config/env.example`
 - フォーク運用: `docs/UPSTREAM.md`, `docs/FORK_NOTES.md`
+
+## ライセンス
+
+Copyright (c) 2024 Katamari Contributors.
+本パックは Apache License 2.0 の下で提供されています。詳細は [LICENSE](LICENSE) を参照してください。
