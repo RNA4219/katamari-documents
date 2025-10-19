@@ -13,6 +13,7 @@
 補足リンク:
 - Birdseye 整備予定ドキュメント: [`docs/birdseye/README.md`](docs/birdseye/README.md)
 - Birdseye ホットスポット一覧: [`docs/birdseye/hot.json`](docs/birdseye/hot.json)
+- Guardrails 個人運用パック: [`BLUEPRINT.md`](BLUEPRINT.md) / [`RUNBOOK.md`](RUNBOOK.md) / [`EVALUATION.md`](EVALUATION.md) / [`CHECKLISTS.md`](CHECKLISTS.md) / [`TASK.2025-10-19-0001.md`](TASK.2025-10-19-0001.md)（更新フロー: [`docs/ROADMAP_AND_SPECS.md#guardrails-ドキュメント更新フロー`](docs/ROADMAP_AND_SPECS.md#guardrails-%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E6%9B%B4%E6%96%B0%E3%83%95%E3%83%AD%E3%83%BC)）
 <!-- /LLM-BOOTSTRAP -->
 
 ## 同梱物
