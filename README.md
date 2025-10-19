@@ -58,11 +58,11 @@
 
 ## ローカル起動手順
 
-### 依存インストールとセットアップ
+### 1. 依存インストールと初期セットアップ
 
-1. Python 3.11 系を用意し、任意の場所で仮想環境を作成する。
-2. `.env` を [`config/env.example`](config/env.example) からコピーし、後述の表を参照して値を埋める。
-3. `make dev` で Python 依存を一括インストールする（`pip install -r requirements.txt` と同等）。
+1. Python 3.11 系を用意し、任意の作業ディレクトリで仮想環境を作成する。
+2. `.env` を [`config/env.example`](config/env.example) からコピーし、後述の環境変数表を参考に値を設定する。
+3. `make dev` を実行して Python 依存関係を一括でインストールする（内部的には `pip install -r requirements.txt` を呼び出す）。
 
 ```bash
 python -m venv .venv
@@ -71,13 +71,14 @@ cp config/env.example .env
 make dev
 ```
 
-- GNU Make が利用できない場合は `pip install -r requirements.txt` を直接実行しても良い。
-- 依存パッケージの更新が必要になった際も `make dev` を再実行する。
+- GNU Make が利用できない環境では `pip install -r requirements.txt` を直接実行してもよい。
+- 依存パッケージを更新する際も同じコマンド（`make dev`）を再実行する。
 
-### アプリのローカル実行
+### 2. アプリのローカル起動
 
-- `make run` で Chainlit を `http://localhost:8787`（`PORT` 変更時はその値）に起動する。
-- 終了は実行ターミナルで `Ctrl + C`。
+1. `.env` に必要な値を設定した状態で `make run` を実行する。
+2. Chainlit が `http://localhost:8787`（`PORT` を設定している場合はその値）で立ち上がる。
+3. 停止するときは実行ターミナルで `Ctrl + C` を送る。
 
 ```bash
 make run
@@ -101,7 +102,7 @@ make run
 | 任意 | `SEMANTIC_RETENTION_GEMINI_MODEL` | Google Gemini 埋め込みモデル名 | `SEMANTIC_RETENTION_GEMINI_MODEL=text-embedding-004` | Gemini プロバイダー指定時に利用 |
 | 任意 | `GOOGLE_API_KEY` | Gemini 埋め込み生成用 API キー（会話保持率用） | `GOOGLE_API_KEY=...` | `SEMANTIC_RETENTION_PROVIDER=google_gemini` 時に必要 |
 
-> まず `.env` に必須項目を入力し、環境に合わせて任意項目を追記してください。
+> まず `.env` に必須項目を入力し、環境に合わせて任意項目を追加してください。
 
 ### `.env` 設定例
 
@@ -117,7 +118,7 @@ LOG_LEVEL=info
 
 1. Chainlit UI 右上の **Settings → Theme** から `themes/` 配下のプリセット（`.theme.json`）を選択する。
 2. テーマを追加する場合は `themes/` に `.theme.json` を配置し、同メニューの **Theme → Import JSON** で読み込む。
-3. ペルソナ設定と連携するテーマの編集手順は [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) で詳細を確認する。
+3. ペルソナ設定と連携するテーマの編集手順は [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) を参照し、必要に応じてテーマ JSON とペルソナ設定を同期する。
 
 - 本パックは「katamari」の要件定義・機能仕様・技術仕様・OpenAPI・初期設定を含むドキュメント集です。
 - まずは `docs/Katamari_Requirements_v3_ja.md` をご確認ください。
