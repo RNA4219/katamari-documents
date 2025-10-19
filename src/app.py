@@ -6,10 +6,14 @@
 #   chainlit run src/app.py -h --host 0.0.0.0 --port 8787
 
 import os
+from threading import Lock
 from typing import Dict, List
 
 import chainlit as cl
+from fastapi import APIRouter
+from fastapi.responses import PlainTextResponse
 from chainlit.input_widget import Select, Slider, TextInput, Switch
+from chainlit.server import app as chainlit_app, router as chainlit_router
 
 from core_ext.persona_compiler import compile_persona_yaml
 from core_ext.context_trimmer import trim_messages
@@ -19,6 +23,73 @@ from providers.openai_client import OpenAIProvider
 
 DEFAULT_MODEL = "gpt-5-main"
 DEFAULT_CHAIN = "single"
+
+
+class MetricsRegistry:
+    """Collect runtime metrics for operational endpoints."""
+
+    def __init__(self) -> None:
+        self._lock = Lock()
+        self._compress_ratio = 1.0
+        self._semantic_retention = 1.0
+
+    def observe_trim(
+        self, *, compress_ratio: float, semantic_retention: float | None = None
+    ) -> None:
+        """Record the latest trimming metrics."""
+
+        retention = 1.0 if semantic_retention is None else float(semantic_retention)
+        with self._lock:
+            self._compress_ratio = float(compress_ratio)
+            self._semantic_retention = retention
+
+    def snapshot(self) -> Dict[str, float]:
+        with self._lock:
+            return {
+                "compress_ratio": self._compress_ratio,
+                "semantic_retention": self._semantic_retention,
+            }
+
+    def export_prometheus(self) -> str:
+        metrics = self.snapshot()
+        lines = [
+            "# HELP compress_ratio Ratio of tokens kept after trimming.",
+            "# TYPE compress_ratio gauge",
+            f"compress_ratio {metrics['compress_ratio']}",
+            "# HELP semantic_retention Semantic retention score for trimmed context.",
+            "# TYPE semantic_retention gauge",
+            f"semantic_retention {metrics['semantic_retention']}",
+        ]
+        return "\n".join(lines) + "\n"
+
+
+METRICS_REGISTRY = MetricsRegistry()
+
+ops_router = APIRouter()
+
+
+@ops_router.get("/healthz")
+async def healthz() -> Dict[str, str]:
+    """Liveness probe."""
+
+    return {"status": "ok"}
+
+
+@ops_router.get("/metrics")
+async def metrics() -> PlainTextResponse:
+    """Expose runtime metrics in Prometheus text format."""
+
+    payload = METRICS_REGISTRY.export_prometheus()
+    return PlainTextResponse(payload, media_type="text/plain; version=0.0.4")
+
+chainlit_app.include_router(ops_router, prefix=chainlit_router.prefix)
+for _path in ("/metrics", "/healthz"):
+    full_path = f"{chainlit_router.prefix}{_path}"
+    for route in list(chainlit_app.router.routes):
+        if getattr(route, "path", "") == full_path:
+            chainlit_app.router.routes.remove(route)
+            chainlit_app.router.routes.insert(0, route)
+            break
 
 def get_provider(model_id: str):
     # Simple mapping by provider prefix; extend with Gemini etc.
@@ -87,9 +158,21 @@ async def on_message(message: cl.Message):
     hist.append({"role":"user","content":message.content})
 
     trimmed, metrics = trim_messages(hist, target_tokens, model)
+    METRICS_REGISTRY.observe_trim(
+        compress_ratio=float(metrics.get("compress_ratio", 0.0)),
+        semantic_retention=(
+            float(metrics["semantic_retention"])
+            if metrics.get("semantic_retention") is not None
+            else None
+        ),
+    )
     cl.user_session.set("history", trimmed)
+    cl.user_session.set("trim_metrics", metrics)
     if show_debug:
-        await cl.Message(content=f"[trim] tokens: {metrics['output_tokens']}/{metrics['input_tokens']} (ratio {metrics['compress_ratio']})").send()
+        base = f"[trim] tokens: {metrics['output_tokens']}/{metrics['input_tokens']} (ratio {metrics['compress_ratio']})"
+        if "semantic_retention" in metrics:
+            base += f", retention {metrics['semantic_retention']}"
+        await cl.Message(content=base).send()
 
     # 3) Run chain
     provider = get_provider(model)
