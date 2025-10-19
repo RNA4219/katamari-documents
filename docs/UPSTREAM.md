@@ -42,19 +42,20 @@
 
 ## 週次チェック運用フロー
 
-- **担当**: Platform チーム当番（輪番制、週替わり）
-- **スケジュール**: 毎週火曜 10:00 JST にタグ確認、同日 17:00 JST までに差分検証を完了
-- **検証観点**:
-  - Chainlit release note に記載された breaking change の有無
-  - `requirements.txt` 相当の依存更新内容
-  - UI/API への影響（`core_ext/` 変更の有無、`app.py` への伝播）
+- **担当**: リポジトリオーナー（主担当） + AI アシスタント（差分要約・再確認）
+- **スケジュール**: 毎週火曜 09:30 JST にタグ確認を開始し、同日 12:00 JST までに検証とログ更新を完了。遅延時はログに理由を追記。
+- **実施手順**:
+  1. `git fetch chainlit --tags` で最新タグを取得し、`git tag -l 'v*' --sort=-v:refname | head` で候補を確認。
+  2. Release Note を読み、AI へ差分要約を依頼して breaking change の有無と影響領域を整理。
+  3. 対象タグを `git diff` で比較し、`core_ext/` へ及ぶ変更と依存更新を洗い出す。
+  4. チェックリストを実行しながら `docs/UPSTREAM_WEEKLY_LOG.md` に結果を追記。
 
 ### 差分検証チェックリスト
-- [ ] 取り込み対象タグとコミット SHA を記録（Notion Runbook）
-- [ ] `git diff v1.2.3..v1.2.4 -- core_ext/chainlit` で差分を確認
-- [ ] `poetry install` / `npm install` 等依存解決の再現性確認
-- [ ] `pytest` / `npm test` のスモーク実行結果を添付
-- [ ] UI 変更時はスクリーンショットを保存しレビューに添付
+- [ ] `docs/UPSTREAM_WEEKLY_LOG.md` に実施日・担当・対象タグ・比較元タグ・コミット SHA・AI サポート有無を追記
+- [ ] `git diff <prev_tag>..<target_tag> -- core_ext/chainlit` の要約（主要ファイル、行数）をログへ残す
+- [ ] 依存解決コマンド（`poetry install` / `npm install` 等）の実行結果要約をログへ記録
+- [ ] `pytest` / `npm test` のスモーク実行結果とコマンド出力要約をログへ記録
+- [ ] UI 変更や見た目差分がある場合はスクリーンショットを `public/upstream/<date>/` に保存しパスをログへ記録
 
 ## 差分隔離方針とレビュー
 
@@ -65,7 +66,7 @@
 | `app.py` / `src/` | 自前コード | `core_ext/` の公開 API のみ利用 | 依存逆流が無いこと、例外設計遵守 |
 
 ### レビューフロー
-1. 当番が PR を作成し、Chainlit upstream 差分サマリとチェックリスト結果を記載
-2. Reviewer（別担当者）が `core_ext/` への差分と自前コード影響を確認
-3. メンテナンス担当（週次輪番リード）が最終承認しデプロイブランチにマージ
-4. マージ後、翌営業日までに本番反映ステータスを ops channel に報告
+1. 担当者が自己レビューを実施し、`docs/UPSTREAM_WEEKLY_LOG.md` のチェックリスト欄をすべて埋めた上で PR を作成
+2. AI アシスタントに差分ハイライトとテスト結果を再検証させ、ログへ AI レビュー所見を追記
+3. 担当者が AI 所見を反映して最終確認し、`main` へのマージを実施
+4. マージ後、翌営業日までに `docs/UPSTREAM_WEEKLY_LOG.md` にデプロイ状況を追記し、必要なら ops channel にステータスを共有
