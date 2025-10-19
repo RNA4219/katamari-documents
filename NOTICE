@@ -1,0 +1,11 @@
+Katamari NOTICE
+===============
+
+このプロダクトは Chainlit/chainlit (https://github.com/Chainlit/chainlit) を基にした派生物であり、Apache License, Version 2.0 の下で再配布されています。
+
+Copyright (c) 2024 Day8 and contributors
+Copyright (c) Chainlit SAS and Chainlit contributors
+
+本フォークでは persona_compiler・context_trimmer・prethought・multistep・evolve などの会話制御拡張、OpenAI/Gemini 向けプロバイダー抽象化、`/metrics` `/healthz` `/api/models` エンドポイント、Day8 仕様ドキュメント群・テーマ定義・運用スクリプトを追加し、Chainlit ベースの要件/仕様パックとして再構成しています。
+
+Apache License, Version 2.0 の全文は `LICENSE` を参照してください。
