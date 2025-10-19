@@ -17,10 +17,12 @@
 - Node/フロントエンドに触れた場合は `pnpm run lint` と `pnpm run test` を目安に実行します。対象外なら「対象外」とだけ PR に書けば大丈夫です。
 - テストのログは全文を貼る必要はありません。成功したことが分かる一行があれば十分です。
 
-## 改行ポリシー
-- ルートの `.gitattributes` で `* text=auto` を指定し、改行コードを自動正規化します。
-- Shell/Python/Makefile 系のファイルは LF、PowerShell (`*.ps1`, `*.psm1`) は CRLF に固定しています。
-- 既存ファイルの改行差分を調整したい場合は `git add --renormalize .` を使い、意図しない変更が無いか確認してください。
+## Guardrails ドキュメント更新フロー
+1. 設計判断や運用手順に影響が出る変更は、まず `BLUEPRINT.md`・`RUNBOOK.md`・`EVALUATION.md`・`CHECKLISTS.md` の担当ロールを確認します。
+2. 更新が必要なドキュメントに差分を加えたら、Task Seed (`TASK.<YYYY-MM-DD>-0001.md` など) にフォローアップを記録してください。
+3. 変更内容を Pull Request で共有し、`docs/ROADMAP_AND_SPECS.md#guardrails-ドキュメント更新フロー` の手順に沿って整合性をレビューします。
+4. Guardrails 原典 ([`third_party/Day8/workflow-cookbook/GUARDRAILS.md`](third_party/Day8/workflow-cookbook/GUARDRAILS.md)) を参照し、Purpose/Scope/AC と矛盾していないか確認してください。
+5. ドキュメント更新後は Birdseye 図や関連チェックリストを同期し、役割ごとの証跡が追跡できるようにします。
 
 ## メンテナーからのお願い
 - 機密情報（API キー等）はコミットに含めないでください。

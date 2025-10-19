@@ -25,6 +25,13 @@
 > - [TASK.<YYYY-MM-DD>-0001.md](../TASK.2025-10-19-0001.md): 初期 Task Seed。目的・要件・想定コマンドを記録し、フォローアップを管理。
 > - Guardrails 原典: [third_party/Day8/workflow-cookbook/GUARDRAILS.md](../third_party/Day8/workflow-cookbook/GUARDRAILS.md)。各節の目的・
 >   スコープ・AC を参照し、上記ドキュメント更新時は整合性を必ず確認する。
+
+### Guardrails ドキュメント更新フロー
+1. 設計変更を検討したら `BLUEPRINT.md` で影響範囲と担当ロールを確認し、設計判断の根拠を更新する。
+2. 運用手順が変わる場合は `RUNBOOK.md` と `CHECKLISTS.md` を同時に改訂し、担当ロールのチェック項目を最新化する。
+3. 受入基準や DoD に影響する場合は `EVALUATION.md` と該当 Task Seed (`TASK.*.md`) を更新し、証跡取得コマンドを追記する。
+4. 変更差分を Pull Request にまとめ、`CONTRIBUTING.md#guardrails-ドキュメント更新フロー` を参照してレビューと追跡を実施する。
+5. Birdseye 図および Guardrails 原典 (`third_party/Day8/workflow-cookbook/GUARDRAILS.md`) を確認し、役割と手順の齟齬がないことを保証する。
 | Day8 HUB | `third_party/Day8/workflow-cookbook/HUB.codex.md` | Day8 オペレーション全体を俯瞰する観測ハブ（入口）。 |
 | Day8 Guardrails | `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | HUB で得た観測を踏まえた統制基準・安全策（第二段）。 |
 | Day8 Blueprint | `third_party/Day8/workflow-cookbook/BLUEPRINT.md` | Guardrails を適用した運用ブループリント（実装設計）。 |
