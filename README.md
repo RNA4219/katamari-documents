@@ -2,7 +2,6 @@
 
 <!-- LLM-BOOTSTRAP v1 -->
 読む順番:
-
 1. docs/birdseye/index.json  …… ノード一覧・隣接関係（軽量）
 2. docs/birdseye/caps/<path>.json …… 必要ノードだけ point read（個別カプセル）
 3. docs/ROADMAP_AND_SPECS.md …… 要件・仕様の横断導線
@@ -15,17 +14,15 @@
 > 3. 更新対象の `docs/birdseye/caps/*.json` と `docs/birdseye/hot.json` に同じ `generated_at` を反映
 
 フォーカス手順:
-
 - 直近変更ファイル±2hopのノードIDを index.json から取得
 - 対応する caps/*.json のみ読み込み
 
 主要導線:
-
-- 要件: [`docs/Katamari_Requirements_v3_ja.md`](docs/Katamari_Requirements_v3_ja.md)
+- 要件・仕様ハブ: [`docs/ROADMAP_AND_SPECS.md`](docs/ROADMAP_AND_SPECS.md)
+- 詳細要件: [`docs/Katamari_Requirements_v3_ja.md`](docs/Katamari_Requirements_v3_ja.md)
 - 機能仕様: [`docs/Katamari_Functional_Spec_v1_ja.md`](docs/Katamari_Functional_Spec_v1_ja.md)
 - 技術仕様: [`docs/Katamari_Technical_Spec_v1_ja.md`](docs/Katamari_Technical_Spec_v1_ja.md)
 - OpenAPI: [`docs/openapi/katamari_openapi.yaml`](docs/openapi/katamari_openapi.yaml)
-- フォーク運用: [`docs/UPSTREAM.md`](docs/UPSTREAM.md), [`docs/FORK_NOTES.md`](docs/FORK_NOTES.md)
 <!-- /LLM-BOOTSTRAP -->
 
 ## 同梱物
@@ -57,7 +54,7 @@
 | `CHAINLIT_AUTH_SECRET` | いいえ（本番推奨） | Chainlit セッション署名用シークレット | `CHAINLIT_AUTH_SECRET=change-me` |
 | `PORT` | いいえ | `make run` の待ち受けポート | `PORT=8787` |
 | `LOG_LEVEL` | いいえ | Chainlit ログ出力レベル | `LOG_LEVEL=info` |
-| `SEMANTIC_RETENTION_PROVIDER` | いいえ | 会話保持率メトリクス算出時の埋め込みプロバイダー | `SEMANTIC_RETENTION_PROVIDER=openai` |
+| `SEMANTIC_RETENTION_PROVIDER` | いいえ | 会話保持率メリクス算出時の埋め込みプロバイダー | `SEMANTIC_RETENTION_PROVIDER=openai` |
 | `SEMANTIC_RETENTION_OPENAI_MODEL` | いいえ | OpenAI 埋め込みモデル名 | `SEMANTIC_RETENTION_OPENAI_MODEL=text-embedding-3-large` |
 | `SEMANTIC_RETENTION_GEMINI_MODEL` | いいえ | Google Gemini 埋め込みモデル名 | `SEMANTIC_RETENTION_GEMINI_MODEL=text-embedding-004` |
 | `GOOGLE_API_KEY` | いいえ | Gemini 埋め込み生成用 API キー（会話保持率用） | `GOOGLE_API_KEY=...` |
