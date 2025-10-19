@@ -23,3 +23,7 @@ docker run --rm -e PORT=8787 -p 8787:8787 katamari:dev
 ```
 
 GitHub Container Registry への公開フローは [docs/addenda/H_Deploy_Guide.md](docs/addenda/H_Deploy_Guide.md) を参照してください。
+## 運用エンドポイント
+
+- `GET /healthz`: Chainlit アプリの Liveness。`{"status":"ok"}` を返却。
+- `GET /metrics`: Prometheus Text Format (`compress_ratio`, `semantic_retention`) を露出。
