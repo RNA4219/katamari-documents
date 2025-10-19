@@ -71,4 +71,5 @@ GitHub Container Registry への公開フローは [docs/addenda/H_Deploy_Guide.
 
 - 変更をマージする前に、該当差分を [`CHANGELOG.md`](CHANGELOG.md) の `[Unreleased]` セクションへ追記してください。
 - 記法は [Keep a Changelog](https://keepachangelog.com/ja/1.1.0/) に従い、日付とセマンティックバージョンを付与します。
+- README やロードマップへ残っている過去の更新記録は、対応するリリース日・バージョンを付けて順次 `CHANGELOG.md` のセクションへ移管してください。
 - リリース確定時は `[Unreleased]` から新しいバージョン見出しへ移し、`docs/Release_Checklist.md` の手順と合わせて履歴を公開します。
