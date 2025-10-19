@@ -9,6 +9,7 @@
 - タグ push トリガーの release ワークフローで Docker Buildx + GHCR publish を実行する。
 - CI 結果と `docs/Release_Checklist.md` / `docs/Security_Review_Checklist.md` を紐付けて、DoD 判断に使用できる状態にする。
 - Birdseye 図と Task Seed を更新し、変更理由とフォローアップを追跡できるようにする。
+- Guardrails HUB → GUARDRAILS → BLUEPRINT の順にドキュメントを参照し、設計・運用・評価の整合性を確保する。
 
 ## 想定コマンド
 ```bash
@@ -20,6 +21,7 @@ pytest
 npm test -- --watch=false  # node:test の雛形
 ruff check .
 mypy --strict
+rg -n "RUNBOOK" third_party/Day8/workflow-cookbook/GUARDRAILS.md
 act -W .github/workflows/ci.yml  # 任意: GitHub Actions のローカルドライラン
 ```
 
@@ -27,7 +29,9 @@ act -W .github/workflows/ci.yml  # 任意: GitHub Actions のローカルドラ�
 - CI 実行ログで lint/type/test が成功し、Secrets なし環境で統合テストがスキップされる。
 - Docker イメージが GHCR に push され、`vX.Y.Z-katamari` 形式のタグで管理される。
 - `CHECKLISTS.md` と `RUNBOOK.md` に CI/リリース手順が反映され、`EVALUATION.md` で DoD 判定が可能。
+- Guardrails 文書（HUB/BLUEPRINT/RUNBOOK/EVALUATION/CHECKLISTS）の相互参照が更新されている。
 
 ## フォローアップ
 - Guardrails の「テスト先行・最小差分」原則に従い、未解決項目は後続 Task Seed または Issue に分割する。
 - Birdseye index/caps を更新し、CI・リリース関連ノードの可視化を維持する。
+- Guardrails 文書更新の差分と今後のタスクを Task Seed 内で管理する。

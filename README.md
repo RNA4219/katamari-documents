@@ -16,7 +16,7 @@
 3. [`docs/ROADMAP_AND_SPECS.md`](docs/ROADMAP_AND_SPECS.md) …… Birdseye ノードと仕様ハブを突き合わせ、優先タスクを特定
 4. [`docs/birdseye/hot.json`](docs/birdseye/hot.json) …… 頻出エントリポイントの鮮度確認（`generated_at` をテンプレート上記手順で更新）
 5. [third_party/Day8/README.md](third_party/Day8/README.md) …… Day8 資料の総覧（詳細は `docs/day8/README.md`）
-6. Day8 オペレーション資料（推奨参照順）: [HUB.codex.md](third_party/Day8/workflow-cookbook/HUB.codex.md)（観測ハブ）→ [GUARDRAILS.md](third_party/Day8/workflow-cookbook/GUARDRAILS.md)（統制基準）→ [BLUEPRINT.md](third_party/Day8/workflow-cookbook/BLUEPRINT.md)（運用設計）
+6. Day8 オペレーション資料（推奨参照順）: [HUB.codex.md](third_party/Day8/workflow-cookbook/HUB.codex.md)（観測ハブ）→ [GUARDRAILS.md](third_party/Day8/workflow-cookbook/GUARDRAILS.md)（統制基準）→ [BLUEPRINT.md](third_party/Day8/workflow-cookbook/BLUEPRINT.md) 群（運用設計）
 
 > [`docs/birdseye/hot.json`](docs/birdseye/hot.json) の `generated_at` は頻出入口リストの生成時刻です。エントリポイントや依存関係を更新した際は `date -u '+%Y-%m-%dT%H:%M:%SZ'` で時刻を取得し、[`docs/birdseye/index.json`](docs/birdseye/index.json)・`docs/birdseye/caps/`・[`docs/birdseye/hot.json`](docs/birdseye/hot.json) を併せて更新してください。
 > 1. `date -u '+%Y-%m-%dT%H:%M:%SZ'` を実行して共通タイムスタンプを取得
@@ -39,7 +39,7 @@
 - 設定: [`config/model_registry.json`](config/model_registry.json), [`config/env.example`](config/env.example)
 - フォーク運用: [`docs/UPSTREAM.md`](docs/UPSTREAM.md), [`docs/FORK_NOTES.md`](docs/FORK_NOTES.md)
 - ADR: [`docs/adr/README.md`](docs/adr/README.md)
-- Day8 HUB / Guardrails / Blueprint: `third_party/Day8/workflow-cookbook/HUB.codex.md`, `third_party/Day8/workflow-cookbook/GUARDRAILS.md`, `third_party/Day8/workflow-cookbook/BLUEPRINT.md`
+- Day8 HUB / Guardrails / Blueprint 群: `third_party/Day8/workflow-cookbook/HUB.codex.md`, `third_party/Day8/workflow-cookbook/GUARDRAILS.md`, `third_party/Day8/workflow-cookbook/BLUEPRINT.md`
 
 ## 主要導線
 - 要件・仕様ハブ: [`docs/ROADMAP_AND_SPECS.md`](docs/ROADMAP_AND_SPECS.md)
@@ -55,9 +55,9 @@
 
 ### 前提インストール
 
-- Python 3.11 系（`python -m venv .venv && source .venv/bin/activate` で仮想環境を推奨）
-- GNU Make（`make run`/`make dev` を利用）
-- 依存パッケージは `pip install -r requirements.txt` または `make dev`
+1. Python 3.11 系を用意（`python -m venv .venv && source .venv/bin/activate` で仮想環境を推奨）。
+2. GNU Make をインストールし、`make run` / `make dev` を利用できるようにする。
+3. 依存パッケージは `pip install -r requirements.txt` もしくは後述の `make dev` で取得する。
 
 ### セットアップとローカル起動
 
@@ -65,16 +65,16 @@
 python -m venv .venv
 source .venv/bin/activate
 cp config/env.example .env  # 必須・任意の値をこのファイルで管理
-make dev                    # 依存関係を一括インストール
+make dev                    # 依存関係を一括インストール (pip install -r requirements.txt 相当)
 make run                    # Chainlit を http://localhost:8787 で起動
 ```
 
-- アプリ終了は実行ターミナルで `Ctrl + C`
-- 依存更新は必要に応じて別ターミナルで `make dev`
+- アプリ終了は実行ターミナルで `Ctrl + C`。
+- 依存更新が必要になったら別ターミナルで `make dev` を再実行する。
 
 ## 環境変数一覧
 
-`.env` の初期値は [`config/env.example`](config/env.example) を参照してください。以下は主要な設定項目です。
+`.env` の初期値は [`config/env.example`](config/env.example) を参照してください。以下は主要な設定項目を必須・任意別に整理した一覧です。
 
 | 名称 | 必須 | 用途 | 設定例 | 備考 |
 | ---- | ---- | ---- | ------ | ---- |
@@ -100,13 +100,13 @@ PORT=8787
 LOG_LEVEL=info
 ```
 
-> まず [`config/env.example`](config/env.example) を `.env` にコピーし、上記を参考に必須項目を埋めてください。
+> まず [`config/env.example`](config/env.example) を `.env` にコピーし、表の必須項目を埋めてから任意項目を調整してください。
 
 ## テーマ切り替え
 
-1. Chainlit UI 右上の **Settings → Theme** から `themes/` 配下のプリセット（`.theme.json`）を選択
-2. 追加したいテーマ JSON を `themes/` に配置し、同メニューの **Theme → Import JSON** で読み込む
-3. ペルソナ連携やテーマ JSON の詳細は [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) を参照
+1. Chainlit UI 右上の **Settings → Theme** で `themes/` 配下のプリセット（`.theme.json`）を選択する。
+2. 新しいテーマを追加したい場合は `themes/` に `.theme.json` を配置し、同メニューの **Theme → Import JSON** で読み込む。
+3. ペルソナ連携を含むテーマ編集の詳細は [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) を参照する。
 
 - 本パックは「katamari」の要件定義・機能仕様・技術仕様・OpenAPI・初期設定を含むドキュメント集です。
 - まずは `docs/Katamari_Requirements_v3_ja.md` をご確認ください。

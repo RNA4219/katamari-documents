@@ -29,17 +29,21 @@
 2. Guardrails の「目的→スコープ→I/O→AC→最小フロー」に沿って設計変更をドラフト化する。
 3. 設計が運用・評価に影響する場合は `RUNBOOK.md`・`CHECKLISTS.md`・`EVALUATION.md` を同期更新する。
 4. Birdseye (`docs/birdseye/index.json`, `docs/birdseye/caps/`) を更新し、依存関係が最新になっていることを確認する。
+5. `third_party/Day8/workflow-cookbook/GUARDRAILS.md` の「BLUEPRINT」節で定義された目的・スコープ・AC と照合し、本書の更新が
+   指針と矛盾していないか確認する。
 
 ## 受入基準
 - Persona/Trim/Reflect チェーンのデータフローが `docs/Katamari_Technical_Spec_v1_ja.md` と矛盾しない。
 - SSE 初期 p95 ≤ 1.0s、UI 反映遅延 ≤ 300ms の根拠が明記されている。
 - Provider 切替方針が `docs/addenda/F_Provider_Matrix.md` の互換ポリシーを満たす。
+- Guardrails BLUEPRINT の `Purpose / Scope / AC` に記載された期待値をすべて満たす注記が含まれている。
 
 ## チェック項目
 - [ ] 主要ユースケースの I/O 契約（入力/出力の型と例）が定義されている。
 - [ ] 例外パスと再試行可否が `docs/Katamari_Technical_Spec_v1_ja.md` と整合する。
 - [ ] Birdseye index/capsule の更新日時が最新コミット以降になっている。
 - [ ] Task Seed (`TASK.*.md`) に変更理由とフォローアップが記録されている。
+- [ ] Guardrails BLUEPRINT（`third_party/Day8/workflow-cookbook/GUARDRAILS.md`）の該当節を照合した。
 
 ## 参照
 - [docs/ROADMAP_AND_SPECS.md](docs/ROADMAP_AND_SPECS.md)
