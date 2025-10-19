@@ -9,6 +9,13 @@
 - Backend / Provider 実装担当: SPI/依存関係の境界を確認し、設計変更時の影響を判断する。
 - プロダクトマネージャー: 機能境界と非機能要件の根拠を把握し、ロードマップ調整に反映する。
 
+### ロール別アクション
+| ロール | 主要アクション | 必ず確認するドキュメント |
+| --- | --- | --- |
+| アーキテクト / Tech Lead | Persona→Trim→Reflect チェーンのデータフローを Birdseye 図と照合し、SPI の境界を承認する。 | `docs/birdseye/*.json`, `RUNBOOK.md`, `EVALUATION.md` |
+| Backend / Provider 実装担当 | `src/providers/` の抽象化レイヤと `src/core_ext/` の責務分離を点検し、例外ポリシーの更新要否を判断する。 | `docs/addenda/F_Provider_Matrix.md`, `CHECKLISTS.md` |
+| プロダクトマネージャー | 非機能要件とロードマップの整合を確認し、変更時は Task Seed にフォローアップを登録する。 | `docs/ROADMAP_AND_SPECS.md`, `TASK.2025-10-19-0001.md` |
+
 ## スコープ
 ### In Scope
 - Persona → Trim → Reflect チェーンの責務分離とデータフロー。

@@ -9,6 +9,13 @@
 - プロジェクトマネージャー: ガードレール遵守状況を確認し、フォローアップを Task Seed に落とし込む。
 - オペレーション / SRE: 運用フェーズのチェックリストを活用し、Runbook との整合を維持する。
 
+### ロール別アクション
+| ロール | 主なタイミング | アクション | 参照 |
+| --- | --- | --- | --- |
+| 開発担当 / Reviewer | Development / PR | テスト先行で差分を可視化し、`ruff` と `mypy --strict` の通過ログを PR に添付。 | `RUNBOOK.md`, `EVALUATION.md` |
+| プロジェクトマネージャー | PR / Release | `docs/ROADMAP_AND_SPECS.md` と照合し、DoD 未達項目を Task Seed に追記。 | `TASK.2025-10-19-0001.md`, `EVALUATION.md` |
+| オペレーション / SRE | Release / Ops | Birdseye ホットノードと `RUNBOOK.md` の障害復旧手順を点検し、チェックリストの履歴を保管。 | `RUNBOOK.md`, `third_party/Day8/workflow-cookbook/GUARDRAILS.md` |
+
 ## スコープ
 ### In Scope
 - 開発 (Dev)、レビュー (PR)、リリース (Release)、運用 (Ops) フェーズのチェック項目。

@@ -24,6 +24,7 @@
 参照リンク:
 - 仕様ハブ: [`docs/ROADMAP_AND_SPECS.md`](docs/ROADMAP_AND_SPECS.md)
 - Guardrails 基盤ドキュメント: [`BLUEPRINT.md`](BLUEPRINT.md), [`RUNBOOK.md`](RUNBOOK.md), [`EVALUATION.md`](EVALUATION.md), [`CHECKLISTS.md`](CHECKLISTS.md), [`TASK.<YYYY-MM-DD>-0001.md`](TASK.2025-10-19-0001.md)
+  - 各ドキュメントは担当ロール別のアクションテーブル付きで、着手手順を即座に確認できる。
 - Birdseye 参照先（整備予定）: `docs/birdseye/README.md`
 - Birdseye 再生成フロー: `RUNBOOK.md` と [`third_party/Day8/workflow-cookbook/tools/codemap/update.py`](third_party/Day8/workflow-cookbook/tools/codemap/update.py)
 - CHANGELOG 更新フロー: [`CHANGELOG.md#更新手順`](CHANGELOG.md#%E6%9B%B4%E6%96%B0%E6%89%8B%E9%A0%86)

@@ -9,6 +9,13 @@
 - Tech Lead / Reviewer: Guardrails の指標との整合を確認し、差分をタスク化する。
 - プロダクトオーナー: 判定結果をロードマップと照合し、次フェーズへの承認を行う。
 
+### ロール別アクション
+| ロール | 判定前準備 | 判定手順 | 判定後フォロー |
+| --- | --- | --- | --- |
+| QA / 品質保証 | `RUNBOOK.md` の「準備→実行→検証」をリハーサルし、失敗時の再現手順をメモする。 | `pytest` / `node:test` / `ruff` / `mypy --strict` 結果を収集し、`CHECKLISTS.md` の達成状況を更新。 | 失敗項目を Task Seed に登録し、再実行計画を `TASK.*.md` のフォローアップに追記。 |
+| Tech Lead / Reviewer | Birdseye 図とアーキ境界を `BLUEPRINT.md` と照合し、変更影響を把握。 | 例外発生ログと Guardrails Acceptance 条件を比較し、レビューコメントを残す。 | DoD 未達の技術的負債を ADR or Task に切り出し、担当者をアサイン。 |
+| プロダクトオーナー | `docs/ROADMAP_AND_SPECS.md` のマイルストーン目標を確認し、達成ラインを共有。 | エンドユーザーフローを観測し、価値仮説とのギャップを記録。 | 判定結果と意思決定を `CHANGELOG.md` / ガバナンスログに記録し、次フェーズのタスクを整理。 |
+
 ## スコープ
 ### In Scope
 - `docs/Katamari_Requirements_v3_ja.md` / `docs/Katamari_Functional_Spec_v1_ja.md` に基づく機能評価。

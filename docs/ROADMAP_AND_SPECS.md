@@ -23,6 +23,7 @@
 > - [EVALUATION.md](../EVALUATION.md): 受入判定手順と指標、チェック項目を整理。
 > - [CHECKLISTS.md](../CHECKLISTS.md): Dev→PR→Release→Ops の各フェーズで参照するチェックリスト集。
 > - [TASK.<YYYY-MM-DD>-0001.md](../TASK.2025-10-19-0001.md): 初期 Task Seed。目的・要件・想定コマンドを記録し、フォローアップを管理。
+> - 各ドキュメントには役割ごとの具体的アクションテーブルがあり、担当者が取るべきステップを即座に特定できる。
 > - Guardrails 原典: [third_party/Day8/workflow-cookbook/GUARDRAILS.md](../third_party/Day8/workflow-cookbook/GUARDRAILS.md)。各節の目的・
 >   スコープ・AC を参照し、上記ドキュメント更新時は整合性を必ず確認する。
 
