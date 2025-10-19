@@ -42,7 +42,7 @@
 - Adhere to `.gitattributes` line ending policy (LF for shell/Python/Makefile, CRLF for PowerShell).
 ### ADR を追加・更新する手順
 1. `docs/adr/0000-template.md` をコピーし、次の連番（例: `0005-new-decision.md`）とタイトルを付与する。ファイル冒頭のステータスと更新日を必ず記入する。
-2. 「Context / Decision / Consequences / DoD」に背景・決定理由・影響範囲を明示する。代替案を検討した場合は Decision セクションで触れる。
+2. 「Context / Decision / Consequences / Status / DoD」に背景・決定理由・影響範囲・進捗状況を明示する。代替案を検討した場合は Decision セクションで触れる。
 3. `docs/adr/README.md` の目次テーブルへ新規 ADR を追加し、ステータス変更があれば同時に更新する。
 4. `docs/ROADMAP_AND_SPECS.md` や関連ドキュメントからの参照リンクを最新化する。マイルストーンや仕様の整合が必要な場合は同一 PR で対応する。
 5. PR 説明では対象 ADR の背景・結論・影響範囲をサマリとして記載し、レビュアが判断できる補足資料を添付する。
