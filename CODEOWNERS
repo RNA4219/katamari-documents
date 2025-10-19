@@ -3,20 +3,24 @@
 # 既定の担当者
 * @katamari-org/maintainers
 
-# アプリケーション実装
-/src/app.py @katamari-org/maintainers @katamari-org/runtime
-/src/core_ext/ @katamari-org/maintainers @katamari-org/runtime
+# コアアプリケーション
+/src/ @katamari-org/maintainers @katamari-org/runtime
 /src/providers/ @katamari-org/maintainers @katamari-org/integrations
+/src/core_ext/ @katamari-org/maintainers @katamari-org/runtime
 
-# テスト
-/tests/app/ @katamari-org/maintainers @katamari-org/qa
-/tests/core_ext/ @katamari-org/maintainers @katamari-org/qa
-/tests/providers/ @katamari-org/maintainers @katamari-org/qa
+# 設定・デプロイ
+/config/ @katamari-org/maintainers @katamari-org/devops
+/scripts/ @katamari-org/maintainers @katamari-org/devops
+/Dockerfile @katamari-org/maintainers @katamari-org/devops
 
-# ドキュメントとナレッジ
+# テストと検証
+/tests/ @katamari-org/maintainers @katamari-org/qa
+
+# ドキュメントと UX
 /docs/ @katamari-org/maintainers @katamari-org/docs
 /public/ @katamari-org/maintainers @katamari-org/frontend
 /themes/ @katamari-org/maintainers @katamari-org/design
 
-# 運用ツール
-/scripts/ @katamari-org/maintainers @katamari-org/devops
+# コミュニティマテリアル
+/CODE_OF_CONDUCT.md @katamari-org/maintainers @katamari-org/docs
+/CONTRIBUTING.md @katamari-org/maintainers @katamari-org/docs
