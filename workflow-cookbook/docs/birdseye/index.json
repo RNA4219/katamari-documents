@@ -1,0 +1,373 @@
+{
+  "generated_at": "2025-10-16T12:00:00Z",
+  "nodes": {
+    "workflow-cookbook/README.md": {
+      "role": "overview",
+      "caps": "workflow-cookbook/docs/birdseye/caps/README.md.json",
+      "mtime": "2025-10-15T20:45:30Z"
+    },
+    "workflow-cookbook/HUB.codex.md": {
+      "role": "navigation",
+      "caps": "workflow-cookbook/docs/birdseye/caps/HUB.codex.md.json",
+      "mtime": "2025-10-14T13:23:56Z"
+    },
+    "workflow-cookbook/GUARDRAILS.md": {
+      "role": "policy",
+      "caps": "workflow-cookbook/docs/birdseye/caps/GUARDRAILS.md.json",
+      "mtime": "2025-10-14T04:25:52Z"
+    },
+    "workflow-cookbook/BLUEPRINT.md": {
+      "role": "requirements",
+      "caps": "workflow-cookbook/docs/birdseye/caps/BLUEPRINT.md.json",
+      "mtime": "2025-10-14T00:00:00Z"
+    },
+    "workflow-cookbook/RUNBOOK.md": {
+      "role": "operations",
+      "caps": "workflow-cookbook/docs/birdseye/caps/RUNBOOK.md.json",
+      "mtime": "2025-10-14T00:00:00Z"
+    },
+    "workflow-cookbook/EVALUATION.md": {
+      "role": "quality",
+      "caps": "workflow-cookbook/docs/birdseye/caps/EVALUATION.md.json",
+      "mtime": "2025-10-14T00:00:00Z"
+    },
+    "workflow-cookbook/TASK.codex.md": {
+      "role": "template",
+      "caps": "workflow-cookbook/docs/birdseye/caps/TASK.codex.md.json",
+      "mtime": "2025-10-14T00:00:00Z"
+    },
+    "workflow-cookbook/CHECKLISTS.md": {
+      "role": "checklist",
+      "caps": "workflow-cookbook/docs/birdseye/caps/CHECKLISTS.md.json",
+      "mtime": "2025-10-14T00:00:00Z"
+    },
+    "workflow-cookbook/CHANGELOG.md": {
+      "role": "history",
+      "caps": "workflow-cookbook/docs/birdseye/caps/CHANGELOG.md.json",
+      "mtime": "2025-10-14T00:00:00Z"
+    },
+    "workflow-cookbook/docs/IN-20250115-001.md": {
+      "role": "incident",
+      "caps": "workflow-cookbook/docs/birdseye/caps/docs.IN-20250115-001.md.json",
+      "mtime": "2025-01-15T04:12:00Z"
+    },
+    "workflow-cookbook/SECURITY.md": {
+      "role": "security",
+      "caps": "workflow-cookbook/docs/birdseye/caps/SECURITY.md.json",
+      "mtime": "2025-10-14T00:00:00Z"
+    },
+    "workflow-cookbook/governance/policy.yaml": {
+      "role": "governance",
+      "caps": "workflow-cookbook/docs/birdseye/caps/governance.policy.yaml.json",
+      "mtime": "2025-10-14T00:00:00Z"
+    },
+    "workflow-cookbook/docs/birdseye/index.json": {
+      "role": "index",
+      "caps": "workflow-cookbook/docs/birdseye/caps/docs.birdseye.index.json.json",
+      "mtime": "2025-10-14T00:00:00Z"
+    },
+    "workflow-cookbook/docs/birdseye/caps/docs.birdseye.caps.json": {
+      "role": "collection",
+      "caps": "workflow-cookbook/docs/birdseye/caps/docs.birdseye.caps.json",
+      "mtime": "2025-10-16T10:47:48Z"
+    },
+    "workflow-cookbook/tools/codemap/README.md": {
+      "role": "guide",
+      "caps": "workflow-cookbook/docs/birdseye/caps/tools.codemap.README.md.json",
+      "mtime": "2025-10-16T10:47:48Z"
+    },
+    "workflow-cookbook/tools/codemap/update.py": {
+      "role": "script",
+      "caps": "workflow-cookbook/docs/birdseye/caps/tools.codemap.update.py.json",
+      "mtime": "2025-10-16T10:47:48Z"
+    },
+    "workflow-cookbook/docs/INCIDENT_TEMPLATE.md": {
+      "role": "template",
+      "caps": "workflow-cookbook/docs/birdseye/caps/docs.INCIDENT_TEMPLATE.md.json",
+      "mtime": "2025-10-16T12:00:00Z"
+    },
+    "workflow-cookbook/governance/prioritization.yaml": {
+      "role": "governance",
+      "caps": "workflow-cookbook/docs/birdseye/caps/governance.prioritization.yaml.json",
+      "mtime": "2025-10-16T12:30:00Z"
+    }
+  },
+  "edges": [
+    [
+      "workflow-cookbook/HUB.codex.md",
+      "workflow-cookbook/GUARDRAILS.md"
+    ],
+    [
+      "workflow-cookbook/README.md",
+      "workflow-cookbook/GUARDRAILS.md"
+    ],
+    [
+      "workflow-cookbook/README.md",
+      "workflow-cookbook/HUB.codex.md"
+    ],
+    [
+      "workflow-cookbook/README.md",
+      "workflow-cookbook/BLUEPRINT.md"
+    ],
+    [
+      "workflow-cookbook/README.md",
+      "workflow-cookbook/RUNBOOK.md"
+    ],
+    [
+      "workflow-cookbook/README.md",
+      "workflow-cookbook/EVALUATION.md"
+    ],
+    [
+      "workflow-cookbook/README.md",
+      "workflow-cookbook/TASK.codex.md"
+    ],
+    [
+      "workflow-cookbook/README.md",
+      "workflow-cookbook/CHECKLISTS.md"
+    ],
+    [
+      "workflow-cookbook/README.md",
+      "workflow-cookbook/CHANGELOG.md"
+    ],
+    [
+      "workflow-cookbook/README.md",
+      "workflow-cookbook/docs/IN-20250115-001.md"
+    ],
+    [
+      "workflow-cookbook/README.md",
+      "workflow-cookbook/governance/policy.yaml"
+    ],
+    [
+      "workflow-cookbook/HUB.codex.md",
+      "workflow-cookbook/BLUEPRINT.md"
+    ],
+    [
+      "workflow-cookbook/HUB.codex.md",
+      "workflow-cookbook/RUNBOOK.md"
+    ],
+    [
+      "workflow-cookbook/HUB.codex.md",
+      "workflow-cookbook/EVALUATION.md"
+    ],
+    [
+      "workflow-cookbook/HUB.codex.md",
+      "workflow-cookbook/TASK.codex.md"
+    ],
+    [
+      "workflow-cookbook/HUB.codex.md",
+      "workflow-cookbook/CHECKLISTS.md"
+    ],
+    [
+      "workflow-cookbook/HUB.codex.md",
+      "workflow-cookbook/CHANGELOG.md"
+    ],
+    [
+      "workflow-cookbook/HUB.codex.md",
+      "workflow-cookbook/SECURITY.md"
+    ],
+    [
+      "workflow-cookbook/HUB.codex.md",
+      "workflow-cookbook/docs/IN-20250115-001.md"
+    ],
+    [
+      "workflow-cookbook/HUB.codex.md",
+      "workflow-cookbook/governance/policy.yaml"
+    ],
+    [
+      "workflow-cookbook/GUARDRAILS.md",
+      "workflow-cookbook/BLUEPRINT.md"
+    ],
+    [
+      "workflow-cookbook/GUARDRAILS.md",
+      "workflow-cookbook/EVALUATION.md"
+    ],
+    [
+      "workflow-cookbook/GUARDRAILS.md",
+      "workflow-cookbook/RUNBOOK.md"
+    ],
+    [
+      "workflow-cookbook/GUARDRAILS.md",
+      "workflow-cookbook/TASK.codex.md"
+    ],
+    [
+      "workflow-cookbook/GUARDRAILS.md",
+      "workflow-cookbook/CHANGELOG.md"
+    ],
+    [
+      "workflow-cookbook/GUARDRAILS.md",
+      "workflow-cookbook/CHECKLISTS.md"
+    ],
+    [
+      "workflow-cookbook/GUARDRAILS.md",
+      "workflow-cookbook/docs/IN-20250115-001.md"
+    ],
+    [
+      "workflow-cookbook/GUARDRAILS.md",
+      "workflow-cookbook/README.md"
+    ],
+    [
+      "workflow-cookbook/GUARDRAILS.md",
+      "workflow-cookbook/HUB.codex.md"
+    ],
+    [
+      "workflow-cookbook/GUARDRAILS.md",
+      "workflow-cookbook/docs/INCIDENT_TEMPLATE.md"
+    ],
+    [
+      "workflow-cookbook/GUARDRAILS.md",
+      "workflow-cookbook/docs/birdseye/index.json"
+    ],
+    [
+      "workflow-cookbook/GUARDRAILS.md",
+      "workflow-cookbook/docs/birdseye/caps/docs.birdseye.caps.json"
+    ],
+    [
+      "workflow-cookbook/HUB.codex.md",
+      "workflow-cookbook/docs/birdseye/index.json"
+    ],
+    [
+      "workflow-cookbook/HUB.codex.md",
+      "workflow-cookbook/docs/birdseye/caps/docs.birdseye.caps.json"
+    ],
+    [
+      "workflow-cookbook/README.md",
+      "workflow-cookbook/docs/birdseye/index.json"
+    ],
+    [
+      "workflow-cookbook/README.md",
+      "workflow-cookbook/docs/birdseye/caps/docs.birdseye.caps.json"
+    ],
+    [
+      "workflow-cookbook/docs/birdseye/index.json",
+      "workflow-cookbook/docs/birdseye/caps/docs.birdseye.caps.json"
+    ],
+    [
+      "workflow-cookbook/EVALUATION.md",
+      "workflow-cookbook/governance/policy.yaml"
+    ],
+    [
+      "workflow-cookbook/RUNBOOK.md",
+      "workflow-cookbook/docs/IN-20250115-001.md"
+    ],
+    [
+      "workflow-cookbook/EVALUATION.md",
+      "workflow-cookbook/RUNBOOK.md"
+    ],
+    [
+      "workflow-cookbook/EVALUATION.md",
+      "workflow-cookbook/docs/IN-20250115-001.md"
+    ],
+    [
+      "workflow-cookbook/TASK.codex.md",
+      "workflow-cookbook/EVALUATION.md"
+    ],
+    [
+      "workflow-cookbook/TASK.codex.md",
+      "workflow-cookbook/CHANGELOG.md"
+    ],
+    [
+      "workflow-cookbook/CHECKLISTS.md",
+      "workflow-cookbook/EVALUATION.md"
+    ],
+    [
+      "workflow-cookbook/CHANGELOG.md",
+      "workflow-cookbook/README.md"
+    ],
+    [
+      "workflow-cookbook/CHANGELOG.md",
+      "workflow-cookbook/EVALUATION.md"
+    ],
+    [
+      "workflow-cookbook/CHANGELOG.md",
+      "workflow-cookbook/governance/policy.yaml"
+    ],
+    [
+      "workflow-cookbook/docs/IN-20250115-001.md",
+      "workflow-cookbook/RUNBOOK.md"
+    ],
+    [
+      "workflow-cookbook/docs/IN-20250115-001.md",
+      "workflow-cookbook/EVALUATION.md"
+    ],
+    [
+      "workflow-cookbook/docs/IN-20250115-001.md",
+      "workflow-cookbook/CHANGELOG.md"
+    ],
+    [
+      "workflow-cookbook/README.md",
+      "workflow-cookbook/tools/codemap/README.md"
+    ],
+    [
+      "workflow-cookbook/HUB.codex.md",
+      "workflow-cookbook/tools/codemap/README.md"
+    ],
+    [
+      "workflow-cookbook/HUB.codex.md",
+      "workflow-cookbook/governance/prioritization.yaml"
+    ],
+    [
+      "workflow-cookbook/GUARDRAILS.md",
+      "workflow-cookbook/tools/codemap/README.md"
+    ],
+    [
+      "workflow-cookbook/tools/codemap/update.py",
+      "workflow-cookbook/docs/birdseye/index.json"
+    ],
+    [
+      "workflow-cookbook/tools/codemap/update.py",
+      "workflow-cookbook/docs/birdseye/caps/docs.birdseye.caps.json"
+    ],
+    [
+      "workflow-cookbook/tools/codemap/README.md",
+      "workflow-cookbook/tools/codemap/update.py"
+    ],
+    [
+      "workflow-cookbook/tools/codemap/README.md",
+      "workflow-cookbook/docs/birdseye/index.json"
+    ],
+    [
+      "workflow-cookbook/tools/codemap/README.md",
+      "workflow-cookbook/docs/birdseye/caps/docs.birdseye.caps.json"
+    ],
+    [
+      "workflow-cookbook/HUB.codex.md",
+      "workflow-cookbook/docs/INCIDENT_TEMPLATE.md"
+    ],
+    [
+      "workflow-cookbook/docs/INCIDENT_TEMPLATE.md",
+      "workflow-cookbook/RUNBOOK.md"
+    ],
+    [
+      "workflow-cookbook/docs/INCIDENT_TEMPLATE.md",
+      "workflow-cookbook/CHECKLISTS.md"
+    ],
+    [
+      "workflow-cookbook/docs/INCIDENT_TEMPLATE.md",
+      "workflow-cookbook/docs/IN-20250115-001.md"
+    ],
+    [
+      "workflow-cookbook/README.md",
+      "workflow-cookbook/governance/prioritization.yaml"
+    ],
+    [
+      "workflow-cookbook/EVALUATION.md",
+      "workflow-cookbook/governance/prioritization.yaml"
+    ],
+    [
+      "workflow-cookbook/TASK.codex.md",
+      "workflow-cookbook/governance/prioritization.yaml"
+    ],
+    [
+      "workflow-cookbook/governance/prioritization.yaml",
+      "workflow-cookbook/README.md"
+    ],
+    [
+      "workflow-cookbook/governance/prioritization.yaml",
+      "workflow-cookbook/EVALUATION.md"
+    ],
+    [
+      "workflow-cookbook/governance/prioritization.yaml",
+      "workflow-cookbook/TASK.codex.md"
+    ]
+  ]
+}
