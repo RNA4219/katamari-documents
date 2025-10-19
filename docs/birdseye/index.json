@@ -1,30 +1,20 @@
 {
-  "generated_at": "2025-10-20T00:00:00Z",
+  "generated_at": "2024-06-07T00:00:00Z",
   "nodes": {
     "src/app.py": {
       "role": "entrypoint",
       "caps": "docs/birdseye/caps/src.app.json",
-      "mtime": "2025-10-19T12:23:58Z"
+      "mtime": "2024-06-07T00:00:00Z"
     },
     "src/core_ext/context_trimmer.py": {
       "role": "context-management",
       "caps": "docs/birdseye/caps/src.core_ext.context_trimmer.json",
-      "mtime": "2025-10-19T12:22:34Z"
-    },
-    "src/core_ext/multistep.py": {
-      "role": "workflow",
-      "caps": "docs/birdseye/caps/src.core_ext.multistep.json",
-      "mtime": "2025-10-19T10:34:38Z"
-    },
-    "src/core_ext/persona_compiler.py": {
-      "role": "persona",
-      "caps": "docs/birdseye/caps/src.core_ext.persona_compiler.json",
-      "mtime": "2025-10-19T10:34:38Z"
+      "mtime": "2024-06-07T00:00:00Z"
     },
     "src/providers/openai_client.py": {
       "role": "provider",
       "caps": "docs/birdseye/caps/src.providers.openai_client.json",
-      "mtime": "2025-10-19T10:34:38Z"
+      "mtime": "2024-06-07T00:00:00Z"
     }
   },
   "edges": [
@@ -34,26 +24,14 @@
     ],
     [
       "src/app.py",
-      "src/core_ext/multistep.py"
-    ],
-    [
-      "src/app.py",
-      "src/core_ext/persona_compiler.py"
-    ],
-    [
-      "src/app.py",
       "src/providers/openai_client.py"
-    ],
-    [
-      "src/core_ext/persona_compiler.py",
-      "src/app.py"
     ],
     [
       "src/core_ext/context_trimmer.py",
       "src/app.py"
     ],
     [
-      "src/core_ext/multistep.py",
+      "src/providers/openai_client.py",
       "src/app.py"
     ]
   ]

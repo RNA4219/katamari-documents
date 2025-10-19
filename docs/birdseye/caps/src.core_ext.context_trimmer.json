@@ -1,11 +1,12 @@
 {
   "id": "src/core_ext/context_trimmer.py",
   "role": "context-management",
-  "summary": "tiktoken ベースのトークンカウントとヒューリスティクスで会話履歴を予算内へ圧縮し、メトリクスを返すユーティリティ。",
+  "summary": "メッセージ履歴からシステム文を保持しつつトークン予算内へ圧縮し、計測メトリクスとカウンターモードを返すトリミングユーティリティ。",
   "deps": {
     "out": [
-      "tiktoken.get_encoding",
-      "core_ext.context_trimmer._TokenCounter"
+      "tiktoken",
+      "core_ext.context_trimmer._TokenCounter",
+      "core_ext.context_trimmer._register_ascii_encoding"
     ],
     "in": [
       "src/app.py",
@@ -15,5 +16,5 @@
   "tests": [
     "pytest tests/core_ext/test_context_trimmer.py"
   ],
-  "generated_at": "2025-10-20T00:00:00Z"
+  "generated_at": "2024-06-07T00:00:00Z"
 }
