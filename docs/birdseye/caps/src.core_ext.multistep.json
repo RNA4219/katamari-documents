@@ -1,0 +1,17 @@
+{
+  "id": "src/core_ext/multistep.py",
+  "role": "workflow",
+  "summary": "チェーン ID から段階的推論のステップ配列と各ステップ用システムプロンプトを返す軽量オーケストレータ。",
+  "deps": {
+    "out": [
+      "core_ext.multistep.CHAINS",
+      "core_ext.multistep.get_chain_steps",
+      "core_ext.multistep.system_hint_for_step"
+    ],
+    "in": [
+      "src/app.py"
+    ]
+  },
+  "tests": [],
+  "generated_at": "2025-10-19T22:00:00Z"
+}

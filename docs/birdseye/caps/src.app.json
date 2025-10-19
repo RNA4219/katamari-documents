@@ -1,7 +1,7 @@
 {
   "id": "src/app.py",
   "role": "entrypoint",
-  "summary": "Chainlit セッション開始・設定反映・チャット処理を束ねる UI エントリポイント。",
+  "summary": "Chainlit のイベントハンドラを束ね、設定同期・履歴トリミング・マルチステップ推論・LLM 呼び出しを仲介するエントリポイント。",
   "deps": {
     "out": [
       "core_ext.persona_compiler.compile_persona_yaml",
@@ -9,7 +9,9 @@
       "core_ext.prethought.analyze_intent",
       "core_ext.multistep.get_chain_steps",
       "core_ext.multistep.system_hint_for_step",
-      "providers.openai_client.OpenAIProvider"
+      "providers.openai_client.OpenAIProvider",
+      "chainlit.ChatSettings",
+      "chainlit.Message"
     ],
     "in": [
       "tests/app/test_metrics_healthz.py"
@@ -18,5 +20,5 @@
   "tests": [
     "tests/app/test_metrics_healthz.py"
   ],
-  "generated_at": "2025-10-19T20:45:00Z"
+  "generated_at": "2025-10-19T22:00:00Z"
 }

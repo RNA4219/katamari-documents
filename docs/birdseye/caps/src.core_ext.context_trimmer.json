@@ -1,11 +1,12 @@
 {
   "id": "src/core_ext/context_trimmer.py",
-  "role": "core",
-  "summary": "tiktoken を用いて履歴トークン数を管理し、指定トークン上限へ切り詰めるユーティリティ。",
+  "role": "context-management",
+  "summary": "tiktoken 優先で履歴を計測し、ターゲットトークン内に収まるようシステムメッセージと会話を再編成するトリミングユーティリティ。",
   "deps": {
     "out": [
       "tiktoken",
-      "src/core_ext/context_trimmer._TokenCounter"
+      "src/core_ext/context_trimmer._TokenCounter",
+      "src/core_ext/context_trimmer.trim_messages"
     ],
     "in": [
       "src/app.py",
@@ -15,5 +16,5 @@
   "tests": [
     "tests/core_ext/test_context_trimmer.py"
   ],
-  "generated_at": "2025-10-19T20:45:00Z"
+  "generated_at": "2025-10-19T22:00:00Z"
 }
