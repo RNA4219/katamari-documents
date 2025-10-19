@@ -5,6 +5,7 @@
 1. [`docs/birdseye/index.json`](docs/birdseye/index.json)  …… ノード一覧・隣接関係（軽量）
 2. [`docs/birdseye/caps/<path>.json`](docs/birdseye/caps) …… 必要ノードだけ point read（個別カプセル）
 3. [`docs/ROADMAP_AND_SPECS.md`](docs/ROADMAP_AND_SPECS.md) …… Birdseye 導線と仕様ハブを照合
+4. Day8 初回導線（HUB → Guardrails → Blueprint 群）: [`docs/ROADMAP_AND_SPECS.md#day8-sequence`](docs/ROADMAP_AND_SPECS.md#day8-sequence)
 
 フォーカス手順:
 - 直近変更ファイル±2hopのノードIDを [`docs/birdseye/index.json`](docs/birdseye/index.json) から取得
@@ -13,6 +14,7 @@
 補足リンク:
 - Birdseye 整備予定ドキュメント: [`docs/birdseye/README.md`](docs/birdseye/README.md)
 - Birdseye ホットスポット一覧: [`docs/birdseye/hot.json`](docs/birdseye/hot.json)
+- Day8 初回導線を確認: [`docs/ROADMAP_AND_SPECS.md#day8-sequence`](docs/ROADMAP_AND_SPECS.md#day8-sequence)
 <!-- /LLM-BOOTSTRAP -->
 
 ## 同梱物
