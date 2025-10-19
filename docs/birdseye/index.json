@@ -1,38 +1,46 @@
 {
-  "generated_at": "2024-06-07T00:00:00Z",
+  "generated_at": "2025-10-19T22:53:20Z",
   "nodes": {
     "src/app.py": {
       "role": "entrypoint",
       "caps": "docs/birdseye/caps/src.app.json",
-      "mtime": "2024-06-07T00:00:00Z"
+      "mtime": "2025-10-19T22:53:20Z"
     },
     "src/core_ext/context_trimmer.py": {
       "role": "context-management",
       "caps": "docs/birdseye/caps/src.core_ext.context_trimmer.json",
-      "mtime": "2024-06-07T00:00:00Z"
+      "mtime": "2025-10-19T22:53:20Z"
+    },
+    "src/core_ext/multistep.py": {
+      "role": "workflow",
+      "caps": "docs/birdseye/caps/src.core_ext.multistep.json",
+      "mtime": "2025-10-19T22:53:20Z"
+    },
+    "src/core_ext/persona_compiler.py": {
+      "role": "persona",
+      "caps": "docs/birdseye/caps/src.core_ext.persona_compiler.json",
+      "mtime": "2025-10-19T22:53:20Z"
+    },
+    "src/core_ext/prethought.py": {
+      "role": "analysis",
+      "caps": "docs/birdseye/caps/src.core_ext.prethought.json",
+      "mtime": "2025-10-19T22:53:20Z"
     },
     "src/providers/openai_client.py": {
       "role": "provider",
       "caps": "docs/birdseye/caps/src.providers.openai_client.json",
-      "mtime": "2024-06-07T00:00:00Z"
+      "mtime": "2025-10-19T22:53:20Z"
     }
   },
   "edges": [
-    [
-      "src/app.py",
-      "src/core_ext/context_trimmer.py"
-    ],
-    [
-      "src/app.py",
-      "src/providers/openai_client.py"
-    ],
-    [
-      "src/core_ext/context_trimmer.py",
-      "src/app.py"
-    ],
-    [
-      "src/providers/openai_client.py",
-      "src/app.py"
-    ]
+    ["src/app.py", "src/core_ext/context_trimmer.py"],
+    ["src/app.py", "src/core_ext/multistep.py"],
+    ["src/app.py", "src/core_ext/persona_compiler.py"],
+    ["src/app.py", "src/core_ext/prethought.py"],
+    ["src/app.py", "src/providers/openai_client.py"],
+    ["src/core_ext/context_trimmer.py", "src/app.py"],
+    ["src/core_ext/persona_compiler.py", "src/app.py"],
+    ["src/core_ext/prethought.py", "src/app.py"],
+    ["src/providers/openai_client.py", "src/app.py"]
   ]
 }
