@@ -12,7 +12,7 @@
 
 > [`docs/birdseye/hot.json`](docs/birdseye/hot.json) の `generated_at` は頻出入口リストの生成時刻です。エントリポイントや依存関係を更新した際は `date -u '+%Y-%m-%dT%H:%M:%SZ'` で時刻を取得し、[`docs/birdseye/index.json`](docs/birdseye/index.json)・`docs/birdseye/caps/`・[`docs/birdseye/hot.json`](docs/birdseye/hot.json) を併せて更新してください。
 > 1. `date -u '+%Y-%m-%dT%H:%M:%SZ'` を実行して共通タイムスタンプを取得
-> 2. [`docs/birdseye/index.json`](docs/birdseye/index.json) の `generated_at` と対象ノードの `mtime` を更新
+> 2. [`docs/birdseye/index.json`](docs/birdseye/index.json) の `generated_at` と Guardrails 指定スキーマ（`nodes` は辞書、`edges` は隣接リスト）に沿って対象ノードの `mtime` を更新
 > 3. 更新対象の `docs/birdseye/caps/*.json` と [`docs/birdseye/hot.json`](docs/birdseye/hot.json) に同じ `generated_at` を反映
 > 4. [`docs/birdseye/hot.json`](docs/birdseye/hot.json) には Chainlit 起動やプロバイダー呼び出しなど主要なエントリポイント ID を 3 件程度列挙し、理由を最新化
 > 5. `hot.json` の `entries` は Birdseye index の主要ノード（エントリポイント / ワークフロー制御 / コンテキスト制御）と整合させる
@@ -31,7 +31,7 @@
 
 アップデート手順メモ:
 1. `date -u '+%Y-%m-%dT%H:%M:%SZ'` を実行して共通タイムスタンプを取得
-2. [`docs/birdseye/index.json`](docs/birdseye/index.json) の `generated_at` と対象ノードの `mtime` を更新
+2. [`docs/birdseye/index.json`](docs/birdseye/index.json) の `generated_at` と Guardrails 指定スキーマ（`nodes` は辞書、`edges` は隣接リスト）に沿って対象ノードの `mtime` を更新
 3. 更新対象の `docs/birdseye/caps/*.json` と [`docs/birdseye/hot.json`](docs/birdseye/hot.json) に同じ `generated_at` を反映
 4. [`docs/birdseye/hot.json`](docs/birdseye/hot.json) には Chainlit 起動やプロバイダー呼び出しなど主要なエントリポイント ID を 3 件程度列挙し、理由を最新化
 5. `hot.json` の `entries` は Birdseye index の主要ノード（エントリポイント / ワークフロー制御 / コンテキスト制御）と整合させる

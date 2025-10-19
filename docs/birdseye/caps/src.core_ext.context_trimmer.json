@@ -1,12 +1,11 @@
 {
   "id": "src/core_ext/context_trimmer.py",
   "role": "context-management",
-  "summary": "tiktoken 優先で履歴を計測し、ターゲットトークン内に収まるようシステムメッセージと会話を再編成するトリミングユーティリティ。",
+  "summary": "tiktoken ベースのトークンカウントとヒューリスティクスで会話履歴を予算内へ圧縮し、メトリクスを返すユーティリティ。",
   "deps": {
     "out": [
-      "tiktoken",
-      "src/core_ext/context_trimmer._TokenCounter",
-      "src/core_ext/context_trimmer.trim_messages"
+      "tiktoken.get_encoding",
+      "core_ext.context_trimmer._TokenCounter"
     ],
     "in": [
       "src/app.py",
@@ -14,7 +13,7 @@
     ]
   },
   "tests": [
-    "tests/core_ext/test_context_trimmer.py"
+    "pytest tests/core_ext/test_context_trimmer.py"
   ],
-  "generated_at": "2025-10-19T22:00:00Z"
+  "generated_at": "2025-10-20T00:00:00Z"
 }
