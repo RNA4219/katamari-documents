@@ -22,8 +22,7 @@
 > - [EVALUATION.md](../EVALUATION.md): 受入判定手順と指標、チェック項目を整理。
 > - [CHECKLISTS.md](../CHECKLISTS.md): Dev→PR→Release→Ops の各フェーズで参照するチェックリスト集。
 > - [TASK.<YYYY-MM-DD>-0001.md](../TASK.2025-10-19-0001.md): 初期 Task Seed。目的・要件・想定コマンドを記録し、フォローアップを管理。
-| Day8 HUB | `third_party/Day8/workflow-cookbook/HUB.codex.md` | Day8 オペレーション全体を俯瞰する観測ハブ（入口）。 |
-| Day8 Guardrails | `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | HUB で得た観測を踏まえた統制基準・安全策（第二段）。 |
+| Day8 HUB / Guardrails | `third_party/Day8/workflow-cookbook/HUB.codex.md`, `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | Day8 オペレーション導線（観測ハブ→統制基準）を一気通貫で把握。 |
 | Day8 Blueprint | `third_party/Day8/workflow-cookbook/BLUEPRINT.md` | Guardrails を適用した運用ブループリント（実装設計）。 |
 
 ## 2. 実装モジュールと対応仕様
@@ -67,7 +66,7 @@
 - Subtree 同期は `docs/UPSTREAM.md` → `scripts/` の補助スクリプトを活用。
 - アーキテクチャ判断は `docs/adr/README.md` と各 ADR（例: [ADR #0001](adr/0001-use-chainlit-subtree.md) / [ADR #0002](adr/0002-tokenization-with-tiktoken.md) / [ADR #0003](adr/0003-provider-interface.md) / [ADR #0004〜#0007](adr/README.md)）を参照。
 - 運用時のチェックは `Release_Checklist.md` と `Security_Review_Checklist.md` を使用。
-- Day8 系資料の推奨参照順: `third_party/Day8/workflow-cookbook/HUB.codex.md`（観測ハブ）→ `third_party/Day8/workflow-cookbook/GUARDRAILS.md`（統制基準）→ `third_party/Day8/workflow-cookbook/BLUEPRINT.md`（運用設計）。
+- Day8 系資料の推奨参照順: `third_party/Day8/workflow-cookbook/HUB.codex.md`（観測ハブ）→ `third_party/Day8/workflow-cookbook/GUARDRAILS.md`（統制基準）→ `third_party/Day8/workflow-cookbook/BLUEPRINT.md` 群（運用設計）。
 - Birdseye 図 (`docs/birdseye/index.json`, `docs/birdseye/caps/`, `docs/birdseye/hot.json`) はエントリポイントや依存関係を更新した際に同時更新する。更新手順: (1) 主要ノードとエッジを `index.json` に追記、(2) 代表ノードごとの Capsule を `caps/` 配下で整備（`summary`/`role`/`deps`/`tests` を最新化）、(3) 頻出入口を `hot.json` に列挙し理由を明記、(4) 本手順を守った最終更新日時を `generated_at` に記録する。
 - CHANGELOG 更新手順: [`README.md#変更履歴の更新ルール`](../README.md#%E5%A4%89%E6%9B%B4%E5%B1%A5%E6%AD%B4%E3%81%AE%E6%9B%B4%E6%96%B0%E3%83%AB%E3%83%BC%E3%83%AB)。
 
