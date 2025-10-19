@@ -1,55 +1,30 @@
 # フォーマット: <パス> <主要オーナー> <副担当>
-# 主要オーナーが一次レビュー責任者、副担当が代理承認とレビューサポートを担います。
+# 主要ディレクトリ単位でレビュー責任者を明確化します。
 
 # デフォルトレビュア
 * @katamari-org/maintainers @product-tech-lead
 
-# コミュニティポリシー / ガバナンス
-/CONTRIBUTING.md @katamari-org/maintainers @product-tech-lead
-/CODE_OF_CONDUCT.md @katamari-org/maintainers @legal-counsel
-/CHECKLISTS.md @katamari-org/qa @product-tech-lead
-/RUNBOOK.md @katamari-org/maintainers @sre-duty-officer
-/CHANGELOG.md @katamari-org/maintainers @product-tech-lead
-
-# コアランタイム / バックエンド
-/src/ @katamari-org/backend @runtime-duty-officer
-/src/app.py @katamari-org/backend @alice-architect
-/src/core_ext/ @katamari-org/runtime-team @alice-architect
-/src/providers/ @katamari-org/providers-team @integrations-lead
-
-# テスト / 品質保証
-/tests/ @katamari-org/qa @product-tech-lead
-/tests/fixtures/ @katamari-org/qa @runtime-duty-officer
-/pytest.ini @katamari-org/qa @product-tech-lead
-
-# ドキュメント / ナレッジ
-/README.md @katamari-org/docs-team @devrel-lead
+# ガバナンス / ナレッジ
 /docs/ @katamari-org/docs-team @devrel-lead
-/docs/adr/ @katamari-org/architecture-council @alice-architect
-/docs/openapi/ @katamari-org/architecture-council @product-tech-lead
-/docs/addenda/ @katamari-org/docs-team @devrel-lead
-/docs/birdseye/ @katamari-org/docs-team @product-tech-lead
-
-# ペルソナ / ブランディング
 /personas/ @katamari-org/ux-research @research-liaison
 /themes/ @katamari-org/content @design-lead
 /public/ @katamari-org/frontend @design-lead
 
-# フロントエンド / UI
-/upstream/chainlit/ @katamari-org/frontend @frontend-captain
-/upstream/ @katamari-org/frontend @platform-liaison
+# コアランタイム / バックエンド
+/src/ @katamari-org/backend @runtime-duty-officer
+/tests/ @katamari-org/qa @product-tech-lead
+/third_party/ @katamari-org/legal @legal-counsel
 
-# ツール / 自動化
+# フロントエンド / ESM
+/upstream/ @katamari-org/frontend @frontend-captain
+
+# ツール / プラットフォーム
 /scripts/ @katamari-org/tooling @devops-lead
-/Makefile @katamari-org/tooling @devops-lead
-/config/ci/ @katamari-org/tooling @devops-lead
 /config/ @katamari-org/platform @sre-duty-officer
 /.github/ @katamari-org/tooling @devrel-lead
 
 # デプロイ / 依存関係
 /Dockerfile @katamari-org/platform @sre-duty-officer
+/Makefile @katamari-org/tooling @devops-lead
 /requirements.txt @katamari-org/tooling @product-tech-lead
 /requirements-eval.txt @katamari-org/tooling @data-science-lead
-
-# サードパーティ / ライセンス
-/third_party/ @katamari-org/legal @legal-counsel

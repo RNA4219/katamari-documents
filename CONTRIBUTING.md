@@ -9,6 +9,14 @@
 - 複数メンバーが関与する大型開発では、共通の統合ブランチ (`integration/<feature>`) を作成し、最低 1 日 1 回 `main` を取り込んだ上で CI を緑化してください。
 
 ### ブランチ運用フロー
+#### ブランチクイックリファレンス
+| 目的 | ブランチ名の例 | 派生元 | マージ先 | 備考 |
+| --- | --- | --- | --- | --- |
+| 新機能 | `feature/<issue番号>-<要約>` | `main` | `main` | テスト追加→実装→レビューの順に進める |
+| バグ修正 | `fix/<issue番号>-<要約>` | `main` | `main` | 影響範囲を Issue と PR の双方で共有 |
+| 緊急対応 | `hotfix/<要約>` | `main` または `release/<version>` | `main` と対象リリース | `--force-with-lease` で履歴整形、逆マージを必須化 |
+| リリース | `release/<version>` | `main` | `main` | タグ発行後、残タスクは Follow-up Issue 化 |
+
 1. `git switch main && git pull --ff-only` で最新状態を取得します。
 2. 課題単位で `git switch -c feature/<issue番号>-<要約>` などの新規ブランチを作成します。
 3. コミットはテスト緑化後に行い、`git push --set-upstream origin <branch>` でリモート追随させます。
@@ -36,6 +44,23 @@
 
 ## 品質ゲート
 ### テスト必須
+- Python の基盤テストは `pytest -q` を最小単位とし、失敗時は関連テストケースを追加してから修正を行います。
+- 型安全は `mypy --strict` を唯一の基準とし、抑制を追加する場合はコメントと Issue で恒久対応を追跡します。
+- Lint は `ruff check .` をデフォルトとし、自動修正は該当差分のみに限定します。
+- Node/ESM のユニットテストは `node:test` ベースで `pnpm run test` に統合し、必要に応じて `pnpm run test -- --watch` で再現確認します。
+- UI 変更はスクリーンショットまたは動画を必ず取得し、PR テンプレートの `## Notes` に添付します。
+- 迷った場合は `make test` → `pytest -q` → `ruff check .` → `mypy --strict` の順に再実行し、すべての成功ログを記録してください。
+
+#### テスト / Lint 実行クイックガイド
+| 対象 | 必須コマンド | 目的 |
+| --- | --- | --- |
+| Python | `pytest -q` | 回帰検知とリグレッション防止 |
+| Python 型 | `mypy --strict` | 型安全と例外ポリシーの遵守確認 |
+| Python Lint | `ruff check .` | コードスタイルおよび設計逸脱の検知 |
+| Node/ESM | `cd upstream/chainlit && pnpm run test` | `node:test` ベースの自動テスト実行 |
+| Node Lint | `cd upstream/chainlit && pnpm run lint` | ESLint/TS による静的解析 |
+| UI ビルド | `cd upstream/chainlit && pnpm run buildUi` | 本番向けビルドの健全性確認 |
+
 - Python コードは `pytest -q` を必ずグリーンにしてください。外部リソースに依存するテストは `pytest -q -m "not slow"` での確認も行います。
 - Chainlit フロントエンドや Node 周辺を変更した場合は `cd upstream/chainlit && pnpm install && pnpm run test` を実行し、E2E が必要なら `pnpm run test:ui` を追加で回してください。
 - UI を含む変更ではスクリーンショットやキャプチャ動画を `## Notes` セクションに添付し、レビュアが再現可能な情報を提供します。
@@ -77,6 +102,9 @@
 - スクリーンショットやログなどの添付は GitHub の Markdown 形式で埋め込み、外部ストレージのリンクのみを共有しないでください。
 - ドキュメントのみの変更でも `## Test` セクションでは実行しなかったコマンドと理由を明示し、レビュアが再現不要と判断できる根拠を添えてください。
 - レビュアコメントを解消した際は該当スレッドを Resolve し、`## Checklist` の該当項目に ✅/❌ を反映してください。
+- テンプレートの最後にある `## Checklist` は `mypy --strict` / `ruff check .` / `pytest -q` / `pnpm run test` の各結果と同期させ、ログが貼付されていないチェックはオンにしないでください。
+- 例外的にテンプレの編集が必要な場合はドラフト状態で相談し、最終マージまでにテンプレ構造を復元してください。
+- PR 本文に「リリース影響なし」などのサマリタグを付ける場合は `## Notes` へも同じ文言を転記し、検索性を確保します。
 
 #### PR テンプレ記入チェックリスト
 - [ ] `## What` と `## Why` を 3 行以内で要約
