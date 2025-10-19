@@ -97,7 +97,7 @@
 ## ライセンス
 
 - [`LICENSE`](../LICENSE)
-- Chainlit 由来の告知と本フォークの改変概要をまとめた [`NOTICE`](../NOTICE)
+- Chainlit 由来の告知と本フォークの改変概要をまとめた [`NOTICE`](../NOTICE)（本ドキュメントに追記済み）
 
 ## 5. Guardrails ドキュメント更新フロー
 
