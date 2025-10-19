@@ -1,17 +1,17 @@
 {
-  "generated_at": "2025-10-19T16:07:45Z",
-  "entrypoints": [
+  "generated_at": "2025-10-19T16:41:01Z",
+  "entries": [
     {
       "id": "src/app.py",
-      "reason": "Chainlit アプリの起動・設定・運用エンドポイントを全て束ねる最上位エントリポイント。"
+      "reason": "Chainlit アプリ全体の起動とチャットライフサイクルを束ねるエントリポイント"
     },
     {
       "id": "src/core_ext/context_trimmer.py",
-      "reason": "履歴トリムとトークン指標算出でチャット品質とコストの両立を支える要。"
+      "reason": "履歴トリミングとメトリクス算出を担い、コストと品質の両立を支える"
     },
     {
       "id": "src/providers/openai_client.py",
-      "reason": "標準 LLM プロバイダーの接続口であり、API キーやリトライ設計の確認起点。"
+      "reason": "標準 LLM プロバイダーの API 呼び出しと再試行ポリシーを集中管理する"
     }
   ]
 }
