@@ -16,6 +16,7 @@
 ### Changed
 - 0002: CHANGELOG のエントリに通番を付けるルールを追加。
 - 0003: README とロードマップに CHANGELOG 更新導線とタスク移管ルールを明文化。
+- 0004: README の主要導線にタスク移管の導線を追記し、完了タスクの CHANGELOG 反映を必須化。
 ### Deprecated
 ### Removed
 ### Fixed
