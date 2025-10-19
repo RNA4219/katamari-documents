@@ -1,6 +1,8 @@
 
 from typing import Dict, List, Tuple
 
+from . import retention
+
 def _count_tokens(text: str) -> int:
     # Rough count: chars/4 fallback; replace with tiktoken if available
     return max(1, len(text)//4)
@@ -24,4 +26,7 @@ def trim_messages(messages: List[Dict], target_tokens: int, model: str) -> Tuple
     trimmed_tokens = sum(_count_tokens(m.get("content","")) for m in out)
     ratio = trimmed_tokens / max(1, original_tokens)
     metrics = {"input_tokens": original_tokens, "output_tokens": trimmed_tokens, "compress_ratio": round(ratio,3)}
+    retention_score = retention.compute_semantic_retention(messages, out)
+    if retention_score is not None:
+        metrics["semantic_retention"] = retention_score
     return out, metrics
