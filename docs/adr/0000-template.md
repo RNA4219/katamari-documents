@@ -4,6 +4,11 @@
 > 詳細手順は [CONTRIBUTING.md の ADR セクション](../../CONTRIBUTING.md#adr-を追加・更新する手順) を参照してください。
 > ADR を追加したら `docs/adr/README.md` と [ROADMAP ハブ](../ROADMAP_AND_SPECS.md#adr-インデックスコア判断とマイルストーン) のリンクも更新し、WBS/DoD と整合しているか確認します。
 
+## Metadata
+- 番号: `<0000>`
+- 作成日: `<YYYY-MM-DD>`
+- 作成者: `<記入者>`
+
 ## Context
 - 背景・前提条件・制約を簡潔に列挙する。
 - 参照資料（ドキュメント / チケット / ミーティングノートなど）があればリンク付きで記載する。

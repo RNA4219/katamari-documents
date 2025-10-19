@@ -42,8 +42,8 @@ PR テンプレートの「テスト実行ログ」欄には成功を確認で�
 
 ## ADR を追加・更新する手順
 1. `docs/adr/0000-template.md` をコピーし、`docs/adr/NNNN-<要約>.md`（4 桁ゼロ埋め）というファイル名で保存します。番号は `docs/adr/README.md` の最新値から連番で採番します。
-2. `Context`/`Decision`/`Consequences`/`Status`/`DoD` をすべて埋めます。背景リンク・採用理由・DoD チェックリストは必須で、マイルストーン ADR の場合は `docs/katamari_wbs.csv` と整合させます。
-3. 既存 ADR や仕様書への参照がある場合はリンクを貼り、フォローアップタスクがあるときは `DoD` のチェック項目に「Follow-up」として明記します。
+2. テンプレートの `Metadata` セクション（番号・作成日・作成者）と `Context`/`Decision`/`Consequences`/`Status`/`DoD` をすべて埋めます。背景リンク・採用理由・DoD チェックリストは必須で、マイルストーン ADR の場合は `docs/katamari_wbs.csv` と整合させます。
+3. 既存 ADR や仕様書への参照がある場合はリンクを貼り、フォローアップタスクがあるときは `DoD` のチェック項目に「Follow-up」として明記します。必要に応じて `docs/adr/README.md` にステータス更新日を反映させます。
 4. `docs/adr/README.md` と関連ハブ（[`docs/ROADMAP_AND_SPECS.md#adr-インデックスコア判断とマイルストーン`](docs/ROADMAP_AND_SPECS.md#adr-インデックスコア判断とマイルストーン)）のテーブル・リンクを更新し、新旧の整合性を確認します。
 5. PR では本手順を満たしたことを記載し、レビュワーが DoD の達成状況を検証できるよう関連テストや証跡を提示します。
 
