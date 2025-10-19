@@ -1,18 +1,37 @@
 # EVALUATION
 
-## 機能
-- Settings を更新すると System メッセージ差し替えとログ出力が即座に行われる。Persona YAML、チェーン種別、Trim 設定の UI 操作を含む。[Katamari 要件定義 v3](docs/Katamari_Requirements_v3_ja.md)、[付録I: テストケース集](docs/addenda/I_Test_Cases.md)。
-- Trim 実行時に `compress_ratio` が 0.3–0.8 の範囲で表示され、Reflect では `draft→critique→final` の順序でストリーミングされる。[Katamari 要件定義 v3](docs/Katamari_Requirements_v3_ja.md)。
-- `/healthz`・`/metrics` エンドポイントが稼働し、M1.5 以降で OAuth 認証が有効化される（M1 は Header Auth）。[Katamari 要件定義 v3](docs/Katamari_Requirements_v3_ja.md)、[Katamari 技術仕様 v1](docs/Katamari_Technical_Spec_v1_ja.md)。
+## 目的
+- Katamari プロジェクトの成果物が要求仕様・非機能要件・Guardrails に適合しているかを検証するための受入判断枠組みを提供する。
 
-## 性能
-- 初回トークン p95 ≤ 1.0s、UI 反映遅延 ≤ 300ms を維持し、SSE 連続 1 分で切断率 < 1% を確認する。[Katamari 要件定義 v3](docs/Katamari_Requirements_v3_ja.md)。
-- 主要ユースケース（設定即時反映、Reflect、Trim）で性能劣化がないことを再測定する。[付録I: テストケース集](docs/addenda/I_Test_Cases.md)。
+## スコープ
+### In Scope
+- `docs/Katamari_Requirements_v3_ja.md`・`docs/Katamari_Functional_Spec_v1_ja.md` に基づく機能評価。
+- 非機能（性能・セキュリティ・可観測性）指標の測定と合否判断。
+- Task Seed / Checklist で定義された DoD（Definition of Done）の追跡。
 
-## セキュリティ
-- Secrets は ENV のみに配置し、ログに個人情報を残さない。CORS 制限と Rate Limit を適用する。[付録G: セキュリティ & プライバシー指針](docs/addenda/G_Security_Privacy.md)。
-- Header Auth / OAuth のフローを通し、OAuth リダイレクト URL を検証する。[付録I: テストケース集](docs/addenda/I_Test_Cases.md)、[Security Review Checklist](docs/Security_Review_Checklist.md)。
+### Out of Scope
+- プロダクト市場適合（PMF）の評価。
+- SLA 監視・アラート設定（別途 SRE 評価で実施）。
 
-## コンプライアンス
-- Apache-2.0 ライセンス順守（`LICENSE`・`NOTICE`・変更点）とバージョニングルール（`vX.Y.Z-katamari`）を満たす。[Katamari 要件定義 v3](docs/Katamari_Requirements_v3_ja.md)、[付録M: バージョニング & リリース](docs/addenda/M_Versioning_Release.md)。
-- Lint（ruff）、型チェック（mypy/strict）、テスト（pytest / node:test）を CI 上で完了し、Docker イメージをビルドできる状態とする。[ロードマップ & 仕様ハブ](docs/ROADMAP_AND_SPECS.md)、[Release Checklist](docs/Release_Checklist.md)。
+## Acceptance Criteria
+- 主要ユーザーフロー（Persona 切替、Trim/Reflect、多段推論）が設計通りに完遂する。
+- SSE p95・UI 反映遅延・トークン削減率が要件値以内。
+- セキュリティ・リリースチェックリストが全て `PASS` で記録され、例外は Task Seed にフォローアップ済み。
+
+## 評価手順
+1. `RUNBOOK.md` に従い環境を起動し、テストスイート（pytest / node:test）を実行する。
+2. `scripts/perf/collect_metrics.py`（仮）や Chainlit ログから性能指標を採取し、要件値と比較する。
+3. `docs/Release_Checklist.md`, `docs/Security_Review_Checklist.md` の結果を確認し、未完了項目があれば Task Seed を更新。
+4. 判定結果を `CHANGELOG.md` と対応する Issue / PR に記録する。
+
+## チェック項目
+- [ ] すべての Acceptance Criteria が満たされ、証跡（ログ/スクリーンショット/計測値）が保存されている。
+- [ ] 未達成項目は Task Seed でフォローアップが登録されている。
+- [ ] Guardrails の要求するメンタル lint/type/test チェックを完了済み。
+- [ ] 評価結果が `docs/ROADMAP_AND_SPECS.md` の対象フェーズに反映された。
+
+## 参照リンク
+- [docs/ROADMAP_AND_SPECS.md](docs/ROADMAP_AND_SPECS.md)
+- [docs/Release_Checklist.md](docs/Release_Checklist.md)
+- [docs/Security_Review_Checklist.md](docs/Security_Review_Checklist.md)
+- [third_party/Day8/workflow-cookbook/GUARDRAILS.md](third_party/Day8/workflow-cookbook/GUARDRAILS.md)

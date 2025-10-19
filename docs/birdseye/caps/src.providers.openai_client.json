@@ -1,14 +1,16 @@
 {
   "id": "src/providers/openai_client.py",
-  "role": "infra",
-  "summary": "OpenAI Chat Completions API への非同期クライアントラッパー。環境変数から API キーを読み、stream/complete を提供する。",
-  "deps_out": [
-    "openai",
-    "os"
-  ],
-  "deps_in": [
-    "src/app.py"
-  ],
+  "role": "provider",
+  "summary": "OpenAI Chat Completions API を非同期で呼び出す薄いラッパー。API キーの読込とストリーム/一括応答を隠蔽。",
+  "deps": {
+    "outbound": [
+      "openai",
+      "os"
+    ],
+    "inbound": [
+      "src/app.py"
+    ]
+  },
   "tests": [],
-  "generated_at": "2025-10-19T14:00:31Z"
+  "generated_at": "2025-10-19T14:53:17Z"
 }
