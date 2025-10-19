@@ -4,6 +4,11 @@
 - Katamari の成果物が仕様・非機能要件・Guardrails を満たしているか判断する枠組みを提供する。
 - 受入可否を明確にし、差分が残る場合は Task Seed へフォローアップを連携する。
 
+## 担当ロール
+- QA / 品質保証: 受入判定を行い、DoD 達成状況を記録する。
+- Tech Lead / Reviewer: Guardrails の指標との整合を確認し、差分をタスク化する。
+- プロダクトオーナー: 判定結果をロードマップと照合し、次フェーズへの承認を行う。
+
 ## スコープ
 ### In Scope
 - `docs/Katamari_Requirements_v3_ja.md` / `docs/Katamari_Functional_Spec_v1_ja.md` に基づく機能評価。
