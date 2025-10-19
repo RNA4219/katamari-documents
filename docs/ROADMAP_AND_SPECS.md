@@ -13,9 +13,10 @@
 | 追加リファレンス | `docs/addenda/*.md` | UI モック、プロバイダ比較、テストケース、構成ファイル解説など。 |
 | フォーク運用 | `docs/UPSTREAM.md`, `docs/FORK_NOTES.md`<br>[ADR #0001](adr/0001-use-chainlit-subtree.md) | Chainlit subtree の取得・差分吸収手順。 |
 | リリース & セキュリティ | `docs/Release_Checklist.md`, `docs/Security_Review_Checklist.md` | 品質ゲートとリリース判定項目。 |
-| Day8 HUB | `third_party/Day8/workflow-cookbook/HUB.codex.md` | Day8 オペレーション全体を俯瞰する観測ハブ（エントリポイント）。 |
-| Day8 Guardrails | `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | HUB の分析結果を受けて設ける統制基準・安全策レイヤー。 |
-| Day8 Blueprint | `third_party/Day8/workflow-cookbook/BLUEPRINT.md` | Guardrails を踏まえた運用ブループリント（実装設計）。 |
+| Guardrails 連動ドキュメント | `BLUEPRINT.md`, `RUNBOOK.md`, `EVALUATION.md`, `CHECKLISTS.md`, `TASK.*.md` | Guardrails フローに沿った設計・運用・評価・追跡の基盤文書。 |
+| Day8 HUB | `third_party/Day8/workflow-cookbook/HUB.codex.md` | Day8 オペレーション全体を俯瞰する観測ハブ（入口）。 |
+| Day8 Guardrails | `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | HUB で得た観測を踏まえた統制基準・安全策（第二段）。 |
+| Day8 Blueprint | `third_party/Day8/workflow-cookbook/BLUEPRINT.md` | Guardrails を適用した運用ブループリント（実装設計）。 |
 
 ## 2. 実装モジュールと対応仕様
 
@@ -64,6 +65,9 @@
 
 本ハブは開発フェーズ毎に更新し、未作成 ADR や追加仕様が発生した際は本書内のロードマップを最新化してください。
 
-## 5. ライセンス
+## 5. Guardrails ドキュメント更新フロー
 
-- 本フォークは Apache License 2.0 の下で配布され、詳細な帰属情報はリポジトリ直下の [`NOTICE`](../NOTICE) を参照してください。
+1. 変更検討時は `BLUEPRINT.md` を起点に目的・スコープ・I/O・AC を見直し、必要な設計更新をドラフト化する。
+2. 実装・運用手順の変更は `RUNBOOK.md` と `CHECKLISTS.md` に反映し、ガードレール順序（準備→実行→検証 / Dev→PR→Release→Ops）を維持する。
+3. 受入条件や計測指標の更新は `EVALUATION.md` へ同期し、未完了項目は `TASK.<YYYY-MM-DD>-0001.md` など Task Seed へ記録する。
+4. 更新を確定したら本ドキュメントの対象セクションを修正し、Birdseye 図および関連 ADR との整合を確認する。

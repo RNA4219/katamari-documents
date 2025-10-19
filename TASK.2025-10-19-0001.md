@@ -32,6 +32,12 @@ act -W .github/workflows/ci.yml  # 任意。ローカルで GH Actions をドラ
 - メンタル lint/type/test の自己検証結果は `CHECKLISTS.md` の Development セクションに記録する。
 - 未解決事項は後続 Task Seed または Issue に分割し、`EVALUATION.md` で DoD を判断できる状態に保つ。
 
+## 最小フロー
+1. `BLUEPRINT.md` で CI アーキテクチャの更新意図と I/O 契約を明確化。
+2. `RUNBOOK.md` に沿ってローカル検証環境を整備し、先にテスト（pytest / node:test）を作成・実行。
+3. `CHECKLISTS.md` の Development / PR チェックリストを更新し、CI 設定差分と証跡を連携。
+4. 受入判断とフォローアップを `EVALUATION.md` と後続 Task Seed に記録し、Birdseye 図を更新。
+
 ## 成果物 / エビデンス
 - `.github/workflows/ci.yml`, `.github/workflows/release.yml`
 - CI 実行ログ、GHCR の最新タグ一覧

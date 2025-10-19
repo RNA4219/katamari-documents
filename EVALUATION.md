@@ -25,6 +25,12 @@ Guardrails の「AC → 評価 → Task Seed 更新」順を踏まえ、各工�
 3. `docs/Release_Checklist.md`, `docs/Security_Review_Checklist.md` の結果を確認し、未完了項目があれば Task Seed を更新。
 4. 判定結果を `CHANGELOG.md` と対応する Issue / PR に記録する。
 
+## 最小フロー
+1. `docs/ROADMAP_AND_SPECS.md` から評価対象フェーズと関連仕様を抽出。
+2. `RUNBOOK.md` に沿って環境を起動し、lint/type/test の証跡を取得。
+3. 計測結果とチェックリストの状態を照合し、満たない項目は `TASK.*.md` にフォローアップを記載。
+4. 受入可否を判断し、`BLUEPRINT.md` や Birdseye の更新が必要な場合は次回サイクルでの反映を手配。
+
 ## チェック項目
 - [ ] すべての Acceptance Criteria が満たされ、証跡（ログ/スクリーンショット/計測値）が保存されている。
 - [ ] 未達成項目は Task Seed でフォローアップが登録されている。

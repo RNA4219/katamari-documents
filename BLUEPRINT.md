@@ -29,6 +29,12 @@
 3. `docs/birdseye/index.json` / `caps/*.json` を更新し、依存ノードの最新化を確認する。
 4. 設計変更が CI・運用に影響する場合は `RUNBOOK.md`・`CHECKLISTS.md` を同時に更新し、`EVALUATION.md` の受入判断と整合させる。
 
+## 最小フロー
+1. `docs/ROADMAP_AND_SPECS.md` で対象フェーズの要件と設計変更点を洗い出す。
+2. `BLUEPRINT.md` の I/O 契約と Guardrails の整合を確認し、必要な追加設計をドラフト化。
+3. 影響のある手順・チェックリストを `RUNBOOK.md` / `CHECKLISTS.md` に反映し、受入条件を `EVALUATION.md` へ連携。
+4. 更新内容を Task Seed (`TASK.*.md`) に記録し、Birdseye の可視化をリフレッシュする。
+
 ## チェック項目
 - [ ] 主要ユースケースごとに I/O 契約（入力/出力の型・例）が定義されている。
 - [ ] 例外パスと再試行可否が `Katamari_Technical_Spec_v1_ja.md` と矛盾しない。
