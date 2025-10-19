@@ -1,5 +1,25 @@
 # Katamari (Chainlit Fork) – 要件&仕様パック
 
+<!-- LLM-BOOTSTRAP v1 -->
+読む順番:
+1. docs/birdseye/index.json  …… ノード一覧・隣接関係（軽量）
+2. docs/birdseye/caps/<path>.json …… 必要ノードだけ point read（個別カプセル）
+
+フォーカス手順:
+- 直近変更ファイル±2hopのノードIDを index.json から取得
+- 対応する caps/*.json のみ読み込み
+<!-- /LLM-BOOTSTRAP -->
+
+## 同梱物
+- 要件: `docs/Katamari_Requirements_v3_ja.md`
+- 機能仕様: `docs/Katamari_Functional_Spec_v1_ja.md`
+- 技術仕様: `docs/Katamari_Technical_Spec_v1_ja.md`
+- ロードマップ & 仕様索引: `docs/ROADMAP_AND_SPECS.md`
+- OpenAPI: `docs/openapi/katamari_openapi.yaml`
+- 設定: `config/model_registry.json`, `config/env.example`
+- フォーク運用: `docs/UPSTREAM.md`, `docs/FORK_NOTES.md`
+- ADR: `docs/adr/README.md`
+
 ## ローカル起動手順
 
 1. 依存パッケージを初期化: `pip install -r requirements.txt`
