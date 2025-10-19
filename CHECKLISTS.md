@@ -25,18 +25,27 @@
 3. 未完了項目は Task Seed に転記し、`EVALUATION.md` で DoD 判定に利用する。
 4. `third_party/Day8/workflow-cookbook/GUARDRAILS.md` の該当フェーズ（Dev/PR/Release/Ops）に定義されたチェックと乖離がないか確認する。
 
+## ガードレール項目
+- 各フェーズで AI 補助を受ける場合、人間が承認した証跡（コメントや Task Seed）を残す。
+- 変更は最小差分で進め、未対応の大きな差分は新規 Task Seed またはチェックリスト項目として切り出す。
+- Birdseye / Guardrails 文書を更新した日は共通タイムスタンプとし、関連するチェックリストにリンクを記載する。
+- 公開 API 変更や例外ポリシー変更が必要な場合は、`BLUEPRINT.md`・`RUNBOOK.md`・`EVALUATION.md` を同時に更新する。
+- チェック項目は `docs/ROADMAP_AND_SPECS.md` のフェーズ定義と整合性を保ち、齟齬があれば即時修正する。
+
 ## チェックリスト
 ### Development
 - [ ] テストを先に追加し、`pytest` / `node:test` が成功した。
 - [ ] `mypy --strict` と `ruff` を通過（またはスキップ理由を記録）。
 - [ ] 公開 API 変更がない、または段階移行フラグを設定した。
 - [ ] Birdseye index/caps を更新し、該当ノードの要約を最新化した。
+- [ ] AI 提案を採用した実装は人間が検証した証跡を Task Seed に残した。
 
 ### Pull Request / Review
 - [ ] 変更理由と影響範囲を `docs/ROADMAP_AND_SPECS.md` の該当項目にリンクした。
 - [ ] Task Seed を更新し、レビュー観点を共有した。
 - [ ] Guardrails の最小読込手順をレビュアーが再現できるよう案内した。
 - [ ] Guardrails PR チェック項目と差異がないことを確認した。
+- [ ] AI からのレビュー提案を採用した場合は採否理由を記録した。
 
 ### Release
 - [ ] `docs/Release_Checklist.md` の優先項目（受入証跡・影響範囲・ラベル・CHANGELOG・`NOTICE`/`LICENSE` 同梱）がすべて `PASS`。
@@ -46,12 +55,14 @@
 - [ ] `CHANGELOG.md` にリリース内容を追記し、タグ発行準備ができている。
 - [ ] 配布物へ [`LICENSE`](LICENSE) / [`NOTICE`](NOTICE) を同梱する手順が `RUNBOOK.md` と一致する。
 - [ ] GHCR へのビルド/公開手順が `RUNBOOK.md` と一致する。
+- [ ] AI による自動化案を導入する際は人間が安全性確認を行い、`RUNBOOK.md` に反映した。
 
 ### Ops / Incident
 - [ ] 障害対応ログが `RUNBOOK.md` に沿って記録されている。
 - [ ] 再発防止策が Task Seed または Issue で管理されている。
 - [ ] セキュリティインシデントを `docs/Security_Review_Checklist.md` に追記した。
 - [ ] Guardrails Ops 項目の参照結果を Task Seed に反映した。
+- [ ] AI からの復旧案を採用する際は人間が検証し、結果を `RUNBOOK.md` と Task Seed に反映した。
 
 ## 参照
 - [docs/ROADMAP_AND_SPECS.md](docs/ROADMAP_AND_SPECS.md)

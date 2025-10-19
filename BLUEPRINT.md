@@ -29,6 +29,13 @@
 - **出力**: Trim/Reflect 後のレスポンス、SSE ストリーム、評価ログ。`docs/Katamari_Technical_Spec_v1_ja.md` のシーケンス図と一致させる。
 - **連携**: 検証手順と評価は `RUNBOOK.md` と `EVALUATION.md` に引き渡し、ロードマップとの対応は `docs/ROADMAP_AND_SPECS.md` を参照する。
 
+## ガードレール項目
+- Persona→Trim→Reflect の各段で AI 支援を受ける際は、**人が最終確認する責務**を明示し、再試行可能な手順と再試行不可な手順を区別する。
+- Provider 追加や設定変更は SPI (`src/providers/`) を経由し、`docs/addenda/F_Provider_Matrix.md` に記載の互換条件を満たすこと。
+- SSE 遅延が閾値（p95 ≤ 1.0s）を超えた場合は `RUNBOOK.md` の検証フェーズで緩和策を実施し、結果を Task Seed に記録する。
+- Birdseye のノード（`docs/birdseye/index.json`, `caps/*.json`）へ影響する設計変更は、同日付で更新し変更理由を Task Seed に紐付ける。
+- AI が提示した設計案を採用する際は、この BLUEPRINT に整合する根拠（入力/出力契約・再試行可否・影響範囲）を箇条書きで追記する。
+
 ## 更新ステップ
 1. `docs/ROADMAP_AND_SPECS.md` で対象フェーズと必要な仕様リンクを確認する。
 2. Guardrails の「目的→スコープ→I/O→AC→最小フロー」に沿って設計変更をドラフト化し、個人運用で実施可能な粒度に分割する。
@@ -42,12 +49,12 @@
 - Provider 切替方針が `docs/addenda/F_Provider_Matrix.md` の互換ポリシーを満たす。
 - Guardrails BLUEPRINT の `Purpose / Scope / AC` に記載された期待値をすべて満たす注記が含まれている。
 
-## チェック項目
 - [ ] 主要ユースケースの I/O 契約（入力/出力の型と例）が定義されている。
 - [ ] 例外パスと再試行可否が `docs/Katamari_Technical_Spec_v1_ja.md` と整合する。
 - [ ] Birdseye index/capsule の更新日時が最新コミット以降になっている。
 - [ ] Task Seed (`TASK.*.md`) に変更理由とフォローアップが記録されている。
-- [ ] Guardrails BLUEPRINT（`third_party/Day8/workflow-cookbook/GUARDRAILS.md`）の該当節を照合した。
+- [ ] Guardrails BLUEPRINT（`third_party/Day8/workflow-cookbook/GUARDRAILS.md`）と本書のガードレール項目が一致する。
+- [ ] AI からの提案を採用した設計差分に、人間が確認済みである旨の記録が残っている。
 
 ## 参照
 - [docs/ROADMAP_AND_SPECS.md](docs/ROADMAP_AND_SPECS.md)

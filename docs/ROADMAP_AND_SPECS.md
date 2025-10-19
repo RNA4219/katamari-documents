@@ -19,12 +19,12 @@
 | Day8 HUB | `third_party/Day8/workflow-cookbook/HUB.codex.md` | 観測ハブとして Day8 オペレーション全体の入口を提示する役割ドキュメント。 |
 | Day8 Guardrails | `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | HUB からのインサイトを受けて統制基準・安全策を定義する役割ドキュメント。 |
 
-> Guardrails 連動ドキュメントの概要（いずれも個人運用向けに最適化）
-> - [BLUEPRINT.md](../BLUEPRINT.md): Persona/Trim/Reflect チェーンを中心としたアーキテクチャの目的・スコープ・I/O 契約を定義。
-> - [RUNBOOK.md](../RUNBOOK.md): 「準備→実行→検証」手順で起動・検証・障害対応を標準化。
-> - [EVALUATION.md](../EVALUATION.md): 受入判定手順と指標、チェック項目を整理。
-> - [CHECKLISTS.md](../CHECKLISTS.md): Dev→PR→Release→Ops の各フェーズで参照するチェックリスト集。
-> - [TASK.<YYYY-MM-DD>-0001.md](../TASK.2025-10-19-0001.md): 初期 Task Seed。目的・要件・想定コマンドを記録し、フォローアップを管理。
+> Guardrails 連動ドキュメントの概要（いずれも個人+AI 運用に必要なガードレールを網羅）
+> - [BLUEPRINT.md](../BLUEPRINT.md): Persona/Trim/Reflect チェーンの責務分離・再試行方針・個人/AI 共同運用の境界を整理。
+> - [RUNBOOK.md](../RUNBOOK.md): 「準備→実行→検証」の実務手順とトラブルシュート、AI からの提案を受ける際の確認ステップを定義。
+> - [EVALUATION.md](../EVALUATION.md): 成果の受入判定フローとメトリクス、ガードレール逸脱時のエスカレーション手順を明文化。
+> - [CHECKLISTS.md](../CHECKLISTS.md): Dev→PR→Release→Ops の帽子を被り替えながら自己チェックするためのテンプレート。
+> - [TASK.<YYYY-MM-DD>-0001.md](../TASK.2025-10-19-0001.md): 初期 Task Seed。目的・要件・想定コマンド・評価ログ連携を記録し、フォローアップを管理。
 > - Guardrails 原典: [third_party/Day8/workflow-cookbook/GUARDRAILS.md](../third_party/Day8/workflow-cookbook/GUARDRAILS.md)。各節の目的・
 >   スコープ・AC を参照し、上記ドキュメント更新時は整合性を必ず確認する。
 
