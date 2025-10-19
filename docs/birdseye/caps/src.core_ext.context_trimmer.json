@@ -1,0 +1,16 @@
+{
+  "id": "src/core_ext/context_trimmer.py",
+  "role": "application",
+  "summary": "メッセージ履歴をトークン数に基づきトリムし、圧縮率や採用エンコーディング情報を算出するユーティリティ。tiktoken が無い場合はヒューリスティックにフォールバックする。",
+  "deps_out": [
+    "tiktoken"
+  ],
+  "deps_in": [
+    "src/app.py",
+    "tests/core_ext/test_context_trimmer.py"
+  ],
+  "tests": [
+    "tests/core_ext/test_context_trimmer.py"
+  ],
+  "generated_at": "2025-10-19T12:49:54Z"
+}
