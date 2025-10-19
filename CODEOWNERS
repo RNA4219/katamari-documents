@@ -4,19 +4,21 @@
 * @katamari-org/maintainers
 
 # アプリケーション実装
-/src/app.py @katamari-org/maintainers @katamari-org/runtime
-/src/core_ext/ @katamari-org/maintainers @katamari-org/runtime
-/src/providers/ @katamari-org/maintainers @katamari-org/integrations
+/src/ @katamari-org/maintainers @katamari-org/runtime
+/config/ @katamari-org/maintainers @katamari-org/runtime
 
 # テスト
-/tests/app/ @katamari-org/maintainers @katamari-org/qa
-/tests/core_ext/ @katamari-org/maintainers @katamari-org/qa
-/tests/providers/ @katamari-org/maintainers @katamari-org/qa
+/tests/ @katamari-org/maintainers @katamari-org/qa
 
 # ドキュメントとナレッジ
 /docs/ @katamari-org/maintainers @katamari-org/docs
 /public/ @katamari-org/maintainers @katamari-org/frontend
 /themes/ @katamari-org/maintainers @katamari-org/design
+/personas/ @katamari-org/maintainers @katamari-org/docs
+/third_party/ @katamari-org/maintainers @katamari-org/integrations
+/upstream/ @katamari-org/maintainers @katamari-org/integrations
 
-# 運用ツール
+# 運用・ビルド
 /scripts/ @katamari-org/maintainers @katamari-org/devops
+/Makefile @katamari-org/maintainers @katamari-org/devops
+/Dockerfile @katamari-org/maintainers @katamari-org/devops
