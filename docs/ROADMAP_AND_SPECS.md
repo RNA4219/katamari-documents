@@ -13,9 +13,9 @@
 | 追加リファレンス | `docs/addenda/*.md` | UI モック、プロバイダ比較、テストケース、構成ファイル解説など。 |
 | フォーク運用 | `docs/UPSTREAM.md`, `docs/FORK_NOTES.md`<br>[ADR #0001](adr/0001-use-chainlit-subtree.md) | Chainlit subtree の取得・差分吸収手順。 |
 | リリース & セキュリティ | `docs/Release_Checklist.md`, `docs/Security_Review_Checklist.md` | 品質ゲートとリリース判定項目。 |
-| Day8 HUB | `third_party/Day8/workflow-cookbook/HUB.codex.md` | Day8 オペレーション全体を俯瞰する観測ハブ（入口）。 |
-| Day8 Guardrails | `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | HUB で得た観測を踏まえた統制基準・安全策（第二段）。 |
-| Day8 Blueprint | `third_party/Day8/workflow-cookbook/BLUEPRINT.md` | Guardrails を適用した運用ブループリント（実装設計）。 |
+| Day8 HUB | `third_party/Day8/workflow-cookbook/HUB.codex.md` | Day8 オペレーション全体を俯瞰する観測ハブ（エントリポイント）。 |
+| Day8 Guardrails | `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | HUB の分析結果を受けて設ける統制基準・安全策レイヤー。 |
+| Day8 Blueprint | `third_party/Day8/workflow-cookbook/BLUEPRINT.md` | Guardrails を踏まえた運用ブループリント（実装設計）。 |
 
 ## 2. 実装モジュールと対応仕様
 
@@ -57,7 +57,7 @@
 - テスト駆動で進める場合は `tests/` を先に追加し、`I_Test_Cases.md` を参照。  
 - Subtree 同期は `docs/UPSTREAM.md` → `scripts/` の補助スクリプトを活用。
 - 運用時のチェックは `Release_Checklist.md` と `Security_Review_Checklist.md` を使用。
-- Day8 系資料の推奨読書順: `third_party/Day8/workflow-cookbook/HUB.codex.md`（観測ハブ）→ `third_party/Day8/workflow-cookbook/GUARDRAILS.md`（統制基準）→ `third_party/Day8/workflow-cookbook/BLUEPRINT.md`（運用設計）。
+- Day8 系資料の推奨参照順: `third_party/Day8/workflow-cookbook/HUB.codex.md`（観測ハブ）→ `third_party/Day8/workflow-cookbook/GUARDRAILS.md`（統制基準）→ `third_party/Day8/workflow-cookbook/BLUEPRINT.md`（運用設計）。
 - Birdseye 図 (`docs/birdseye/index.json`, `docs/birdseye/caps/`, `docs/birdseye/hot.json`) はエントリポイントや依存関係を更新した際に同時更新し、`hot.json` の頻出入口リストも最新状態を維持する。
 
 本ハブは開発フェーズ毎に更新し、未作成 ADR や追加仕様が発生した際は本書内のロードマップを最新化してください。
