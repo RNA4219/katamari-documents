@@ -94,6 +94,7 @@
 - Keep diffs in `core_ext/` and `providers/` when possible.
 - Follow the issue templates.
 - Adhere to `.gitattributes` line ending policy (LF for shell/Python/Makefile, CRLF for PowerShell).
+- `.gitattributes` に定義した改行コード設定をローカルの Git 設定で上書きしないでください。
 - GitHub Review のステータスは `Comment` / `Approve` / `Request changes` を正しく使い分け、レビュー観点を箇条書きで残してください。
 - 仕様に関わる合意は PR 内のコメントまたはリンクされた Issue で記録し、マージ時に `## Notes` に最終判断を追記してください。
 
