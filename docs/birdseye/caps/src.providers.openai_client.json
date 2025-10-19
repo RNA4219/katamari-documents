@@ -1,0 +1,14 @@
+{
+  "id": "src/providers/openai_client.py",
+  "role": "infra",
+  "summary": "OpenAI Chat Completions API への非同期クライアントラッパー。環境変数から API キーを読み、stream/complete を提供する。",
+  "deps_out": [
+    "openai",
+    "os"
+  ],
+  "deps_in": [
+    "src/app.py"
+  ],
+  "tests": [],
+  "generated_at": "2025-10-19T12:49:54Z"
+}

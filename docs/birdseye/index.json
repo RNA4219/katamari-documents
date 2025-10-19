@@ -1,0 +1,25 @@
+{
+  "generated_at": "2025-10-19T12:49:54Z",
+  "nodes": {
+    "src/app.py": {
+      "role": "entrypoint",
+      "caps": "docs/birdseye/caps/src.app.json",
+      "mtime": "2025-10-19T12:23:58Z"
+    },
+    "src/core_ext/context_trimmer.py": {
+      "role": "application",
+      "caps": "docs/birdseye/caps/src.core_ext.context_trimmer.json",
+      "mtime": "2025-10-19T12:22:34Z"
+    },
+    "src/providers/openai_client.py": {
+      "role": "infra",
+      "caps": "docs/birdseye/caps/src.providers.openai_client.json",
+      "mtime": "2025-10-19T10:34:38Z"
+    }
+  },
+  "edges": [
+    ["src/app.py", "src/core_ext/context_trimmer.py"],
+    ["src/app.py", "src/providers/openai_client.py"],
+    ["src/core_ext/context_trimmer.py", "src/app.py"]
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "generated_at": "2025-10-19T12:49:54Z",
+  "entrypoints": [
+    {
+      "id": "src/app.py",
+      "reason": "Chainlit 起動時にロードされるメインエントリ。UI/LLM/メトリクスの起点。"
+    },
+    {
+      "id": "src/core_ext/context_trimmer.py",
+      "reason": "トークン制御とメトリクス算出で頻出トラブルのボトルネック。"
+    }
+  ]
+}

@@ -52,7 +52,8 @@
 
 - 実装開始時は `CONTRIBUTING.md` と `CODE_OF_CONDUCT.md` を必読。  
 - テスト駆動で進める場合は `tests/` を先に追加し、`I_Test_Cases.md` を参照。  
-- Subtree 同期は `docs/UPSTREAM.md` → `scripts/` の補助スクリプトを活用。  
+- Subtree 同期は `docs/UPSTREAM.md` → `scripts/` の補助スクリプトを活用。
 - 運用時のチェックは `Release_Checklist.md` と `Security_Review_Checklist.md` を使用。
+- Birdseye 図 (`docs/birdseye/index.json`, `docs/birdseye/caps/`, `docs/birdseye/hot.json`) はエントリポイントや依存関係を更新した際に同時更新し、`hot.json` の頻出入口リストも最新状態を維持する。
 
 本ハブは開発フェーズ毎に更新し、未作成 ADR や追加仕様が発生した際は本書内のロードマップを最新化してください。
