@@ -6,6 +6,7 @@
 - [ ] 影響範囲（依存モジュール、運用手順、インフラ）を再確認し、必要な同期ドキュメントを更新
 - [ ] PR に `type:*` と `semver:*` ラベルを設定
 - [ ] `CHANGELOG.md` を最新化
+- [ ] `NOTICE` の派生元告知・著作権表記・改変要約が最新であることを確認し、更新した場合は差分を Release PR で説明
 - [ ] Update docs/UPSTREAM.md
 - [ ] Run tests & lint
 - [ ] Build Docker image
@@ -16,4 +17,4 @@
 ## 配布物のライセンス同梱チェック
 
 - [ ] 配布パッケージ・Docker イメージ・アーカイブに [`LICENSE`](../LICENSE) と [`NOTICE`](../NOTICE) を同梱したことを確認
-- [ ] リリースノートで同梱確認の結果と証跡リンクを共有
+- [ ] リリースノートおよび Release PR で同梱確認の結果と証跡リンクを共有

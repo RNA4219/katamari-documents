@@ -1,8 +1,9 @@
 Katamari NOTICE
 ===============
 
-本ソフトウェアは Chainlit プロジェクト（https://github.com/Chainlit/chainlit）を原作とするフォークです。本フォークは Apache
-License, Version 2.0 の条件に基づき配布されており、配布物には本 NOTICE と `LICENSE` を必ず同梱してください。
+本ソフトウェアは Chainlit プロジェクト（https://github.com/Chainlit/chainlit）から派生したフォークであり、Apache License,
+Version 2.0（以下「Apache-2.0」）の条件に基づき配布されています。配布物（バイナリ / Docker イメージ / アーカイブ等）を提供す
+る際は、本 NOTICE と `LICENSE` を同梱し、Apache-2.0 の告知義務を満たしてください。
 
 Copyright (c) 2024 Day8 and contributors
 Copyright (c) Chainlit SAS and Chainlit contributors
@@ -12,6 +13,6 @@ Copyright (c) Chainlit SAS and Chainlit contributors
 - OpenAI / Gemini 等を含むマルチプロバイダ抽象化と Day8 管理向け API（例: `/metrics`, `/healthz`, `/api/models`）の追加
 - Day8 ガードレール資料・テーマ定義・運用スクリプトを同梱し、運用フローとチェックリストを拡充
 
-Apache License, Version 2.0 の全文は `LICENSE` を参照してください。
+Apache-2.0 の全文は `LICENSE` を参照してください。
 
 本フォークに関するお問い合わせは GitHub Issues（https://github.com/Day8/katamari/issues）までお願いします。
