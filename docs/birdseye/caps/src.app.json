@@ -1,14 +1,7 @@
 {
   "id": "src/app.py",
   "role": "entrypoint",
-  "public_api": [
-    "MetricsRegistry",
-    "on_start()",
-    "on_settings_update(settings)",
-    "apply_settings(settings)",
-    "on_message(message)"
-  ],
-  "summary": "Chainlit のセッション開始・設定更新・メッセージ処理を束ね、履歴トリミングとマルチステップ推論を統合する UI エントリポイント。",
+  "summary": "Chainlit セッション開始・設定反映・チャット処理を束ねる UI エントリポイント。",
   "deps": {
     "out": [
       "core_ext.persona_compiler.compile_persona_yaml",
@@ -22,23 +15,8 @@
       "tests/app/test_metrics_healthz.py"
     ]
   },
-  "deps_out": [
-    "core_ext.persona_compiler.compile_persona_yaml",
-    "core_ext.context_trimmer.trim_messages",
-    "core_ext.prethought.analyze_intent",
-    "core_ext.multistep.get_chain_steps",
-    "core_ext.multistep.system_hint_for_step",
-    "providers.openai_client.OpenAIProvider"
-  ],
-  "deps_in": [
-    "tests/app/test_metrics_healthz.py"
-  ],
-  "risks": [
-    "OPENAI_API_KEY 未設定時にプロバイダー初期化が失敗する",
-    "Chainlit セッション状態のキー変更で動作が破綻する"
-  ],
   "tests": [
     "tests/app/test_metrics_healthz.py"
   ],
-  "generated_at": "2025-10-19T19:36:50Z"
+  "generated_at": "2025-10-19T20:45:00Z"
 }

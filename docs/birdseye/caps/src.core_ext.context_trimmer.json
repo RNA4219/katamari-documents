@@ -1,10 +1,7 @@
 {
   "id": "src/core_ext/context_trimmer.py",
   "role": "core",
-  "public_api": [
-    "trim_messages(messages, target_tokens, model)"
-  ],
-  "summary": "tiktoken ベースで履歴をトークン数に合わせてトリミングし、圧縮率やカウンタ情報を返す共通ユーティリティ。",
+  "summary": "tiktoken を用いて履歴トークン数を管理し、指定トークン上限へ切り詰めるユーティリティ。",
   "deps": {
     "out": [
       "tiktoken",
@@ -15,19 +12,8 @@
       "tests/core_ext/test_context_trimmer.py"
     ]
   },
-  "deps_out": [
-    "tiktoken",
-    "src/core_ext/context_trimmer._TokenCounter"
-  ],
-  "deps_in": [
-    "src/app.py",
-    "tests/core_ext/test_context_trimmer.py"
-  ],
-  "risks": [
-    "tiktoken 非導入時はヒューリスティックで精度が低下する"
-  ],
   "tests": [
     "tests/core_ext/test_context_trimmer.py"
   ],
-  "generated_at": "2025-10-19T19:36:50Z"
+  "generated_at": "2025-10-19T20:45:00Z"
 }
