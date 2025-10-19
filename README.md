@@ -5,7 +5,9 @@
 
 1. docs/birdseye/index.json  …… ノード一覧・隣接関係（軽量）
 2. docs/birdseye/caps/<path>.json …… 必要ノードだけ point read（個別カプセル）
-3. [third_party/Day8/workflow-cookbook/HUB.codex.md](third_party/Day8/workflow-cookbook/HUB.codex.md) → [third_party/Day8/workflow-cookbook/GUARDRAILS.md](third_party/Day8/workflow-cookbook/GUARDRAILS.md) → [third_party/Day8/workflow-cookbook/BLUEPRINT.md](third_party/Day8/workflow-cookbook/BLUEPRINT.md) …… Day8 HUB から統制基準・ブループリントまでを一気読み。
+3. docs/ROADMAP_AND_SPECS.md …… 要件・仕様の横断導線
+4. [third_party/Day8/README.md](third_party/Day8/README.md) …… Day8 HUB / Guardrails（詳細は `docs/day8/README.md`）
+5. [third_party/Day8/workflow-cookbook/HUB.codex.md](third_party/Day8/workflow-cookbook/HUB.codex.md) → [third_party/Day8/workflow-cookbook/GUARDRAILS.md](third_party/Day8/workflow-cookbook/GUARDRAILS.md) → [third_party/Day8/workflow-cookbook/BLUEPRINT.md](third_party/Day8/workflow-cookbook/BLUEPRINT.md) …… Day8 HUB から統制基準・ブループリントまでを一気読み。
 
 > `docs/birdseye/hot.json` の `generated_at` は頻出入口リストの生成時刻です。エントリポイントや依存関係を更新した際は `date -u '+%Y-%m-%dT%H:%M:%SZ'` で時刻を取得し、`docs/birdseye/index.json`・`docs/birdseye/caps/`・`docs/birdseye/hot.json` を併せて更新してください。
 
@@ -13,6 +15,14 @@
 
 - 直近変更ファイル±2hopのノードIDを index.json から取得
 - 対応する caps/*.json のみ読み込み
+
+主要導線:
+
+- 要件: [`docs/Katamari_Requirements_v3_ja.md`](docs/Katamari_Requirements_v3_ja.md)
+- 機能仕様: [`docs/Katamari_Functional_Spec_v1_ja.md`](docs/Katamari_Functional_Spec_v1_ja.md)
+- 技術仕様: [`docs/Katamari_Technical_Spec_v1_ja.md`](docs/Katamari_Technical_Spec_v1_ja.md)
+- OpenAPI: [`docs/openapi/katamari_openapi.yaml`](docs/openapi/katamari_openapi.yaml)
+- フォーク運用: [`docs/UPSTREAM.md`](docs/UPSTREAM.md), [`docs/FORK_NOTES.md`](docs/FORK_NOTES.md)
 <!-- /LLM-BOOTSTRAP -->
 
 ## 同梱物
