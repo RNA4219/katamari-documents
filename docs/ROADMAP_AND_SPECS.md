@@ -15,7 +15,8 @@
 | フォーク運用 | `docs/UPSTREAM.md`, `docs/FORK_NOTES.md`<br>[ADR #0001](adr/0001-use-chainlit-subtree.md) | Chainlit subtree の取得・差分吸収手順。 |
 | リリース & セキュリティ | `docs/Release_Checklist.md`, `docs/Security_Review_Checklist.md` | 品質ゲートとリリース判定項目。 |
 | Guardrails 連動ドキュメント | `BLUEPRINT.md`, `RUNBOOK.md`, `EVALUATION.md`, `CHECKLISTS.md`, `TASK.*.md` | Guardrails フローに沿った設計・運用・評価・追跡の基盤文書。 |
-| Day8 HUB / Guardrails | `third_party/Day8/workflow-cookbook/HUB.codex.md`,<br>`third_party/Day8/workflow-cookbook/GUARDRAILS.md` | Day8 オペレーション全体の観測起点と統制基準。 |
+| Day8 HUB | `third_party/Day8/workflow-cookbook/HUB.codex.md` | Day8 オペレーション全体を俯瞰する観測ハブ（入口役）。 |
+| Day8 Guardrails | `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | HUB を起点にした統制基準・安全策（第二段ロール）。 |
 
 > Guardrails 連動ドキュメントの概要
 > - [BLUEPRINT.md](../BLUEPRINT.md): Persona/Trim/Reflect チェーンを中心としたアーキテクチャの目的・スコープ・I/O 契約を定義。
@@ -43,9 +44,6 @@
 3. 受入基準や DoD に影響する場合は `EVALUATION.md` と該当 Task Seed (`TASK.*.md`) を更新し、証跡取得コマンドを追記する。
 4. 変更差分を Pull Request にまとめ、`CONTRIBUTING.md#guardrails-ドキュメント更新フロー` を参照してレビューと追跡を実施する。
 5. Birdseye 図および Guardrails 原典 (`third_party/Day8/workflow-cookbook/GUARDRAILS.md`) を確認し、役割と手順の齟齬がないことを保証する。
-| Day8 HUB | `third_party/Day8/workflow-cookbook/HUB.codex.md` | Day8 オペレーション全体を俯瞰する観測ハブ（入口）。 |
-| Day8 Guardrails | `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | HUB で得た観測を踏まえた統制基準・安全策（第二段）。 |
-| Day8 Blueprint | `third_party/Day8/workflow-cookbook/BLUEPRINT.md` | Guardrails を適用した運用ブループリント（実装設計）。 |
 
 ## 2. 実装モジュールと対応仕様
 
@@ -88,7 +86,7 @@
 - Subtree 同期は `docs/UPSTREAM.md` → `scripts/` の補助スクリプトを活用。
 - アーキテクチャ判断は `docs/adr/README.md` と各 ADR（例: [ADR #0001](adr/0001-use-chainlit-subtree.md) / [ADR #0002](adr/0002-tokenization-with-tiktoken.md) / [ADR #0003](adr/0003-provider-interface.md) / [ADR #0004〜#0007](adr/README.md)）を参照。
 - 運用時のチェックは `Release_Checklist.md` と `Security_Review_Checklist.md` を使用。
-- Day8 系資料の推奨参照順: `third_party/Day8/workflow-cookbook/HUB.codex.md`（観測ハブ）→ `third_party/Day8/workflow-cookbook/GUARDRAILS.md`（統制基準）→ `third_party/Day8/workflow-cookbook/BLUEPRINT.md` 群（運用設計）を推奨シーケンスとして維持する。
+- Day8 系資料の推奨参照順（HUB → Guardrails → Blueprint 群）: `third_party/Day8/workflow-cookbook/HUB.codex.md`（観測ハブ）→ `third_party/Day8/workflow-cookbook/GUARDRAILS.md`（統制基準）→ `third_party/Day8/workflow-cookbook/BLUEPRINT.md` 群（運用設計）を推奨シーケンスとして維持する。
 - Birdseye 図 (`docs/birdseye/index.json`, `docs/birdseye/caps/`, `docs/birdseye/hot.json`) はエントリポイントや依存関係を更新した際に同時更新する。更新手順: (1) `index.json` は `generated_at`・`nodes[]`・`edges[]` の最小スキーマで維持し、主要ノードの `role` と Capsule 参照パスを反映する、(2) 代表ノードごとの Capsule は `summary`/`role`/`deps`/`tests` を最新化した JSON に統一する、(3) 頻出入口を `hot.json` に列挙し理由を明記する、(4) すべてのファイルで同一の `generated_at` を記録する。
 - CHANGELOG 更新手順: [`README.md#変更履歴の更新ルール`](../README.md#%E5%A4%89%E6%9B%B4%E5%B1%A5%E6%AD%B4%E3%81%AE%E6%9B%B4%E6%96%B0%E3%83%AB%E3%83%BC%E3%83%AB)。
 
