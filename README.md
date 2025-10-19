@@ -2,6 +2,7 @@
 
 <!-- LLM-BOOTSTRAP v1 -->
 読む順番:
+
 1. docs/birdseye/index.json  …… ノード一覧・隣接関係（軽量）
 2. docs/birdseye/caps/<path>.json …… 必要ノードだけ point read（個別カプセル）
 3. [third_party/Day8/README.md](third_party/Day8/README.md) …… Day8 HUB / Guardrails の起点（詳細は `docs/day8/README.md`）。
@@ -9,19 +10,20 @@
 > `docs/birdseye/hot.json` の `generated_at` は頻出入口リストの生成時刻です。エントリポイントや依存関係を更新した際は `date -u '+%Y-%m-%dT%H:%M:%SZ'` で時刻を取得し、`docs/birdseye/index.json`・`docs/birdseye/caps/`・`docs/birdseye/hot.json` を併せて更新してください。
 
 フォーカス手順:
+
 - 直近変更ファイル±2hopのノードIDを index.json から取得
 - 対応する caps/*.json のみ読み込み
 <!-- /LLM-BOOTSTRAP -->
 
 ## 同梱物
-- 要件: `docs/Katamari_Requirements_v3_ja.md`
-- 機能仕様: `docs/Katamari_Functional_Spec_v1_ja.md`
-- 技術仕様: `docs/Katamari_Technical_Spec_v1_ja.md`
-- ロードマップ & 仕様索引: `docs/ROADMAP_AND_SPECS.md`
-- OpenAPI: `docs/openapi/katamari_openapi.yaml`
-- 設定: `config/model_registry.json`, `config/env.example`
-- フォーク運用: `docs/UPSTREAM.md`, `docs/FORK_NOTES.md`
-- ADR: `docs/adr/README.md`
+- 要件: [`docs/Katamari_Requirements_v3_ja.md`](docs/Katamari_Requirements_v3_ja.md)
+- 機能仕様: [`docs/Katamari_Functional_Spec_v1_ja.md`](docs/Katamari_Functional_Spec_v1_ja.md)
+- 技術仕様: [`docs/Katamari_Technical_Spec_v1_ja.md`](docs/Katamari_Technical_Spec_v1_ja.md)
+- ロードマップ & 仕様索引: [`docs/ROADMAP_AND_SPECS.md`](docs/ROADMAP_AND_SPECS.md)
+- OpenAPI: [`docs/openapi/katamari_openapi.yaml`](docs/openapi/katamari_openapi.yaml)
+- 設定: [`config/model_registry.json`](config/model_registry.json), [`config/env.example`](config/env.example)
+- フォーク運用: [`docs/UPSTREAM.md`](docs/UPSTREAM.md), [`docs/FORK_NOTES.md`](docs/FORK_NOTES.md)
+- ADR: [`docs/adr/README.md`](docs/adr/README.md)
 - Day8 HUB / Guardrails: `third_party/Day8/README.md`, `third_party/Day8/docs/day8/README.md`
 
 ## ローカル起動手順
