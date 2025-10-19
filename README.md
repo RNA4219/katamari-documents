@@ -1,33 +1,28 @@
 # Katamari (Chainlit Fork) – 要件&仕様パック
 
 <!-- LLM-BOOTSTRAP v1 -->
-> **Birdseye参照フロー**
-> 1. [`docs/birdseye/index.json`](docs/birdseye/index.json) で対象ノードID・依存を確認。
-> 2. [`docs/birdseye/caps/<path>.json`](docs/birdseye/caps) の必要カプセルのみ point read。
-> 3. [`docs/birdseye/hot.json`](docs/birdseye/hot.json) の頻出入口と `generated_at` を照合し、古い場合は `date -u '+%Y-%m-%dT%H:%M:%SZ'` で共通タイムスタンプを取得して一括更新。
->
-> **仕様ハブ**
-> - 初回導線: [`docs/ROADMAP_AND_SPECS.md`](docs/ROADMAP_AND_SPECS.md)
-> - Birdseye 再生成: `RUNBOOK.md` の更新手順、[`third_party/Day8/workflow-cookbook/tools/codemap/update.py`](third_party/Day8/workflow-cookbook/tools/codemap/update.py)
-
 読む順番:
 1. [`docs/birdseye/index.json`](docs/birdseye/index.json) …… ノード一覧・隣接関係（軽量）
-2. `docs/birdseye/caps/<path>.json` …… 必要ノードだけ point read（個別カプセル）
+2. [`docs/birdseye/caps/<path>.json`](docs/birdseye/caps) …… 必要ノードだけ point read（個別カプセル）
 3. [`docs/ROADMAP_AND_SPECS.md`](docs/ROADMAP_AND_SPECS.md) …… Birdseye ノードと仕様ハブを突き合わせ、優先タスクを特定
-4. [`docs/birdseye/hot.json`](docs/birdseye/hot.json) …… 頻出エントリポイントの鮮度確認（`generated_at` をテンプレート上記手順で更新）
+4. [`docs/birdseye/hot.json`](docs/birdseye/hot.json) …… 頻出エントリポイントの鮮度確認（`generated_at` は共通タイムスタンプで更新）
 5. [third_party/Day8/README.md](third_party/Day8/README.md) …… Day8 資料の総覧（詳細は `docs/day8/README.md`）
 6. Day8 オペレーション資料（推奨参照順）: [HUB.codex.md](third_party/Day8/workflow-cookbook/HUB.codex.md)（観測ハブ）→ [GUARDRAILS.md](third_party/Day8/workflow-cookbook/GUARDRAILS.md)（統制基準）→ [BLUEPRINT.md](third_party/Day8/workflow-cookbook/BLUEPRINT.md) 群（運用設計）
-
-> [`docs/birdseye/hot.json`](docs/birdseye/hot.json) の `generated_at` は頻出入口リストの生成時刻です。エントリポイントや依存関係を更新した際は `date -u '+%Y-%m-%dT%H:%M:%SZ'` で時刻を取得し、[`docs/birdseye/index.json`](docs/birdseye/index.json)・`docs/birdseye/caps/`・[`docs/birdseye/hot.json`](docs/birdseye/hot.json) を併せて更新してください。
-> 1. `date -u '+%Y-%m-%dT%H:%M:%SZ'` を実行して共通タイムスタンプを取得
-> 2. [`docs/birdseye/index.json`](docs/birdseye/index.json) の `generated_at` と対象ノードの `mtime` を更新
-> 3. 更新対象の `docs/birdseye/caps/*.json` と [`docs/birdseye/hot.json`](docs/birdseye/hot.json) に同じ `generated_at` を反映
-> 4. [`docs/birdseye/hot.json`](docs/birdseye/hot.json) には Chainlit 起動やプロバイダー呼び出しなど主要なエントリポイント ID を 3 件程度列挙し、理由を最新化
 
 フォーカス手順:
 - 直近変更ファイル±2hopのノードIDを [`docs/birdseye/index.json`](docs/birdseye/index.json) から取得
 - 対応する `docs/birdseye/caps/*.json` のみ読み込み
 
+参照リンク:
+- 仕様ハブ: [`docs/ROADMAP_AND_SPECS.md`](docs/ROADMAP_AND_SPECS.md)
+- Birdseye 参照先（整備予定）: `docs/birdseye/README.md`
+- Birdseye 再生成フロー: `RUNBOOK.md` と [`third_party/Day8/workflow-cookbook/tools/codemap/update.py`](third_party/Day8/workflow-cookbook/tools/codemap/update.py)
+
+アップデート手順メモ:
+1. `date -u '+%Y-%m-%dT%H:%M:%SZ'` を実行して共通タイムスタンプを取得
+2. [`docs/birdseye/index.json`](docs/birdseye/index.json) の `generated_at` と対象ノードの `mtime` を更新
+3. 更新対象の `docs/birdseye/caps/*.json` と [`docs/birdseye/hot.json`](docs/birdseye/hot.json) に同じ `generated_at` を反映
+4. [`docs/birdseye/hot.json`](docs/birdseye/hot.json) には Chainlit 起動やプロバイダー呼び出しなど主要なエントリポイント ID を 3 件程度列挙し、理由を最新化
 <!-- /LLM-BOOTSTRAP -->
 
 ## 同梱物
