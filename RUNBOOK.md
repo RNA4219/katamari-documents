@@ -33,6 +33,12 @@ Guardrails の「準備→実行→検証」フローを章立てに対応させ
 2. SSE 遅延が閾値を超えた場合、`docs/addenda/J_Runbook.md` のトラブルシュート手順に従う。
 3. 重大障害は `CHANGELOG.md` に記録し、関連 Task Seed を更新。
 
+## 最小フロー
+1. `docs/ROADMAP_AND_SPECS.md` で対象フェーズと関連タスクを特定し、RUNBOOK の対象手順を明確化。
+2. 上記「準備→実行→検証」の順でコマンド・証跡を取得し、結果を `CHECKLISTS.md` の該当フェーズに転記。
+3. 異常検知時は `TASK.*.md` へフォローアップを記録し、必要に応じて `BLUEPRINT.md` や Birdseye を更新。
+4. 受入判断は `EVALUATION.md` の AC と照合し、満たない場合は再実行計画を併記する。
+
 ## Acceptance Criteria
 - 起動直後に Persona 選択・Trim/Reflect チェーンが正常に表示される。
 - `ruff`・`mypy --strict`・`pytest`・`node:test` が全て成功するか、既知の skip 理由が記録されている。

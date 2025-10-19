@@ -19,6 +19,12 @@ Guardrails のチェックリスト順（Dev→PR→Release→Ops）をなぞり
 2. 項目を実施するたびに証跡（ログ、CI 結果、スクリーンショット）を残す。
 3. 未完了項目がある場合は Task Seed を更新し、リリース可否を `EVALUATION.md` に連携する。
 
+## 最小フロー
+1. `docs/ROADMAP_AND_SPECS.md` と対象 Task Seed を照合し、該当フェーズのチェックリストを選択。
+2. Guardrails の順序（Dev→PR→Release→Ops）で項目を進め、証跡を都度記録。
+3. 例外が発生した場合は `TASK.*.md` にフォローアップと担当を明記し、`RUNBOOK.md` の手順更新を検討。
+4. 評価完了後は `EVALUATION.md` の AC を更新し、Birdseye の該当ノードを最新化する。
+
 ## Acceptance Criteria
 - 各フェーズの必須項目が `PASS` になっているか、例外（`N/A`）理由が明記されている。
 - 例外がある場合、フォローアップ Task Seed が登録されている。
