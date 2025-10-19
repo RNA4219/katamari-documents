@@ -64,7 +64,7 @@ make dev
 ### Step 2: アプリのローカル起動
 
 1. `.env` に必要な値を設定した状態で `make run` を実行する。
-2. Chainlit が `http://localhost:8787`（`PORT` を設定している場合はその値）で立ち上がる。
+2. Chainlit が `http://localhost:8787` で立ち上がる（ポートを変更したい場合は `chainlit run src/app.py --host 0.0.0.0 --port <port>` を直接実行するか、`Makefile` の `run` ターゲットを調整する）。
 3. 停止するときは実行ターミナルで `Ctrl + C` を送る。
 
 ```bash
@@ -82,7 +82,7 @@ make run
 | 任意 | `GEMINI_API_KEY` | 旧名称。既存デプロイ互換用 | `GEMINI_API_KEY=...` | 既存環境からの移行時に保持 |
 | 任意 | `DEFAULT_PROVIDER` | 既定で使用する LLM プロバイダー識別子 | `DEFAULT_PROVIDER=openai` | 省略時は OpenAI |
 | 任意 | `CHAINLIT_AUTH_SECRET` | Chainlit セッション署名用シークレット | `CHAINLIT_AUTH_SECRET=change-me` | 本番は十分な長さに変更 |
-| 任意 | `PORT` | `make run` の待ち受けポート | `PORT=8787` | Docker 起動時は `-p <host>:<PORT>` と併用 |
+| 任意 | `PORT` | Chainlit を手動で起動するときの待ち受けポート | `PORT=8787` | `make run` は既定で 8787 を指定。必要なら `chainlit run ... --port` を利用 |
 | 任意 | `LOG_LEVEL` | Chainlit ログ出力レベル | `LOG_LEVEL=info` | `debug`/`warning` などを指定可 |
 | 任意 | `SEMANTIC_RETENTION_PROVIDER` | 会話保持率メトリクス算出時の埋め込みプロバイダー | `SEMANTIC_RETENTION_PROVIDER=openai` | 指定時は下記モデル設定も併用 |
 | 任意 | `SEMANTIC_RETENTION_OPENAI_MODEL` | OpenAI 埋め込みモデル名 | `SEMANTIC_RETENTION_OPENAI_MODEL=text-embedding-3-large` | OpenAI プロバイダー指定時に利用 |
@@ -105,7 +105,7 @@ LOG_LEVEL=info
 
 1. Chainlit UI 右上の **Settings → Theme** から `themes/` 配下のプリセット（`.theme.json`）を選択する。
 2. テーマを追加する場合は `themes/` に `.theme.json` を配置し、同メニューの **Theme → Import JSON** で読み込む。
-3. ペルソナ設定と連携するテーマの編集手順は [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) を参照し、必要に応じてテーマ JSON とペルソナ設定を同期する。
+3. ペルソナ連動などテーマの詳細設計は [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) を参照し、必要に応じてテーマ JSON とペルソナ設定を同期する。
 
 - 本パックは「katamari」の要件定義・機能仕様・技術仕様・OpenAPI・初期設定を含むドキュメント集です。
 - まずは `docs/Katamari_Requirements_v3_ja.md` をご確認ください。
