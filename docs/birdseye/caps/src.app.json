@@ -1,24 +1,22 @@
 {
   "id": "src/app.py",
   "role": "entrypoint",
-  "summary": "Chainlit のイベントハンドラを束ね、設定同期・履歴トリミング・マルチステップ推論・LLM 呼び出しを仲介するエントリポイント。",
+  "summary": "Chainlit イベントフックを束ね、設定同期・履歴トリミング・マルチステップ推論・LLM ストリーミングを統合するメインエントリポイント。",
   "deps": {
     "out": [
-      "core_ext.persona_compiler.compile_persona_yaml",
-      "core_ext.context_trimmer.trim_messages",
       "core_ext.prethought.analyze_intent",
+      "core_ext.context_trimmer.trim_messages",
+      "core_ext.persona_compiler.compile_persona_yaml",
       "core_ext.multistep.get_chain_steps",
       "core_ext.multistep.system_hint_for_step",
-      "providers.openai_client.OpenAIProvider",
-      "chainlit.ChatSettings",
-      "chainlit.Message"
+      "providers.openai_client.OpenAIProvider"
     ],
     "in": [
       "tests/app/test_metrics_healthz.py"
     ]
   },
   "tests": [
-    "tests/app/test_metrics_healthz.py"
+    "pytest tests/app/test_metrics_healthz.py"
   ],
-  "generated_at": "2025-10-19T22:00:00Z"
+  "generated_at": "2025-10-20T00:00:00Z"
 }

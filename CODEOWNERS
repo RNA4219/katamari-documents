@@ -1,22 +1,35 @@
-# CODEOWNERS は主要領域ごとにレビュー担当者を割り当てます。詳細は CONTRIBUTING.md を参照してください。
+# CODEOWNERS は主要ディレクトリごとにリポジトリオーナー（個人 + AI）を必ず含め、専門チームを補助 reviewer として指定します。
+# - 個人オーナー: @RNA4219
+# - AI オーナー:   @katamari-bot
+# 詳細は CONTRIBUTING.md と CODE_OF_CONDUCT.md を参照してください。
 
 # 既定の担当者
-* @katamari-org/maintainers
+* @RNA4219 @katamari-bot
 
 # アプリケーション実装
-/src/app.py @katamari-org/maintainers @katamari-org/runtime
-/src/core_ext/ @katamari-org/maintainers @katamari-org/runtime
-/src/providers/ @katamari-org/maintainers @katamari-org/integrations
+/src/ @RNA4219 @katamari-bot @katamari-org/runtime
+/personas/ @RNA4219 @katamari-bot @katamari-org/runtime
+/themes/ @RNA4219 @katamari-bot @katamari-org/design
+/public/ @RNA4219 @katamari-bot @katamari-org/frontend
+/upstream/ @RNA4219 @katamari-bot @katamari-org/runtime
 
-# テスト
-/tests/app/ @katamari-org/maintainers @katamari-org/qa
-/tests/core_ext/ @katamari-org/maintainers @katamari-org/qa
-/tests/providers/ @katamari-org/maintainers @katamari-org/qa
+# テストと品質保証
+/tests/ @RNA4219 @katamari-bot @katamari-org/qa
+/third_party/ @RNA4219 @katamari-bot @katamari-org/qa
 
 # ドキュメントとナレッジ
-/docs/ @katamari-org/maintainers @katamari-org/docs
-/public/ @katamari-org/maintainers @katamari-org/frontend
-/themes/ @katamari-org/maintainers @katamari-org/design
+/docs/ @RNA4219 @katamari-bot @katamari-org/docs
+/README.md @RNA4219 @katamari-bot @katamari-org/docs
+/CHANGELOG.md @RNA4219 @katamari-bot @katamari-org/docs
 
-# 運用ツール
-/scripts/ @katamari-org/maintainers @katamari-org/devops
+# 運用・自動化ツール
+/scripts/ @RNA4219 @katamari-bot @katamari-org/devops
+/.github/ @RNA4219 @katamari-bot @katamari-org/devops
+/Dockerfile @RNA4219 @katamari-bot @katamari-org/devops
+/Makefile @RNA4219 @katamari-bot @katamari-org/devops
+
+# 設定・データ資産
+/config/ @RNA4219 @katamari-bot @katamari-org/runtime
+/RUNBOOK.md @RNA4219 @katamari-bot @katamari-org/devops
+/CHECKLISTS.md @RNA4219 @katamari-bot @katamari-org/devops
+/TASK.*.md @RNA4219 @katamari-bot @katamari-org/docs

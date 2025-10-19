@@ -1,15 +1,15 @@
 # TASK.2025-10-19-0001
 
 ## 目的
-- Roadmap 優先度 #2（CI・自動化基盤）に基づき、lint/type/test/publish の品質ゲートを整備する。
+- Roadmap 優先度 #2（CI・自動化基盤）に基づき、lint/type/test/publish の品質ゲートを個人運用でも再現できるよう整備する。
 - Guardrails のテスト先行・最小差分原則を守り、CI とリリース判定の一貫性を確保する。
 
 ## 要件
 - GitHub Actions で `ruff`・`mypy --strict`・`pytest`・`node:test` をジョブ分割し、Secrets 不在時は統合テストを Graceful Skip させる。
 - タグ push トリガーの release ワークフローで Docker Buildx + GHCR publish を実行する。
-- CI 結果と `docs/Release_Checklist.md` / `docs/Security_Review_Checklist.md` を紐付けて、DoD 判断に使用できる状態にする。
+- CI 結果と `docs/Release_Checklist.md` / `docs/Security_Review_Checklist.md` を紐付けて、DoD 判断に使用できる状態にする。個人検証でも証跡を Task Seed にリンクする。
 - Birdseye 図と Task Seed を更新し、変更理由とフォローアップを追跡できるようにする。
-- Guardrails HUB → GUARDRAILS → BLUEPRINT の順にドキュメントを参照し、設計・運用・評価の整合性を確保する。
+- Guardrails HUB → GUARDRAILS → BLUEPRINT の順にドキュメントを参照し、設計・運用・評価の整合性を確保する。単独作業なので参照結果を Task Seed にメモする。
 
 ## 想定コマンド
 ```bash

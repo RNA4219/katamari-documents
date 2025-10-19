@@ -1,0 +1,19 @@
+{
+  "id": "src/core_ext/persona_compiler.py",
+  "role": "persona",
+  "summary": "Persona YAML を解析し、口調・禁止事項・追記事項から Chainlit 用システムプロンプトを組み立てて検証結果を返す。",
+  "deps": {
+    "out": [
+      "yaml.safe_load",
+      "re.compile"
+    ],
+    "in": [
+      "src/app.py",
+      "tests/test_persona_compiler.py"
+    ]
+  },
+  "tests": [
+    "pytest tests/test_persona_compiler.py"
+  ],
+  "generated_at": "2025-10-20T00:00:00Z"
+}
