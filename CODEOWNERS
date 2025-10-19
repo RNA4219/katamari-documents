@@ -1,50 +1,56 @@
-# Default reviewers
-* @katamari-org/maintainers
+# フォーマット: <パス> <主要オーナー> <副担当>
+# 主要オーナーは一次レビュー責任者、副担当はレビュー支援・代理承認責任を持ちます。
 
-# Core runtime extensions
+# デフォルトレビュア
+* @katamari-org/maintainers @product-tech-lead
+
+# コアランタイム拡張
 /src/core_ext/ @katamari-org/runtime-team @alice-architect
 
-# Provider integrations
+# プロバイダ統合
 /src/providers/ @katamari-org/providers-team @integrations-lead
 
-# Application services
+# アプリケーションサービス
 /src/app.py @katamari-org/backend @alice-architect
 /src/services/ @katamari-org/backend @product-tech-lead
-/src/ @katamari-org/backend
+/src/ @katamari-org/backend @runtime-duty-officer
 
-# Documentation and knowledge base
-/README.md @katamari-org/docs-team
-/docs/adr/ @katamari-org/architecture-council
-/docs/ @katamari-org/docs-team
+# ドキュメント / ナレッジベース
+/README.md @katamari-org/docs-team @devrel-lead
+/docs/adr/ @katamari-org/architecture-council @alice-architect
+/docs/ @katamari-org/docs-team @devrel-lead
 
-# Personas and themes
-/personas/ @katamari-org/ux-research
-/themes/ @katamari-org/content
+# ペルソナ / テーマ
+/personas/ @katamari-org/ux-research @research-liaison
+/themes/ @katamari-org/content @design-lead
 
-# Public assets and frontend glue
+# 公開アセット / フロントエンド
 /public/ @katamari-org/frontend @design-lead
 /upstream/chainlit/ @katamari-org/frontend @frontend-captain
+/upstream/ @katamari-org/frontend @platform-liaison
 
-# Python and shared tests
-/tests/ @katamari-org/qa
-/pytest.ini @katamari-org/qa
+# Python / 共有テスト
+/tests/ @katamari-org/qa @product-tech-lead
+/pytest.ini @katamari-org/qa @product-tech-lead
 
-# Tooling and automation scripts
-/scripts/ @katamari-org/tooling
-/Makefile @katamari-org/tooling
+# ツール / 自動化
+/scripts/ @katamari-org/tooling @devops-lead
+/Makefile @katamari-org/tooling @devops-lead
+/config/ci/ @katamari-org/tooling @devops-lead
+/.github/ @katamari-org/tooling @devrel-lead
 
-# Deployment manifests and infrastructure
-/config/ @katamari-org/platform
-/Dockerfile @katamari-org/platform
+# デプロイ / インフラ
+/config/ @katamari-org/platform @sre-duty-officer
+/Dockerfile @katamari-org/platform @sre-duty-officer
 
-# Dependency manifests
-/requirements.txt @katamari-org/tooling
+# 依存関係管理
+/requirements.txt @katamari-org/tooling @product-tech-lead
 /requirements-eval.txt @katamari-org/tooling @data-science-lead
 
-# Third-partyとライセンスミラー
-/third_party/ @katamari-org/legal
+# サードパーティ / ライセンス
+/third_party/ @katamari-org/legal @legal-counsel
 
 # トップレベルガバナンス
 /CODE_OF_CONDUCT.md @katamari-org/maintainers @legal-counsel
-/CONTRIBUTING.md @katamari-org/maintainers
-/CHECKLISTS.md @katamari-org/qa
+/CONTRIBUTING.md @katamari-org/maintainers @product-tech-lead
+/CHECKLISTS.md @katamari-org/qa @product-tech-lead
