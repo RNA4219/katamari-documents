@@ -1,15 +1,16 @@
 {
   "id": "src/providers/openai_client.py",
   "role": "provider",
-  "summary": "AsyncOpenAI クライアントを初期化し、Chat Completions API のストリーミング／一括応答を抽象化するプロバイダー。",
+  "summary": "OpenAI Chat Completions API へのストリーミング/一括呼び出しを抽象化し、Chainlit から非同期で利用するためのプロバイダラッパー。",
   "deps": {
     "out": [
-      "openai.AsyncOpenAI"
+      "openai.AsyncOpenAI",
+      "os.getenv"
     ],
     "in": [
       "src/app.py"
     ]
   },
   "tests": [],
-  "generated_at": "2025-10-20T00:00:00Z"
+  "generated_at": "2024-06-07T00:00:00Z"
 }
