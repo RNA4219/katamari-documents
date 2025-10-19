@@ -22,7 +22,10 @@
 > - [EVALUATION.md](../EVALUATION.md): 受入判定手順と指標、チェック項目を整理。
 > - [CHECKLISTS.md](../CHECKLISTS.md): Dev→PR→Release→Ops の各フェーズで参照するチェックリスト集。
 > - [TASK.<YYYY-MM-DD>-0001.md](../TASK.2025-10-19-0001.md): 初期 Task Seed。目的・要件・想定コマンドを記録し、フォローアップを管理。
-| Day8 HUB / Guardrails | `third_party/Day8/workflow-cookbook/HUB.codex.md`, `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | Day8 オペレーション導線（観測ハブ→統制基準）を一気通貫で把握。 |
+> - Guardrails 原典: [third_party/Day8/workflow-cookbook/GUARDRAILS.md](../third_party/Day8/workflow-cookbook/GUARDRAILS.md)。各節の目的・
+>   スコープ・AC を参照し、上記ドキュメント更新時は整合性を必ず確認する。
+| Day8 HUB | `third_party/Day8/workflow-cookbook/HUB.codex.md` | Day8 オペレーション全体を俯瞰する観測ハブ（入口）。 |
+| Day8 Guardrails | `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | HUB で得た観測を踏まえた統制基準・安全策（第二段）。 |
 | Day8 Blueprint | `third_party/Day8/workflow-cookbook/BLUEPRINT.md` | Guardrails を適用した運用ブループリント（実装設計）。 |
 
 ## 2. 実装モジュールと対応仕様
