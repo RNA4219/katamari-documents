@@ -13,7 +13,7 @@
 | 追加リファレンス | `docs/addenda/*.md` | UI モック、プロバイダ比較、テストケース、構成ファイル解説など。 |
 | マイルストーン DoD | `docs/adr/0004-m1-metrics-and-retention.md` ほか [ADR #0004〜#0007](adr/README.md) | M1〜M2.5 の到達基準と DoD チェックリスト。 |
 | フォーク運用 | `docs/UPSTREAM.md`, `docs/FORK_NOTES.md`<br>[ADR #0001](adr/0001-use-chainlit-subtree.md) | Chainlit subtree の取得・差分吸収手順。 |
-| リリース & セキュリティ | `docs/Release_Checklist.md`, `docs/Security_Review_Checklist.md` | 受入証跡・影響範囲・ラベル・CHANGELOG と LICENSE/NOTICE 同梱の品質ゲート。 |
+| リリース & セキュリティ | `docs/Release_Checklist.md`, `docs/Security_Review_Checklist.md` | Guardrails 必須項目を備えた「準備→検証→リリース」手順とセキュリティレビューの品質ゲート。 |
 | Guardrails 連動ドキュメント | `BLUEPRINT.md`, `RUNBOOK.md`, `EVALUATION.md`, `CHECKLISTS.md`, `TASK.*.md` | Guardrails フローに沿った設計・運用・評価・追跡の基盤文書。 |
 | Day8 HUB | `third_party/Day8/workflow-cookbook/HUB.codex.md` | 観測ハブとして Day8 オペレーション全体の入口を提示する役割ドキュメント。 |
 | Day8 Guardrails | `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | HUB からのインサイトを受けて統制基準・安全策を定義する役割ドキュメント。 |
