@@ -9,6 +9,7 @@
 - OpenAPI: `docs/openapi/katamari_openapi.yaml`
 - 設定: `config/model_registry.json`, `config/env.example`
 - フォーク運用: `docs/UPSTREAM.md`, `docs/FORK_NOTES.md`
+- ADR: `docs/adr/README.md`
 
 ## Docker イメージの利用
 
