@@ -1,17 +1,17 @@
 {
-  "generated_at": "2025-10-19T22:00:00Z",
+  "generated_at": "2025-10-20T00:00:00Z",
   "entries": [
     {
       "id": "src/app.py",
-      "reason": "Chainlit のチャット起動・設定同期・LLM 呼び出しを一手に担う実行時エントリポイント"
-    },
-    {
-      "id": "src/core_ext/multistep.py",
-      "reason": "マルチステップチェーンのステップ配列と system hint を決定する推論制御ロジック"
+      "reason": "Chainlit のチャット起動・Chain 設定・LLM 呼び出し・運用エンドポイントを一括制御する最上位エントリポイント"
     },
     {
       "id": "src/core_ext/context_trimmer.py",
-      "reason": "履歴トークン予算を守るためのトリミング/計測を提供する共通ユーティリティ"
+      "reason": "履歴トリミングとトークン計測を提供し、メトリクス更新と LLM 予算管理を担う共通ユーティリティ"
+    },
+    {
+      "id": "src/core_ext/multistep.py",
+      "reason": "ドラフト→批評→最終回答のチェーン構成とフェーズ別システムヒントを定義する推論制御テーブル"
     }
   ]
 }
