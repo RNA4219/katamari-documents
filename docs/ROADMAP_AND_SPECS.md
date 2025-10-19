@@ -56,6 +56,7 @@
 - 実装開始時は `CONTRIBUTING.md` と `CODE_OF_CONDUCT.md` を必読。
 - テスト駆動で進める場合は `tests/` を先に追加し、`I_Test_Cases.md` を参照。
 - Subtree 同期は `docs/UPSTREAM.md` → `scripts/` の補助スクリプトを活用。
+- アーキテクチャ判断は `docs/adr/README.md` と各 ADR（例: [ADR #0001](adr/0001-use-chainlit-subtree.md) / [ADR #0002](adr/0002-tokenization-with-tiktoken.md) / [ADR #0003](adr/0003-provider-interface.md)）を参照。
 - 運用時のチェックは `Release_Checklist.md` と `Security_Review_Checklist.md` を使用。
 - Day8 系資料の推奨読書順: `third_party/Day8/workflow-cookbook/HUB.codex.md`（観測ハブ）→ `third_party/Day8/workflow-cookbook/GUARDRAILS.md`（統制基準）→ `third_party/Day8/workflow-cookbook/BLUEPRINT.md`（運用設計）。
 - Birdseye 図 (`docs/birdseye/index.json`, `docs/birdseye/caps/`, `docs/birdseye/hot.json`) はエントリポイントや依存関係を更新した際に同時更新し、`hot.json` の頻出入口リストも最新状態を維持する。

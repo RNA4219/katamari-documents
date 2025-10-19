@@ -13,7 +13,7 @@
 ## Consequences
 - 影響範囲: 差分管理が `git subtree` ログで可視化され、週次同期フロー（`docs/UPSTREAM.md`）と整合する。
 - 利点: 独自改修が専用ディレクトリに集約され、upstream 更新時のマージ衝突が減る。
-- リスク/フォローアップ: subtree 更新は履歴が膨らむため、タグ単位での取り込みと squash merge 禁止を徹底する必要がある。
+- リスク/フォローアップ: subtree 更新は履歴が膨らむため、タグ単位での取り込みと squash merge 禁止を徹底する必要がある。自動化スクリプトの更新漏れがないように CI チェックリストへ項目を追加する。
 
 ## Status
 - ステータス: 承認済み
@@ -23,3 +23,4 @@
 - `upstream/chainlit/` を subtree として初期化済みであること。
 - フォーク運用手順（`docs/UPSTREAM.md`, `docs/FORK_NOTES.md`）が本 ADR と整合していること。
 - subtree pull 手順を自動化するスクリプトまたはドキュメントが整備されていること。
+- CI で `scripts/sync_chainlit_subtree.sh`（名称は変更可）のドライランを定期的に検証し、失敗時はフォローアップ Issue を起票する運用が確立していること。
