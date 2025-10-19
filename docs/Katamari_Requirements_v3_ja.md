@@ -4,7 +4,7 @@
 
 ## 固定事項（確定）
 - **開始日**：2025/10/19（日）
-- **名称**：katamari（正式名）／UIタイトル：**Katamari (Chainlit Fork)**
+- **名称**：katamari／UIタイトル：**Katamari (Chainlit Fork)**
 - **ENV 名**：`OPENAI_API_KEY`, `GEMINI_API_KEY`, `DEFAULT_PROVIDER=openai`
 - **モデル初期セット**：
   - **GPT-5 系**：`gpt-5-main` / `gpt-5-main-mini` / `gpt-5-thinking` / `gpt-5-thinking-mini` / `gpt-5-thinking-nano` / `gpt-5-thinking-pro`
@@ -16,11 +16,9 @@
 LLM入出力の基盤機能（前処理・多段推論・人格YAML・最適化）を、**Chainlit実質フォーク**で最短構築する。CLIではなく**軽量リッチUI**（Chainlit）を前面に据え、以下をプラガブルに接続：
 - **context-trimmer**（トークン節約）
 - **ai-persona-compiler**（YAML→System）
-- **prethought-analyzer（ほげほげ）**（意図/制約/期待の分解）
-- **multistep-controller（ぴよぴよ）**（draft→critique→final）
+- **prethought-analyzer**（意図/制約/期待の分解）
+- **multistep-controller**（draft→critique→final）
 - **prompt-evolution**（M2：BERTScore/ROUGE/ルールで評価し進化）
-
-> 除外：アニメ脚本・コンテ領域
 
 ## 1. スコープ
 ### 1.1 含む
