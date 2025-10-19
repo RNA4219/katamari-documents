@@ -51,6 +51,25 @@ canary rules.
 4. タスクごとに `workflow-cookbook/TASK.codex.md` を複製して内容を埋め、エージェントに渡す
 5. リリースは `workflow-cookbook/CHECKLISTS.md` をなぞり、差分は `workflow-cookbook/CHANGELOG.md` に追記
 
+### 最小導入セット（Reusable CI）
+
+`.github/workflows/reusable/*.yml` に配置した `workflow_call` ワークフローを他リポから `uses:` で呼び出せる。タグを固定して安定運用する。
+
+```yaml
+jobs:
+  base:
+    uses: RNA4219/workflow-cookbook/.github/workflows/reusable/python-ci.yml@v0.1
+    with:
+      python-version: '3.11'
+  security:
+    uses: RNA4219/workflow-cookbook/.github/workflows/reusable/security-ci.yml@v0.1
+    with:
+      python-version: '3.11'
+    secrets: inherit
+  governance:
+    uses: RNA4219/workflow-cookbook/.github/workflows/governance-gate.yml@v0.1
+```
+
 ## Repository structure
 
 - `workflow-cookbook/docs/` …… Birdseye カプセルや仕様補助ドキュメントを格納
