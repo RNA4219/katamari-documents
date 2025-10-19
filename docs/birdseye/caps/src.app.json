@@ -1,7 +1,7 @@
 {
   "id": "src/app.py",
   "role": "entrypoint",
-  "summary": "Chainlit アプリ本体。セッション設定、トリム指標、LLM 呼び出しを統括し、/healthz・/metrics を FastAPI ルータ経由で公開する。",
+  "summary": "Chainlit アプリ本体。セッション設定、マルチステップ制御、トリミング指標、/healthz・/metrics の FastAPI ルータを統括する中枢。",
   "deps_out": [
     "src/core_ext/context_trimmer.py",
     "src/core_ext/persona_compiler.py",
@@ -15,5 +15,5 @@
   "tests": [
     "tests/app/test_metrics_healthz.py"
   ],
-  "generated_at": "2025-10-19T12:49:54Z"
+  "generated_at": "2025-10-19T14:00:31Z"
 }

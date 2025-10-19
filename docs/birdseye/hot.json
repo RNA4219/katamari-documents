@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-19T12:49:54Z",
+  "generated_at": "2025-10-19T14:00:31Z",
   "entrypoints": [
     {
       "id": "src/app.py",
@@ -7,7 +7,11 @@
     },
     {
       "id": "src/core_ext/context_trimmer.py",
-      "reason": "トークン制御とメトリクス算出で頻出トラブルのボトルネック。"
+      "reason": "トークン制御とメトリクス算出のボトルネック。履歴削減や指標確認時に必ず参照される。"
+    },
+    {
+      "id": "src/providers/openai_client.py",
+      "reason": "既定プロバイダーの差し替えやキー設定確認の起点。"
     }
   ]
 }
