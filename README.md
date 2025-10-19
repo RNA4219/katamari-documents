@@ -44,38 +44,59 @@
 ### 前提インストール
 
 - Python 3.11 系（`python -m venv .venv && source .venv/bin/activate` で仮想環境を推奨）
-- 依存パッケージ: `pip install -r requirements.txt`（または `make dev`）
+- 依存パッケージは `pip install -r requirements.txt` または `make dev`
+
+### セットアップ
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+cp config/env.example .env  # 必須・任意の値をこのファイルで管理
+make dev                    # 依存関係を一括インストール
+```
 
 ### 起動フロー
 
-1. `.env` を `cp config/env.example .env` で作成し、必要な値を埋める
-2. Chainlit を `make run` で起動（デフォルトは `http://localhost:8787`）
-   - 依存の再インストールは `make dev` を利用し、アプリ自体は別ターミナルで `make run`
-3. 終了は実行ターミナルで `Ctrl + C`
+```bash
+make run  # Chainlit を http://localhost:8787 で起動
+```
+
+- アプリ終了は実行ターミナルで `Ctrl + C`
+- 依存を更新したい場合は別ターミナルで `make dev`
 
 ## 環境変数一覧
 
 | 名称 | 必須 | 用途 | 設定例 | 備考 |
 | ---- | ---- | ---- | ------ | ---- |
-| `OPENAI_API_KEY` | はい | OpenAI プロバイダー利用時の API キー | `OPENAI_API_KEY=sk-...` | `.env` または `config/env.example` を参照 |
-| `GOOGLE_GEMINI_API_KEY` | いいえ | Google Gemini プロバイダー利用時の API キー | `GOOGLE_GEMINI_API_KEY=...` | Gemini API を利用する場合のみ |
-| `GEMINI_API_KEY` | いいえ | 旧名称。既存デプロイ互換用 | `GEMINI_API_KEY=...` | `config/env.example` に記載 |
-| `DEFAULT_PROVIDER` | いいえ | 既定で使用する LLM プロバイダー識別子 | `DEFAULT_PROVIDER=openai` | 省略時は OpenAI |
-| `CHAINLIT_AUTH_SECRET` | いいえ（本番推奨） | Chainlit セッション署名用シークレット | `CHAINLIT_AUTH_SECRET=change-me` | 本番は十分な長さに変更 |
-| `PORT` | いいえ | `make run` の待ち受けポート | `PORT=8787` | Docker 起動時は `-p <host>:<PORT>` と併用 |
-| `LOG_LEVEL` | いいえ | Chainlit ログ出力レベル | `LOG_LEVEL=info` | `debug`/`warning` などを指定可 |
-| `SEMANTIC_RETENTION_PROVIDER` | いいえ | 会話保持率メトリクス算出時の埋め込みプロバイダー | `SEMANTIC_RETENTION_PROVIDER=openai` | 集計を無効にする場合は未設定で可 |
-| `SEMANTIC_RETENTION_OPENAI_MODEL` | いいえ | OpenAI 埋め込みモデル名 | `SEMANTIC_RETENTION_OPENAI_MODEL=text-embedding-3-large` | OpenAI プロバイダー指定時に利用 |
-| `SEMANTIC_RETENTION_GEMINI_MODEL` | いいえ | Google Gemini 埋め込みモデル名 | `SEMANTIC_RETENTION_GEMINI_MODEL=text-embedding-004` | Gemini プロバイダー指定時に利用 |
-| `GOOGLE_API_KEY` | いいえ | Gemini 埋め込み生成用 API キー（会話保持率用） | `GOOGLE_API_KEY=...` | `SEMANTIC_RETENTION_PROVIDER=google_gemini` 時に必要 |
+| `OPENAI_API_KEY` | 必須 | OpenAI プロバイダー利用時の API キー | `OPENAI_API_KEY=sk-...` | サンプルは [`config/env.example`](config/env.example) を参照 |
+| `GOOGLE_GEMINI_API_KEY` | 任意 | Google Gemini プロバイダー利用時の API キー | `GOOGLE_GEMINI_API_KEY=...` | Gemini API を利用する場合のみ |
+| `GEMINI_API_KEY` | 任意 | 旧名称。既存デプロイ互換用 | `GEMINI_API_KEY=...` | 既存環境からの移行時に保持 |
+| `DEFAULT_PROVIDER` | 任意 | 既定で使用する LLM プロバイダー識別子 | `DEFAULT_PROVIDER=openai` | 省略時は OpenAI |
+| `CHAINLIT_AUTH_SECRET` | 任意（本番推奨） | Chainlit セッション署名用シークレット | `CHAINLIT_AUTH_SECRET=change-me` | 本番は十分な長さに変更 |
+| `PORT` | 任意 | `make run` の待ち受けポート | `PORT=8787` | Docker 起動時は `-p <host>:<PORT>` と併用 |
+| `LOG_LEVEL` | 任意 | Chainlit ログ出力レベル | `LOG_LEVEL=info` | `debug`/`warning` などを指定可 |
+| `SEMANTIC_RETENTION_PROVIDER` | 任意 | 会話保持率メトリクス算出時の埋め込みプロバイダー | `SEMANTIC_RETENTION_PROVIDER=openai` | 指定時は下記モデル設定も併用 |
+| `SEMANTIC_RETENTION_OPENAI_MODEL` | 任意 | OpenAI 埋め込みモデル名 | `SEMANTIC_RETENTION_OPENAI_MODEL=text-embedding-3-large` | OpenAI プロバイダー指定時に利用 |
+| `SEMANTIC_RETENTION_GEMINI_MODEL` | 任意 | Google Gemini 埋め込みモデル名 | `SEMANTIC_RETENTION_GEMINI_MODEL=text-embedding-004` | Gemini プロバイダー指定時に利用 |
+| `GOOGLE_API_KEY` | 任意 | Gemini 埋め込み生成用 API キー（会話保持率用） | `GOOGLE_API_KEY=...` | `SEMANTIC_RETENTION_PROVIDER=google_gemini` 時に必要 |
 
-> すべての項目は [`config/env.example`](config/env.example) などのサンプルを `.env` にコピーし、必要な値だけ上書きしてください。
+### `.env` 設定例
+
+```dotenv
+OPENAI_API_KEY=sk-...
+DEFAULT_PROVIDER=openai
+CHAINLIT_AUTH_SECRET=change-me
+PORT=8787
+LOG_LEVEL=info
+```
+
+> まず `cp config/env.example .env` を行い、上記を参考に必須項目を埋めてください。
 
 ## テーマ切り替え
 
-1. Chainlit UI 右上の **Settings → Theme** で `themes/` 配下のプリセット（`.theme.json`）を選択
-2. 追加したいテーマ JSON を `themes/` に配置し、UI の **Theme → Import JSON** から読み込む
-3. 詳細なカスタマイズやペルソナ連携は [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) を参照（JSON の雛形・設定例を掲載）
+1. Chainlit UI 右上の **Settings → Theme** から `themes/` 配下のプリセット（`.theme.json`）を選択
+2. 追加したいテーマ JSON を `themes/` に配置し、同メニューの **Theme → Import JSON** で読み込む
+3. ペルソナ連携やテーマ JSON の詳細は [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) を参照
 
 - 本パックは「katamari」の要件定義・機能仕様・技術仕様・OpenAPI・初期設定を含むドキュメント集です。
 - まずは `docs/Katamari_Requirements_v3_ja.md` をご確認ください。
