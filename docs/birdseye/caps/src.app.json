@@ -1,19 +1,21 @@
 {
   "id": "src/app.py",
   "role": "entrypoint",
-  "summary": "Chainlit アプリ本体。セッション設定、マルチステップ制御、トリミング指標、/healthz・/metrics の FastAPI ルータを統括する中枢。",
-  "deps_out": [
-    "src/core_ext/context_trimmer.py",
-    "src/core_ext/persona_compiler.py",
-    "src/core_ext/prethought.py",
-    "src/core_ext/multistep.py",
-    "src/providers/openai_client.py"
-  ],
-  "deps_in": [
-    "tests/app/test_metrics_healthz.py"
-  ],
+  "summary": "Chainlit アプリ全体を束ね、チャット起動・設定同期・マルチステップ制御・メトリクス公開を担う中枢。",
+  "deps": {
+    "outbound": [
+      "src/core_ext/context_trimmer.py",
+      "src/core_ext/persona_compiler.py",
+      "src/core_ext/prethought.py",
+      "src/core_ext/multistep.py",
+      "src/providers/openai_client.py"
+    ],
+    "inbound": [
+      "tests/app/test_metrics_healthz.py"
+    ]
+  },
   "tests": [
     "tests/app/test_metrics_healthz.py"
   ],
-  "generated_at": "2025-10-19T14:00:31Z"
+  "generated_at": "2025-10-19T14:53:17Z"
 }
