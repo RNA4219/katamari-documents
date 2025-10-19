@@ -6,12 +6,6 @@ Katamari NOTICE
 Copyright (c) 2024 Day8 and contributors
 Copyright (c) Chainlit SAS and Chainlit contributors
 
-本フォークで追加・変更された主な事項は以下のとおりです。
-
-- persona_compiler / context_trimmer / prethought / multistep / evolve など、会話制御アルゴリズムとチェーン構成の拡張
-- OpenAI / Gemini を含むマルチプロバイダ抽象化および Day8 管理向け API (`/metrics`, `/healthz`, `/api/models` 等) の追加
-- Day8 ガードレール資料・テーマ定義・運用スクリプト一式の導入と、それらに基づく運用フローの整理
+本フォークでは persona_compiler / context_trimmer / prethought / multistep / evolve などによる会話制御アルゴリズムとチェーン構成の拡張、OpenAI / Gemini 等を含むマルチプロバイダ抽象化と Day8 管理向け API ("/metrics", "/healthz", "/api/models" 等) の追加、Day8 ガードレール資料・テーマ定義・運用スクリプト一式の導入を中心に改変しており、ご質問は GitHub Issues (https://github.com/Day8/katamari/issues) までお寄せください。
 
 Apache License, Version 2.0 の全文は `LICENSE` を参照してください。
-
-本フォークに関する問い合わせは GitHub Issues (https://github.com/Day8/katamari/issues) までお願いします。
