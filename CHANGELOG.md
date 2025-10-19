@@ -16,4 +16,4 @@
 ## [0.1.0] - 2024-05-26
 
 ### Added
-- `docs/ROADMAP_AND_SPECS.md` を追加し、ロードマップと仕様索引を公開。
+- ロードマップと仕様索引のハブとして `docs/ROADMAP_AND_SPECS.md` を追加。

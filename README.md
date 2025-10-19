@@ -38,8 +38,10 @@
 - 機能仕様: [`docs/Katamari_Functional_Spec_v1_ja.md`](docs/Katamari_Functional_Spec_v1_ja.md)
 - 技術仕様: [`docs/Katamari_Technical_Spec_v1_ja.md`](docs/Katamari_Technical_Spec_v1_ja.md)
 - OpenAPI: [`docs/openapi/katamari_openapi.yaml`](docs/openapi/katamari_openapi.yaml)
+- 変更履歴: [`CHANGELOG.md`](CHANGELOG.md)（更新手順: [`README.md#変更履歴の更新ルール`](README.md#%E5%A4%89%E6%9B%B4%E5%B1%A5%E6%AD%B4%E3%81%AE%E6%9B%B4%E6%96%B0%E3%83%AB%E3%83%BC%E3%83%AB)）
 - フォーク運用: [`docs/UPSTREAM.md`](docs/UPSTREAM.md), [`docs/FORK_NOTES.md`](docs/FORK_NOTES.md)
-- Day8 オペレーション資料: [`third_party/Day8/workflow-cookbook/HUB.codex.md`](third_party/Day8/workflow-cookbook/HUB.codex.md)（観測ハブ）→ [`third_party/Day8/workflow-cookbook/GUARDRAILS.md`](third_party/Day8/workflow-cookbook/GUARDRAILS.md)（統制基準）→ [`third_party/Day8/workflow-cookbook/BLUEPRINT.md`](third_party/Day8/workflow-cookbook/BLUEPRINT.md)（運用設計）
+- Day8 オペレーション資料（推奨参照順: HUB → Guardrails → Blueprint）: [`third_party/Day8/workflow-cookbook/HUB.codex.md`](third_party/Day8/workflow-cookbook/HUB.codex.md)（観測ハブ）→ [`third_party/Day8/workflow-cookbook/GUARDRAILS.md`](third_party/Day8/workflow-cookbook/GUARDRAILS.md)（統制基準）→ [`third_party/Day8/workflow-cookbook/BLUEPRINT.md`](third_party/Day8/workflow-cookbook/BLUEPRINT.md)（運用設計）
+<!-- /LLM-BOOTSTRAP -->
 
 ## 同梱物
 - 要件: [`docs/Katamari_Requirements_v3_ja.md`](docs/Katamari_Requirements_v3_ja.md)
@@ -57,27 +59,25 @@
 ### 前提インストール
 
 - Python 3.11 系（`python -m venv .venv && source .venv/bin/activate` で仮想環境を推奨）
+- GNU Make（`make run`/`make dev` を利用）
 - 依存パッケージは `pip install -r requirements.txt` または `make dev`
 
-### セットアップ
+### セットアップとローカル起動
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 cp config/env.example .env  # 必須・任意の値をこのファイルで管理
 make dev                    # 依存関係を一括インストール
-```
-
-### 起動フロー
-
-```bash
-make run  # Chainlit を http://localhost:8787 で起動
+make run                    # Chainlit を http://localhost:8787 で起動
 ```
 
 - アプリ終了は実行ターミナルで `Ctrl + C`
-- 依存を更新したい場合は別ターミナルで `make dev`
+- 依存更新は必要に応じて別ターミナルで `make dev`
 
 ## 環境変数一覧
+
+`.env` の初期値は [`config/env.example`](config/env.example) を参照してください。以下は主要な設定項目です。
 
 | 名称 | 必須 | 用途 | 設定例 | 備考 |
 | ---- | ---- | ---- | ------ | ---- |
@@ -103,7 +103,7 @@ PORT=8787
 LOG_LEVEL=info
 ```
 
-> まず `cp config/env.example .env` を行い、上記を参考に必須項目を埋めてください。
+> まず [`config/env.example`](config/env.example) を `.env` にコピーし、上記を参考に必須項目を埋めてください。
 
 ## テーマ切り替え
 

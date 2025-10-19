@@ -1,24 +1,13 @@
 {
   "id": "src/core_ext/context_trimmer.py",
+  "summary": "トークン数に応じた履歴トリミングと圧縮率メトリクスを算出するユーティリティ。tiktoken がない場合はフォールバックも提供する。",
   "role": "core",
-  "summary": "会話履歴のトークン数を推定し目標トークン数までトリミング、圧縮率メトリクスを返すユーティリティ。",
-  "public_api": [
-    "trim_messages(messages, target_tokens, model)"
-  ],
-  "deps_out": [
+  "deps": [
     "tiktoken",
-    "typing.Dict",
-    "typing.List"
-  ],
-  "deps_in": [
-    "src/app.py",
-    "tests/core_ext/test_context_trimmer.py"
+    "src/core_ext/context_trimmer._TokenCounter"
   ],
   "tests": [
     "tests/core_ext/test_context_trimmer.py"
   ],
-  "risks": [
-    "tiktoken 未導入環境ではヒューリスティック推定にフォールバックする"
-  ],
-  "generated_at": "2025-10-19T17:13:16Z"
+  "generated_at": "2025-01-15T12:00:00Z"
 }

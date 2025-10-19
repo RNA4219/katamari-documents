@@ -1,61 +1,57 @@
 # RUNBOOK
 
 ## 目的
-- Katamari 基盤の起動・検証・障害対応を標準化し、ガードレールとロードマップの要件を逸脱せずに運用する。関連仕様: [docs/ROADMAP_AND_SPECS.md](docs/ROADMAP_AND_SPECS.md)。
+- Katamari の起動・検証・障害対応を標準化し、Guardrails とロードマップで定義された要件を逸脱せずに運用する。
+- 変更の影響範囲を即座に共有できるよう、起動から復旧までの手順と証跡取得方法を記録する。
 
 ## スコープ
 ### In Scope
-- ローカル/CI 環境でのアプリ起動、Persona/Trim/Reflect チェーンの動作確認。
-- SSE/ログ監視、Provider 設定、基本的な障害復旧フロー。
-- Guardrails で定義された最小読込プロセスの遵守確認。[GUARDRAILS](third_party/Day8/workflow-cookbook/GUARDRAILS.md)。
+- ローカル / CI 環境でのアプリ起動と Persona/Trim/Reflect チェーン動作確認。
+- SSE 遅延やログ監視、Provider 設定の切替、基本的な障害復旧フロー。
+- Guardrails が要求する最小読込・自己検証プロセスの実施。
 
 ### Out of Scope
-- SLA ベースの 24/7 運用（別途 SRE Runbook を策定）。
-- プロバイダ課金/秘密情報の管理（`docs/addenda/G_Security_Privacy.md` 参照）。
+- 24/7 SRE 運用や SLA 監視（別途 Runbook を策定）。
+- プロバイダ課金や秘密情報の管理（`docs/addenda/G_Security_Privacy.md` を参照）。
 
 ## 手順
-Guardrails の「準備→実行→検証」フローを章立てに対応させた構成。各ステップで `docs/ROADMAP_AND_SPECS.md` 3.章の該当項目を確認する。
+Guardrails の「準備→実行→検証」順で進める。
 
 ### 1. 準備
 1. `python -m venv .venv && source .venv/bin/activate`
-2. `pip install -r requirements.txt` と `npm install`（必要時）。
-3. `.env.example` を参照し Provider キー・Chainlit 設定を環境変数に投入。
-4. Birdseye index/caps の鮮度を確認し、必要なら `scripts/birdseye_refresh.py` を実行。
+2. `pip install -r requirements.txt` と必要に応じて `npm install`。
+3. `.env.example` を参照して Provider キーなどの環境変数を設定する。
+4. Birdseye index/caps を確認し、必要であれば `scripts/birdseye_refresh.py` を実行する。
 
 ### 2. 実行
 1. `chainlit run src/app.py --watch`
-2. Persona YAML を `personas/` からロードし UI で切替を確認。
-3. Trim/Reflect チェーンのログを `logs/` で監視し、トークン削減率を記録。
-4. Provider を切り替え `docs/addenda/F_Provider_Matrix.md` の互換チェックを行う。
+2. Persona YAML を `personas/` からロードし、UI で切替を検証する。
+3. Trim/Reflect チェーンのログを `logs/` で監視し、トークン削減率を記録する。
+4. Provider を切り替え、`docs/addenda/F_Provider_Matrix.md` の互換チェックを行う。
 
 ### 3. 検証・障害対応
-1. pytest / mypy / ruff / node:test を実行し、失敗した場合は Guardrails の「最小差分」ポリシーに従って修正。
-2. SSE 遅延が閾値を超えた場合、`docs/addenda/J_Runbook.md` のトラブルシュート手順に従う。
-3. 重大障害は `CHANGELOG.md` に記録し、関連 Task Seed を更新。
+1. `pytest` / `node:test` / `ruff` / `mypy --strict` を実行し、失敗時は Guardrails の最小差分方針で修正する。
+2. SSE 遅延が閾値を超えた場合、`docs/addenda/J_Runbook.md` のトラブルシュート手順を参照する。
+3. 重大障害は `CHANGELOG.md` と Task Seed に記録し、必要なら `RUNBOOK.md` を更新する。
 
 ## 最小フロー
-1. `docs/ROADMAP_AND_SPECS.md` で対象フェーズと関連タスクを特定し、RUNBOOK の対象手順を明確化。
-2. 上記「準備→実行→検証」の順でコマンド・証跡を取得し、結果を `CHECKLISTS.md` の該当フェーズに転記。
-3. 異常検知時は `TASK.*.md` へフォローアップを記録し、必要に応じて `BLUEPRINT.md` や Birdseye を更新。
-4. 受入判断は `EVALUATION.md` の AC と照合し、満たない場合は再実行計画を併記する。
+1. `docs/ROADMAP_AND_SPECS.md` で対象フェーズと関連タスクを特定する。
+2. 「準備→実行→検証」の順に手順を辿り、証跡を `CHECKLISTS.md` の該当フェーズへ転記する。
+3. 異常があれば `TASK.*.md` にフォローアップを登録し、再発防止策を検討する。
+4. 受入判断を `EVALUATION.md` の AC と照合し、満たない場合は再実行計画を記す。
 
-## Acceptance Criteria
-- 起動直後に Persona 選択・Trim/Reflect チェーンが正常に表示される。
-- `ruff`・`mypy --strict`・`pytest`・`node:test` が全て成功するか、既知の skip 理由が記録されている。
-- SSE 遅延・トークン削減率が `docs/Katamari_Requirements_v3_ja.md` の目標値を満たす。
+## 受入基準
+- 起動直後に Persona 選択と Trim/Reflect チェーンが UI に表示される。
+- `ruff`・`mypy --strict`・`pytest`・`node:test` が成功、またはスキップ理由が記録されている。
+- SSE 遅延とトークン削減率が `docs/Katamari_Requirements_v3_ja.md` の目標を満たす。
 
 ## チェック項目
-- [ ] `.env` に Secrets を埋めず、環境変数読み込みのみで起動できる。
-- [ ] Guardrails の最小読込手順（README → index.json → caps）を実施済み。
+- [ ] Secrets を含む `.env` をリポジトリに残していない。
+- [ ] Guardrails の最小読込手順（README → index.json → caps）を実施した。
 - [ ] Birdseye 更新日時が直近コミット以降になっている。
-- [ ] 失敗テストがある場合、理由と再実行計画が Task Seed に記録されている。
+- [ ] 失敗テストの理由と再実行計画が Task Seed に記録されている。
 
-## Guardrails 連携
-- Guardrails が定める「準備→実行→検証」の最小フローを手順章に対応付けた。詳細は [third_party/Day8/workflow-cookbook/GUARDRAILS.md](third_party/Day8/workflow-cookbook/GUARDRAILS.md)。
-- 運用時の仕様参照は `docs/ROADMAP_AND_SPECS.md` 3.章（ロードマップ）と `docs/addenda/J_Runbook.md` を併読する。
-- 手順で得た知見は `CHECKLISTS.md` と `TASK.2025-10-19-0001.md` の DoD に必ず反映する。
-
-## 参照リンク
+## 参照
 - [docs/ROADMAP_AND_SPECS.md](docs/ROADMAP_AND_SPECS.md)
 - [docs/addenda/J_Runbook.md](docs/addenda/J_Runbook.md)
 - [docs/addenda/H_Deploy_Guide.md](docs/addenda/H_Deploy_Guide.md)
