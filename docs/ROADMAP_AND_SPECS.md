@@ -37,7 +37,7 @@
    - `README.md` を起動手順・ENV・テーマ説明付きに拡充。  
    - `CONTRIBUTING.md` / `CODE_OF_CONDUCT.md` / `CODEOWNERS` を最終化。  
    - `.gitattributes` で改行統一。  
-   - `docs/adr/` にテンプレート ([ADR #0000](adr/0000-template.md)) と初期3件（[ADR #0001](adr/0001-use-chainlit-subtree.md) / [ADR #0002](adr/0002-tokenization-with-tiktoken.md) / [ADR #0003](adr/0003-provider-interface.md)）を整備し、最新状態を維持。
+   - `docs/adr/` にテンプレート ([ADR #0000](adr/0000-template.md)) と初期3件（[ADR #0001](adr/0001-use-chainlit-subtree.md) / [ADR #0002](adr/0002-tokenization-with-tiktoken.md) / [ADR #0003](adr/0003-provider-interface.md)）を整備し、最新状態を維持（追加・更新フローは [CONTRIBUTING.md#ADR を追加・更新する手順](../CONTRIBUTING.md#adr-を追加・更新する手順) を参照）。
    - M1〜M2.5 向け ADR + DoD を整理。
 
 2. **CI・自動化基盤**  
