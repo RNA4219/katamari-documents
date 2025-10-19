@@ -1,11 +1,27 @@
 * text=auto
 
-# Source and config files use LF
+# Shell scripts use LF
+*.sh text eol=lf
+*.bash text eol=lf
+*.zsh text eol=lf
+
+# Python sources use LF
 *.py text eol=lf
 *.pyi text eol=lf
 *.pyx text eol=lf
 *.pxd text eol=lf
 *.pyproj text eol=lf
+
+# PowerShell scripts use LF
+*.ps1 text eol=lf
+*.psm1 text eol=lf
+*.psd1 text eol=lf
+
+# Make-related files use LF
+Makefile text eol=lf
+*.mk text eol=lf
+
+# Source and config files use LF
 *.c text eol=lf
 *.h text eol=lf
 *.cpp text eol=lf
@@ -22,12 +38,7 @@
 *.toml text eol=lf
 *.ini text eol=lf
 *.cfg text eol=lf
-*.sh text eol=lf
-*.bash text eol=lf
-*.zsh text eol=lf
 Dockerfile text eol=lf
-Makefile text eol=lf
-*.mk text eol=lf
 *.gradle text eol=lf
 *.xml text eol=lf
 *.svg text eol=lf
@@ -42,11 +53,6 @@ Makefile text eol=lf
 *.rst text eol=lf
 *.txt text eol=lf
 *.csv text eol=lf
-
-# PowerShell scripts use LF
-*.ps1 text eol=lf
-*.psm1 text eol=lf
-*.psd1 text eol=lf
 
 # Windows batch scripts use CRLF
 *.bat text eol=crlf

@@ -20,26 +20,21 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Upgrade pip
-        run: python -m pip install --upgrade pip
-      - name: Install Ruff
-        if: matrix.check == 'ruff'
-        run: python -m pip install ruff
-      - name: Install test dependencies
-        if: matrix.check == 'pytest'
-        run: python -m pip install -r requirements.txt pytest pytest-anyio
-      - name: Install audit dependencies
-        if: matrix.check == 'pip-audit'
-        run: python -m pip install -r requirements.txt pip-audit
-      - name: Run Ruff
-        if: matrix.check == 'ruff'
-        run: ruff check .
-      - name: Run pytest
-        if: matrix.check == 'pytest'
-        run: pytest
-      - name: Run pip-audit
-        if: matrix.check == 'pip-audit'
-        run: pip-audit -r requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          case "${{ matrix.check }}" in
+            ruff) python -m pip install ruff ;;
+            pytest) python -m pip install -r requirements.txt pytest pytest-anyio ;;
+            pip-audit) python -m pip install -r requirements.txt pip-audit ;;
+          esac
+      - name: Run ${{ matrix.check }}
+        run: |
+          case "${{ matrix.check }}" in
+            ruff) ruff check . ;;
+            pytest) pytest ;;
+            pip-audit) pip-audit -r requirements.txt ;;
+          esac
 
   provider-integration:
     name: Provider smoke tests
@@ -57,33 +52,28 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Upgrade pip
-        run: python -m pip install --upgrade pip
       - name: Install provider dependencies
         run: |
-          python -m pip install -r requirements.txt
-          python -m pip install google-generativeai
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt google-generativeai
       - name: OpenAI smoke test
         run: |
           python - <<'PY'
 from openai import OpenAI
 
-
-def extract_text(response) -> str:
+def extract_text(response):
     direct = getattr(response, "output_text", None)
     if direct:
         return direct
-
-    aggregated = []
-    for item in getattr(response, "output", []) or []:
-        for part in getattr(item, "content", []) or []:
-            aggregated.append(getattr(part, "text", ""))
-    return "".join(aggregated)
+    return "".join(
+        getattr(part, "text", "")
+        for item in getattr(response, "output", []) or []
+        for part in getattr(item, "content", []) or []
+    )
 
 
 client = OpenAI()
-response = client.responses.create(model="gpt-4o-mini", input="Respond with OK")
-text = extract_text(response).strip().lower()
+text = extract_text(client.responses.create(model="gpt-4o-mini", input="Respond with OK")).strip().lower()
 if "ok" not in text:
     raise SystemExit("Unexpected OpenAI response")
 PY
@@ -92,11 +82,9 @@ PY
           python - <<'PY'
 import os
 import google.generativeai as genai
-
 api_key = os.getenv("GOOGLE_GEMINI_API_KEY") or os.getenv("GEMINI_API_KEY")
 if not api_key:
     raise SystemExit("Missing Gemini API key")
-
 genai.configure(api_key=api_key)
 result = genai.GenerativeModel("gemini-1.5-flash").generate_content("Respond with OK")
 text = (result.text or "").strip().lower()

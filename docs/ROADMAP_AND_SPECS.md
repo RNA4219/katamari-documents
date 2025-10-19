@@ -13,8 +13,9 @@
 | 追加リファレンス | `docs/addenda/*.md` | UI モック、プロバイダ比較、テストケース、構成ファイル解説など。 |
 | マイルストーン DoD | `docs/adr/0004-m1-metrics-and-retention.md` ほか [ADR #0004〜#0007](adr/README.md) | M1〜M2.5 の到達基準と DoD チェックリスト。 |
 | フォーク運用 | `docs/UPSTREAM.md`, `docs/FORK_NOTES.md`<br>[ADR #0001](adr/0001-use-chainlit-subtree.md) | Chainlit subtree の取得・差分吸収手順。 |
-| リリース & セキュリティ | `docs/Release_Checklist.md`, `docs/Security_Review_Checklist.md` | 受入証跡・影響範囲・ラベル・CHANGELOG と `LICENSE`/`NOTICE` 同梱チェックを含む品質ゲート。 |
+| リリース & セキュリティ | `docs/Release_Checklist.md`, `docs/Security_Review_Checklist.md` | 準備→検証→リリース順のチェックリスト、受入証跡・CI 結果確認・影響範囲同期・CHANGELOG/NOTICE 更新を含む品質ゲート。 |
 | Guardrails 連動ドキュメント | `BLUEPRINT.md`, `RUNBOOK.md`, `EVALUATION.md`, `CHECKLISTS.md`, `TASK.*.md` | Guardrails フローに沿った設計・運用・評価・追跡の基盤文書。 |
+| Day8 HUB→Guardrails | `third_party/Day8/workflow-cookbook/HUB.codex.md` → `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | Day8 観測ハブから統制基準へ進む推奨導線（役割: HUB が全体俯瞰、GUARDRAILS が安全策定）。 |
 | Day8 HUB | `third_party/Day8/workflow-cookbook/HUB.codex.md` | 観測ハブとして Day8 オペレーション全体の入口を提示する役割ドキュメント。 |
 | Day8 Guardrails | `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | HUB からのインサイトを受けて統制基準・安全策を定義する役割ドキュメント。 |
 
@@ -90,9 +91,9 @@
 - Subtree 同期は `docs/UPSTREAM.md` → `scripts/` の補助スクリプトを活用。
 - アーキテクチャ判断は `docs/adr/README.md` と各 ADR（例: [ADR #0001](adr/0001-use-chainlit-subtree.md) / [ADR #0002](adr/0002-tokenization-with-tiktoken.md) / [ADR #0003](adr/0003-provider-interface.md) / [ADR #0004〜#0007](adr/README.md)）を参照。
 - 運用時のチェックは `Release_Checklist.md`（受入証跡/影響範囲/ラベル/CHANGELOG/NOTICE 同梱）と `Security_Review_Checklist.md` を使用。
-- <a id="day8-sequence"></a>Day8 系資料の推奨参照順: `third_party/Day8/workflow-cookbook/HUB.codex.md`（観測ハブ）→ `third_party/Day8/workflow-cookbook/GUARDRAILS.md`（統制基準）→ `third_party/Day8/workflow-cookbook/BLUEPRINT.md` 群（運用設計）を推奨シーケンスとして維持する。
+- <a id="day8-sequence"></a>Day8 系資料の推奨参照順: HUB（`third_party/Day8/workflow-cookbook/HUB.codex.md`）→ Guardrails（`third_party/Day8/workflow-cookbook/GUARDRAILS.md`）→ Blueprint 群（`third_party/Day8/workflow-cookbook/BLUEPRINT.md` ほか）を推奨シーケンスとして維持する。
 - `hot.json` を更新する際は `git log --name-only --since="30 days ago" | sort | uniq -c` などで直近の接触頻度を確認し、Birdseye index に含まれるノードから優先度の高いエントリポイントを抽出して理由付きで列挙する。`generated_at` は index/caps と揃える。
-- CHANGELOG 更新手順: [`README.md#変更履歴の更新ルール`](../README.md#%E5%A4%89%E6%9B%B4%E5%B1%A5%E6%AD%B4%E3%81%AE%E6%9B%B4%E6%96%B0%E3%83%AB%E3%83%BC%E3%83%AB)（完了済みタスクは `[Unreleased]` に移管し、ロードマップや `TASK.*.md` の重複を解消する）。
+- CHANGELOG 更新手順: [`README.md#変更履歴の更新ルール`](../README.md#%E5%A4%89%E6%9B%B4%E5%B1%A5%E6%AD%B4%E3%81%AE%E6%9B%B4%E6%96%B0%E3%83%AB%E3%83%BC%E3%83%AB)（Keep a Changelog 形式を遵守しつつ、完了済みタスクは `[Unreleased]` に移管してロードマップや `TASK.*.md` の重複を解消）。
 
 本ハブは開発フェーズ毎に更新し、未作成 ADR や追加仕様が発生した際は本書内のロードマップを最新化してください。
 

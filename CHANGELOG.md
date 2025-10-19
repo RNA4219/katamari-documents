@@ -13,6 +13,7 @@
 ## [Unreleased]
 
 ### Added
+- 0005: CHANGELOG を Keep a Changelog 形式で整備し、README/ロードマップから更新手順へ導線を追加。
 ### Changed
 - 0002: CHANGELOG のエントリに通番を付けるルールを追加。
 - 0003: README とロードマップに CHANGELOG 更新導線とタスク移管ルールを明文化。
