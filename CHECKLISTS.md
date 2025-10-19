@@ -1,63 +1,47 @@
 # CHECKLISTS
 
 ## 目的
-- Katamari 開発・リリース・運用で必要な確認項目を集約し、Guardrails とロードマップ要件を満たす状態を可視化する。
+- Katamari の開発・レビュー・リリース・運用で必要な確認項目を集約し、Guardrails とロードマップ要件を確実に満たす。
+- DoD 達成状況を可視化し、未完了項目を Task Seed に連携する。
 
 ## スコープ
 ### In Scope
-- 開発（Dev）、レビュー（PR）、リリース（Release）、運用（Ops）フェーズのチェック項目。
-- Task Seed と連動する未完了項目の追跡。
-- Guardrails で求められる最小差分・自己検証手順の記録。[GUARDRAILS](third_party/Day8/workflow-cookbook/GUARDRAILS.md)。
+- 開発 (Dev)、レビュー (PR)、リリース (Release)、運用 (Ops) フェーズのチェック項目。
+- Guardrails が求める最小差分・自己検証手順の記録。
+- Task Seed / `EVALUATION.md` と連携したフォローアップ管理。
 
 ### Out of Scope
-- 組織全体のコンプライアンスチェック（別管理）。
-- プロダクトマーケティング/営業資料のレビュー。
+- 組織全体のコンプライアンスチェック。
+- マーケティングや営業資料のレビュー。
 
-## 手順
-Guardrails のチェックリスト順（Dev→PR→Release→Ops）をなぞり、各フェーズで `docs/ROADMAP_AND_SPECS.md` の参照先を確認する。
-1. フェーズ開始時に該当セクションのチェックリストをコピーし、Issue/PR/Task に貼り付ける。
-2. 項目を実施するたびに証跡（ログ、CI 結果、スクリーンショット）を残す。
-3. 未完了項目がある場合は Task Seed を更新し、リリース可否を `EVALUATION.md` に連携する。
+## 使い方
+1. 対象フェーズ開始時に該当セクションをコピーし、Issue / PR / Task に貼り付ける。
+2. 各項目の実施時に証跡（ログ、CI 結果、スクリーンショット）を残す。
+3. 未完了項目は Task Seed に転記し、`EVALUATION.md` で DoD 判定に利用する。
 
-## 最小フロー
-1. `docs/ROADMAP_AND_SPECS.md` と対象 Task Seed を照合し、該当フェーズのチェックリストを選択。
-2. Guardrails の順序（Dev→PR→Release→Ops）で項目を進め、証跡を都度記録。
-3. 例外が発生した場合は `TASK.*.md` にフォローアップと担当を明記し、`RUNBOOK.md` の手順更新を検討。
-4. 評価完了後は `EVALUATION.md` の AC を更新し、Birdseye の該当ノードを最新化する。
-
-## Acceptance Criteria
-- 各フェーズの必須項目が `PASS` になっているか、例外（`N/A`）理由が明記されている。
-- 例外がある場合、フォローアップ Task Seed が登録されている。
-- チェック結果が `docs/ROADMAP_AND_SPECS.md` に記載されたフェーズ進行条件を満たす。
-
-## チェック項目
+## チェックリスト
 ### Development
 - [ ] テストを先に追加し、`pytest` / `node:test` が成功した。
-- [ ] `mypy --strict` と `ruff` を通過（もしくは skip 理由を記録）。
-- [ ] 公開 API 変更がない、または段階移行フラグを設定済み。
-- [ ] Birdseye index/caps を更新し、該当ノードの要約が最新。
+- [ ] `mypy --strict` と `ruff` を通過（またはスキップ理由を記録）。
+- [ ] 公開 API 変更がない、または段階移行フラグを設定した。
+- [ ] Birdseye index/caps を更新し、該当ノードの要約を最新化した。
 
 ### Pull Request / Review
-- [ ] 変更理由と影響範囲を `docs/ROADMAP_AND_SPECS.md` の該当項目にリンク。
-- [ ] Task Seed を更新し、レビュー観点を共有。
-- [ ] Guardrails の最小読込手順をレビュアーが実行できるよう案内。
+- [ ] 変更理由と影響範囲を `docs/ROADMAP_AND_SPECS.md` の該当項目にリンクした。
+- [ ] Task Seed を更新し、レビュー観点を共有した。
+- [ ] Guardrails の最小読込手順をレビュアーが再現できるよう案内した。
 
 ### Release
-- [ ] `docs/Release_Checklist.md` の全項目が `PASS`。
-- [ ] `CHANGELOG.md` にリリース内容を記録し、タグ発行準備ができている。
-- [ ] GHCR へのビルド/公開手順が `RUNBOOK.md` と一致。
+- [ ] `docs/Release_Checklist.md` の全項目が `PASS` になっている。
+- [ ] `CHANGELOG.md` にリリース内容を追記し、タグ発行準備ができている。
+- [ ] GHCR へのビルド/公開手順が `RUNBOOK.md` と一致する。
 
 ### Ops / Incident
-- [ ] 障害時の対応ログが `RUNBOOK.md` に沿って記録されている。
+- [ ] 障害対応ログが `RUNBOOK.md` に沿って記録されている。
 - [ ] 再発防止策が Task Seed または Issue で管理されている。
-- [ ] セキュリティインシデントは `docs/Security_Review_Checklist.md` に追記済み。
+- [ ] セキュリティインシデントを `docs/Security_Review_Checklist.md` に追記した。
 
-## Guardrails 連携
-- Guardrails が定義するチェックリスト配置順（Dev→PR→Release→Ops）を維持し、本書の章構成にマッピングした。
-- `docs/ROADMAP_AND_SPECS.md` 1.〜3.章から関連仕様へリンクし、各フェーズで参照漏れがないようにする。
-- 未完了項目は `TASK.2025-10-19-0001.md` など Task Seed に転記し、`EVALUATION.md` の DoD 判定へつなげる。
-
-## 参照リンク
+## 参照
 - [docs/ROADMAP_AND_SPECS.md](docs/ROADMAP_AND_SPECS.md)
 - [docs/Release_Checklist.md](docs/Release_Checklist.md)
 - [docs/Security_Review_Checklist.md](docs/Security_Review_Checklist.md)
