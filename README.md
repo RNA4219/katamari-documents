@@ -9,9 +9,9 @@
 5. Day8 系資料の推奨読書順: [HUB.codex.md](third_party/Day8/workflow-cookbook/HUB.codex.md) → [GUARDRAILS.md](third_party/Day8/workflow-cookbook/GUARDRAILS.md) → [BLUEPRINT.md](third_party/Day8/workflow-cookbook/BLUEPRINT.md)
 
 > `docs/birdseye/hot.json` の `generated_at` は頻出入口リストの生成時刻です。エントリポイントや依存関係を更新した際は `date -u '+%Y-%m-%dT%H:%M:%SZ'` で時刻を取得し、`docs/birdseye/index.json`・`docs/birdseye/caps/`・`docs/birdseye/hot.json` を併せて更新してください。
-> 1. `date -u '+%Y-%m-%dT%H:%M:%SZ'` を実行して共通タイムスタンプを取得
-> 2. `docs/birdseye/index.json` の `generated_at` と対象ノードの `mtime` を更新
-> 3. 更新対象の `docs/birdseye/caps/*.json` と `docs/birdseye/hot.json` に同じ `generated_at` を反映
+> 1. `date -u '+%Y-%m-%dT%H:%M:%SZ'` で共通タイムスタンプを取得
+> 2. `docs/birdseye/index.json` の `generated_at` と該当ノード情報を更新
+> 3. 対象カプセル (`docs/birdseye/caps/*.json`) と `docs/birdseye/hot.json` の `generated_at`・`entries` を揃える
 
 フォーカス手順:
 - 直近変更ファイル±2hopのノードIDを index.json から取得
