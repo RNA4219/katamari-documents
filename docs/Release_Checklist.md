@@ -1,4 +1,3 @@
-
 # Release Checklist
 
 > `LICENSE` と [`NOTICE`](../NOTICE) の同梱は Apache-2.0 の配布要件です。Chainlit 由来の告知・改変概要は `NOTICE` を最新化して維持してください。
@@ -17,3 +16,4 @@
 ## 配布物のライセンス同梱チェック
 
 - [ ] 配布パッケージ・Docker イメージ・アーカイブに [`LICENSE`](../LICENSE) と [`NOTICE`](../NOTICE) を同梱したことを確認
+- [ ] リリースノートで同梱確認の結果と証跡リンクを共有
