@@ -1,17 +1,17 @@
 {
-  "generated_at": "2025-01-15T12:00:00Z",
+  "generated_at": "2025-10-19T18:34:08Z",
   "entries": [
     {
       "id": "src/app.py",
-      "reason": "Chainlit UI と FastAPI エンドポイントの両方を束ねる実行時エントリポイント"
+      "reason": "Chainlit UI・FastAPI ops ルーターを束ね、チャット処理の全フローを開始する実行時エントリポイント"
     },
     {
       "id": "src/core_ext/context_trimmer.py",
-      "reason": "全チャット履歴で利用されるトークン削減ロジックとメトリクス算出を担当"
+      "reason": "各メッセージ処理で必ず呼ばれ、トークン圧縮率メトリクスを生成するトリミングロジック"
     },
     {
       "id": "src/providers/openai_client.py",
-      "reason": "既定 LLM プロバイダーのストリーム処理と API キー設定の要"
+      "reason": "既定 LLM プロバイダーとして OpenAI Chat Completions へのストリーム送信を仲介する"
     }
   ]
 }

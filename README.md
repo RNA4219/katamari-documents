@@ -26,6 +26,7 @@
 > 2. `docs/birdseye/index.json` の `generated_at` と対象ノードの `mtime` を更新
 > 3. 更新対象の `docs/birdseye/caps/*.json` と `docs/birdseye/hot.json` に同じ `generated_at` を反映
 > 4. `docs/birdseye/hot.json` には Chainlit 起動やプロバイダー呼び出しなど主要なエントリポイント ID を 3 件程度列挙し、理由を最新化
+> 5. Capsule は `public_api`・`deps_in`・`deps_out`・`risks` を含むガードレールスキーマを満たすよう更新
 
 フォーカス手順:
 - 直近変更ファイル±2hopのノードIDを `index.json` から取得
