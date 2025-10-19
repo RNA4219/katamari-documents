@@ -27,6 +27,7 @@
 >   スコープ・AC を参照し、上記ドキュメント更新時は整合性を必ず確認する。
 
 ### ADR インデックス（コア判断とマイルストーン）
+- ADR の作成・更新手順は [CONTRIBUTING.md#ADR を追加・更新する手順](../CONTRIBUTING.md#adr-を追加・更新する手順) を参照してください。
 - **基盤方針**
   - [ADR #0001: Chainlit リポジトリを git subtree として取り込む](adr/0001-use-chainlit-subtree.md)
   - [ADR #0002: Token カウントに tiktoken を採用する](adr/0002-tokenization-with-tiktoken.md)
