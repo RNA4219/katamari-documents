@@ -5,6 +5,9 @@
 
 1. docs/birdseye/index.json  …… ノード一覧・隣接関係（軽量）
 2. docs/birdseye/caps/<path>.json …… 必要ノードだけ point read（個別カプセル）
+3. [third_party/Day8/README.md](third_party/Day8/README.md) …… Day8 HUB / Guardrails の起点（詳細は `docs/day8/README.md`）。
+
+> `docs/birdseye/hot.json` の `generated_at` は頻出入口リストの生成時刻です。エントリポイントや依存関係を更新した際は `date -u '+%Y-%m-%dT%H:%M:%SZ'` で時刻を取得し、`docs/birdseye/index.json`・`docs/birdseye/caps/`・`docs/birdseye/hot.json` を併せて更新してください。
 
 フォーカス手順:
 
@@ -21,6 +24,7 @@
 - 設定: [`config/model_registry.json`](config/model_registry.json), [`config/env.example`](config/env.example)
 - フォーク運用: [`docs/UPSTREAM.md`](docs/UPSTREAM.md), [`docs/FORK_NOTES.md`](docs/FORK_NOTES.md)
 - ADR: [`docs/adr/README.md`](docs/adr/README.md)
+- Day8 HUB / Guardrails: `third_party/Day8/README.md`, `third_party/Day8/docs/day8/README.md`
 
 ## ローカル起動手順
 
@@ -73,4 +77,5 @@ GitHub Container Registry への公開フローは [docs/addenda/H_Deploy_Guide.
 
 - 変更をマージする前に、該当差分を [`CHANGELOG.md`](CHANGELOG.md) の `[Unreleased]` セクションへ追記してください。
 - 記法は [Keep a Changelog](https://keepachangelog.com/ja/1.1.0/) に従い、日付とセマンティックバージョンを付与します。
+- README やロードマップへ残っている過去の更新記録は、対応するリリース日・バージョンを付けて順次 `CHANGELOG.md` のセクションへ移管してください。
 - リリース確定時は `[Unreleased]` から新しいバージョン見出しへ移し、`docs/Release_Checklist.md` の手順と合わせて履歴を公開します。
