@@ -102,6 +102,7 @@
 - [`LICENSE`](../LICENSE)
 - Chainlit 由来の告知と本フォークの改変概要をまとめた [`NOTICE`](../NOTICE)
 - リリース成果物（バイナリ / Docker イメージ / アーカイブ）には `LICENSE` と `NOTICE` を必ず同梱し、手順は [`docs/Release_Checklist.md`](Release_Checklist.md) を参照
+- `NOTICE` の内容（派生元告知・著作権表記・主要改変点）が最新かを確認し、配布前に更新した場合は Release PR で周知する
 
 ## 5. Guardrails ドキュメント更新フロー
 
