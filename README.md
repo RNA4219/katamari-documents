@@ -56,3 +56,9 @@ GitHub Container Registry への公開フローは [docs/addenda/H_Deploy_Guide.
 
 - `GET /healthz`: Chainlit アプリの Liveness。`{"status":"ok"}` を返却。
 - `GET /metrics`: Prometheus Text Format (`compress_ratio`, `semantic_retention`) を露出。
+
+## 変更履歴の更新ルール
+
+- 変更をマージする前に、該当差分を [`CHANGELOG.md`](CHANGELOG.md) の `[Unreleased]` セクションへ追記してください。
+- 記法は [Keep a Changelog](https://keepachangelog.com/ja/1.1.0/) に従い、日付とセマンティックバージョンを付与します。
+- リリース確定時は `[Unreleased]` から新しいバージョン見出しへ移し、`docs/Release_Checklist.md` の手順と合わせて履歴を公開します。
