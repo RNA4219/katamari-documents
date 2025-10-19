@@ -1,17 +1,17 @@
 {
-  "generated_at": "2025-10-20T00:00:00Z",
+  "generated_at": "2024-06-07T00:00:00Z",
   "entries": [
     {
       "id": "src/app.py",
-      "reason": "Chainlit のチャット起動・Chain 設定・LLM 呼び出し・運用エンドポイントを一括制御する最上位エントリポイント"
+      "reason": "Chainlit 起動・設定同期・履歴圧縮・LLM ストリーム制御を司る最上位エントリポイント"
     },
     {
       "id": "src/core_ext/context_trimmer.py",
-      "reason": "履歴トリミングとトークン計測を提供し、メトリクス更新と LLM 予算管理を担う共通ユーティリティ"
+      "reason": "チャット履歴のトークン予算管理と圧縮メトリクスを提供する共通ユーティリティ"
     },
     {
-      "id": "src/core_ext/multistep.py",
-      "reason": "ドラフト→批評→最終回答のチェーン構成とフェーズ別システムヒントを定義する推論制御テーブル"
+      "id": "src/providers/openai_client.py",
+      "reason": "OpenAI Chat Completions を非同期ストリーミングでラップしモデル選択と API 鍵を集約する実行基盤"
     }
   ]
 }

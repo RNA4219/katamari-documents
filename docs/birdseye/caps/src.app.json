@@ -1,7 +1,7 @@
 {
   "id": "src/app.py",
   "role": "entrypoint",
-  "summary": "Chainlit イベントフックを束ね、設定同期・履歴トリミング・マルチステップ推論・LLM ストリーミングを統合するメインエントリポイント。",
+  "summary": "Chainlit のイベントフックを束ね、設定同期・履歴トリミング・マルチステップ推論・LLM 呼び出し・運用エンドポイント公開を統合する中核エントリポイント。",
   "deps": {
     "out": [
       "core_ext.prethought.analyze_intent",
@@ -18,5 +18,5 @@
   "tests": [
     "pytest tests/app/test_metrics_healthz.py"
   ],
-  "generated_at": "2025-10-20T00:00:00Z"
+  "generated_at": "2024-06-07T00:00:00Z"
 }
