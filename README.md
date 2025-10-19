@@ -55,53 +55,50 @@
 
 ## ローカル起動手順
 
-### 前提インストール
+### 依存インストールとセットアップ
 
-- Python 3.11 系を用意（`python -m venv .venv && source .venv/bin/activate` で仮想環境を推奨）。
-- GNU Make をインストールし、`make run` / `make dev` を利用できるようにする。
-- 依存パッケージは `pip install -r requirements.txt` もしくは後述の `make dev` で取得する。
-
-### セットアップとローカル起動
-
-- `.env` を `config/env.example` からコピーし、必要な環境変数を設定する。
-- `make dev` で Python 依存をまとめてインストールする（`pip install -r requirements.txt` 相当）。
-- `make run` で Chainlit を `http://localhost:8787` に起動する。
+1. Python 3.11 系を用意し、任意の場所で仮想環境を作成する。
+2. `.env` を [`config/env.example`](config/env.example) からコピーし、後述の表を参照して値を埋める。
+3. `make dev` で Python 依存を一括インストールする（`pip install -r requirements.txt` と同等）。
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-cp config/env.example .env  # 必須・任意の値をこのファイルで管理
-make dev                    # 依存関係を一括インストール (pip install -r requirements.txt 相当)
-make run                    # Chainlit を http://localhost:8787 で起動
+cp config/env.example .env
+make dev
 ```
 
-- アプリ終了は実行ターミナルで `Ctrl + C`。
-- 依存更新が必要になったら別ターミナルで `make dev` を再実行する。
+- GNU Make が利用できない場合は `pip install -r requirements.txt` を直接実行しても良い。
+- 依存パッケージの更新が必要になった際も `make dev` を再実行する。
+
+### アプリのローカル実行
+
+- `make run` で Chainlit を `http://localhost:8787`（`PORT` 変更時はその値）に起動する。
+- 終了は実行ターミナルで `Ctrl + C`。
+
+```bash
+make run
+```
 
 ## 環境変数一覧
 
-`.env` の初期値は [`config/env.example`](config/env.example) を参照してください。以下は主要な設定項目を必須・任意別に整理した一覧です。
+`.env` の初期値は [`config/env.example`](config/env.example) を参照してください。値の詳細や追加オプションは必要に応じて [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) も確認してください。
 
-#### 必須
+| 種別 | 名称 | 用途 | 設定例 | 備考 |
+| ---- | ---- | ---- | ------ | ---- |
+| 必須 | `OPENAI_API_KEY` | OpenAI プロバイダー利用時の API キー | `OPENAI_API_KEY=sk-...` | `.env` のみで管理し、Git には含めない |
+| 任意 | `GOOGLE_GEMINI_API_KEY` | Google Gemini プロバイダー利用時の API キー | `GOOGLE_GEMINI_API_KEY=...` | Gemini API を利用する場合のみ |
+| 任意 | `GEMINI_API_KEY` | 旧名称。既存デプロイ互換用 | `GEMINI_API_KEY=...` | 既存環境からの移行時に保持 |
+| 任意 | `DEFAULT_PROVIDER` | 既定で使用する LLM プロバイダー識別子 | `DEFAULT_PROVIDER=openai` | 省略時は OpenAI |
+| 任意 | `CHAINLIT_AUTH_SECRET` | Chainlit セッション署名用シークレット | `CHAINLIT_AUTH_SECRET=change-me` | 本番は十分な長さに変更 |
+| 任意 | `PORT` | `make run` の待ち受けポート | `PORT=8787` | Docker 起動時は `-p <host>:<PORT>` と併用 |
+| 任意 | `LOG_LEVEL` | Chainlit ログ出力レベル | `LOG_LEVEL=info` | `debug`/`warning` などを指定可 |
+| 任意 | `SEMANTIC_RETENTION_PROVIDER` | 会話保持率メトリクス算出時の埋め込みプロバイダー | `SEMANTIC_RETENTION_PROVIDER=openai` | 指定時は下記モデル設定も併用 |
+| 任意 | `SEMANTIC_RETENTION_OPENAI_MODEL` | OpenAI 埋め込みモデル名 | `SEMANTIC_RETENTION_OPENAI_MODEL=text-embedding-3-large` | OpenAI プロバイダー指定時に利用 |
+| 任意 | `SEMANTIC_RETENTION_GEMINI_MODEL` | Google Gemini 埋め込みモデル名 | `SEMANTIC_RETENTION_GEMINI_MODEL=text-embedding-004` | Gemini プロバイダー指定時に利用 |
+| 任意 | `GOOGLE_API_KEY` | Gemini 埋め込み生成用 API キー（会話保持率用） | `GOOGLE_API_KEY=...` | `SEMANTIC_RETENTION_PROVIDER=google_gemini` 時に必要 |
 
-| 名称 | 用途 | 設定例 | 備考 |
-| ---- | ---- | ------ | ---- |
-| `OPENAI_API_KEY` | OpenAI プロバイダー利用時の API キー | `OPENAI_API_KEY=sk-...` | サンプルは [`config/env.example`](config/env.example) を参照 |
-
-#### 任意
-
-| 名称 | 用途 | 設定例 | 備考 |
-| ---- | ---- | ------ | ---- |
-| `GOOGLE_GEMINI_API_KEY` | Google Gemini プロバイダー利用時の API キー | `GOOGLE_GEMINI_API_KEY=...` | Gemini API を利用する場合のみ |
-| `GEMINI_API_KEY` | 旧名称。既存デプロイ互換用 | `GEMINI_API_KEY=...` | 既存環境からの移行時に保持 |
-| `DEFAULT_PROVIDER` | 既定で使用する LLM プロバイダー識別子 | `DEFAULT_PROVIDER=openai` | 省略時は OpenAI |
-| `CHAINLIT_AUTH_SECRET` | Chainlit セッション署名用シークレット | `CHAINLIT_AUTH_SECRET=change-me` | 本番は十分な長さに変更 |
-| `PORT` | `make run` の待ち受けポート | `PORT=8787` | Docker 起動時は `-p <host>:<PORT>` と併用 |
-| `LOG_LEVEL` | Chainlit ログ出力レベル | `LOG_LEVEL=info` | `debug`/`warning` などを指定可 |
-| `SEMANTIC_RETENTION_PROVIDER` | 会話保持率メトリクス算出時の埋め込みプロバイダー | `SEMANTIC_RETENTION_PROVIDER=openai` | 指定時は下記モデル設定も併用 |
-| `SEMANTIC_RETENTION_OPENAI_MODEL` | OpenAI 埋め込みモデル名 | `SEMANTIC_RETENTION_OPENAI_MODEL=text-embedding-3-large` | OpenAI プロバイダー指定時に利用 |
-| `SEMANTIC_RETENTION_GEMINI_MODEL` | Google Gemini 埋め込みモデル名 | `SEMANTIC_RETENTION_GEMINI_MODEL=text-embedding-004` | Gemini プロバイダー指定時に利用 |
-| `GOOGLE_API_KEY` | Gemini 埋め込み生成用 API キー（会話保持率用） | `GOOGLE_API_KEY=...` | `SEMANTIC_RETENTION_PROVIDER=google_gemini` 時に必要 |
+> まず `.env` に必須項目を入力し、環境に合わせて任意項目を追記してください。
 
 ### `.env` 設定例
 
@@ -113,13 +110,11 @@ PORT=8787
 LOG_LEVEL=info
 ```
 
-> まず [`config/env.example`](config/env.example) を `.env` にコピーし、表の必須項目を埋めてから任意項目を調整してください。
-
 ## テーマ切り替え
 
-1. Chainlit UI 右上の **Settings → Theme** で `themes/` 配下のプリセット（`.theme.json`）を選択する。
-2. 新しいテーマを追加したい場合は `themes/` に `.theme.json` を配置し、同メニューの **Theme → Import JSON** で読み込む。
-3. ペルソナ連携を含むテーマ編集の詳細は [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) を参照する。
+1. Chainlit UI 右上の **Settings → Theme** から `themes/` 配下のプリセット（`.theme.json`）を選択する。
+2. テーマを追加する場合は `themes/` に `.theme.json` を配置し、同メニューの **Theme → Import JSON** で読み込む。
+3. ペルソナ設定と連携するテーマの編集手順は [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) で詳細を確認する。
 
 - 本パックは「katamari」の要件定義・機能仕様・技術仕様・OpenAPI・初期設定を含むドキュメント集です。
 - まずは `docs/Katamari_Requirements_v3_ja.md` をご確認ください。
