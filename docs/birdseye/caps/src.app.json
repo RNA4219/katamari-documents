@@ -9,6 +9,19 @@
     "on_message(message)"
   ],
   "summary": "Chainlit のセッション開始・設定更新・メッセージ処理を束ね、履歴トリミングとマルチステップ推論を統合する UI エントリポイント。",
+  "deps": {
+    "out": [
+      "core_ext.persona_compiler.compile_persona_yaml",
+      "core_ext.context_trimmer.trim_messages",
+      "core_ext.prethought.analyze_intent",
+      "core_ext.multistep.get_chain_steps",
+      "core_ext.multistep.system_hint_for_step",
+      "providers.openai_client.OpenAIProvider"
+    ],
+    "in": [
+      "tests/app/test_metrics_healthz.py"
+    ]
+  },
   "deps_out": [
     "core_ext.persona_compiler.compile_persona_yaml",
     "core_ext.context_trimmer.trim_messages",
@@ -27,5 +40,5 @@
   "tests": [
     "tests/app/test_metrics_healthz.py"
   ],
-  "generated_at": "2025-10-19T18:34:08Z"
+  "generated_at": "2025-10-19T19:36:50Z"
 }

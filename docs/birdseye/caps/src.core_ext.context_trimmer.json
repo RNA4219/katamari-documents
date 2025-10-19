@@ -5,6 +5,16 @@
     "trim_messages(messages, target_tokens, model)"
   ],
   "summary": "tiktoken ベースで履歴をトークン数に合わせてトリミングし、圧縮率やカウンタ情報を返す共通ユーティリティ。",
+  "deps": {
+    "out": [
+      "tiktoken",
+      "src/core_ext/context_trimmer._TokenCounter"
+    ],
+    "in": [
+      "src/app.py",
+      "tests/core_ext/test_context_trimmer.py"
+    ]
+  },
   "deps_out": [
     "tiktoken",
     "src/core_ext/context_trimmer._TokenCounter"
@@ -19,5 +29,5 @@
   "tests": [
     "tests/core_ext/test_context_trimmer.py"
   ],
-  "generated_at": "2025-10-19T18:34:08Z"
+  "generated_at": "2025-10-19T19:36:50Z"
 }

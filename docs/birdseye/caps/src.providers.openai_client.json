@@ -6,6 +6,15 @@
     "OpenAIProvider.complete(model, messages, **opts)"
   ],
   "summary": "OpenAI Chat Completions API を非同期でラップし、ストリーム配信と一括完了呼び出しを提供するプロバイダー。",
+  "deps": {
+    "out": [
+      "openai.AsyncOpenAI",
+      "os.getenv"
+    ],
+    "in": [
+      "src/app.py"
+    ]
+  },
   "deps_out": [
     "openai.AsyncOpenAI",
     "os.getenv"
@@ -18,5 +27,5 @@
     "API レートやネットワーク障害でストリームが中断する"
   ],
   "tests": [],
-  "generated_at": "2025-10-19T18:34:08Z"
+  "generated_at": "2025-10-19T19:36:50Z"
 }
