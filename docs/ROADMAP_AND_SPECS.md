@@ -26,6 +26,17 @@
 > - Guardrails 原典: [third_party/Day8/workflow-cookbook/GUARDRAILS.md](../third_party/Day8/workflow-cookbook/GUARDRAILS.md)。各節の目的・
 >   スコープ・AC を参照し、上記ドキュメント更新時は整合性を必ず確認する。
 
+### ADR インデックス（コア判断とマイルストーン）
+- **基盤方針**
+  - [ADR #0001: Chainlit リポジトリを git subtree として取り込む](adr/0001-use-chainlit-subtree.md)
+  - [ADR #0002: Token カウントに tiktoken を採用する](adr/0002-tokenization-with-tiktoken.md)
+  - [ADR #0003: LLM プロバイダ抽象インターフェースを定義する](adr/0003-provider-interface.md)
+- **マイルストーン DoD**
+  - [ADR #0004: M1 メトリクスと保持率基盤を整備する](adr/0004-m1-metrics-and-retention.md)
+  - [ADR #0005: M1.5 OAuth とトークンガバナンスを導入する](adr/0005-m1-5-oauth-and-token-governance.md)
+  - [ADR #0006: M2 プロンプト進化コアループを実装する](adr/0006-m2-evolution-core-loop.md)
+  - [ADR #0007: M2.5 ハイブリッドメモリと永続化を整備する](adr/0007-m2-5-persistence-and-hybrid-memory.md)
+
 ### Guardrails ドキュメント更新フロー
 1. 設計変更を検討したら `BLUEPRINT.md` で影響範囲と担当ロールを確認し、設計判断の根拠を更新する。
 2. 運用手順が変わる場合は `RUNBOOK.md` と `CHECKLISTS.md` を同時に改訂し、担当ロールのチェック項目を最新化する。
