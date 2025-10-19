@@ -1,8 +1,15 @@
-# Default handling
+# Normalize text files
 * text=auto
 
-# LF endings for Unix-centric sources (shell/python/makefiles and related)
+# Explicit newline policy for shell, Python, Makefile, and PowerShell sources
 *.bash text eol=lf
+*.sh text eol=lf
+*.py text eol=lf
+Makefile text eol=lf
+*.ps1 text eol=crlf
+*.psm1 text eol=crlf
+
+# Additional LF endings for other Unix-centric sources
 *.cfg text eol=lf
 *.conf text eol=lf
 *.css text eol=lf
@@ -14,10 +21,8 @@
 *.json text eol=lf
 *.md text eol=lf
 *.mk text eol=lf
-*.py text eol=lf
 *.pyi text eol=lf
 *.rs text eol=lf
-*.sh text eol=lf
 *.sql text eol=lf
 *.toml text eol=lf
 *.ts text eol=lf
@@ -25,8 +30,3 @@
 *.txt text eol=lf
 *.yml text eol=lf
 *.yaml text eol=lf
-Makefile text eol=lf
-
-# Windows-native scripts
-*.ps1 text eol=crlf
-*.psm1 text eol=crlf
