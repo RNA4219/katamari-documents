@@ -1,7 +1,7 @@
 # ADR-0000: <タイトル>
 
 > このテンプレートをコピーし、山括弧部分を実際の内容に置き換えてください。
-> 手順の詳細は [CONTRIBUTING.md の ADR セクション](../../CONTRIBUTING.md#adr-を追加更新する手順) を参照してください。
+> 手順の詳細は [CONTRIBUTING.md の ADR セクション](../../CONTRIBUTING.md#adr-を追加・更新する手順) を参照してください。
 
 ## Context
 - 背景・前提条件・制約を簡潔に列挙する。

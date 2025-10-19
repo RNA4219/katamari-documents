@@ -1,32 +1,45 @@
-# Normalize text files
 * text=auto
 
-# Explicit newline policy for shell, Python, Makefile, and PowerShell sources
-*.bash text eol=lf
-*.sh text eol=lf
+# Unix-style LF for source and config files
 *.py text eol=lf
-Makefile text eol=lf
-*.ps1 text eol=crlf
-*.psm1 text eol=crlf
-
-# Additional LF endings for other Unix-centric sources
-*.cfg text eol=lf
-*.conf text eol=lf
-*.css text eol=lf
-*.env text eol=lf
-*.html text eol=lf
-*.ini text eol=lf
+*.pyi text eol=lf
+*.pyx text eol=lf
+*.pxd text eol=lf
+*.pyproj text eol=lf
+*.sh text eol=lf
+*.bash text eol=lf
+*.c text eol=lf
+*.h text eol=lf
+*.cpp text eol=lf
+*.hpp text eol=lf
 *.js text eol=lf
 *.jsx text eol=lf
-*.json text eol=lf
-*.md text eol=lf
-*.mk text eol=lf
-*.pyi text eol=lf
-*.rs text eol=lf
-*.sql text eol=lf
-*.toml text eol=lf
 *.ts text eol=lf
 *.tsx text eol=lf
-*.txt text eol=lf
+*.mjs text eol=lf
+*.cjs text eol=lf
+*.json text eol=lf
 *.yml text eol=lf
 *.yaml text eol=lf
+*.toml text eol=lf
+*.ini text eol=lf
+*.cfg text eol=lf
+*.txt text eol=lf
+*.md text eol=lf
+*.rst text eol=lf
+*.csv text eol=lf
+*.sql text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.less text eol=lf
+*.xml text eol=lf
+*.svg text eol=lf
+*.gradle text eol=lf
+Dockerfile text eol=lf
+Makefile text eol=lf
+
+# Windows scripts keep CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
