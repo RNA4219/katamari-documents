@@ -95,6 +95,7 @@
 - Follow the issue templates.
 - Adhere to `.gitattributes` line ending policy (LF for shell/Python/Makefile, CRLF for PowerShell).
 - `.gitattributes` に定義した改行コード設定をローカルの Git 設定で上書きしないでください。
+- 改行ポリシーに従い、コミット前に必要に応じて `git add --renormalize .` を実行し、不要な改行差分が混入していないか確認してください。
 - GitHub Review のステータスは `Comment` / `Approve` / `Request changes` を正しく使い分け、レビュー観点を箇条書きで残してください。
 - 仕様に関わる合意は PR 内のコメントまたはリンクされた Issue で記録し、マージ時に `## Notes` に最終判断を追記してください。
 
