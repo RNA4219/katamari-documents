@@ -1,15 +1,15 @@
 # TASK.2025-10-19-0001
 
 ## 目的
-- Roadmap 優先度 #2（CI・自動化基盤）に基づき、lint/type/test/publish の品質ゲートを個人運用でも再現できるよう整備する。
-- Guardrails のテスト先行・最小差分原則を守り、CI とリリース判定の一貫性を確保する。
+- 個人+AI 運用で必須となる Guardrails ドキュメント（BLUEPRINT/RUNBOOK/EVALUATION/CHECKLISTS）を初期整備し、日次運用の基点を提供する。
+- Task Seed をハブにして目的・要件・証跡コマンドを明示し、AI 補助を受けた判断でも人が即時追跡できる状態を作る。
 
 ## 要件
-- GitHub Actions で `ruff`・`mypy --strict`・`pytest`・`node:test` をジョブ分割し、Secrets 不在時は統合テストを Graceful Skip させる。
-- タグ push トリガーの release ワークフローで Docker Buildx + GHCR publish を実行する。
-- CI 結果と `docs/Release_Checklist.md` / `docs/Security_Review_Checklist.md` を紐付けて、DoD 判断に使用できる状態にする。個人検証でも証跡を Task Seed にリンクする。
-- Birdseye 図と Task Seed を更新し、変更理由とフォローアップを追跡できるようにする。
-- Guardrails HUB → GUARDRAILS → BLUEPRINT の順にドキュメントを参照し、設計・運用・評価の整合性を確保する。単独作業なので参照結果を Task Seed にメモする。
+- BLUEPRINT/RUNBOOK/EVALUATION/CHECKLISTS を個人+AI 運用向けガードレールとして更新し、再試行可否や責務分担を明示する。
+- README と `docs/ROADMAP_AND_SPECS.md` から上記ドキュメントへの導線を追加し、最小読込手順に組み込む。
+- Guardrails 文書の更新理由と AI 提案採否を Task Seed に記録し、Birdseye 更新と同日にコミットする。
+- Lint/Type/Test（`ruff`/`mypy --strict`/`pytest`/`node:test`）の実行計画を RUNBOOK に揃え、結果ログ保存先を Task Seed で管理する。
+- 評価時に参照する指標とチェックリストの差分が発生した場合は直ちに Task Seed にフォローアップを追加し、後続タスクへ切り出す。
 
 ## 想定コマンド
 ```bash
@@ -21,8 +21,10 @@ pytest
 npm test -- --watch=false  # node:test の雛形
 ruff check .
 mypy --strict
+rg -n "BLUEPRINT" third_party/Day8/workflow-cookbook/GUARDRAILS.md
 rg -n "RUNBOOK" third_party/Day8/workflow-cookbook/GUARDRAILS.md
-act -W .github/workflows/ci.yml  # 任意: GitHub Actions のローカルドライラン
+rg -n "EVALUATION" third_party/Day8/workflow-cookbook/GUARDRAILS.md
+rg -n "CHECKLIST" third_party/Day8/workflow-cookbook/GUARDRAILS.md
 ```
 
 ## 受入基準

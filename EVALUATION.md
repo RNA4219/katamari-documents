@@ -32,6 +32,13 @@
 - セキュリティ: リリース / セキュリティチェックリストの完了状況。
 - 再現性: Birdseye 図と Task Seed の証跡が最新コミット以降であること。
 
+## ガードレール項目
+- 受入判定は必ず人間が実施し、AI から提案された評価観点は補助情報として扱う。
+- 指標が閾値を下回った場合は `RUNBOOK.md` の検証手順を再実行し、フォローアップを Task Seed に登録する。
+- 重大な逸脱は `CHECKLISTS.md` の該当フェーズへ反映し、再発防止策を記録する。
+- `third_party/Day8/workflow-cookbook/GUARDRAILS.md` の EVALUATION 節で定義された Acceptance を引用し、理由と共に合否を記載する。
+- 自己検証ログ（lint/type/test/perf）はローカルパスを明示し、共有が必要な場合は匿名化して添付する。
+
 ## 受入基準
 - 主要ユーザーフローが設計通り完遂し、指標が要件内である。
 - チェックリストの必須項目が `PASS` か `N/A`（理由付き）で記録されている。
@@ -43,7 +50,8 @@
 - [ ] 性能指標（SSE p95、UI 遅延、トークン削減率）を測定し、要件と比較した。
 - [ ] セキュリティ / リリースチェックリストをレビューし、未完了項目を Task Seed に転記した。
 - [ ] 判定結果を `docs/ROADMAP_AND_SPECS.md` の対象フェーズへ反映した。
-- [ ] Guardrails EVALUATION 節（`third_party/Day8/workflow-cookbook/GUARDRAILS.md`）と照合した。
+- [ ] Guardrails EVALUATION 節（`third_party/Day8/workflow-cookbook/GUARDRAILS.md`）と本書のガードレール項目が一致する。
+- [ ] AI から提案された評価観点を採用した場合、人間の判定と差分理由を記録した。
 
 ## 参照
 - [docs/ROADMAP_AND_SPECS.md](docs/ROADMAP_AND_SPECS.md)

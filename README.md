@@ -13,6 +13,7 @@
 - docs/ROADMAP_AND_SPECS.md …… Birdseye 導線と仕様ハブを照合
 - docs/birdseye/README.md …… Birdseye 整備予定ドキュメント
 - docs/birdseye/hot.json …… Birdseye ホットスポット一覧
+- Guardrails ドキュメント …… [`BLUEPRINT.md`](BLUEPRINT.md) / [`RUNBOOK.md`](RUNBOOK.md) / [`EVALUATION.md`](EVALUATION.md) / [`CHECKLISTS.md`](CHECKLISTS.md)（個人+AI運用向けガードレール）
 <!-- /LLM-BOOTSTRAP -->
 
 ## 同梱物
