@@ -11,4 +11,7 @@
 - [ ] Run tests & lint
 - [ ] Build Docker image
 - [ ] Verify SSE streaming & OAuth (if enabled)
-- [ ] 配布物に [`LICENSE`](../LICENSE) と [`NOTICE`](../NOTICE) を同梱したことを確認
+
+## 配布物のライセンス同梱チェック
+
+- [ ] 配布パッケージ・Docker イメージ・アーカイブに [`LICENSE`](../LICENSE) と [`NOTICE`](../NOTICE) を同梱したことを確認

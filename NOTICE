@@ -1,16 +1,17 @@
 Katamari NOTICE
 ===============
 
-本ソフトウェアは Chainlit/chainlit (https://github.com/Chainlit/chainlit) を原作とするフォークであり、Apache License, Version 2.0 の下で再配布されています。
+本ソフトウェアは Chainlit プロジェクト（https://github.com/Chainlit/chainlit）を原作とするフォークです。本フォークは Apache
+License, Version 2.0 の条件の下で配布されています。
 
 Copyright (c) 2024 Day8 and contributors
 Copyright (c) Chainlit SAS and Chainlit contributors
 
-本フォークの主な改変点:
-- persona_compiler / context_trimmer / prethought / multistep / evolve などによる会話制御アルゴリズムとチェーン構成の拡張
-- OpenAI / Gemini 等を含むマルチプロバイダ抽象化と Day8 管理向け API ("/metrics", "/healthz", "/api/models" 等) の追加
-- Day8 ガードレール資料・テーマ定義・運用スクリプト一式の導入
+本フォークで追加・変更した主な内容:
+- persona_compiler / context_trimmer / prethought / multistep / evolve などの会話制御アルゴリズムとチェーン構成を強化
+- OpenAI / Gemini 等を含むマルチプロバイダ抽象化、および Day8 管理向け API ("/metrics", "/healthz", "/api/models" など) の追加
+- Day8 ガードレール資料・テーマ定義・運用スクリプトを同梱し、運用フローとチェックリストを拡充
 
 Apache License, Version 2.0 の全文は `LICENSE` を参照してください。
 
-Apache License, Version 2.0 (c) 2004-2024 の条件に従い、本フォークに関するお問い合わせは GitHub Issues (https://github.com/Day8/katamari/issues) までお寄せください。
+本フォークに関するお問い合わせは GitHub Issues（https://github.com/Day8/katamari/issues）までお願いします。

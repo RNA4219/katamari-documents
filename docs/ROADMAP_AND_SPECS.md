@@ -95,10 +95,11 @@
 
 本ハブは開発フェーズ毎に更新し、未作成 ADR や追加仕様が発生した際は本書内のロードマップを最新化してください。
 
-## ライセンス
+## ライセンスと配布物チェック
 
 - [`LICENSE`](../LICENSE)
-- Chainlit 由来の告知と本フォークの改変概要をまとめた [`NOTICE`](../NOTICE)（本ドキュメントに追記済み）
+- Chainlit 由来の告知と本フォークの改変概要をまとめた [`NOTICE`](../NOTICE)
+- リリース成果物には `LICENSE` と `NOTICE` を必ず同梱すること（詳細は [`docs/Release_Checklist.md`](Release_Checklist.md) を参照）
 
 ## 5. Guardrails ドキュメント更新フロー
 
