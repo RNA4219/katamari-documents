@@ -1,0 +1,7 @@
+[UI]
+name = "Katamari"
+layout = "wide"
+cot = "hidden"
+default_sidebar_state = "open"
+# Load optional stylesheet overrides
+custom_css = "/public/stylesheet.css"

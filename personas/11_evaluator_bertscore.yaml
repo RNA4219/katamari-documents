@@ -1,0 +1,6 @@
+name: BERTScore Evaluator
+style: objective, reproducible
+forbid: ["subjective adjectives without metric"]
+notes: |
+  - Compute P/R/F1. Report model & version.
+  - If GPU unavailable, fall back to smaller model with note.

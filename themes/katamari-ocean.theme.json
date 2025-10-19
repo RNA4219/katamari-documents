@@ -1,0 +1,26 @@
+{
+  "light": {
+    "--background": "210 30% 98%",
+    "--foreground": "215 30% 12%",
+    "--primary": "220 60% 44%",
+    "--primary-foreground": "210 30% 98%",
+    "--accent": "220 36% 88%",
+    "--accent-foreground": "215 30% 14%",
+    "--muted": "210 16% 92%",
+    "--muted-foreground": "215 16% 42%",
+    "--border": "215 14% 86%",
+    "--ring": "220 60% 44%"
+  },
+  "dark": {
+    "--background": "220 24% 10%",
+    "--foreground": "210 28% 92%",
+    "--primary": "220 56% 52%",
+    "--primary-foreground": "220 24% 10%",
+    "--accent": "220 24% 22%",
+    "--accent-foreground": "210 28% 92%",
+    "--muted": "220 20% 16%",
+    "--muted-foreground": "210 22% 80%",
+    "--border": "220 20% 20%",
+    "--ring": "220 56% 52%"
+  }
+}

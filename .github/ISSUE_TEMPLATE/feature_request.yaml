@@ -1,0 +1,15 @@
+
+name: Feature request
+description: Suggest an idea for Katamari
+title: "[feat]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    attributes:
+      label: Proposal
+  - type: textarea
+    attributes:
+      label: Motivation
+  - type: textarea
+    attributes:
+      label: Alternatives

@@ -1,0 +1,23 @@
+
+id,phase,task,estimate_h,owner,depends_on
+M0a-1,M0a,Setup fork & LICENSE/NOTICE,0.5,, 
+M0a-2,M0a,app.py skeleton & Settings,1.0,,M0a-1
+M0a-3,M0a,SSE streaming wiring,1.0,,M0a-2
+M0a-4,M0a,Persona/Trim minimal,0.5,,M0a-2
+M0a-5,M0a,Reflect chain basic,0.5,,M0a-3
+M0a-6,M0a,/models endpoint & logging,0.5,,M0a-3
+M0b-1,M0b,Trim ratio display,0.5,,M0a-4
+M0b-2,M0b,Persona issues log,0.3,,M0a-4
+M1-1,M1,Prethought analyzer,1.0,,M0b-2
+M1-2,M1,Retention (embedding) metric,1.5,,M1-1
+M1-3,M1,/metrics & healthz,0.8,,M0b-1
+M1-4,M1,Header Auth,0.8,,M0b-1
+M1.5-1,M1.5,OAuth enable,2.0,,M1-4
+M1.5-2,M1.5,Strict token counting,1.5,,M0b-1
+M2-1,M2,Evolution core loop,2.0,,M1-2
+M2-2,M2,Evaluator BERTScore,2.0,,M2-1
+M2-3,M2,Evaluator ROUGE,1.5,,M2-1
+M2-4,M2,Evaluator Rules,1.0,,M2-1
+M2-5,M2,Scoreboard UI,2.0,,M2-2
+M2.5-1,M2.5,Postgres persistence,4.0,,M2-5
+M3-1,M3,Docker/Helm/CI,3.0,,M2.5-1

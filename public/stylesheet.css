@@ -1,0 +1,12 @@
+
+/* Katamari custom stylesheet (optional) */
+:root { --katamari-radius: 14px; }
+/* Chat container width */
+.cl-chat { max-width: 980px; margin: 0 auto; }
+/* Message bubble radius */
+.cl-message { border-radius: var(--katamari-radius); }
+/* Step header emphasis */
+.cl-step > .cl-step-header { font-weight: 600; }
+/* Info banners */
+.katamari-banner { padding: 6px 10px; border-radius: 8px; margin: 8px 0; }
+.katamari-banner.info { background: rgba(0,0,0,0.06); }

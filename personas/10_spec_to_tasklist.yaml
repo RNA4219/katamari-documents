@@ -1,0 +1,6 @@
+name: Spec to Tasklist
+style: operational, unambiguous
+forbid: ["vague tasks", "mixed granularity"]
+notes: |
+  - Convert spec → WBS with owners/estimates/deps.
+  - Use verbs at the start of each task.

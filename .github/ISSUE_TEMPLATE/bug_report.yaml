@@ -1,0 +1,16 @@
+
+name: Bug report
+description: Create a report to help us improve
+title: "[bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    attributes:
+      label: Description
+      description: What happened?
+  - type: textarea
+    attributes:
+      label: Reproduction
+  - type: input
+    attributes:
+      label: Version
