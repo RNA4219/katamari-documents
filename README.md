@@ -24,7 +24,7 @@
 - 設定: [`config/model_registry.json`](config/model_registry.json), [`config/env.example`](config/env.example)
 - フォーク運用: [`docs/UPSTREAM.md`](docs/UPSTREAM.md), [`docs/FORK_NOTES.md`](docs/FORK_NOTES.md)
 - ADR: [`docs/adr/README.md`](docs/adr/README.md)
-- Day8 HUB / Guardrails / Blueprint 群: `third_party/Day8/workflow-cookbook/HUB.codex.md`, `third_party/Day8/workflow-cookbook/GUARDRAILS.md`, `third_party/Day8/workflow-cookbook/BLUEPRINT.md`
+- Day8 HUB / Guardrails / Blueprint 群（導線まとめ: [`docs/ROADMAP_AND_SPECS.md#day8-sequence`](docs/ROADMAP_AND_SPECS.md#day8-sequence)）: `third_party/Day8/workflow-cookbook/HUB.codex.md`, `third_party/Day8/workflow-cookbook/GUARDRAILS.md`, `third_party/Day8/workflow-cookbook/BLUEPRINT.md`
 
 ## 主要導線
 - 要件・仕様ハブ: [`docs/ROADMAP_AND_SPECS.md`](docs/ROADMAP_AND_SPECS.md)
@@ -34,19 +34,22 @@
 - OpenAPI: [`docs/openapi/katamari_openapi.yaml`](docs/openapi/katamari_openapi.yaml)
 - 変更履歴: [`CHANGELOG.md`](CHANGELOG.md)（更新フロー: [`CHANGELOG.md#運用ルール`](CHANGELOG.md#%E9%81%8B%E7%94%A8%E3%83%AB%E3%83%BC%E3%83%AB) / [`README.md#変更履歴の更新ルール`](README.md#%E5%A4%89%E6%9B%B4%E5%B1%A5%E6%AD%B4%E3%81%AE%E6%9B%B4%E6%96%B0%E3%83%AB%E3%83%BC%E3%83%AB)）
 - フォーク運用: [`docs/UPSTREAM.md`](docs/UPSTREAM.md), [`docs/FORK_NOTES.md`](docs/FORK_NOTES.md)
-- Day8 オペレーション資料（推奨参照順: HUB → Guardrails → Blueprint）: [`third_party/Day8/workflow-cookbook/HUB.codex.md`](third_party/Day8/workflow-cookbook/HUB.codex.md)（観測ハブ）→ [`third_party/Day8/workflow-cookbook/GUARDRAILS.md`](third_party/Day8/workflow-cookbook/GUARDRAILS.md)（統制基準）→ [`third_party/Day8/workflow-cookbook/BLUEPRINT.md`](third_party/Day8/workflow-cookbook/BLUEPRINT.md)（運用設計）
+- Day8 初回導線（HUB → Guardrails → Blueprint）: [`docs/ROADMAP_AND_SPECS.md#day8-sequence`](docs/ROADMAP_AND_SPECS.md#day8-sequence)
 
 ## ローカル起動手順
 
-### 1. 依存インストールと初期セットアップ
+### Step 1: 依存インストールと初期セットアップ
 
 1. Python 3.11 系を用意し、任意の作業ディレクトリで仮想環境を作成する。
-2. `.env` を [`config/env.example`](config/env.example) からコピーし、後述の環境変数表を参考に値を設定する。
-3. `make dev` を実行して Python 依存関係を一括でインストールする（内部的には `pip install -r requirements.txt` を呼び出す）。
+2. リポジトリを取得してルートディレクトリ（`katamari/`）に移動する。
+3. `.env` を [`config/env.example`](config/env.example) からコピーし、後述の環境変数表を参考に値を設定する。
+4. `make dev` を実行して Python 依存関係を一括でインストールする（内部的には `pip install -r requirements.txt` を呼び出す）。
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
+git clone git@github.com:<your-org>/katamari.git
+cd katamari
 cp config/env.example .env
 make dev
 ```
@@ -54,7 +57,7 @@ make dev
 - GNU Make が利用できない環境では `pip install -r requirements.txt` を直接実行してもよい。
 - 依存パッケージを更新する際も同じコマンド（`make dev`）を再実行する。
 
-### 2. アプリのローカル起動
+### Step 2: アプリのローカル起動
 
 1. `.env` に必要な値を設定した状態で `make run` を実行する。
 2. Chainlit が `http://localhost:8787`（`PORT` を設定している場合はその値）で立ち上がる。
@@ -66,7 +69,7 @@ make run
 
 ## 環境変数一覧
 
-`.env` の初期値は [`config/env.example`](config/env.example) を参照してください。値の詳細や追加オプションは必要に応じて [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) も確認してください。
+`.env` の初期値は [`config/env.example`](config/env.example) を参照してください。設定の際はサンプルとの差分を最小限に保ちつつ、値の詳細や追加オプションを確認するために必要に応じて [`README_PERSONAS_THEMES.md`](README_PERSONAS_THEMES.md) も参照してください。
 
 | 種別 | 名称 | 用途 | 設定例 | 備考 |
 | ---- | ---- | ---- | ------ | ---- |
@@ -127,5 +130,5 @@ GitHub Container Registry への公開フローは [docs/addenda/H_Deploy_Guide.
 2. 記法は [Keep a Changelog](https://keepachangelog.com/ja/1.1.0/) を踏襲し、`Added`/`Changed`/`Deprecated`/`Removed`/`Fixed`/`Security` の分類に整理する（不要な分類は削除可）。
 3. 各エントリの先頭に 4 桁ゼロ埋めの通番（例: `0001`）を付与し、既存の最大値から 1 ずつ繰り上げる。
 4. リリース確定時は `[Unreleased]` のエントリを新しいバージョン見出しへ移し、セマンティックバージョンと日付を付けてタグ作成と同じコミットで確定する。
-5. README やロードマップに散在する履歴は、該当リリースの見出しへ移管し、`docs/Release_Checklist.md` と併せて公開する。
-6. PR を送信する直前に [`CHANGELOG.md#運用ルール`](CHANGELOG.md#%E9%81%8B%E7%94%A8%E3%83%AB%E3%83%BC%E3%83%AB) を再確認し、通番と分類が最新ポリシーに沿っていることをチェックする。
+5. README やロードマップ、`TASK.*.md` の完了済みタスクは `[Unreleased]` の該当分類へ移し、リリース時に対応バージョンへ転記する。
+6. PR を送信する直前に [`CHANGELOG.md#運用ルール`](CHANGELOG.md#%E9%81%8B%E7%94%A8%E3%83%AB%E3%83%BC%E3%83%AB) を再確認し、通番・分類・移管漏れがないかチェックする。

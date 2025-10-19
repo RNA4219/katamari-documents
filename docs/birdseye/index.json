@@ -1,42 +1,60 @@
 {
-  "generated_at": "2025-10-19T22:00:00Z",
-  "nodes": [
-    {
-      "id": "src/app.py",
+  "generated_at": "2025-10-20T00:00:00Z",
+  "nodes": {
+    "src/app.py": {
       "role": "entrypoint",
-      "capsule": "docs/birdseye/caps/src.app.json"
+      "caps": "docs/birdseye/caps/src.app.json",
+      "mtime": "2025-10-19T12:23:58Z"
     },
-    {
-      "id": "src/core_ext/context_trimmer.py",
+    "src/core_ext/context_trimmer.py": {
       "role": "context-management",
-      "capsule": "docs/birdseye/caps/src.core_ext.context_trimmer.json"
+      "caps": "docs/birdseye/caps/src.core_ext.context_trimmer.json",
+      "mtime": "2025-10-19T12:22:34Z"
     },
-    {
-      "id": "src/core_ext/multistep.py",
+    "src/core_ext/multistep.py": {
       "role": "workflow",
-      "capsule": "docs/birdseye/caps/src.core_ext.multistep.json"
+      "caps": "docs/birdseye/caps/src.core_ext.multistep.json",
+      "mtime": "2025-10-19T10:34:38Z"
     },
-    {
-      "id": "src/providers/openai_client.py",
+    "src/core_ext/persona_compiler.py": {
+      "role": "persona",
+      "caps": "docs/birdseye/caps/src.core_ext.persona_compiler.json",
+      "mtime": "2025-10-19T10:34:38Z"
+    },
+    "src/providers/openai_client.py": {
       "role": "provider",
-      "capsule": "docs/birdseye/caps/src.providers.openai_client.json"
+      "caps": "docs/birdseye/caps/src.providers.openai_client.json",
+      "mtime": "2025-10-19T10:34:38Z"
     }
-  ],
+  },
   "edges": [
-    {
-      "source": "src/app.py",
-      "target": "src/core_ext/context_trimmer.py",
-      "relation": "uses"
-    },
-    {
-      "source": "src/app.py",
-      "target": "src/core_ext/multistep.py",
-      "relation": "uses"
-    },
-    {
-      "source": "src/app.py",
-      "target": "src/providers/openai_client.py",
-      "relation": "instantiates"
-    }
+    [
+      "src/app.py",
+      "src/core_ext/context_trimmer.py"
+    ],
+    [
+      "src/app.py",
+      "src/core_ext/multistep.py"
+    ],
+    [
+      "src/app.py",
+      "src/core_ext/persona_compiler.py"
+    ],
+    [
+      "src/app.py",
+      "src/providers/openai_client.py"
+    ],
+    [
+      "src/core_ext/persona_compiler.py",
+      "src/app.py"
+    ],
+    [
+      "src/core_ext/context_trimmer.py",
+      "src/app.py"
+    ],
+    [
+      "src/core_ext/multistep.py",
+      "src/app.py"
+    ]
   ]
 }
