@@ -1,23 +1,29 @@
 {
   "id": "src/app.py",
   "role": "entrypoint",
-  "summary": "Chainlit ベースの Katamari UI を起動し、チャット設定同期・マルチステップ制御・トリム結果のメトリクス公開までを一手に担うルートハンドラ。",
-  "deps": {
-    "outbound": [
-      "chainlit",
-      "fastapi",
-      "src/core_ext/context_trimmer.py",
-      "src/core_ext/persona_compiler.py",
-      "src/core_ext/prethought.py",
-      "src/core_ext/multistep.py",
-      "src/providers/openai_client.py"
-    ],
-    "inbound": [
-      "tests/app/test_metrics_healthz.py"
-    ]
-  },
+  "summary": "Chainlit UI を起点にチャット設定、履歴トリミング、LLM 呼び出し、多段チェーンの実行、運用エンドポイント公開を担うメインアプリ。",
+  "public_api": [
+    "@cl.on_chat_start",
+    "@cl.on_message",
+    "GET /metrics",
+    "GET /healthz"
+  ],
+  "deps_out": [
+    "core_ext.persona_compiler.compile_persona_yaml",
+    "core_ext.context_trimmer.trim_messages",
+    "core_ext.prethought.analyze_intent",
+    "core_ext.multistep.get_chain_steps",
+    "core_ext.multistep.system_hint_for_step",
+    "providers.openai_client.OpenAIProvider"
+  ],
+  "deps_in": [
+    "tests/app/test_metrics_healthz.py"
+  ],
   "tests": [
     "tests/app/test_metrics_healthz.py"
   ],
-  "generated_at": "2025-10-19T16:07:45Z"
+  "risks": [
+    "Chainlit 設定や OPENAI_API_KEY が未設定の場合に起動が失敗する"
+  ],
+  "generated_at": "2025-10-19T17:13:16Z"
 }

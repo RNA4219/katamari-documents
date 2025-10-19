@@ -1,17 +1,17 @@
 {
-  "generated_at": "2025-10-19T16:41:01Z",
+  "generated_at": "2025-10-19T17:13:16Z",
   "entries": [
     {
       "id": "src/app.py",
-      "reason": "Chainlit アプリ全体の起動とチャットライフサイクルを束ねるエントリポイント"
+      "reason": "Chainlit ベースの Katamari UI を起動するチャットエントリポイント"
     },
     {
       "id": "src/core_ext/context_trimmer.py",
-      "reason": "履歴トリミングとメトリクス算出を担い、コストと品質の両立を支える"
+      "reason": "履歴圧縮とメトリクス生成を担う主要ユーティリティ"
     },
     {
       "id": "src/providers/openai_client.py",
-      "reason": "標準 LLM プロバイダーの API 呼び出しと再試行ポリシーを集中管理する"
+      "reason": "既定の LLM プロバイダー呼び出し経路を提供する"
     }
   ]
 }
