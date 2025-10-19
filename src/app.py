@@ -88,8 +88,12 @@ async def on_message(message: cl.Message):
 
     trimmed, metrics = trim_messages(hist, target_tokens, model)
     cl.user_session.set("history", trimmed)
+    cl.user_session.set("trim_metrics", metrics)
     if show_debug:
-        await cl.Message(content=f"[trim] tokens: {metrics['output_tokens']}/{metrics['input_tokens']} (ratio {metrics['compress_ratio']})").send()
+        base = f"[trim] tokens: {metrics['output_tokens']}/{metrics['input_tokens']} (ratio {metrics['compress_ratio']})"
+        if "semantic_retention" in metrics:
+            base += f", retention {metrics['semantic_retention']}"
+        await cl.Message(content=base).send()
 
     # 3) Run chain
     provider = get_provider(model)
