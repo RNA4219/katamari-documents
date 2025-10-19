@@ -12,18 +12,27 @@
 3. コミットはテスト緑化後に行い、`git push --set-upstream origin <branch>` でリモート追随させます。
 4. レビュー中の修正は `git commit --amend` または `git rebase -i` で整え、強制プッシュ時は必ず `--force-with-lease` を使用します。
 
+### ブランチ保護ルール
+- `main` への直接 push・ウェブ編集は禁止です。必ず Pull Request 経由でマージしてください。
+- リリース作業は `release/<version>` ブランチを作成し、タグ付け (`git tag v<version>`) を行った上でマージします。
+- 複数人で並行作業する場合は、ドラフト PR を早期に共有し、衝突しそうなファイルを `CODEOWNERS` と相談して担当を明確化してください。
+- ステージング環境へのホットフィックスは `hotfix/<要約>` ブランチから行い、マージ後に必ず `main` へも逆マージして整合性を保ちます。
+
 ## 品質ゲート
 ### テスト必須
 - Python コードは `pytest -q` を必ずグリーンにしてください。外部リソースに依存するテストは `pytest -q -m "not slow"` での確認も行います。
 - Chainlit フロントエンドや Node 周辺を変更した場合は `cd upstream/chainlit && pnpm install && pnpm run test` を実行し、E2E が必要なら `pnpm run test:ui` を追加で回してください。
 - UI を含む変更ではスクリーンショットやキャプチャ動画を `## Notes` セクションに添付し、レビュアが再現可能な情報を提供します。
 - 迷った場合は `make test` を起点にし、CI の `pytest -q` と同一コマンドをローカルでも再現してください。
+- すべてのテストコマンド実行ログ（抜粋で可）を PR テンプレートの `## Test` セクションへ貼り付け、失敗時のリトライ理由をコメントに追記します。
 
 ### Lint / Type Check
 - Python は `ruff check .` で lint、`mypy --strict` で型チェックを通過させてください。差分に合わせて `ruff --fix` や `mypy --strict src/...` を活用し、型エラーを解消します。
 - `src/` 以下で ESM/TypeScript を触る場合は `pnpm run lint`（ESLint + TypeScript）と `pnpm run buildUi` でビルドが通ることを確認します。
 - `pre-commit` を使用している場合でも手動での最終確認を省略しないでください。CI 失敗はレビュー停止の対象です。
 - 最低限 `ruff check . && mypy --strict && pytest -q` を同一シェルで実行し、成功ログを PR の `## Test` セクションへ貼り付けてください。
+- Lint/型チェック専用コミットを作成する場合は、そのコミット内での自動整形差分を必ず確認し、不要な大量変更を含めないようにしてください。
+- `ruff` の自動修正で対応できない警告は Issue としてトラッキングし、PR 説明の `## Notes` で対応方針を共有してください。
 
 ## PR テンプレの使い方
 - PR 作成時は `.github/PULL_REQUEST_TEMPLATE.md` が自動で展開されます。各セクションに必ず記入し、空欄のまま提出しないでください。
@@ -31,6 +40,8 @@
 - `## Test` のチェックボックスは実行結果を根拠にオンにし、未実施の場合はオフのまま実行予定をコメントで共有してください。
 - 参照 Issue や追加情報は `## Notes` に追記し、レビュアが判断できるようリンクを整理します。
 - テンプレ内の `## Checklist` が増えた場合は全項目の Yes/No を明確化し、未完了のものは着手予定日時をコメントで補足してください。
+- テンプレートの項目を削除・改変する場合は `## Notes` で理由を説明し、レビュアの同意を得てからマージしてください。
+- スクリーンショットやログなどの添付は GitHub の Markdown 形式で埋め込み、外部ストレージのリンクのみを共有しないでください。
 
 ## レビューとマージ
 - 少なくとも 1 名の CODEOWNERS レビュア承認が必要です。必要に応じてドラフト PR で早期フィードバックをもらってください。
@@ -40,6 +51,8 @@
 - Keep diffs in `core_ext/` and `providers/` when possible.
 - Follow the issue templates.
 - Adhere to `.gitattributes` line ending policy (LF for shell/Python/Makefile, CRLF for PowerShell).
+- GitHub Review のステータスは `Comment` / `Approve` / `Request changes` を正しく使い分け、レビュー観点を箇条書きで残してください。
+- 仕様に関わる合意は PR 内のコメントまたはリンクされた Issue で記録し、マージ時に `## Notes` に最終判断を追記してください。
 ### ADR を追加・更新する手順
 1. `docs/adr/0000-template.md` をコピーし、次の連番（例: `0005-new-decision.md`）とタイトルを付与する。ファイル冒頭のステータスと更新日を必ず記入する。
 2. 「Context / Decision / Consequences / DoD」に背景・決定理由・影響範囲を明示する。代替案を検討した場合は Decision セクションで触れる。
