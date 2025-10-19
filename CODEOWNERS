@@ -2,16 +2,18 @@
 * @katamari-org/maintainers
 
 # Core runtime extensions
-/src/core_ext/ @katamari-org/runtime-team
+/src/core_ext/ @katamari-org/runtime-team @alice-architect
 
 # Provider integrations
-/providers/ @katamari-org/providers-team
+/src/providers/ @katamari-org/providers-team @integrations-lead
 
 # Application services
-/src/services/ @katamari-org/backend @alice-architect
+/src/app.py @katamari-org/backend @alice-architect
+/src/services/ @katamari-org/backend @product-tech-lead
 /src/ @katamari-org/backend
 
 # Documentation and knowledge base
+/README.md @katamari-org/docs-team
 /docs/adr/ @katamari-org/architecture-council
 /docs/ @katamari-org/docs-team
 
@@ -21,23 +23,28 @@
 
 # Public assets and frontend glue
 /public/ @katamari-org/frontend @design-lead
-/upstream/chainlit/ @katamari-org/frontend
+/upstream/chainlit/ @katamari-org/frontend @frontend-captain
 
 # Python and shared tests
 /tests/ @katamari-org/qa
+/pytest.ini @katamari-org/qa
 
 # Tooling and automation scripts
 /scripts/ @katamari-org/tooling
+/Makefile @katamari-org/tooling
 
 # Deployment manifests and infrastructure
 /config/ @katamari-org/platform
 /Dockerfile @katamari-org/platform
-/Makefile @katamari-org/tooling
 
-# Third-party and licensing mirrors
+# Dependency manifests
+/requirements.txt @katamari-org/tooling
+/requirements-eval.txt @katamari-org/tooling @data-science-lead
+
+# Third-partyとライセンスミラー
 /third_party/ @katamari-org/legal
 
-# Top-level governance
+# トップレベルガバナンス
 /CODE_OF_CONDUCT.md @katamari-org/maintainers @legal-counsel
 /CONTRIBUTING.md @katamari-org/maintainers
 /CHECKLISTS.md @katamari-org/qa
