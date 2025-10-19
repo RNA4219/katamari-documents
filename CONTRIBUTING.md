@@ -41,8 +41,8 @@ PR テンプレートの「テスト実行ログ」欄には成功を確認で�
 - Draft PR は作業メモとして活用して構いません。レビュー準備が整ったら Ready for review へ切り替えてください。
 
 ## 改行ポリシー
-- ルートの `.gitattributes` で `* text=auto` を設定し、Python/Node/ドキュメントなどは LF、Windows 向けバッチ/PowerShell は CRLF に固定しています。
-- 既存ファイルの改行差分が大量に発生した場合は `git add --renormalize .` を別コミットで実行し、フォーマットのみの差分を整理してください。
+- ルートの `.gitattributes` で `* text=auto` を設定し、シェルスクリプト（`*.sh` など）・Python（`*.py`）・PowerShell（`*.ps1`/`*.psm1`/`*.psd1`）・Makefile（`Makefile`/`*.mk`）は LF へ統一しています。
+- `.gitattributes` を更新した際は `git diff --stat` などで影響範囲を確認し、必要があれば `git add --renormalize .` を別コミットで実行して改行差分のみを整理してください。
 - 新規ファイルや外部から持ち込むコードも `.gitattributes` のポリシーに合わせ、CRLF が混入していないかをコミット前に確認してください。
 
 ## レビューとマージ
