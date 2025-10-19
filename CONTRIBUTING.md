@@ -61,7 +61,8 @@ PR テンプレートの「テスト実行ログ」欄には成功を確認で�
 
 ## 改行ポリシー
 - ルートの `.gitattributes` で `* text=auto` を設定し、シェルスクリプト（`*.sh` など）・Python（`*.py`）・PowerShell（`*.ps1`/`*.psm1`/`*.psd1`）・Makefile（`Makefile`/`*.mk`）は LF へ統一しています。
-- `.gitattributes` を更新した際は `git diff --stat` などで影響範囲を確認し、必要があれば `git add --renormalize .` を別コミットで実行して改行差分のみを整理してください。
+- `.gitattributes` を更新した際は `git diff --stat` や `git status --short` で影響範囲を確認し、改行差分が期待通りかを必ずチェックしてください。
+- CRLF → LF の大量変更が必要になった場合は `git add --renormalize .` を実行して整えますが、結果は通常の差分と分離した別コミット（例: `chore: normalize line endings`）で扱ってください。
 - 新規ファイルや外部から持ち込むコードも `.gitattributes` のポリシーに合わせ、CRLF が混入していないかをコミット前に確認してください。
 
 ## レビューとマージ
