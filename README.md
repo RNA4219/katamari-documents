@@ -94,3 +94,4 @@ GitHub Container Registry への公開フローは [docs/addenda/H_Deploy_Guide.
 1. PR で顕著な差分が出たら、必ず [`CHANGELOG.md`](CHANGELOG.md) の `[Unreleased]` に追記する。
 2. 記法は [Keep a Changelog](https://keepachangelog.com/ja/1.1.0/) を踏襲し、セマンティックバージョンと日付を付ける。
 3. README やロードマップに散在する履歴は、該当リリースの見出しへ移管し、`docs/Release_Checklist.md` と併せて公開する。
+4. リリース確定時は `[Unreleased]` のエントリを新しいバージョン見出しへ移し、タグ作成と同じコミットで履歴を確定させる。
