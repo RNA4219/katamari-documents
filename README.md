@@ -4,6 +4,14 @@
 読む順番:
 1. docs/birdseye/index.json  …… ノード一覧・隣接関係（軽量）
 2. docs/birdseye/caps/<path>.json …… 必要ノードだけ point read（個別カプセル）
+3. docs/ROADMAP_AND_SPECS.md …… 要件・仕様の横断導線
+4. [third_party/Day8/README.md](third_party/Day8/README.md) …… Day8 HUB / Guardrails（詳細は `docs/day8/README.md`）
+5. [third_party/Day8/workflow-cookbook/HUB.codex.md](third_party/Day8/workflow-cookbook/HUB.codex.md) → [third_party/Day8/workflow-cookbook/GUARDRAILS.md](third_party/Day8/workflow-cookbook/GUARDRAILS.md) → [third_party/Day8/workflow-cookbook/BLUEPRINT.md](third_party/Day8/workflow-cookbook/BLUEPRINT.md) …… Day8 HUB から統制基準・ブループリントまでを一気読み。
+
+> `docs/birdseye/hot.json` の `generated_at` は頻出入口リストの生成時刻です。エントリポイントや依存関係を更新した際は `date -u '+%Y-%m-%dT%H:%M:%SZ'` で時刻を取得し、`docs/birdseye/index.json`・`docs/birdseye/caps/`・`docs/birdseye/hot.json` を併せて更新してください。
+> 1. `date -u '+%Y-%m-%dT%H:%M:%SZ'` を実行して共通タイムスタンプを取得
+> 2. `docs/birdseye/index.json` の `generated_at` と対象ノードの `mtime` を更新
+> 3. 更新対象の `docs/birdseye/caps/*.json` と `docs/birdseye/hot.json` に同じ `generated_at` を反映
 
 フォーカス手順:
 - 直近変更ファイル±2hopのノードIDを index.json から取得

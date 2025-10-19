@@ -1,17 +1,17 @@
 {
-  "generated_at": "2025-10-19T14:53:17Z",
+  "generated_at": "2025-10-19T16:07:45Z",
   "entrypoints": [
     {
       "id": "src/app.py",
-      "reason": "Chainlit 起動時にロードされ、UI・LLM 制御と運用エンドポイントの全責務を握る中核。"
+      "reason": "Chainlit アプリの起動・設定・運用エンドポイントを全て束ねる最上位エントリポイント。"
     },
     {
       "id": "src/core_ext/context_trimmer.py",
-      "reason": "トークン削減とメトリクス算出を担い、チャット品質とコスト制御のボトルネック。"
+      "reason": "履歴トリムとトークン指標算出でチャット品質とコストの両立を支える要。"
     },
     {
       "id": "src/providers/openai_client.py",
-      "reason": "既定 LLM プロバイダーの実装であり、キー設定・リトライ方針確認の起点。"
+      "reason": "標準 LLM プロバイダーの接続口であり、API キーやリトライ設計の確認起点。"
     }
   ]
 }
