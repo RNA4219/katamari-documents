@@ -13,7 +13,7 @@
 | 追加リファレンス | `docs/addenda/*.md` | UI モック、プロバイダ比較、テストケース、構成ファイル解説など。 |
 | マイルストーン DoD | `docs/adr/0004-m1-metrics-and-retention.md` ほか [ADR #0004〜#0007](adr/README.md) | M1〜M2.5 の到達基準と DoD チェックリスト。 |
 | フォーク運用 | `docs/UPSTREAM.md`, `docs/FORK_NOTES.md`<br>[ADR #0001](adr/0001-use-chainlit-subtree.md) | Chainlit subtree の取得・差分吸収手順。 |
-| リリース & セキュリティ | `docs/Release_Checklist.md`, `docs/Security_Review_Checklist.md` | 受入証跡・影響範囲・ラベル・CHANGELOG と `LICENSE`/`NOTICE` 同梱チェックを含む品質ゲート。 |
+| リリース & セキュリティ | `docs/Release_Checklist.md`, `docs/Security_Review_Checklist.md` | 準備→検証→リリース順のチェックリスト、受入証跡・CI 結果確認・影響範囲同期・CHANGELOG/NOTICE 更新を含む品質ゲート。 |
 | Guardrails 連動ドキュメント | `BLUEPRINT.md`, `RUNBOOK.md`, `EVALUATION.md`, `CHECKLISTS.md`, `TASK.*.md` | Guardrails フローに沿った設計・運用・評価・追跡の基盤文書。 |
 | Day8 HUB | `third_party/Day8/workflow-cookbook/HUB.codex.md` | 観測ハブとして Day8 オペレーション全体の入口を提示する役割ドキュメント。 |
 | Day8 Guardrails | `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | HUB からのインサイトを受けて統制基準・安全策を定義する役割ドキュメント。 |
@@ -89,7 +89,13 @@
 - テスト駆動で進める場合は `tests/` を先に追加し、`I_Test_Cases.md` を参照。
 - Subtree 同期は `docs/UPSTREAM.md` → `scripts/` の補助スクリプトを活用。
 - アーキテクチャ判断は `docs/adr/README.md` と各 ADR（例: [ADR #0001](adr/0001-use-chainlit-subtree.md) / [ADR #0002](adr/0002-tokenization-with-tiktoken.md) / [ADR #0003](adr/0003-provider-interface.md) / [ADR #0004〜#0007](adr/README.md)）を参照。
-- 運用時のチェックは `Release_Checklist.md`（受入証跡/影響範囲/ラベル/CHANGELOG/NOTICE 同梱）と `Security_Review_Checklist.md` を使用。
+- 運用時のチェックは [`Release_Checklist.md`](Release_Checklist.md#%E6%89%8B%E9%A0%86%E6%BA%96%E5%82%99--%E6%A4%9C%E8%A8%BC--%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9)（準備→検証→リリース順で必須項目を網羅）と `Security_Review_Checklist.md` を使用。
+
+## リリース準備フロー（個人 + AI 運用）
+
+1. `docs/Release_Checklist.md` の「準備」節で影響範囲同期・CHANGELOG/NOTICE 更新・PR ラベル付与・リリースノート下書きを完了する。
+2. 同ドキュメント「検証」節で `make lint` / `make test` / `docker build`、SSE・OAuth 手動検証、CI 結果確認、受入証跡の収集を行う。
+3. 「リリース」節に沿ってバージョンタグ発行、`LICENSE`/`NOTICE` 同梱確認、PR & Release ノートの整合チェックを実施し、成果物を公開する。
 - <a id="day8-sequence"></a>Day8 系資料の推奨参照順: `third_party/Day8/workflow-cookbook/HUB.codex.md`（観測ハブ）→ `third_party/Day8/workflow-cookbook/GUARDRAILS.md`（統制基準）→ `third_party/Day8/workflow-cookbook/BLUEPRINT.md` 群（運用設計）を推奨シーケンスとして維持する。
 - `hot.json` を更新する際は `git log --name-only --since="30 days ago" | sort | uniq -c` などで直近の接触頻度を確認し、Birdseye index に含まれるノードから優先度の高いエントリポイントを抽出して理由付きで列挙する。`generated_at` は index/caps と揃える。
 - CHANGELOG 更新手順: [`README.md#変更履歴の更新ルール`](../README.md#%E5%A4%89%E6%9B%B4%E5%B1%A5%E6%AD%B4%E3%81%AE%E6%9B%B4%E6%96%B0%E3%83%AB%E3%83%BC%E3%83%AB)（完了済みタスクは `[Unreleased]` に移管し、ロードマップや `TASK.*.md` の重複を解消する）。
