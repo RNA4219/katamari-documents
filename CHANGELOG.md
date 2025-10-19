@@ -1,9 +1,8 @@
 # Changelog
 
-このプロジェクトの顕著な変更はこのファイルで管理します。
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/ja/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+このプロジェクトの顕著な変更はこのファイルで管理します。フォーマットは
+[Keep a Changelog](https://keepachangelog.com/ja/1.1.0/) に準拠し、
+[セマンティック バージョニング](https://semver.org/spec/v2.0.0.html) を採用しています。
 
 ## [Unreleased]
 

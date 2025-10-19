@@ -45,6 +45,11 @@
 - [ ] 再発防止策が Task Seed または Issue で管理されている。
 - [ ] セキュリティインシデントは `docs/Security_Review_Checklist.md` に追記済み。
 
+## Guardrails 連携
+- Guardrails が定義するチェックリスト配置順（Dev→PR→Release→Ops）を維持し、本書の章構成にマッピングした。
+- `docs/ROADMAP_AND_SPECS.md` 1.〜3.章から関連仕様へリンクし、各フェーズで参照漏れがないようにする。
+- 未完了項目は `TASK.2025-10-19-0001.md` など Task Seed に転記し、`EVALUATION.md` の DoD 判定へつなげる。
+
 ## 参照リンク
 - [docs/ROADMAP_AND_SPECS.md](docs/ROADMAP_AND_SPECS.md)
 - [docs/Release_Checklist.md](docs/Release_Checklist.md)

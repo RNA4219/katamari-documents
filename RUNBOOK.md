@@ -42,6 +42,11 @@
 - [ ] Birdseye 更新日時が直近コミット以降になっている。
 - [ ] 失敗テストがある場合、理由と再実行計画が Task Seed に記録されている。
 
+## Guardrails 連携
+- Guardrails が定める「準備→実行→検証」の最小フローを手順章に対応付けた。詳細は [third_party/Day8/workflow-cookbook/GUARDRAILS.md](third_party/Day8/workflow-cookbook/GUARDRAILS.md)。
+- 運用時の仕様参照は `docs/ROADMAP_AND_SPECS.md` 3.章（ロードマップ）と `docs/addenda/J_Runbook.md` を併読する。
+- 手順で得た知見は `CHECKLISTS.md` と `TASK.2025-10-19-0001.md` の DoD に必ず反映する。
+
 ## 参照リンク
 - [docs/ROADMAP_AND_SPECS.md](docs/ROADMAP_AND_SPECS.md)
 - [docs/addenda/J_Runbook.md](docs/addenda/J_Runbook.md)

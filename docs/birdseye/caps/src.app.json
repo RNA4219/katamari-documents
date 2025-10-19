@@ -1,9 +1,11 @@
 {
   "id": "src/app.py",
   "role": "entrypoint",
-  "summary": "Chainlit アプリ全体を束ね、チャット起動・設定同期・マルチステップ制御・メトリクス公開を担う中枢。",
+  "summary": "Chainlit ベースの Katamari UI を起動し、チャット設定同期・マルチステップ制御・トリム結果のメトリクス公開までを一手に担うルートハンドラ。",
   "deps": {
     "outbound": [
+      "chainlit",
+      "fastapi",
       "src/core_ext/context_trimmer.py",
       "src/core_ext/persona_compiler.py",
       "src/core_ext/prethought.py",
@@ -17,5 +19,5 @@
   "tests": [
     "tests/app/test_metrics_healthz.py"
   ],
-  "generated_at": "2025-10-19T14:53:17Z"
+  "generated_at": "2025-10-19T16:07:45Z"
 }

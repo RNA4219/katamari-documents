@@ -27,6 +27,11 @@ act -W .github/workflows/ci.yml  # 任意。ローカルで GH Actions をドラ
 - Docker イメージが GHCR に push され、`vX.Y.Z-katamari` 形式のタグで管理される。
 - Release/Security チェックリストと CI のリンク方法が `CHECKLISTS.md` に追記されている。
 
+## Guardrails 連携
+- Guardrails の「テスト先行・最小差分」原則を反映し、CI ワークフローのタスク分割を `docs/ROADMAP_AND_SPECS.md` 2.章（実装モジュール対応）と照合する。
+- メンタル lint/type/test の自己検証結果は `CHECKLISTS.md` の Development セクションに記録する。
+- 未解決事項は後続 Task Seed または Issue に分割し、`EVALUATION.md` で DoD を判断できる状態に保つ。
+
 ## 成果物 / エビデンス
 - `.github/workflows/ci.yml`, `.github/workflows/release.yml`
 - CI 実行ログ、GHCR の最新タグ一覧

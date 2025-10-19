@@ -30,6 +30,11 @@
 - [ ] Guardrails の要求するメンタル lint/type/test チェックを完了済み。
 - [ ] 評価結果が `docs/ROADMAP_AND_SPECS.md` の対象フェーズに反映された。
 
+## Guardrails 連携
+- Guardrails の「AC → 評価 → Task Seed 更新」のフローに沿い、検証結果を `CHECKLISTS.md` と Issue へ連動させる。
+- 計測値の算定根拠は `docs/Katamari_Technical_Spec_v1_ja.md` と `docs/addenda/F_Provider_Matrix.md` を参照して整合性を確認する。
+- 評価で生じた例外は `RUNBOOK.md` にフィードバックし、同じ手順が再現できるよう補足する。
+
 ## 参照リンク
 - [docs/ROADMAP_AND_SPECS.md](docs/ROADMAP_AND_SPECS.md)
 - [docs/Release_Checklist.md](docs/Release_Checklist.md)
