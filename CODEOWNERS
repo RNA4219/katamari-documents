@@ -7,6 +7,18 @@
 # 既定の担当者
 * @RNA4219 @katamari-bot
 
+# ルート配下の共通資産
+/README.md @RNA4219 @katamari-bot @katamari-org/docs
+/CHANGELOG.md @RNA4219 @katamari-bot @katamari-org/docs
+/LICENSE @RNA4219 @katamari-bot @katamari-org/legal
+/NOTICE @RNA4219 @katamari-bot @katamari-org/legal
+/Dockerfile @RNA4219 @katamari-bot @katamari-org/devops
+/Makefile @RNA4219 @katamari-bot @katamari-org/devops
+/Makefile.* @RNA4219 @katamari-bot @katamari-org/devops
+/RUNBOOK.md @RNA4219 @katamari-bot @katamari-org/devops
+/CHECKLISTS.md @RNA4219 @katamari-bot @katamari-org/devops
+/TASK.*.md @RNA4219 @katamari-bot @katamari-org/docs
+
 # アプリケーション実装
 /src/ @RNA4219 @katamari-bot @katamari-org/runtime
 /personas/ @RNA4219 @katamari-bot @katamari-org/runtime
@@ -14,6 +26,7 @@
 /public/ @RNA4219 @katamari-bot @katamari-org/frontend
 /upstream/ @RNA4219 @katamari-bot @katamari-org/runtime
 /config/ @RNA4219 @katamari-bot @katamari-org/runtime
+/scripts/ @RNA4219 @katamari-bot @katamari-org/devops
 
 # テストと品質保証
 /tests/ @RNA4219 @katamari-bot @katamari-org/qa
@@ -22,21 +35,13 @@
 # ドキュメントとナレッジ
 /docs/ @RNA4219 @katamari-bot @katamari-org/docs
 /docs/adr/ @RNA4219 @katamari-bot @katamari-org/architecture
-/README.md @RNA4219 @katamari-bot @katamari-org/docs
-/CHANGELOG.md @RNA4219 @katamari-bot @katamari-org/docs
-/TASK.*.md @RNA4219 @katamari-bot @katamari-org/docs
 /BLUEPRINT.md @RNA4219 @katamari-bot @katamari-org/docs
 
 # 運用・自動化ツール
-/scripts/ @RNA4219 @katamari-bot @katamari-org/devops
 /.github/ @RNA4219 @katamari-bot @katamari-org/devops
-/Dockerfile @RNA4219 @katamari-bot @katamari-org/devops
-/Makefile @RNA4219 @katamari-bot @katamari-org/devops
-/Makefile.* @RNA4219 @katamari-bot @katamari-org/devops
-/RUNBOOK.md @RNA4219 @katamari-bot @katamari-org/devops
-/CHECKLISTS.md @RNA4219 @katamari-bot @katamari-org/devops
+/.github/workflows/ @RNA4219 @katamari-bot @katamari-org/devops
+/.github/ISSUE_TEMPLATE/ @RNA4219 @katamari-bot @katamari-org/docs
+/.github/PULL_REQUEST_TEMPLATE.md @RNA4219 @katamari-bot @katamari-org/docs
 
 # 設定・データ資産
 /third_party/licenses/ @RNA4219 @katamari-bot @katamari-org/legal
-/NOTICE @RNA4219 @katamari-bot @katamari-org/legal
-/LICENSE @RNA4219 @katamari-bot @katamari-org/legal
