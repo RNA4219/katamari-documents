@@ -4,6 +4,7 @@
 読む順番:
 1. docs/birdseye/index.json  …… ノード一覧・隣接関係（軽量）
 2. docs/birdseye/caps/<path>.json …… 必要ノードだけ point read（個別カプセル）
+3. [third_party/Day8/README.md](third_party/Day8/README.md) …… Day8 HUB / Guardrails の起点（詳細は `docs/day8/README.md`）。
 
 フォーカス手順:
 - 直近変更ファイル±2hopのノードIDを index.json から取得
@@ -19,6 +20,7 @@
 - 設定: `config/model_registry.json`, `config/env.example`
 - フォーク運用: `docs/UPSTREAM.md`, `docs/FORK_NOTES.md`
 - ADR: `docs/adr/README.md`
+- Day8 HUB / Guardrails: `third_party/Day8/README.md`, `third_party/Day8/docs/day8/README.md`
 
 ## ローカル起動手順
 
