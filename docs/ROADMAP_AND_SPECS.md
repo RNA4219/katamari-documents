@@ -14,7 +14,15 @@
 | フォーク運用 | `docs/UPSTREAM.md`, `docs/FORK_NOTES.md`<br>[ADR #0001](adr/0001-use-chainlit-subtree.md) | Chainlit subtree の取得・差分吸収手順。 |
 | リリース & セキュリティ | `docs/Release_Checklist.md`, `docs/Security_Review_Checklist.md` | 品質ゲートとリリース判定項目。 |
 | Guardrails 連動ドキュメント | `BLUEPRINT.md`, `RUNBOOK.md`, `EVALUATION.md`, `CHECKLISTS.md`, `TASK.*.md` | Guardrails フローに沿った設計・運用・評価・追跡の基盤文書。 |
-| Day8 HUB / Guardrails | `third_party/Day8/workflow-cookbook/HUB.codex.md` / `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | Day8 オペレーションの入口（HUB）と統制基準（Guardrails）を横断確認できるセット。 |
+
+> Guardrails 連動ドキュメントの概要
+> - [BLUEPRINT.md](../BLUEPRINT.md): Persona/Trim/Reflect チェーンを中心としたアーキテクチャの目的・スコープ・I/O 契約を定義。
+> - [RUNBOOK.md](../RUNBOOK.md): 「準備→実行→検証」手順で起動・検証・障害対応を標準化。
+> - [EVALUATION.md](../EVALUATION.md): 受入判定手順と指標、チェック項目を整理。
+> - [CHECKLISTS.md](../CHECKLISTS.md): Dev→PR→Release→Ops の各フェーズで参照するチェックリスト集。
+> - [TASK.<YYYY-MM-DD>-0001.md](../TASK.2025-10-19-0001.md): 初期 Task Seed。目的・要件・想定コマンドを記録し、フォローアップを管理。
+| Day8 HUB | `third_party/Day8/workflow-cookbook/HUB.codex.md` | Day8 オペレーション全体を俯瞰する観測ハブ（入口）。 |
+| Day8 Guardrails | `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | HUB で得た観測を踏まえた統制基準・安全策（第二段）。 |
 | Day8 Blueprint | `third_party/Day8/workflow-cookbook/BLUEPRINT.md` | Guardrails を適用した運用ブループリント（実装設計）。 |
 
 ## 2. 実装モジュールと対応仕様
