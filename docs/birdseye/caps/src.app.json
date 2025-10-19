@@ -1,22 +1,30 @@
 {
   "id": "src/app.py",
   "role": "entrypoint",
-  "summary": "Chainlit のイベントフックを束ね、設定同期・履歴トリミング・マルチステップ推論・LLM 呼び出し・運用エンドポイント公開を統合する中核エントリポイント。",
-  "deps": {
-    "out": [
-      "core_ext.prethought.analyze_intent",
-      "core_ext.context_trimmer.trim_messages",
-      "core_ext.persona_compiler.compile_persona_yaml",
-      "core_ext.multistep.get_chain_steps",
-      "core_ext.multistep.system_hint_for_step",
-      "providers.openai_client.OpenAIProvider"
-    ],
-    "in": [
-      "tests/app/test_metrics_healthz.py"
-    ]
-  },
+  "summary": "Chainlit イベントハンドラと運用 API を集約し、履歴トリミング・マルチステップ実行・LLM 呼び出し・メトリクス公開を統括する中核エントリポイント。",
+  "public_api": [
+    "METRICS_REGISTRY",
+    "get_provider()",
+    "apply_settings()",
+    "on_message()"
+  ],
+  "deps_out": [
+    "core_ext.prethought.analyze_intent",
+    "core_ext.context_trimmer.trim_messages",
+    "core_ext.persona_compiler.compile_persona_yaml",
+    "core_ext.multistep.get_chain_steps",
+    "core_ext.multistep.system_hint_for_step",
+    "providers.openai_client.OpenAIProvider"
+  ],
+  "deps_in": [
+    "tests/app/test_metrics_healthz.py"
+  ],
   "tests": [
     "pytest tests/app/test_metrics_healthz.py"
   ],
-  "generated_at": "2024-06-07T00:00:00Z"
+  "risks": [
+    "Chainlit フックと FastAPI ルータの順序を壊すと /metrics が重複登録される",
+    "OPENAI_API_KEY 未設定時はプロバイダ初期化が失敗する"
+  ],
+  "generated_at": "2025-10-19T22:53:20Z"
 }

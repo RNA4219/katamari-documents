@@ -1,17 +1,17 @@
 {
-  "generated_at": "2024-06-07T00:00:00Z",
+  "generated_at": "2025-10-19T22:53:20Z",
   "entries": [
     {
       "id": "src/app.py",
-      "reason": "Chainlit 起動・設定同期・履歴圧縮・LLM ストリーム制御を司る最上位エントリポイント"
+      "reason": "Chainlit エントリポイントとしてイベントフック・LLM 呼び出し・運用エンドポイントを集約するため更新頻度が高い"
     },
     {
       "id": "src/core_ext/context_trimmer.py",
-      "reason": "チャット履歴のトークン予算管理と圧縮メトリクスを提供する共通ユーティリティ"
+      "reason": "トークン制御ロジックのチューニング対象であり、モデル差し替え時の影響が直ちに出る"
     },
     {
       "id": "src/providers/openai_client.py",
-      "reason": "OpenAI Chat Completions を非同期ストリーミングでラップしモデル選択と API 鍵を集約する実行基盤"
+      "reason": "モデル/エンドポイント切替やキー運用に直結するプロバイダ層で環境変更時に必ず見直す"
     }
   ]
 }
