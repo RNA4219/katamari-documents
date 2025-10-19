@@ -16,9 +16,10 @@
 - リスク/フォローアップ: subtree 更新は履歴が膨らむため、タグ単位での取り込みと squash merge 禁止を徹底する必要がある。
 
 ## Status
-- 承認済み（2025-02-14）
+- ステータス: 承認済み
+- 最終更新日: 2025-02-14
 
-## Definition of Done (DoD)
+## DoD
 - `upstream/chainlit/` を subtree として初期化済みであること。
 - フォーク運用手順（`docs/UPSTREAM.md`, `docs/FORK_NOTES.md`）が本 ADR と整合していること。
 - subtree pull 手順を自動化するスクリプトまたはドキュメントが整備されていること。

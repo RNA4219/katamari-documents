@@ -1,0 +1,14 @@
+{
+  "summary": "Defines the Chainlit lifecycle for Katamari, wiring persona compilation, message trimming, multistep routing, and operational metrics endpoints.",
+  "role": "FastAPI/Chainlit application entrypoint coordinating chat state, provider selection, and observability hooks.",
+  "deps": [
+    "core_ext.persona_compiler.compile_persona_yaml",
+    "core_ext.context_trimmer.trim_messages",
+    "core_ext.prethought.analyze_intent",
+    "core_ext.multistep.get_chain_steps",
+    "providers.openai_client.OpenAIProvider"
+  ],
+  "tests": [
+    "pytest"
+  ]
+}

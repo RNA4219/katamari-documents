@@ -18,7 +18,8 @@
 - SSE p95・UI 反映遅延・トークン削減率が要件値以内。
 - セキュリティ・リリースチェックリストが全て `PASS` で記録され、例外は Task Seed にフォローアップ済み。
 
-## 評価手順
+## 手順
+Guardrails の「AC → 評価 → Task Seed 更新」順を踏まえ、各工程で `docs/ROADMAP_AND_SPECS.md` 1.〜3.章の対象リンクを参照する。
 1. `RUNBOOK.md` に従い環境を起動し、テストスイート（pytest / node:test）を実行する。
 2. `scripts/perf/collect_metrics.py`（仮）や Chainlit ログから性能指標を採取し、要件値と比較する。
 3. `docs/Release_Checklist.md`, `docs/Security_Review_Checklist.md` の結果を確認し、未完了項目があれば Task Seed を更新。
