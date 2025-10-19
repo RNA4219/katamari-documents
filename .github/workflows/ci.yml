@@ -22,13 +22,13 @@ jobs:
         run: python -m pip install --upgrade pip
       - name: Install Ruff
         if: matrix.check == 'ruff'
-        run: pip install ruff
+        run: python -m pip install ruff
       - name: Install test dependencies
         if: matrix.check == 'pytest'
-        run: pip install -r requirements.txt pytest pytest-anyio
+        run: python -m pip install -r requirements.txt pytest pytest-anyio
       - name: Install audit dependencies
         if: matrix.check == 'pip-audit'
-        run: pip install -r requirements.txt pip-audit
+        run: python -m pip install -r requirements.txt pip-audit
       - name: Run Ruff
         if: matrix.check == 'ruff'
         run: ruff check .
@@ -43,7 +43,7 @@ jobs:
     name: Provider smoke tests
     runs-on: ubuntu-latest
     needs: python
-    if: ${{ secrets.OPENAI_API_KEY && secrets.GEMINI_API_KEY }}
+    if: ${{ secrets.OPENAI_API_KEY != '' && secrets.GEMINI_API_KEY != '' }}
     env:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -57,16 +57,29 @@ jobs:
         run: python -m pip install --upgrade pip
       - name: Install provider dependencies
         run: |
-          pip install -r requirements.txt
-          pip install google-generativeai
+          python -m pip install -r requirements.txt
+          python -m pip install google-generativeai
       - name: OpenAI smoke test
         run: |
           python - <<'PY'
 from openai import OpenAI
 
+
+def extract_text(response) -> str:
+    direct = getattr(response, "output_text", None)
+    if direct:
+        return direct
+
+    aggregated = []
+    for item in getattr(response, "output", []) or []:
+        for part in getattr(item, "content", []) or []:
+            aggregated.append(getattr(part, "text", ""))
+    return "".join(aggregated)
+
+
 client = OpenAI()
 response = client.responses.create(model="gpt-4o-mini", input="Respond with OK")
-text = response.output[0].content[0].text.strip().lower()
+text = extract_text(response).strip().lower()
 if "ok" not in text:
     raise SystemExit("Unexpected OpenAI response")
 PY
