@@ -1,2 +1,26 @@
+# Default reviewers
+* @katamari-org/maintainers
 
-* @your-github-handle
+# Core runtime extensions
+/src/core_ext/ @katamari-org/runtime-team
+
+# Provider integrations
+/providers/ @katamari-org/providers-team
+
+# Documentation and knowledge base
+/docs/ @katamari-org/docs-team
+
+# Public assets and frontend glue
+/public/ @katamari-org/frontend
+
+# Python application code
+/src/ @katamari-org/backend
+
+# Test suites
+/tests/ @katamari-org/qa
+
+# Tooling and automation scripts
+/scripts/ @katamari-org/tooling
+
+# Deployment manifests
+/config/ @katamari-org/platform
