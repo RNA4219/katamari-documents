@@ -1,13 +1,13 @@
 # RUNBOOK
 
 ## 目的
-- Katamari の起動・検証・障害対応を標準化し、Guardrails とロードマップで定義された要件を逸脱せずに運用する。
-- 変更の影響範囲を即座に共有できるよう、起動から復旧までの手順と証跡取得方法を記録する。
+- Katamari の起動・検証・障害対応を標準化し、Guardrails とロードマップで定義された要件を逸脱せずに **個人運用** でも再現できるようにする。
+- 変更の影響範囲を即座に把握できるよう、起動から復旧までの手順と証跡取得方法を一人で辿れる形で記録する。
 
 ## 担当ロール
-- SRE / オンコール担当: 障害対応と復旧の一次手順を把握し、証跡を残す。
-- DevOps / CI 担当: 起動・検証の標準シーケンスを維持し、CI との整合をチェックする。
-- プロダクトメンテナー: 運用変更がガードレール手順と矛盾しないかをレビューする。
+- 個人運用者（SRE 帽子）: 障害対応と復旧の一次手順を把握し、証跡を残す。
+- 個人運用者（DevOps 帽子）: 起動・検証の標準シーケンスを維持し、CI との整合をチェックする。
+- 個人運用者（メンテナー帽子）: 運用変更がガードレール手順と矛盾しないかをレビューする。
 
 ## スコープ
 ### In Scope
@@ -26,7 +26,7 @@ Guardrails の「準備→実行→検証」順で進める。
 1. `python -m venv .venv && source .venv/bin/activate`
 2. `pip install -r requirements.txt` と必要に応じて `npm install`。
 3. `.env.example` を参照して Provider キーなどの環境変数を設定する。
-4. Birdseye index/caps を確認し、必要であれば `scripts/birdseye_refresh.py` を実行する。
+4. Birdseye index/caps を確認し、必要であれば `scripts/birdseye_refresh.py` を実行する。単独作業の場合でも更新日時を共通化する。
 
 ### 2. 実行
 1. `chainlit run src/app.py --watch`
@@ -35,9 +35,9 @@ Guardrails の「準備→実行→検証」順で進める。
 4. Provider を切り替え、`docs/addenda/F_Provider_Matrix.md` の互換チェックを行う。
 
 ### 3. 検証・障害対応
-1. `pytest` / `node:test` / `ruff` / `mypy --strict` を実行し、失敗時は Guardrails の最小差分方針で修正する。
+1. `pytest` / `node:test` / `ruff` / `mypy --strict` を実行し、失敗時は Guardrails の最小差分方針で修正する。単独検証でもログを保管する。
 2. SSE 遅延が閾値を超えた場合、`docs/addenda/J_Runbook.md` のトラブルシュート手順を参照する。
-3. 重大障害は `CHANGELOG.md` と Task Seed に記録し、必要なら `RUNBOOK.md` を更新する。
+3. 重大障害は `CHANGELOG.md` と Task Seed に記録し、必要なら `RUNBOOK.md` を更新する。記録は自分宛の TODO でもよいが日時と判断根拠を残す。
 
 ## 最小フロー
 1. `docs/ROADMAP_AND_SPECS.md` で対象フェーズと関連タスクを特定する。

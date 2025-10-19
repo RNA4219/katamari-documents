@@ -1,13 +1,13 @@
 # BLUEPRINT
 
 ## 目的
-- Chainlit ベースの Katamari アシスタント基盤を俯瞰し、前処理・多段推論・評価・UI の構造をチームで共有する。
-- Guardrails の最小読込順と整合した設計判断を素早く下せるよう、設計時に参照する単一の出発点を提供する。
+- Chainlit ベースの Katamari アシスタント基盤を俯瞰し、前処理・多段推論・評価・UI の構造を **個人運用** でも即座に把握する。
+- Guardrails の最小読込順と整合した設計判断を素早く下せるよう、日々のメンテナンスで参照する単一の出発点を提供する。
 
 ## 担当ロール
-- アーキテクト / Tech Lead: ガードレールとロードマップを踏まえた設計判断の基準点として参照する。
-- Backend / Provider 実装担当: SPI/依存関係の境界を確認し、設計変更時の影響を判断する。
-- プロダクトマネージャー: 機能境界と非機能要件の根拠を把握し、ロードマップ調整に反映する。
+- 個人運用者（設計担当の帽子）: ガードレールとロードマップを踏まえた設計判断の基準点として参照する。
+- 個人運用者（実装担当の帽子）: SPI/依存関係の境界を確認し、設計変更時の影響を判断する。
+- 個人運用者（計画担当の帽子）: 機能境界と非機能要件の根拠を把握し、ロードマップ調整に反映する。
 
 ## スコープ
 ### In Scope
@@ -31,11 +31,10 @@
 
 ## 更新ステップ
 1. `docs/ROADMAP_AND_SPECS.md` で対象フェーズと必要な仕様リンクを確認する。
-2. Guardrails の「目的→スコープ→I/O→AC→最小フロー」に沿って設計変更をドラフト化する。
-3. 設計が運用・評価に影響する場合は `RUNBOOK.md`・`CHECKLISTS.md`・`EVALUATION.md` を同期更新する。
-4. Birdseye (`docs/birdseye/index.json`, `docs/birdseye/caps/`) を更新し、依存関係が最新になっていることを確認する。
-5. `third_party/Day8/workflow-cookbook/GUARDRAILS.md` の「BLUEPRINT」節で定義された目的・スコープ・AC と照合し、本書の更新が
-   指針と矛盾していないか確認する。
+2. Guardrails の「目的→スコープ→I/O→AC→最小フロー」に沿って設計変更をドラフト化し、個人運用で実施可能な粒度に分割する。
+3. 設計が運用・評価に影響する場合は `RUNBOOK.md`・`CHECKLISTS.md`・`EVALUATION.md` を同期更新し、同一コミット内で整合を確認する。
+4. Birdseye (`docs/birdseye/index.json`, `docs/birdseye/caps/`) を更新し、依存関係が最新になっていることを確認する。単独作業のため更新日は共通タイムスタンプで統一する。
+5. `third_party/Day8/workflow-cookbook/GUARDRAILS.md` の「BLUEPRINT」節で定義された目的・スコープ・AC と照合し、本書の更新が指針と矛盾していないか確認する。
 
 ## 受入基準
 - Persona/Trim/Reflect チェーンのデータフローが `docs/Katamari_Technical_Spec_v1_ja.md` と矛盾しない。
