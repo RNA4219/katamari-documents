@@ -7,7 +7,7 @@
 
 ## Decision
 - 方針: `providers` レイヤに `stream(model, messages, **opts)` と `complete(model, messages, **opts)` を持つ非同期インターフェースを定義し、各プロバイダがこれを実装する。
-- 決定理由: 共通抽象を設けることで、UI/Chainlit ハンドラがプロバイダ差異を意識せずに済み、新規プロバイダ追加時の改修範囲を局所化できる。
+- 採用理由: 共通抽象を設けることで、UI/Chainlit ハンドラがプロバイダ差異を意識せずに済み、新規プロバイダ追加時の改修範囲を局所化できる。
 - 運用: エラーハンドリングと再試行可能判定は抽象クラス（例: `BaseLLMProvider`）で共通実装し、外部 SDK の例外を Katamari の `RetryableProviderError` / `FatalProviderError` に正規化する。モデル設定は `config/model_registry.json` で一元管理する。
 
 ## Consequences

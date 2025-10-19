@@ -7,7 +7,7 @@
 
 ## Decision
 - 方針: Chainlit セッション内で進化ループを構成するマネージャを `src/core_ext/evolution/` に実装し、各ステップを非同期タスクとして編成する。
-- 決定理由: ステップ分割により評価・デバッグを段階的に行え、Persona/Prompt 設計の改善サイクルを短縮できる。
+- 採用理由: ステップ分割により評価・デバッグを段階的に行え、Persona/Prompt 設計の改善サイクルを短縮できる。
 - 運用: Critique や Rewrite の評価指標を `/metrics` に送出し、DoD 達成状況を可視化する。失敗時は再試行可能エラーを判定してリトライ制御する。
 
 ## Consequences
