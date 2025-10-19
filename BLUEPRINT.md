@@ -13,6 +13,11 @@
 - 特定 Provider 実装詳細（各 Provider SPI ドキュメントを参照）。
 - 個別テストケース・CI 設定（`docs/I_Test_Cases.md`, `TASK.*.md` に委譲）。
 
+## 入出力 (I/O 契約)
+- **入力**: Persona 設定、ユーザー入力、プロバイダ選択。スキーマは `docs/addenda/C_Persona_Schema.md` と `docs/Katamari_Functional_Spec_v1_ja.md` の UI フローを参照。
+- **出力**: Trim/Reflect を経たレスポンスと SSE ストリーム。データフローは `docs/Katamari_Technical_Spec_v1_ja.md` と `third_party/Day8/workflow-cookbook/BLUEPRINT.md` の構成図に整合させる。
+- **連携**: I/O 検証手順は `RUNBOOK.md` と `EVALUATION.md` に委譲し、ロードマップとの対応は `docs/ROADMAP_AND_SPECS.md` 1.〜2.章で確認する。
+
 ## Acceptance Criteria
 - Persona/Trim/Reflect チェーンを含むアーキテクチャ図とデータフローが `docs/Katamari_Technical_Spec_v1_ja.md` と整合している。
 - SSE 初期 p95 ≤ 1.0s、UI 反映遅延 ≤ 300ms の非機能要件が設計根拠で裏付けられている。
@@ -29,6 +34,11 @@
 - [ ] 例外パスと再試行可否が `Katamari_Technical_Spec_v1_ja.md` と矛盾しない。
 - [ ] Birdseye index/capsule が最新コミット時刻より新しい。
 - [ ] Guardrails で要求されるタスク分割と Task Seed 連携が成立している。
+
+## Guardrails 連携
+- Guardrails の「目的→スコープ→I/O→AC→最小フロー」を本書の章立てに反映した。詳細は [third_party/Day8/workflow-cookbook/GUARDRAILS.md](third_party/Day8/workflow-cookbook/GUARDRAILS.md)。
+- `docs/ROADMAP_AND_SPECS.md` 2.章を参照し、該当モジュールの仕様リンクを維持する。
+- Task Seed へのマッピングは `TASK.2025-10-19-0001.md` を初期例として利用する。
 
 ## 参照リンク
 - [docs/ROADMAP_AND_SPECS.md](docs/ROADMAP_AND_SPECS.md)
