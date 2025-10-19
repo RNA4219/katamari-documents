@@ -2,27 +2,29 @@
 
 <!-- LLM-BOOTSTRAP v1 -->
 読む順番:
-
 1. docs/birdseye/index.json  …… ノード一覧・隣接関係（軽量）
 2. docs/birdseye/caps/<path>.json …… 必要ノードだけ point read（個別カプセル）
 3. docs/ROADMAP_AND_SPECS.md …… 要件・仕様の横断導線
-4. [third_party/Day8/README.md](third_party/Day8/README.md) …… Day8 HUB / Guardrails（詳細は `docs/day8/README.md`）
-5. [third_party/Day8/workflow-cookbook/HUB.codex.md](third_party/Day8/workflow-cookbook/HUB.codex.md) → [third_party/Day8/workflow-cookbook/GUARDRAILS.md](third_party/Day8/workflow-cookbook/GUARDRAILS.md) → [third_party/Day8/workflow-cookbook/BLUEPRINT.md](third_party/Day8/workflow-cookbook/BLUEPRINT.md) …… Day8 HUB から統制基準・ブループリントまでを一気読み。
+4. [third_party/Day8/README.md](third_party/Day8/README.md) …… Day8 資料の総覧（詳細は `docs/day8/README.md`）
+5. Day8 系資料の推奨読書順: [HUB.codex.md](third_party/Day8/workflow-cookbook/HUB.codex.md) → [GUARDRAILS.md](third_party/Day8/workflow-cookbook/GUARDRAILS.md) → [BLUEPRINT.md](third_party/Day8/workflow-cookbook/BLUEPRINT.md)
 
 > `docs/birdseye/hot.json` の `generated_at` は頻出入口リストの生成時刻です。エントリポイントや依存関係を更新した際は `date -u '+%Y-%m-%dT%H:%M:%SZ'` で時刻を取得し、`docs/birdseye/index.json`・`docs/birdseye/caps/`・`docs/birdseye/hot.json` を併せて更新してください。
+> 1. `date -u '+%Y-%m-%dT%H:%M:%SZ'` を実行して共通タイムスタンプを取得
+> 2. `docs/birdseye/index.json` の `generated_at` と対象ノードの `mtime` を更新
+> 3. 更新対象の `docs/birdseye/caps/*.json` と `docs/birdseye/hot.json` に同じ `generated_at` を反映
 
 フォーカス手順:
-
 - 直近変更ファイル±2hopのノードIDを index.json から取得
 - 対応する caps/*.json のみ読み込み
 
 主要導線:
-
-- 要件: [`docs/Katamari_Requirements_v3_ja.md`](docs/Katamari_Requirements_v3_ja.md)
+- 要件・仕様ハブ: [`docs/ROADMAP_AND_SPECS.md`](docs/ROADMAP_AND_SPECS.md)
+- 詳細要件: [`docs/Katamari_Requirements_v3_ja.md`](docs/Katamari_Requirements_v3_ja.md)
 - 機能仕様: [`docs/Katamari_Functional_Spec_v1_ja.md`](docs/Katamari_Functional_Spec_v1_ja.md)
 - 技術仕様: [`docs/Katamari_Technical_Spec_v1_ja.md`](docs/Katamari_Technical_Spec_v1_ja.md)
 - OpenAPI: [`docs/openapi/katamari_openapi.yaml`](docs/openapi/katamari_openapi.yaml)
 - フォーク運用: [`docs/UPSTREAM.md`](docs/UPSTREAM.md), [`docs/FORK_NOTES.md`](docs/FORK_NOTES.md)
+- Day8 系資料: [`third_party/Day8/workflow-cookbook/HUB.codex.md`](third_party/Day8/workflow-cookbook/HUB.codex.md) → [`third_party/Day8/workflow-cookbook/GUARDRAILS.md`](third_party/Day8/workflow-cookbook/GUARDRAILS.md) → [`third_party/Day8/workflow-cookbook/BLUEPRINT.md`](third_party/Day8/workflow-cookbook/BLUEPRINT.md)
 <!-- /LLM-BOOTSTRAP -->
 
 ## 同梱物
@@ -97,3 +99,4 @@ GitHub Container Registry への公開フローは [docs/addenda/H_Deploy_Guide.
 1. PR で顕著な差分が出たら、必ず [`CHANGELOG.md`](CHANGELOG.md) の `[Unreleased]` に追記する。
 2. 記法は [Keep a Changelog](https://keepachangelog.com/ja/1.1.0/) を踏襲し、セマンティックバージョンと日付を付ける。
 3. README やロードマップに散在する履歴は、該当リリースの見出しへ移管し、`docs/Release_Checklist.md` と併せて公開する。
+4. リリース確定時は `[Unreleased]` のエントリを新しいバージョン見出しへ移し、タグ作成と同じコミットで履歴を確定させる。
