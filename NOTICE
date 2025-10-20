@@ -10,7 +10,7 @@ Copyright (c) Chainlit SAS and Chainlit contributors
 
 本フォークで追加・変更した主な内容:
 - persona_compiler / context_trimmer / prethought / multistep / evolve などの会話制御アルゴリズムとチェーン構成の強化
-- OpenAI / Gemini 等を含むマルチプロバイダ抽象化と Day8 管理向け API（例: `/metrics`, `/healthz`, `/api/models`）の追加
+- OpenAI / Gemini 等を含むマルチプロバイダ抽象化と Day8 管理向け API（例: `/metrics`, `/healthz`。`/api/models` は計画中）の整備
 - Day8 ガードレール資料・テーマ定義・運用スクリプトを同梱し、運用フローとチェックリストを拡充
 
 Apache-2.0 の全文は `LICENSE` を参照してください。

@@ -26,7 +26,7 @@ LLM入出力の基盤機能（前処理・多段推論・人格YAML・最適化�
 - 前処理API：persona-compiler / context-trimmer / prethought
 - 実行API：multistep（reflectチェーン）
 - 進化API：prompt-evolution（M2以降）
-- `/metrics`（Prometheus），`/healthz`，`/api/models`，最小ログ
+- `/metrics`（Prometheus）と`/healthz` の提供（`/api/models` は計画中），最小ログ
 
 ### 1.2 含まない
 - 重厚な認証（M1.5でOAuthまで）
