@@ -2,7 +2,7 @@
 - Upstream: Chainlit/chainlit（Apache-2.0）
 - 追従ポリシー: 最新安定タグを週次でチェックし取り込み
 - 直近開始日時: 2025-10-19 JST
-- 差分は [`src/core_ext/`](../src/core_ext/) に隔離、`app.py` は薄い配線のみ。
+- 差分は [`src/core_ext/`](../src/core_ext/) に隔離、`src/app.py` は薄い配線のみ。
 
 ## Git subtree 運用手順
 
@@ -76,7 +76,7 @@
 | --- | --- | --- | --- |
 | [`upstream/chainlit`](../upstream/chainlit/) | Upstream ソースのミラー | `git subtree` でタグ単位取り込み。直接編集禁止 | Upstream 差分の妥当性、`--squash` による履歴圧縮確認 |
 | `src/core_ext/patches` | 独自パッチ（必要最小限） | Chainlit 側で未解決の issue を暫定補正（必要に応じて当該ディレクトリを作成） | Patch 適用順序と upstream へのフィードバック計画 |
-| `app.py` / `src/` | 自前コード | [`src/core_ext/`](../src/core_ext/) の公開 API のみ利用 | 依存逆流が無いこと、例外設計遵守 |
+| `src/app.py` / `src/` | 自前コード | [`src/core_ext/`](../src/core_ext/) の公開 API のみ利用 | 依存逆流が無いこと、例外設計遵守 |
 
 ### レビューフロー
 1. 担当者が自己レビューを実施し、`docs/UPSTREAM_WEEKLY_LOG.md` の「レビュー記録」欄に自己レビュー完了時刻と確認内容を残す

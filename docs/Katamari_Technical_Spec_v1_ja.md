@@ -3,19 +3,20 @@
 
 ## 1. アーキテクチャ
 - **Fork**：Chainlit本体（Apache-2.0）最新安定を追従
-- **差分**：`app.py`（薄い配線）＋ `core_ext/`（機能群）＋ `providers/`（OpenAI/Gemini）
+- **差分**：`src/app.py`（薄い配線）＋ `src/core_ext/`（機能群）＋ `src/providers/`（OpenAI/Gemini）
 ```
 repo
-├─ app.py
-├─ core_ext/
-│  ├─ persona_compiler.py
-│  ├─ context_trimmer.py
-│  ├─ prethought.py
-│  ├─ multistep.py
-│  └─ evolve.py
-├─ providers/
-│  ├─ openai_client.py
-│  └─ google_gemini_client.py
+├─ src/
+│  ├─ app.py
+│  ├─ core_ext/
+│  │  ├─ persona_compiler.py
+│  │  ├─ context_trimmer.py
+│  │  ├─ prethought.py
+│  │  ├─ multistep.py
+│  │  └─ evolve.py
+│  └─ providers/
+│     ├─ openai_client.py
+│     └─ google_gemini_client.py
 └─ docs / config
 ```
 
