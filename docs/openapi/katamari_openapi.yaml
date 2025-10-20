@@ -3,13 +3,18 @@ openapi: 3.0.3
 info:
   title: Katamari API
   version: "1.0.0"
-  description: Chainlitフォーク上で動作する補助API群
+  description: |
+    Chainlitフォーク上で動作する補助API群
+    現時点で公開中なのは `/metrics` と `/healthz`
 servers:
   - url: http://localhost:8787
 paths:
   /api/chat:
     post:
       summary: Chat (SSE/JSON)
+      description: "未実装（計画中）"
+      deprecated: true
+      x-status: planned
       requestBody:
         required: true
         content:
@@ -40,6 +45,9 @@ paths:
   /api/trim:
     post:
       summary: Context trimming
+      description: "未実装（計画中）"
+      deprecated: true
+      x-status: planned
       requestBody:
         required: true
         content:
@@ -59,6 +67,9 @@ paths:
   /api/persona/compile:
     post:
       summary: Persona YAML -> System prompt
+      description: "未実装（計画中）"
+      deprecated: true
+      x-status: planned
       requestBody:
         required: true
         content:
@@ -71,6 +82,9 @@ paths:
   /api/chain/run:
     post:
       summary: Run chain (reflect)
+      description: "未実装（計画中）"
+      deprecated: true
+      x-status: planned
       requestBody:
         required: true
         content:
@@ -90,6 +104,9 @@ paths:
   /api/evolve:
     post:
       summary: Prompt evolution (M2)
+      description: "未実装（計画中）"
+      deprecated: true
+      x-status: planned
       requestBody:
         required: true
         content:
@@ -108,6 +125,9 @@ paths:
   /api/models:
     get:
       summary: List models
+      description: "未実装（計画中）"
+      deprecated: true
+      x-status: planned
       responses: { "200": { description: OK } }
   /metrics:
     get:
