@@ -16,9 +16,9 @@
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 pip install -r requirements-eval.txt  # CI ワークフローのローカル検証
-npm install  # node:test が必要な場合
+cd upstream/chainlit && pnpm install  # node:test が必要な場合
 pytest
-npm test -- --watch=false  # node:test の雛形
+pnpm run test -- --watch=false  # node:test の雛形
 ruff check .
 mypy --strict
 rg -n "BLUEPRINT" third_party/Day8/workflow-cookbook/GUARDRAILS.md

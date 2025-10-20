@@ -10,4 +10,4 @@
 ## テンプレート
 | 実施日 (JST) | 担当 | 比較元タグ | 取り込みタグ | コミット SHA | 実施チェック | テスト結果要約 | AI サポート | デプロイ状況/備考 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2025-10-19 | owner | v1.2.3 | v1.2.4 | abcdef1 | 全項目完了 (`docs/UPSTREAM.md` チェックリスト参照) | `pytest`/`npm test` 成功 | Diff 要約生成 / Breaking change 無 | デプロイ済み。影響なし |
+| 2025-10-19 | owner | v1.2.3 | v1.2.4 | abcdef1 | 全項目完了 (`docs/UPSTREAM.md` チェックリスト参照) | `pytest`/`pnpm run test` 成功 | Diff 要約生成 / Breaking change 無 | デプロイ済み。影響なし |
