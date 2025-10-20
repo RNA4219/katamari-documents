@@ -9,7 +9,7 @@ export GEMINI_API_KEY=...
 chainlit run src/app.py --host 0.0.0.0 --port 8787
 ```
 
-`google-generativeai` は Gemini 利用時に必須です。
+`google-generativeai` は Gemini 利用時に、`openai` は OpenAI 利用時に必須です。
 
 ## H-2. Docker（M3）
 ```Dockerfile
