@@ -40,16 +40,6 @@
   - [ADR #0006: M2 プロンプト進化コアループを実装する](adr/0006-m2-evolution-core-loop.md)
   - [ADR #0007: M2.5 ハイブリッドメモリと永続化を整備する](adr/0007-m2-5-persistence-and-hybrid-memory.md)
 
-### Guardrails ドキュメント更新フロー
-1. 設計変更を検討したら `BLUEPRINT.md` で影響範囲と担当ロールを確認し、個人運用で実施可能な手順へ分解したうえで設計判断の根拠を更新する。
-2. 運用手順が変わる場合は `RUNBOOK.md` と `CHECKLISTS.md` を同時に改訂し、担当ロールのチェック項目を最新化する（同一人物でも帽子を被り替えてレビューする）。
-3. 受入基準や DoD に影響する場合は `EVALUATION.md` と該当 Task Seed (`TASK.*.md`) を更新し、証跡取得コマンドを追記する。個人実行で得たログは Task Seed にリンクする。
-4. 変更差分を Pull Request にまとめ、`CONTRIBUTING.md#guardrails-ドキュメント更新フロー` を参照してレビューと追跡を実施する。
-5. Birdseye 図および Guardrails 原典 (`third_party/Day8/workflow-cookbook/GUARDRAILS.md`) を確認し、役割と手順の齟齬がないことを保証する。
-| Day8 HUB | `third_party/Day8/workflow-cookbook/HUB.codex.md` | Day8 オペレーション全体を俯瞰する観測ハブ（入口）。 |
-| Day8 Guardrails | `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | HUB で得た観測を踏まえた統制基準・安全策（第二段）。 |
-| Day8 Blueprint | `third_party/Day8/workflow-cookbook/BLUEPRINT.md` | Guardrails を適用した運用ブループリント（実装設計）。 |
-
 ## 2. 実装モジュールと対応仕様
 
 | 実装ディレクトリ | 主担当機能 | 関連仕様 / 参考資料 |
@@ -106,8 +96,8 @@
 
 ## 5. Guardrails ドキュメント更新フロー
 
-1. 変更検討時は `BLUEPRINT.md` を起点に目的・スコープ・I/O・AC を見直し、必要な設計更新をドラフト化する。
-2. 実装・運用手順の変更は `RUNBOOK.md` と `CHECKLISTS.md` に反映し、ガードレール順序（準備→実行→検証 / Dev→PR→Release→Ops）を維持する。
-3. 受入条件や計測指標の更新は `EVALUATION.md` へ同期し、取得した証跡ログやコマンドは `TASK.<YYYY-MM-DD>-0001.md` など Task Seed へリンクする。
-4. 変更差分を Pull Request にまとめ、[`CONTRIBUTING.md#guardrails-ドキュメント更新フロー`](../CONTRIBUTING.md#guardrails-%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E6%9B%B4%E6%96%B0%E3%83%95%E3%83%AD%E3%83%BC) のレビュー手順に従って証跡の確認とチェックリスト更新を行う。
-5. Birdseye 図および Guardrails 原典（`third_party/Day8/workflow-cookbook/GUARDRAILS.md`）を照合し、役割や手順の齟齬がないことを最終確認する。
+1. 設計変更を検討したら `BLUEPRINT.md` で影響範囲と担当ロールを確認し、目的・スコープ・I/O・AC を見直したドラフトへ落とし込んで個人運用で実施可能な手順へ分解する。
+2. 実装・運用手順の変更は `RUNBOOK.md` と `CHECKLISTS.md` を同時に更新し、準備→実行→検証 / Dev→PR→Release→Ops の順序と担当ロールのチェック項目を維持する（同一人物でも帽子を被り替えてレビューする）。
+3. 受入条件や計測指標の変更は `EVALUATION.md` と Task Seed（`TASK.<YYYY-MM-DD>-0001.md` など）に同期し、証跡取得コマンドや個人実行で得たログへのリンクを追記する。
+4. 変更差分を Pull Request にまとめ、[`CONTRIBUTING.md#guardrails-ドキュメント更新フロー`](../CONTRIBUTING.md#guardrails-%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E6%9B%B4%E6%96%B0%E3%83%95%E3%83%AD%E3%83%BC) のレビュー手順に従って証跡確認とチェックリスト更新を行う。
+5. Birdseye 図および Guardrails 原典（`third_party/Day8/workflow-cookbook/HUB.codex.md` / `third_party/Day8/workflow-cookbook/GUARDRAILS.md` / `third_party/Day8/workflow-cookbook/BLUEPRINT.md`）を照合し、役割や手順の齟齬がないことを最終確認する。
