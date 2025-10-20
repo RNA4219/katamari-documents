@@ -23,13 +23,22 @@
 4. 競合が発生した場合は一旦 `git status` で対象ファイルを洗い出し、`core_ext/` 側を優先しつつ最小修正で整合。
 
 ### 更新取り込み（`git subtree pull`）
-1. 最新タグを取得
+1. `scripts/sync_chainlit_subtree.sh` のドライランで実行内容を確認
    ```bash
-   git fetch chainlit --tags
+   scripts/sync_chainlit_subtree.sh \
+     --prefix core_ext/chainlit \
+     --repo https://github.com/Chainlit/chainlit.git \
+     --tag v1.2.4 \
+     --dry-run
    ```
-2. 取り込み対象タグを選定し pull
+   - `--repo` はリモート名または URL、`--prefix` はサブツリー配置先を指定する。
+   - fetch 元を既存リモートに固定したい場合は `--remote upstream` のように上書きする。
+2. 出力に問題がなければ `--dry-run` を外して同期
    ```bash
-   git subtree pull --prefix=core_ext/chainlit chainlit v1.2.4 --squash
+   scripts/sync_chainlit_subtree.sh \
+     --prefix core_ext/chainlit \
+     --repo https://github.com/Chainlit/chainlit.git \
+     --tag v1.2.4
    ```
 3. 競合発生時は以下の手順で解消
    ```bash
@@ -39,6 +48,8 @@
    ```
    - `core_ext/` 外へ波及しない差分に抑制
    - 必要に応じて upstream 側修正内容をコメントで明示
+
+> メモ: GitHub Actions [`ci.yml`](../.github/workflows/ci.yml) の `pytest` ジョブで `tests/scripts/test_sync_chainlit_subtree.py` を実行し、ドライラン挙動を継続検証する。Task Seed からの導線は [`TASK.2025-10-19-0001.md`](../TASK.2025-10-19-0001.md) を参照。
 
 ## 週次チェック運用フロー
 
