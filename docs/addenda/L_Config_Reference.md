@@ -3,5 +3,6 @@
 
 - `OPENAI_API_KEY`, `GOOGLE_GEMINI_API_KEY`（旧称 `GEMINI_API_KEY` 互換）, `DEFAULT_PROVIDER`（将来のマルチプロバイダー切り替え用プレースホルダー／現状未使用）, `DEFAULT_MODEL`（起動時の既定モデル ID）
 - `CHAINLIT_AUTH_SECRET`
-- `PORT`, `LOG_LEVEL`
+- `PORT`
+- Chainlit の詳細ログが必要な場合は `.env` に一時的に `DEBUG=1` を追加するか、CLI 実行時に `chainlit run src/app.py --debug` を付与する
 - `model_registry.json`：`id/provider/family/type/reasoning/(parallel)/maxTokens/price*`
