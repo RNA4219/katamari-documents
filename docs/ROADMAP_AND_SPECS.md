@@ -108,5 +108,6 @@
 
 1. 変更検討時は `BLUEPRINT.md` を起点に目的・スコープ・I/O・AC を見直し、必要な設計更新をドラフト化する。
 2. 実装・運用手順の変更は `RUNBOOK.md` と `CHECKLISTS.md` に反映し、ガードレール順序（準備→実行→検証 / Dev→PR→Release→Ops）を維持する。
-3. 受入条件や計測指標の更新は `EVALUATION.md` へ同期し、未完了項目は `TASK.<YYYY-MM-DD>-0001.md` など Task Seed へ記録する。
-4. 更新を確定したら本ドキュメントの対象セクションを修正し、Birdseye 図および関連 ADR との整合を確認する。
+3. 受入条件や計測指標の更新は `EVALUATION.md` へ同期し、取得した証跡ログやコマンドは `TASK.<YYYY-MM-DD>-0001.md` など Task Seed へリンクする。
+4. 変更差分を Pull Request にまとめ、[`CONTRIBUTING.md#guardrails-ドキュメント更新フロー`](../CONTRIBUTING.md#guardrails-%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E6%9B%B4%E6%96%B0%E3%83%95%E3%83%AD%E3%83%BC) のレビュー手順に従って証跡の確認とチェックリスト更新を行う。
+5. Birdseye 図および Guardrails 原典（`third_party/Day8/workflow-cookbook/GUARDRAILS.md`）を照合し、役割や手順の齟齬がないことを最終確認する。
