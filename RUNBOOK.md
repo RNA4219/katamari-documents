@@ -38,7 +38,7 @@ Guardrails の「準備→実行→検証」順で進める。
 ### 2. 実行
 1. `chainlit run src/app.py --watch`
 2. Persona YAML を `personas/` からロードし、UI で切替を検証する。
-3. Trim/Reflect チェーンのログを `logs/` で監視し、トークン削減率を記録する。
+3. Chainlit の標準出力を監視し、必要に応じて `LOG_LEVEL` や `CHAINLIT_LOG_FILE` を設定して Trim/Reflect チェーンのトークン削減率を記録する。
 4. Provider を切り替え、`docs/addenda/F_Provider_Matrix.md` の互換チェックを行う。
 
 ### 3. 検証・障害対応
@@ -66,6 +66,7 @@ Guardrails の「準備→実行→検証」順で進める。
 - [ ] 失敗テストの理由と再実行計画が Task Seed に記録されている。
 - [ ] Guardrails RUNBOOK 節（`third_party/Day8/workflow-cookbook/GUARDRAILS.md`）の手順と本書のガードレール項目が一致する。
 - [ ] AI から提案された運用手順の採用可否を記録し、判断根拠を Task Seed に残した。
+- [ ] Chainlit の標準出力または `CHAINLIT_LOG_FILE` で Trim/Reflect チェーンのログを取得した証跡がある。
 
 ## 参照
 - [docs/ROADMAP_AND_SPECS.md](docs/ROADMAP_AND_SPECS.md)
