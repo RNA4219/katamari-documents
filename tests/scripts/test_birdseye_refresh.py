@@ -35,6 +35,21 @@ def _run_cli(workspace: Path, *args: str) -> subprocess.CompletedProcess[bytes]:
     return completed
 
 
+def test_cli_handles_original_edges_without_typeerror(birdseye_workspace: Path) -> None:
+    original_index = _load_json(Path("docs/birdseye/index.json"))
+    workspace_index = _load_json(birdseye_workspace / "index.json")
+
+    assert workspace_index["edges"] == original_index["edges"]
+
+    completed = _run_cli(birdseye_workspace)
+    stdout = completed.stdout.decode("utf-8")
+    stderr = completed.stderr.decode("utf-8")
+
+    assert completed.returncode == 0
+    assert "TypeError" not in stdout
+    assert "TypeError" not in stderr
+
+
 def test_generated_at_is_synchronized(birdseye_workspace: Path) -> None:
     _run_cli(birdseye_workspace)
 
