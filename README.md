@@ -122,8 +122,20 @@ LOG_LEVEL=info
 # ビルド
 docker build -t katamari:dev .
 
-# 起動 (ポートは PORT 環境変数で変更可能)
-docker run --rm -e PORT=8787 -p 8787:8787 katamari:dev
+# 起動 (既定ではコンテナ内ポート 3000 を公開)
+docker run --rm -p 3000:3000 katamari:dev
+
+# ポートを変える場合は `chainlit run ... --port` を明示的に指定する（`PORT` 環境変数の指定だけでは切り替わらない）
+# 例: 起動時にエントリポイントを上書きして 8787 番ポートで待ち受ける
+docker run --rm -p 3000:8787 katamari:dev \
+  chainlit run src/app.py --host 0.0.0.0 --port 8787
+
+# 例: CMD を差し替えた派生イメージをビルドする
+cat <<'EOF' > Dockerfile.8787
+FROM katamari:dev
+CMD ["chainlit", "run", "src/app.py", "--host", "0.0.0.0", "--port", "8787"]
+EOF
+docker build -f Dockerfile.8787 -t katamari:8787 .
 ```
 
 GitHub Container Registry への公開フローは [docs/addenda/H_Deploy_Guide.md](docs/addenda/H_Deploy_Guide.md) を参照してください。
