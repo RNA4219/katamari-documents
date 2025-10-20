@@ -33,7 +33,7 @@ Guardrails の「準備→実行→検証」順で進める。
 1. `python -m venv .venv && source .venv/bin/activate`
 2. `pip install -r requirements.txt` と必要に応じて `npm install`。
 3. `.env.example` を参照して Provider キーなどの環境変数を設定する。
-4. Birdseye index/caps を確認し、必要であれば `scripts/birdseye_refresh.py` を実行する。単独作業の場合でも更新日時を共通化する。
+4. Birdseye index/caps を確認し、必要であれば `python scripts/birdseye_refresh.py --dry-run` で差分を確認してから `python scripts/birdseye_refresh.py` を実行する。単独作業の場合でも更新日時を共通化し、実行結果を Task Seed に記録する。
 
 ### 2. 実行
 1. `chainlit run src/app.py --watch`
