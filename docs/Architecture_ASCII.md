@@ -9,14 +9,14 @@
           | SSE/JSON                           |
           v                                    v
 +---------+------------------------------------+
-|  app.py (thin wiring)                        |
+|  src/app.py (thin wiring)                    |
 |  - apply_settings()                          |
 |  - on_message(): prethought->persona->trim->chain->provider
 +---------+-------------------------+----------+
           |                         |
           v                         v
   +-------+------+           +------+---------+
-  | core_ext/*   |           | providers/*   |
+  | src/core_ext/* |         | src/providers/* |
   | persona      |           | openai, gemini|
   | trimmer      |           +----------------+
   | prethought   |
