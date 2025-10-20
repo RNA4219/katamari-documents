@@ -3,12 +3,14 @@
 
 ## H-1. 開発
 ```bash
-pip install chainlit openai pyyaml tiktoken
+pip install chainlit google-generativeai openai pyyaml tiktoken
 export OPENAI_API_KEY=sk-...
 export GOOGLE_GEMINI_API_KEY=...
 # 旧称 `GEMINI_API_KEY` も読み取り互換としてサポートされています。
 chainlit run src/app.py --host 0.0.0.0 --port 8787
 ```
+
+`google-generativeai` は Gemini 利用時に、`openai` は OpenAI 利用時に必須です。
 
 ## H-2. Docker（M3）
 ```Dockerfile
