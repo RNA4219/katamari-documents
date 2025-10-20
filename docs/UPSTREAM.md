@@ -2,7 +2,7 @@
 - Upstream: Chainlit/chainlit（Apache-2.0）
 - 追従ポリシー: 最新安定タグを週次でチェックし取り込み
 - 直近開始日時: 2025-10-19 JST
-- 差分は `core_ext/` に隔離、`app.py` は薄い配線のみ。
+- 差分は [`src/core_ext/`](../src/core_ext/) に隔離、`app.py` は薄い配線のみ。
 
 ## Git subtree 運用手順
 
@@ -16,17 +16,17 @@
    ```bash
    git tag -l 'v*' --sort=-v:refname | head
    ```
-3. `core_ext/chainlit` にサブツリーを追加
+3. [`upstream/chainlit`](../upstream/chainlit/) にサブツリーを追加
    ```bash
-   git subtree add --prefix=core_ext/chainlit chainlit v1.2.3 --squash
+   git subtree add --prefix=upstream/chainlit chainlit v1.2.3 --squash
    ```
-4. 競合が発生した場合は一旦 `git status` で対象ファイルを洗い出し、`core_ext/` 側を優先しつつ最小修正で整合。
+4. 競合が発生した場合は一旦 `git status` で対象ファイルを洗い出し、[`src/core_ext/`](../src/core_ext/) 側を優先しつつ最小修正で整合。
 
 ### 更新取り込み（`git subtree pull`）
 1. `scripts/sync_chainlit_subtree.sh` のドライランで実行内容を確認
    ```bash
    scripts/sync_chainlit_subtree.sh \
-     --prefix core_ext/chainlit \
+    --prefix upstream/chainlit \
      --repo https://github.com/Chainlit/chainlit.git \
      --tag v1.2.4 \
      --dry-run
@@ -36,7 +36,7 @@
 2. 出力に問題がなければ `--dry-run` を外して同期
    ```bash
    scripts/sync_chainlit_subtree.sh \
-     --prefix core_ext/chainlit \
+    --prefix upstream/chainlit \
      --repo https://github.com/Chainlit/chainlit.git \
      --tag v1.2.4
    ```
@@ -46,7 +46,7 @@
    git add <conflicted-files>
    git commit --amend --no-edit
    ```
-   - `core_ext/` 外へ波及しない差分に抑制
+   - [`src/core_ext/`](../src/core_ext/) 外へ波及しない差分に抑制
    - 必要に応じて upstream 側修正内容をコメントで明示
 
 > メモ: GitHub Actions [`ci.yml`](../.github/workflows/ci.yml) の `pytest` ジョブで `tests/scripts/test_sync_chainlit_subtree.py` を実行し、ドライラン挙動を継続検証する。Task Seed からの導線は [`TASK.2025-10-19-0001.md`](../TASK.2025-10-19-0001.md) を参照。
@@ -59,14 +59,14 @@
   1. `docs/UPSTREAM_WEEKLY_LOG.md` の最新エントリを複製し、日付・担当・進捗欄を更新する。
   2. `git fetch chainlit --tags` と `git tag -l 'v*' --sort=-v:refname | head` で最新タグを把握し、候補をログ欄に控える。
   3. Release Note の要点と想定影響を AI に要約させ、主要論点をログへ転記する。
-  4. `git diff <prev_tag>..<target_tag>` で影響領域を確認し、`core_ext/` へ波及する論点をログの「差分メモ」に整理する。
+  4. `git diff <prev_tag>..<target_tag>` で影響領域を確認し、[`src/core_ext/`](../src/core_ext/) へ波及する論点をログの「差分メモ」に整理する。
   5. テスト・動作確認の要否を判断し、実施内容と結果をログの専用欄にまとめる。
   6. チェックリストを参照しながらログを埋め、完了後に AI に整合チェックを依頼する。
 
 ### 差分検証チェックリスト（リポジトリ内完結）
 - [ ] `docs/UPSTREAM_WEEKLY_LOG.md` に該当週のエントリを作成し、日付・担当・対象タグ候補・比較元タグを記入
 - [ ] `docs/UPSTREAM_WEEKLY_LOG.md` のリリースノート要約欄に breaking change の有無と対処方針を記入
-- [ ] 同エントリの差分メモ欄に `core_ext/` 影響点と依存更新の要否を記入
+- [ ] 同エントリの差分メモ欄に [`src/core_ext/`](../src/core_ext/) 影響点と依存更新の要否を記入
 - [ ] テスト・検証欄に実施可否と結果（未実施理由含む）を記入
 - [ ] 「レビュー記録」欄を設け、自己レビュー所見と AI レビュー所見、後続タスクが必要なら `docs/TASKS.md` 等リポジトリ内ドキュメントへのリンクを記入
 
@@ -74,9 +74,9 @@
 
 | レイヤ | 内容 | Chainlit 更新時の扱い | レビュー観点 |
 | --- | --- | --- | --- |
-| `core_ext/chainlit` | Upstream ソースのミラー | `git subtree` でタグ単位取り込み。直接編集禁止 | Upstream 差分の妥当性、`--squash` による履歴圧縮確認 |
-| `core_ext/patches` | 独自パッチ（必要最小限） | Chainlit 側で未解決の issue を暫定補正 | Patch 適用順序と upstream へのフィードバック計画 |
-| `app.py` / `src/` | 自前コード | `core_ext/` の公開 API のみ利用 | 依存逆流が無いこと、例外設計遵守 |
+| [`upstream/chainlit`](../upstream/chainlit/) | Upstream ソースのミラー | `git subtree` でタグ単位取り込み。直接編集禁止 | Upstream 差分の妥当性、`--squash` による履歴圧縮確認 |
+| `src/core_ext/patches` | 独自パッチ（必要最小限） | Chainlit 側で未解決の issue を暫定補正（必要に応じて当該ディレクトリを作成） | Patch 適用順序と upstream へのフィードバック計画 |
+| `app.py` / `src/` | 自前コード | [`src/core_ext/`](../src/core_ext/) の公開 API のみ利用 | 依存逆流が無いこと、例外設計遵守 |
 
 ### レビューフロー
 1. 担当者が自己レビューを実施し、`docs/UPSTREAM_WEEKLY_LOG.md` の「レビュー記録」欄に自己レビュー完了時刻と確認内容を残す
