@@ -6,7 +6,7 @@
 pip install chainlit openai pyyaml tiktoken
 export OPENAI_API_KEY=sk-...
 export GEMINI_API_KEY=...
-chainlit run src/app.py -h --host 0.0.0.0 --port 8787
+chainlit run src/app.py --host 0.0.0.0 --port 8787
 ```
 
 ## H-2. Docker（M3）
@@ -18,7 +18,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 ENV PORT=8787
 EXPOSE 8787
 ENTRYPOINT ["chainlit","run"]
-CMD ["src/app.py","-h","--host","0.0.0.0","--port","8787"]
+CMD ["src/app.py","--host","0.0.0.0","--port","8787"]
 ```
 
 ## H-3. GitHub Actions リリースワークフロー（M3）

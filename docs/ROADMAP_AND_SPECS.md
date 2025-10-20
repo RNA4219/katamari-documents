@@ -18,6 +18,7 @@
 | Day8 HUB→Guardrails | `third_party/Day8/workflow-cookbook/HUB.codex.md` → `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | Day8 観測ハブから統制基準へ進む推奨導線（役割: HUB が全体俯瞰、GUARDRAILS が安全策定）。 |
 | Day8 HUB | `third_party/Day8/workflow-cookbook/HUB.codex.md` | 観測ハブとして Day8 オペレーション全体の入口を提示する役割ドキュメント。 |
 | Day8 Guardrails | `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | HUB からのインサイトを受けて統制基準・安全策を定義する役割ドキュメント。 |
+| Day8 Blueprint | `third_party/Day8/workflow-cookbook/BLUEPRINT.md` | Guardrails を適用した運用ブループリント（実装設計）。 |
 
 > Guardrails 連動ドキュメントの概要（いずれも個人+AI 運用に必要なガードレールを網羅）
 > - [BLUEPRINT.md](../BLUEPRINT.md): Persona/Trim/Reflect チェーンの責務分離・再試行方針・個人/AI 共同運用の境界を整理。
