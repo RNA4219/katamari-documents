@@ -39,7 +39,7 @@ Guardrails の「準備→実行→検証」順で進める。
 ### 2. 実行
 1. `chainlit run src/app.py --watch`
 2. Persona YAML を `personas/` からロードし、UI で切替を検証する。
-3. Chainlit の標準出力を監視し、必要に応じて `LOG_LEVEL` や `CHAINLIT_LOG_FILE` を設定して Trim/Reflect チェーンのトークン削減率を記録する。
+3. Chainlit の標準出力を監視し、必要に応じて `.env` に一時的に `DEBUG=1` を設定するか `chainlit run ... --debug` で起動し、`CHAINLIT_LOG_FILE` と併用して Trim/Reflect チェーンのトークン削減率を記録する。
 4. Provider を切り替え、`docs/addenda/F_Provider_Matrix.md` の互換チェックを行う。
 
 ### 3. 検証・障害対応
