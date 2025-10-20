@@ -19,6 +19,7 @@ from core_ext.persona_compiler import compile_persona_yaml
 from core_ext.context_trimmer import trim_messages
 from core_ext.prethought import analyze_intent
 from core_ext.multistep import get_chain_steps, system_hint_for_step
+from providers.google_gemini_client import GoogleGeminiProvider
 from providers.openai_client import OpenAIProvider
 
 DEFAULT_MODEL = "gpt-5-main"
@@ -91,12 +92,11 @@ for _path in ("/metrics", "/healthz"):
             chainlit_app.router.routes.insert(0, route)
             break
 
-def get_provider(model_id: str):
-    # Simple mapping by provider prefix; extend with Gemini etc.
-    if model_id.startswith("gpt-"):
-        return OpenAIProvider()
-    # elif model_id.startswith("gemini-"):
-    #     return GoogleGeminiProvider()
+def get_provider(model_id: str) -> OpenAIProvider | GoogleGeminiProvider:
+    """Instantiate a provider implementation for the requested model."""
+
+    if model_id.startswith("gemini-"):
+        return GoogleGeminiProvider()
     return OpenAIProvider()
 
 @cl.on_chat_start
