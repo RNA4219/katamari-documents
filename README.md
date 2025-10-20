@@ -83,7 +83,8 @@ make run
 | 必須 | `OPENAI_API_KEY` | OpenAI プロバイダー利用時の API キー | `OPENAI_API_KEY=sk-...` | `.env` のみで管理し、Git には含めない |
 | 任意 | `GOOGLE_GEMINI_API_KEY` | Google Gemini プロバイダー利用時の API キー | `GOOGLE_GEMINI_API_KEY=...` | Gemini API を利用する場合のみ |
 | 任意 | `GEMINI_API_KEY` | 旧名称。既存デプロイ互換用 | `GEMINI_API_KEY=...` | 既存環境からの移行時に保持 |
-| 任意 | `DEFAULT_PROVIDER` | 既定で使用する LLM プロバイダー識別子 | `DEFAULT_PROVIDER=openai` | 省略時は OpenAI |
+| 任意 | `DEFAULT_PROVIDER` | 既定で使用する LLM プロバイダー識別子 | `DEFAULT_PROVIDER=openai` | 将来のマルチプロバイダー切り替え用プレースホルダー（現状未使用） |
+| 任意 | `DEFAULT_MODEL` | 起動時に選択される LLM モデル ID | `DEFAULT_MODEL=gpt-5-main` | `.env` 未設定時はアプリ既定値を利用 |
 | 任意 | `CHAINLIT_AUTH_SECRET` | Chainlit セッション署名用シークレット | `CHAINLIT_AUTH_SECRET=change-me` | 本番は十分な長さに変更 |
 | 任意 | `PORT` | Chainlit を手動で起動するときの待ち受けポート | `PORT=8787` | `make run` は既定で 8787 を指定。必要なら `chainlit run ... --port` を利用 |
 | 任意 | `LOG_LEVEL` | Chainlit ログ出力レベル | `LOG_LEVEL=info` | `debug`/`warning` などを指定可 |
@@ -99,6 +100,7 @@ make run
 ```dotenv
 OPENAI_API_KEY=sk-...
 DEFAULT_PROVIDER=openai
+DEFAULT_MODEL=gpt-5-main
 CHAINLIT_AUTH_SECRET=change-me
 PORT=8787
 LOG_LEVEL=info
