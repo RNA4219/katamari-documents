@@ -5,7 +5,8 @@
 ```bash
 pip install chainlit openai pyyaml tiktoken
 export OPENAI_API_KEY=sk-...
-export GEMINI_API_KEY=...
+export GOOGLE_GEMINI_API_KEY=...
+# 旧称 `GEMINI_API_KEY` も読み取り互換としてサポートされています。
 chainlit run src/app.py --host 0.0.0.0 --port 8787
 ```
 
