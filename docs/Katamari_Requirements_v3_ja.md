@@ -5,7 +5,7 @@
 ## 固定事項（確定）
 - **開始日**：2025/10/19（日）
 - **名称**：katamari／UIタイトル：**Katamari (Chainlit Fork)**
-- **ENV 名**：`OPENAI_API_KEY`, `GEMINI_API_KEY`, `DEFAULT_PROVIDER=openai`
+- **ENV 名**：`OPENAI_API_KEY`, `GOOGLE_GEMINI_API_KEY`（旧称 `GEMINI_API_KEY` 互換あり）, `DEFAULT_PROVIDER=openai`
 - **モデル初期セット**：
   - **GPT-5 系**：`gpt-5-main` / `gpt-5-main-mini` / `gpt-5-thinking` / `gpt-5-thinking-mini` / `gpt-5-thinking-nano` / `gpt-5-thinking-pro`
   - **Gemini 2.5 系**：`gemini-2.5-*` 一式
