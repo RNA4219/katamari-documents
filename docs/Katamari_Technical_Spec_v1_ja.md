@@ -51,7 +51,7 @@ class ProviderClient(Protocol):
 - `CHAINLIT_AUTH_SECRET`、CORS制限、Rate Limit、HTTPS
 
 ## 8. デプロイ
-- dev: `chainlit run app.py -h --host 0.0.0.0 --port 8787`
+- dev: `chainlit run src/app.py --host 0.0.0.0 --port 8787`
 - prod: Docker/Helm（M3）、リバースプロキシでHTTP/2・Keep-Alive
 
 ## 9. 受け入れ試験（抜粋）
