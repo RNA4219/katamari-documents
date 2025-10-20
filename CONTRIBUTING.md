@@ -16,8 +16,8 @@
 - リリース前のブランチは `release/<日付>-<ハッシュ>` 命名とし、必ずロックを掛けて（`branch --lock` など）緊急以外の push を禁止します。
 
 ## 開発環境セットアップ
-1. Python 依存関係を `pip install -r requirements.txt` で導入します。評価用ツールが必要な場合は `requirements-eval.txt` も参照してください。
-2. Node.js まわりを触る場合は `pnpm install` を実行してください。
+1. Python 依存関係はリポジトリルートで `make dev`（内部で `pip install -r requirements.txt` を呼び出します）または `pip install -r requirements.txt` を実行して導入します。評価用ツールが必要な場合は `requirements-eval.txt` も参照してください。
+2. Node.js 領域を変更する場合は対象ディレクトリへ移動し、例として `cd upstream/chainlit && pnpm install` を実行してください。Node セットアップが不要なケースではこの手順をスキップし、リポジトリ直下で `npm install` を実行しないよう注意してください。
 3. pre-commit を使用する場合は `pip install pre-commit && pre-commit install` でフックを設定できます。
 4. 追加のセットアップが必要なときは `RUNBOOK.md` と `docs/` を参照してください。
 
