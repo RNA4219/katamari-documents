@@ -58,8 +58,8 @@
 | `src/core_ext/` | トリミング、ペルソナ解析、マルチステップ制御などの拡張。 | `addenda/D_Trim_Design.md`<br>`addenda/C_Persona_Schema.md`<br>[ADR #0002](adr/0002-tokenization-with-tiktoken.md) |
 | `src/providers/` | OpenAI/Gemini など LLM プロバイダ抽象化。 | `addenda/F_Provider_Matrix.md`<br>[ADR #0003](adr/0003-provider-interface.md) |
 | `themes/` | Chainlit テーマ JSON。 | `README_PERSONAS_THEMES.md`<br>`addenda/B_UI_Mock.md` |
-| `tests/` | Pytest ベースの検証群。 | `docs/I_Test_Cases.md` |
-| `config/` | モデル登録、環境変数サンプル。 | `docs/L_Config_Reference.md` |
+| `tests/` | Pytest ベースの検証群。 | `docs/addenda/I_Test_Cases.md` |
+| `config/` | モデル登録、環境変数サンプル。 | `docs/addenda/L_Config_Reference.md` |
 
 ## 3. ロードマップ（推奨進行順）
 
