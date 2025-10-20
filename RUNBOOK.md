@@ -31,9 +31,10 @@ Guardrails の「準備→実行→検証」順で進める。
 
 ### 1. 準備
 1. `python -m venv .venv && source .venv/bin/activate`
-2. `pip install -r requirements.txt` と必要に応じて `npm install`。
-3. `.env.example` を参照して Provider キーなどの環境変数を設定する。
-4. Birdseye index/caps を確認し、必要であれば `python scripts/birdseye_refresh.py --dry-run` で差分を確認してから `python scripts/birdseye_refresh.py` を実行する。単独作業の場合でも更新日時を共通化し、実行結果を Task Seed に記録する。
+2. Python 依存は `make dev`（仮想環境内で `pip install -r requirements.txt` を含む）または `pip install -r requirements.txt` を実行して導入する。
+3. Node 依存が必要な変更を行う場合は `cd upstream/chainlit && pnpm install` のように対象ディレクトリへ移動してセットアップし、対象外であればスキップする。リポジトリ直下で `npm install` を実行しないよう注意。詳細は [CONTRIBUTING.md#開発環境セットアップ](CONTRIBUTING.md#開発環境セットアップ) を参照。
+4. `.env.example` を参照して Provider キーなどの環境変数を設定する。
+5. Birdseye index/caps を確認し、必要であれば `python scripts/birdseye_refresh.py --dry-run` で差分を確認してから `python scripts/birdseye_refresh.py` を実行する。単独作業の場合でも更新日時を共通化し、実行結果を Task Seed に記録する。
 
 ### 2. 実行
 1. `chainlit run src/app.py --watch`
