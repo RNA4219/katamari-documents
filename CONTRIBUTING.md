@@ -59,6 +59,16 @@ PR テンプレートの「テスト実行ログ」欄には成功を確認で�
 4. `docs/adr/README.md` と関連ハブ（[`docs/ROADMAP_AND_SPECS.md#adr-インデックスコア判断とマイルストーン`](docs/ROADMAP_AND_SPECS.md#adr-インデックスコア判断とマイルストーン)）のテーブル・リンクを更新し、新旧の整合性を確認します。
 5. PR では本手順を満たしたことを記載し、レビュワーが DoD の達成状況を検証できるよう関連テストや証跡を提示します。
 
+## Guardrails ドキュメント更新フロー
+
+Guardrails 連動ドキュメント（`BLUEPRINT.md` / `RUNBOOK.md` / `CHECKLISTS.md` / `EVALUATION.md` / `TASK.*.md` など）を更新する際は、以下の手順で設計・運用・証跡の一貫性を保ってください。
+
+1. 設計変更を検討したら `BLUEPRINT.md` を起点に目的・影響範囲・担当ロールを再確認し、設計判断の根拠を更新します。
+2. 運用手順に影響する場合は `RUNBOOK.md` と `CHECKLISTS.md` を同時に改訂し、同一人物でもロールを切り替えてセルフレビューします。
+3. 受入基準やメトリクスが変わる場合は `EVALUATION.md` を更新し、取得した証跡ログやコマンドは該当 Task Seed（`TASK.*.md`）へリンクして追跡します。
+4. 差分を Pull Request にまとめ、ここで定義したフローに沿ってレビュー・証跡確認を実施し、必要なチェックリストを更新します。
+5. Birdseye 図と Guardrails 原典（`third_party/Day8/workflow-cookbook/GUARDRAILS.md`）を照合し、役割・手順の齟齬がないかを最終確認します。
+
 ## コミットと Pull Request
 - コミットメッセージは簡潔な日本語または英語で要点を 1 行にまとめ、必要に応じて本文で背景を補足します。
 - Pull Request はテンプレートを必ず使用し、未対応の項目は「未実施」「対象外」など明示的に記入してください。
