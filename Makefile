@@ -4,7 +4,7 @@ dev:
 	pip install -r requirements.txt
 
 run:
-	chainlit run src/app.py -h --host 0.0.0.0 --port 8787
+	chainlit run src/app.py --host 0.0.0.0 --port 8787
 
 fmt:
 	ruff format .
