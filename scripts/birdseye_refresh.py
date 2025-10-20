@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 from collections import defaultdict
+from collections.abc import Iterable as IterableABC
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, DefaultDict, Iterable, List, Sequence, Set, Tuple
@@ -56,9 +57,16 @@ def _build_edge_maps(edges: Iterable[Tuple[str, str]]) -> Tuple[DefaultDict[str,
 def _normalize_edges(raw_edges: Iterable[Any]) -> List[Tuple[str, str]]:
     normalized: List[Tuple[str, str]] = []
     for item in raw_edges:
-        if not isinstance(item, list | tuple) or len(item) != 2:
+        pair: Tuple[Any, ...] | None
+        if isinstance(item, (list, tuple)):
+            pair = tuple(item)
+        elif isinstance(item, IterableABC) and not isinstance(item, (str, bytes)):
+            pair = tuple(item)
+        else:
+            pair = None
+        if pair is None or len(pair) != 2:
             continue
-        source, target = item
+        source, target = pair
         normalized.append((str(source), str(target)))
     return normalized
 
