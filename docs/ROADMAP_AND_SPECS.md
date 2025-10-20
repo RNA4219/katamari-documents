@@ -18,6 +18,7 @@
 | Day8 HUB→Guardrails | `third_party/Day8/workflow-cookbook/HUB.codex.md` → `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | Day8 観測ハブから統制基準へ進む推奨導線（役割: HUB が全体俯瞰、GUARDRAILS が安全策定）。 |
 | Day8 HUB | `third_party/Day8/workflow-cookbook/HUB.codex.md` | 観測ハブとして Day8 オペレーション全体の入口を提示する役割ドキュメント。 |
 | Day8 Guardrails | `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | HUB からのインサイトを受けて統制基準・安全策を定義する役割ドキュメント。 |
+| Day8 Blueprint | `third_party/Day8/workflow-cookbook/BLUEPRINT.md` | Guardrails を適用した運用ブループリント（実装設計）。 |
 
 > Guardrails 連動ドキュメントの概要（いずれも個人+AI 運用に必要なガードレールを網羅）
 > - [BLUEPRINT.md](../BLUEPRINT.md): Persona/Trim/Reflect チェーンの責務分離・再試行方針・個人/AI 共同運用の境界を整理。
@@ -46,9 +47,6 @@
 3. 受入基準や DoD に影響する場合は `EVALUATION.md` と該当 Task Seed (`TASK.*.md`) を更新し、証跡取得コマンドを追記する。個人実行で得たログは Task Seed にリンクする。
 4. 変更差分を Pull Request にまとめ、`CONTRIBUTING.md#guardrails-ドキュメント更新フロー` を参照してレビューと追跡を実施する。
 5. Birdseye 図および Guardrails 原典 (`third_party/Day8/workflow-cookbook/GUARDRAILS.md`) を確認し、役割と手順の齟齬がないことを保証する。
-| Day8 HUB | `third_party/Day8/workflow-cookbook/HUB.codex.md` | Day8 オペレーション全体を俯瞰する観測ハブ（入口）。 |
-| Day8 Guardrails | `third_party/Day8/workflow-cookbook/GUARDRAILS.md` | HUB で得た観測を踏まえた統制基準・安全策（第二段）。 |
-| Day8 Blueprint | `third_party/Day8/workflow-cookbook/BLUEPRINT.md` | Guardrails を適用した運用ブループリント（実装設計）。 |
 
 ## 2. 実装モジュールと対応仕様
 
