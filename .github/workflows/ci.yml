@@ -59,35 +59,37 @@ jobs:
       - name: OpenAI smoke test
         run: |
           python - <<'PY'
-from openai import OpenAI
+          from openai import OpenAI
 
-def extract_text(response):
-    direct = getattr(response, "output_text", None)
-    if direct:
-        return direct
-    return "".join(
-        getattr(part, "text", "")
-        for item in getattr(response, "output", []) or []
-        for part in getattr(item, "content", []) or []
-    )
+          def extract_text(response):
+              direct = getattr(response, "output_text", None)
+              if direct:
+                  return direct
+              return "".join(
+                  getattr(part, "text", "")
+                  for item in getattr(response, "output", []) or []
+                  for part in getattr(item, "content", []) or []
+              )
 
 
-client = OpenAI()
-text = extract_text(client.responses.create(model="gpt-4o-mini", input="Respond with OK")).strip().lower()
-if "ok" not in text:
-    raise SystemExit("Unexpected OpenAI response")
-PY
+          client = OpenAI()
+          text = extract_text(client.responses.create(model="gpt-4o-mini", input="Respond with OK")).strip().lower()
+          if "ok" not in text:
+              raise SystemExit("Unexpected OpenAI response")
+          PY
       - name: Gemini smoke test
         run: |
           python - <<'PY'
-import os
-import google.generativeai as genai
-api_key = os.getenv("GOOGLE_GEMINI_API_KEY") or os.getenv("GEMINI_API_KEY")
-if not api_key:
-    raise SystemExit("Missing Gemini API key")
-genai.configure(api_key=api_key)
-result = genai.GenerativeModel("gemini-1.5-flash").generate_content("Respond with OK")
-text = (result.text or "").strip().lower()
-if "ok" not in text:
-    raise SystemExit("Unexpected Gemini response")
-PY
+          import os
+
+          import google.generativeai as genai
+
+          api_key = os.getenv("GOOGLE_GEMINI_API_KEY") or os.getenv("GEMINI_API_KEY")
+          if not api_key:
+              raise SystemExit("Missing Gemini API key")
+          genai.configure(api_key=api_key)
+          result = genai.GenerativeModel("gemini-1.5-flash").generate_content("Respond with OK")
+          text = (result.text or "").strip().lower()
+          if "ok" not in text:
+              raise SystemExit("Unexpected Gemini response")
+          PY
