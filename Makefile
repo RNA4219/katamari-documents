@@ -1,5 +1,4 @@
-
-.PHONY: dev run fmt lint test docker
+.PHONY: dev run fmt lint type test docker help check
 
 dev:
 	pip install -r requirements.txt
@@ -11,7 +10,23 @@ fmt:
 	rufflehog || true
 
 lint:
-	python -m pyflakes src || true
+	ruff check .
+
+type:
+	mypy --strict
 
 test:
 	pytest -q
+
+check: lint type test
+
+help:
+	@printf '%s\n' 'Available targets:'
+	@printf '%s\n' '  dev    Install Python dependencies'
+	@printf '%s\n' '  run    Start Chainlit development server'
+	@printf '%s\n' '  fmt    Format code with ruff format'
+	@printf '%s\n' '  lint   Run ruff check .'
+	@printf '%s\n' '  type   Run mypy --strict'
+	@printf '%s\n' '  test   Run pytest -q'
+	@printf '%s\n' '  check  Run lint, type, and test checks'
+
