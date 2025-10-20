@@ -21,3 +21,4 @@ Birdseye は Guardrails 連携のための観測ハブとして、Katamari リ�
 - Guardrails 群（`BLUEPRINT.md` / `RUNBOOK.md` / `EVALUATION.md` / `CHECKLISTS.md`）を更新する際は Birdseye で特定された Hot ノードと Capsule のリスクを参照し、必要なドキュメント更新を Task Seed へ記録します。
 - Birdseye 更新時は Guardrails のチェックリストに沿ってリスク評価・テスト実行・証跡リンクを残し、`generated_at` を統一した状態でコミットします。
 - 詳細な更新要件とワークフローは [docs/ROADMAP_AND_SPECS.md](../ROADMAP_AND_SPECS.md) の「Birdseye 更新フロー」を参照してください。
+- Guardrails から直接 Birdseye を参照する際の導線は [docs/BIRDSEYE.md](../BIRDSEYE.md) を確認してください。
