@@ -20,8 +20,8 @@
 - SLA/アラートの常時監視（SRE 評価に委譲）。
 
 ## 評価ステップ
-1. `RUNBOOK.md` に従って環境を起動し、`pytest` / `node:test` / `ruff` / `mypy --strict` を実行する。個人環境ではログ保存先を Task Seed に記入する。
-2. `scripts/perf/collect_metrics.py`（想定）や Chainlit ログから性能指標を取得し、要件値と比較する。
+1. `RUNBOOK.md` に従って環境を起動し、`pytest` / `node:test` / `ruff` / `mypy --strict` を実行する。個人環境ではログ保存先とファイルパスを Task Seed に記入する。
+2. `scripts/perf/collect_metrics.py` や Chainlit ログから性能指標を取得し、要件値と比較する。例: `python scripts/perf/collect_metrics.py --metrics-url http://127.0.0.1:8787/metrics --output /tmp/katamari-metrics.json`
 3. `docs/Release_Checklist.md` と `docs/Security_Review_Checklist.md` の結果を確認し、未完了項目があれば Task Seed に登録する。
 4. 判定結果を Issue / PR / `CHANGELOG.md` に記録し、必要なら `RUNBOOK.md`・`CHECKLISTS.md` を更新する。
 5. `third_party/Day8/workflow-cookbook/GUARDRAILS.md` の「EVALUATION」節で定義された指標と比較し、差異があれば補足を記録する。
@@ -46,8 +46,8 @@
 - Guardrails EVALUATION の Acceptance 条件を満たさない場合は差分理由が明記されている。
 
 ## チェック項目
-- [ ] Lint / type / test / node:test の結果ログを保管した。
-- [ ] 性能指標（SSE p95、UI 遅延、トークン削減率）を測定し、要件と比較した。
+- [ ] Lint / type / test / node:test の結果ログを保管し、Task Seed に記録した。
+- [ ] 性能指標（SSE p95、UI 遅延、トークン削減率）を測定し、要件と比較した（`scripts/perf/collect_metrics.py` の出力を Task Seed に添付）。
 - [ ] セキュリティ / リリースチェックリストをレビューし、未完了項目を Task Seed に転記した。
 - [ ] 判定結果を `docs/ROADMAP_AND_SPECS.md` の対象フェーズへ反映した。
 - [ ] Guardrails EVALUATION 節（`third_party/Day8/workflow-cookbook/GUARDRAILS.md`）と本書のガードレール項目が一致する。
