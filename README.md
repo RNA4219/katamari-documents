@@ -122,13 +122,16 @@ PORT=8787
 # ビルド
 docker build -t katamari:dev .
 
-# 起動 (既定ではコンテナ内ポート 3000 を公開)
-docker run --rm -p 3000:3000 katamari:dev
+# 起動 (既定ではコンテナ内ポート 8787 を公開)
+docker run --rm -p 8787:8787 katamari:dev
 
 # ポートを変える場合は `chainlit run ... --port` を明示的に指定する（`PORT` 環境変数の指定だけでは切り替わらない）
-# 例: 起動時にエントリポイントを上書きして 8787 番ポートで待ち受ける
-docker run --rm -p 3000:8787 katamari:dev \
-  chainlit run src/app.py --host 0.0.0.0 --port 8787
+# 例: ホスト側のポートだけ 3000 に変える（コンテナ側は既定の 8787 のまま）
+docker run --rm -p 3000:8787 katamari:dev
+
+# 例: 起動時にエントリポイントを上書きしてコンテナ内の待受ポートも 9999 に変更する
+docker run --rm -p 9999:9999 katamari:dev \
+  chainlit run src/app.py --host 0.0.0.0 --port 9999
 
 # 例: CMD を差し替えた派生イメージをビルドする
 cat <<'EOF' > Dockerfile.8787
