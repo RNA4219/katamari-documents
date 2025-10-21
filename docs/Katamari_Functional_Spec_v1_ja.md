@@ -42,6 +42,7 @@
 
 ## 5. ログ/メトリクス
 - ログ：`req_id, user_id?, model, chain_id, token_in/out, latency_ms, compress_ratio`
+  - **注記（2025-10-21 現在）**：ログ出力機能は未実装であり、現行ビルドでは要件を満たしていない。実装計画とフォローアップは [`TASK.2025-10-21-0003.md`](../TASK.2025-10-21-0003.md) を参照。
 - メトリクス（現行 `/metrics`）：`compress_ratio`, `semantic_retention`
   - `semantic_retention` はダミー値であり、実測化は今後の課題
 - メトリクス（拡張計画中）：`requests_total`, `latency_ms_p95`, `sse_first_token_ms`, `trim_compress_ratio`
