@@ -37,3 +37,4 @@ rg -n "CHECKLIST" third_party/Day8/workflow-cookbook/GUARDRAILS.md
 - Guardrails の「テスト先行・最小差分」原則に従い、未解決項目は後続 Task Seed または Issue に分割する。
 - Birdseye index/caps を更新し、CI・リリース関連ノードの可視化を維持する。
 - Guardrails 文書更新の差分と今後のタスクを Task Seed 内で管理する。
+- 認証方式導入のフォローアップは [`TASK.2025-10-19-0002.md`](TASK.2025-10-19-0002.md) に集約する。
