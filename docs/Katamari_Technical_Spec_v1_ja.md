@@ -50,6 +50,11 @@ class ProviderClient(Protocol):
 ## 7. セキュリティ
 - ENV キーのみ使用、フロント露出なし
 - `CHAINLIT_AUTH_SECRET`、CORS制限、Rate Limit、HTTPS
+  - **現状**：上記の CORS / Rate Limit / HTTPS / `CHAINLIT_AUTH_SECRET` は未導入。詳細は `TASK.2025-10-19-0002.md`（認証導入タスク）を参照。
+  - **実装後に更新すべき項目**：
+    - 本節の導入状況と設定内容
+    - 8章「デプロイ」のプロダクション要件（TLS終端 / Rate Limit 運用）
+    - RUNBOOK の運用手順（認証シークレットのローテーション）
 
 ## 8. デプロイ
 - dev: `chainlit run src/app.py --host 0.0.0.0 --port 8787`
