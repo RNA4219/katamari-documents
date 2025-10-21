@@ -3,7 +3,7 @@
 # Run (dev):
 #   pip install -r requirements.txt
 #   export OPENAI_API_KEY=sk-...
-#   chainlit run src/app.py -h --host 0.0.0.0 --port 8787
+#   chainlit run src/app.py --host 0.0.0.0 --port 8787
 
 import os
 from threading import Lock
