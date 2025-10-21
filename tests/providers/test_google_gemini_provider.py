@@ -86,3 +86,13 @@ async def test_complete_returns_text_response() -> None:
     assert call["stream"] is False
     assert call["opts"]["temperature"] == 0.0
     assert call["contents"] == [{"role": "user", "parts": ["Hello"]}]
+
+
+def test_init_configures_with_gemini_api_key_env(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv("GOOGLE_GEMINI_API_KEY", raising=False)
+    monkeypatch.setenv("GEMINI_API_KEY", "fallback-key")
+    module = StubGenerativeAIModule(stream_chunks=[], response_text="unused")
+
+    GoogleGeminiProvider(genai_module=module)
+
+    assert module.configure_kwargs == [{"api_key": "fallback-key"}]
