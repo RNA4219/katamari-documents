@@ -54,6 +54,7 @@ LLM入出力の基盤機能（前処理・多段推論・人格YAML・最適化�
 - UI反映遅延 ≤ 300ms（SSE→描画）
 - SSE自動再接続（指数バックオフ、最大3回）
 - 認証：M1 Header Auth → M1.5 OAuth（`CHAINLIT_AUTH_SECRET`）
+- **注記（2025-10-19 現在）**：Header Auth/OAuth は未実装で、現行リリースは Chainlit 既定の無認証挙動。対策タスクは [`TASK.2025-10-19-0002.md`](../TASK.2025-10-19-0002.md) を参照。
 - Upstream追従：週次、差分は `core_ext/` に隔離
 
 ## 5. データモデル（抜粋）
@@ -76,6 +77,7 @@ notes: |
 - AC-02：Trim実行→`compress_ratio` 表示（0.3–0.8）
 - AC-03：reflect 3段の順序でストリーム可視化
 - AC-04：M1でHeader Auth→M1.5でOAuth有効化
+- **注記（2025-10-19 現在）**：上記認証要件は未着手のため、当面は Chainlit 既定の無認証挙動を継続する。対応後に本注記を撤回すること（[`TASK.2025-10-19-0002.md`](../TASK.2025-10-19-0002.md)）。
 - AC-05：Apache-2.0遵守（LICENSE/NOTICE/変更点）
 
 ## 7. マイルストーン / 工数（1名）

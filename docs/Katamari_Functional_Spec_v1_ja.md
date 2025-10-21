@@ -38,6 +38,7 @@
 ## 4. 権限/認証
 - M1：Header Auth（`Authorization: Bearer <token>`）
 - M1.5：OAuth（Chainlit設定に準拠）
+- **注記（2025-10-19 現在）**：Header Auth/OAuth は未実装であり、現行リリースは Chainlit 既定の無認証挙動を採用している。導入計画は [`TASK.2025-10-19-0002.md`](../TASK.2025-10-19-0002.md) を参照。
 
 ## 5. ログ/メトリクス
 - ログ：`req_id, user_id?, model, chain_id, token_in/out, latency_ms, compress_ratio`
