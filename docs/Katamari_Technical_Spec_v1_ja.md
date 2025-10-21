@@ -30,7 +30,7 @@ class ProviderClient(Protocol):
 
 ## 3. 前処理
 - **Persona**：YAML→System変換。禁則語検査（正規表現リスト）
-- **Trim**：最後Nターン保持（M1で保持率推定：埋め込み類似度）
+- **Trim**：最後Nターン保持（M1で保持率推定：埋め込み類似度 ※保持率算出は未実装・計画中）
 - **Prethought**：`目的/制約/視点/期待` への分解（テンプレプロンプト）
 
 ## 4. チェーン制御
@@ -56,4 +56,4 @@ class ProviderClient(Protocol):
 - prod: Docker/Helm（M3）、リバースプロキシでHTTP/2・Keep-Alive
 
 ## 9. 受け入れ試験（抜粋）
-- Settings反映・Trim圧縮率・Reflect順序・Header/OAuth・メトリクス出力
+- Settings反映・Trim圧縮率・Reflect順序・Header/OAuth・メトリクス出力（`semantic_retention` は未実装・計画中）

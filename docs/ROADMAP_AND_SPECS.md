@@ -70,7 +70,7 @@
 
 3. **実装フェーズ**  
    - `context_trimmer` を `tiktoken` ベースへ置換（±5% 精度）。  
-   - `semantic_retention` 指標を実装し UI / メトリクスへ露出。  
+   - `semantic_retention` 指標を実装し UI / メトリクスへ露出（未実装・計画中。導入タスクは TODO: `semantic_retention` 追跡チケットへ連携）。
    - `/metrics` / `/healthz` エンドポイントを追加。  
    - Gemini Provider（stream 対応）を実装。  
    - 以降、OAuth・評価 UI・Prompt evolution など M2 系機能へ拡張。
