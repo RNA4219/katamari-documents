@@ -142,7 +142,7 @@ GitHub Container Registry への公開フローは [docs/addenda/H_Deploy_Guide.
 ## 運用エンドポイント
 
 - `GET /healthz`: Chainlit アプリの Liveness。`{"status":"ok"}` を返却。
-- `GET /metrics`: Prometheus Text Format (`compress_ratio`, `semantic_retention`) を露出。
+- `GET /metrics`: Prometheus Text Format (`compress_ratio`, `semantic_retention`) を露出（`semantic_retention` は暫定ダミー値で、埋め込み導入後に差し替え予定）。
 - **運用メモ（2025-10-19 現在）**：上記エンドポイントを含めアプリ全体が Chainlit 既定の無認証設定で公開される。監視用途の早期導入を優先し、認証方式は [`TASK.2025-10-19-0002.md`](TASK.2025-10-19-0002.md) で検討・実装予定。
 
 ## 変更履歴の更新ルール
