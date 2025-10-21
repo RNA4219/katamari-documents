@@ -50,20 +50,26 @@ def test_cli_handles_original_edges_without_typeerror(birdseye_workspace: Path) 
     assert "TypeError" not in stderr
 
 
-def test_generated_at_is_sequential(birdseye_workspace: Path) -> None:
+def test_generated_at_and_mtime_are_sequential(birdseye_workspace: Path) -> None:
     _run_cli(birdseye_workspace)
 
     index = _load_json(birdseye_workspace / "index.json")
     hot = _load_json(birdseye_workspace / "hot.json")
     cap_files = sorted((birdseye_workspace / "caps").glob("*.json"))
 
-    generated_values = [
-        index["generated_at"],
-        *(_load_json(path)["generated_at"] for path in cap_files),
-        hot["generated_at"],
+    refreshed = [
+        index,
+        *(_load_json(path) for path in cap_files),
+        hot,
     ]
 
+    generated_values = [item["generated_at"] for item in refreshed]
+    mtime_values = [item["mtime"] for item in refreshed]
+
     assert all(isinstance(value, str) and value.isdigit() and len(value) == 5 for value in generated_values)
+    assert all(isinstance(value, str) and value.isdigit() and len(value) == 5 for value in mtime_values)
+
+    assert generated_values == mtime_values
 
     expected = {f"{offset:05d}" for offset in range(1, len(generated_values) + 1)}
     assert set(generated_values) == expected

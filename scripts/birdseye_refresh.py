@@ -134,7 +134,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     sequence_map = _assign_sequence_numbers((path, data) for path, data, _ in targets)
 
     for path, data, before in targets:
-        data["generated_at"] = sequence_map[path]
+        sequence = sequence_map[path]
+        data["generated_at"] = sequence
+        data["mtime"] = sequence
         _apply_if_changed(path, before, data, dry_run, changed)
 
     action = "would change" if dry_run else "updated"
