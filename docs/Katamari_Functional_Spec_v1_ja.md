@@ -42,4 +42,6 @@
 
 ## 5. ログ/メトリクス
 - ログ：`req_id, user_id?, model, chain_id, token_in/out, latency_ms, compress_ratio`
-- メトリクス：`requests_total`, `latency_ms_p95`, `sse_first_token_ms`, `trim_compress_ratio`, `semantic_retention` ※保持率は未実装（計画中）で UI / `/metrics` には露出しない
+- メトリクス（現行 `/metrics`）：`compress_ratio`, `semantic_retention`
+  - `semantic_retention` はダミー値であり、実測化は今後の課題
+- メトリクス（拡張計画中）：`requests_total`, `latency_ms_p95`, `sse_first_token_ms`, `trim_compress_ratio`
