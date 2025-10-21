@@ -9,7 +9,7 @@
 ## D-2. 保持率推定（M1）
 - `semantic_retention = cosine(emb(before), emb(after))`
 - 目標: **≥0.85**（ユースケース依存で調整）
-- ※ `semantic_retention` は未実装（計画中）。現状は UI / `/metrics` に露出しない。
+- ※ `semantic_retention` は暫定ダミー値（計画中）。現状は UI / `/metrics` で同じ値を返す。
 
 ## D-3. 制御パラメタ
 - `target_tokens`（UIのスライダ 1k–8k）
@@ -18,7 +18,7 @@
 
 ## D-4. フィードバック
 - UIに `compress_ratio` と `semantic_retention`（M1）を表示。
-- ※ `semantic_retention` の表示は未実装（計画中）。導入時は本節の TODO を更新して差分追跡する。
+- ※ `semantic_retention` の表示は暫定ダミー値（計画中）。実測値導入時に本節の TODO を更新して差分追跡する。
 
 ### TODO / Follow-up
-- [ ] `semantic_retention` 実装後に UI 表示ロジックと `/metrics` 露出を整合（追跡: ROADMAP `semantic_retention` タスク）。
+- [ ] `semantic_retention` 実測値導入後に UI 表示ロジックと `/metrics` のダミー値差し替えを整合（追跡: ROADMAP `semantic_retention` タスク）。
