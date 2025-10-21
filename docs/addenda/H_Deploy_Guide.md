@@ -32,4 +32,7 @@ CMD ["src/app.py","--host","0.0.0.0","--port","8787"]
 - 処理内容:
   1. `docker/setup-buildx-action@v3` で Buildx をセットアップ
   2. `docker/login-action@v3` で `ghcr.io` に `GITHUB_TOKEN` を用いてログイン
-  3. `docker/build-push-action@v6` で `ghcr.io/<owner>/<repo>:latest` とタグ名の 2 つを push
+  3. `docker/metadata-action@v5` で `latest` とタグ名のメタデータを生成
+  4. `docker/build-push-action@v5` で `ghcr.io/<owner>/<repo>:latest` とタグ名の 2 つを push
+
+> バージョン更新時は必ず `.github/workflows/release.yml` を参照し、手順との乖離がないか確認すること。
