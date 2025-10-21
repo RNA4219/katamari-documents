@@ -37,7 +37,7 @@ LLM入出力の基盤機能（前処理・多段推論・人格YAML・最適化�
 1) Prethought→Persona→Trim→推論→SSE表示  
 2) Reflectチェーン：draft→critique→final をStepで可視化  
 3) Persona YAML→Systemの即時適用  
-4) 履歴肥大化時のTrim（圧縮率・保持率表示）  
+4) 履歴肥大化時のTrim（圧縮率・保持率表示）※保持率表示は未実装（計画中）
 5) 進化（M2）：評価→最良プロンプト更新
 
 ## 3. 機能要件（FR）
@@ -69,12 +69,12 @@ forbid: [string, ...]
 notes: |
   ...
 # Trim Response
-{ messages: Message[], metrics: { input_tokens:number, output_tokens:number, compress_ratio:number, semantic_retention?:number }, note?: string }
+{ messages: Message[], metrics: { input_tokens:number, output_tokens:number, compress_ratio:number, semantic_retention?:number /* ※ 未実装（計画中）。現状は UI / `/metrics` に露出しない */ }, note?: string }
 ```
 
 ## 6. 受け入れ基準（AC）
 - AC-01：Settings更新→即System差替・ログ出力
-- AC-02：Trim実行→`compress_ratio` 表示（0.3–0.8）
+- AC-02：Trim実行→`compress_ratio` 表示（0.3–0.8）※保持率は未実装（計画中）
 - AC-03：reflect 3段の順序でストリーム可視化
 - AC-04：M1でHeader Auth→M1.5でOAuth有効化
 - **注記（2025-10-19 現在）**：上記認証要件は未着手のため、当面は Chainlit 既定の無認証挙動を継続する。対応後に本注記を撤回すること（[`TASK.2025-10-19-0002.md`](../TASK.2025-10-19-0002.md)）。
@@ -82,7 +82,7 @@ notes: |
 
 ## 7. マイルストーン / 工数（1名）
 - **M0（6h）**：Settings/SSE/Trim/Persona簡易/Reflect/`/models`/最小ログ
-- **M1（8h）**：prethought・保持率推定（埋め込み）・`/metrics`・Header Auth・Healthz
+- **M1（8h）**：prethought・保持率推定（埋め込み）・`/metrics`・Header Auth・Healthz ※保持率は UI / `/metrics` とも未実装（計画中）
 - **M1.5（4–6h）**：OAuth・厳密トークンカウント・UI微調整
 - **M2（12–16h）**：prompt-evolution（BERTScore→ROUGE→ルール）・スコアボード
 - **M2.5（8–12h 任意）**：Postgres永続化

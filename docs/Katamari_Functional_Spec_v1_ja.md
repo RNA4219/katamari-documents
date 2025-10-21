@@ -25,7 +25,7 @@
 - Settings更新イベントでYAML→Systemにコンパイルし、セッション先頭に反映（禁則ログは別Message）
 
 ### UC-04 Trim
-- 目標トークンに収まるよう「最後Nターン保持」→圧縮率をMessage表示
+- 目標トークンに収まるよう「最後Nターン保持」→圧縮率をMessage表示（保持率表示は未実装・計画中）
 
 ### UC-05 進化（M2）
 - 複数プロンプト候補を生成→BERTScore→ROUGE→ルールで評価→上位選抜→次世代生成
@@ -42,4 +42,4 @@
 
 ## 5. ログ/メトリクス
 - ログ：`req_id, user_id?, model, chain_id, token_in/out, latency_ms, compress_ratio`
-- メトリクス：`requests_total`, `latency_ms_p95`, `sse_first_token_ms`, `trim_compress_ratio`, `semantic_retention`
+- メトリクス：`requests_total`, `latency_ms_p95`, `sse_first_token_ms`, `trim_compress_ratio`, `semantic_retention` ※保持率は未実装（計画中）で UI / `/metrics` には露出しない

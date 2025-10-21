@@ -6,12 +6,12 @@
 - 参考資料: [`docs/Katamari_Requirements_v3_ja.md`](../Katamari_Requirements_v3_ja.md) の FR-07, AC-04、`docs/katamari_wbs.csv` の M1-1〜M1-4。
 
 ## Decision
-- 方針: prethought スコアと保持率算出を実装し、API (`/metrics`, `/healthz`) と Header 認証で保護されたメトリクス出力を整備する。
+- 方針: prethought スコアと保持率算出を実装し、API (`/metrics`, `/healthz`) と Header 認証で保護されたメトリクス出力を整備する（`semantic_retention` は未実装・計画中。現状は UI / `/metrics` 露出なし）。
 - 採用理由: 初期ユーザーに対する品質保証と運用判断をメトリクスベースで行うため。AC-04 が要求するヘッダー認証も M1 で完了させる。
 - 適用範囲: `src/core_ext/` の計測ロジックと `src/app.py` のエンドポイント追加、Chainlit UI での保持率表示までを対象とする。
 
 ## Consequences
-- 影響範囲: Prometheus 収集基盤と UI が保持率・prethought 指標を参照できるようになり、Ops/PM が共通の数値で議論できる。
+- 影響範囲: Prometheus 収集基盤と UI が保持率・prethought 指標を参照できるようになり、Ops/PM が共通の数値で議論できる（保持率は未実装・計画中のため TODO: 実装タスク完了後に更新）。
 - 利点: `/healthz` による可観測性向上で運用オンコールのレスポンスが安定する。Header 認証で非公開メトリクスの漏洩リスクを抑制。
 - リスク/フォローアップ: メトリクス追加が Chainlit 本体に影響するため、アップストリーム差分管理を ADR-0001 の subtree 運用と整合させる。
 
