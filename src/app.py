@@ -7,6 +7,7 @@
 
 import os
 from threading import Lock
+from time import perf_counter
 from typing import Dict, List
 
 import chainlit as cl
@@ -15,6 +16,7 @@ from fastapi.responses import PlainTextResponse
 from chainlit.input_widget import Select, Slider, TextInput, Switch
 from chainlit.server import app as chainlit_app, router as chainlit_router
 
+from core_ext.logging import InferenceLogRecord, StepLatency, StructuredLogger
 from core_ext.persona_compiler import compile_persona_yaml
 from core_ext.context_trimmer import trim_messages
 from core_ext.prethought import analyze_intent
@@ -65,6 +67,28 @@ class MetricsRegistry:
 
 
 METRICS_REGISTRY = MetricsRegistry()
+REQUEST_LOGGER = StructuredLogger()
+
+
+def _to_int(value: object) -> int:
+    try:
+        return int(value) if value is not None else 0
+    except (TypeError, ValueError):
+        return 0
+
+
+def _to_float(value: object, default: float = 0.0) -> float:
+    try:
+        return float(value) if value is not None else default
+    except (TypeError, ValueError):
+        return default
+
+
+def _resolve_retryable(exc: BaseException) -> bool | None:
+    flag = getattr(exc, "retryable", None)
+    if isinstance(flag, bool):
+        return flag
+    return None
 
 ops_router = APIRouter()
 
@@ -158,41 +182,87 @@ async def on_message(message: cl.Message):
     hist.append({"role":"user","content":message.content})
 
     trimmed, metrics = trim_messages(hist, target_tokens, model)
+    token_in = _to_int(metrics.get("input_tokens"))
+    token_out = _to_int(metrics.get("output_tokens"))
+    compress_ratio = _to_float(metrics.get("compress_ratio"))
+    semantic_retention_raw = metrics.get("semantic_retention")
+    semantic_retention = (
+        _to_float(semantic_retention_raw)
+        if semantic_retention_raw is not None
+        else None
+    )
     METRICS_REGISTRY.observe_trim(
-        compress_ratio=float(metrics.get("compress_ratio", 0.0)),
-        semantic_retention=(
-            float(metrics["semantic_retention"])
-            if metrics.get("semantic_retention") is not None
-            else None
-        ),
+        compress_ratio=compress_ratio,
+        semantic_retention=semantic_retention,
     )
     cl.user_session.set("history", trimmed)
     cl.user_session.set("trim_metrics", metrics)
     if show_debug:
-        base = f"[trim] tokens: {metrics['output_tokens']}/{metrics['input_tokens']} (ratio {metrics['compress_ratio']})"
-        if "semantic_retention" in metrics:
-            base += f", retention {metrics['semantic_retention']}"
+        base = f"[trim] tokens: {token_out}/{token_in} (ratio {compress_ratio})"
+        if semantic_retention is not None:
+            base += f", retention {semantic_retention}"
         await cl.Message(content=base).send()
 
     # 3) Run chain
     provider = get_provider(model)
     steps = get_chain_steps(chain_id)
-    for idx, step_name in enumerate(steps, start=1):
-        async with cl.Step(name=f"Step {idx}: {step_name}", type="llm", show_input=True) as step:
-            step.input = message.content
-            msgs = list(trimmed)
-            if step_name != "final":
-                msgs.append({"role":"system","content": system_hint_for_step(step_name)})
-            # Stream
-            accum = []
-            async for delta in provider.stream(model=model, messages=msgs, temperature=0.7):
-                if delta:
-                    accum.append(delta)
-                    await step.stream_token(delta)
-            output = "".join(accum)
-            step.output = output
-            trimmed.append({"role":"assistant","content":output})
-            cl.user_session.set("history", trimmed)
+    step_timings: List[StepLatency] = []
+    overall_start = perf_counter()
+    status: str = "success"
+    error_message: str | None = None
+    retryable: bool | None = None
+    try:
+        for idx, step_name in enumerate(steps, start=1):
+            step_label = f"Step {idx}: {step_name}"
+            step_start = perf_counter()
+            try:
+                async with cl.Step(
+                    name=step_label,
+                    type="llm",
+                    show_input=True,
+                ) as step:
+                    step.input = message.content
+                    msgs = list(trimmed)
+                    if step_name != "final":
+                        msgs.append(
+                            {"role": "system", "content": system_hint_for_step(step_name)}
+                        )
+                    accum: List[str] = []
+                    async for delta in provider.stream(
+                        model=model, messages=msgs, temperature=0.7
+                    ):
+                        if delta:
+                            accum.append(delta)
+                            await step.stream_token(delta)
+                    output = "".join(accum)
+                    step.output = output
+                    trimmed.append({"role": "assistant", "content": output})
+                    cl.user_session.set("history", trimmed)
+            finally:
+                elapsed_ms = (perf_counter() - step_start) * 1000.0
+                step_timings.append({"step": step_label, "latency_ms": elapsed_ms})
+    except BaseException as exc:
+        status = "failure"
+        error_message = str(exc) or exc.__class__.__name__
+        retryable = _resolve_retryable(exc)
+        raise
+    finally:
+        total_latency_ms = (perf_counter() - overall_start) * 1000.0
+        REQUEST_LOGGER.emit(
+            InferenceLogRecord(
+                status=status,
+                model=model,
+                chain=chain_id,
+                token_in=token_in,
+                token_out=token_out,
+                compress_ratio=compress_ratio,
+                semantic_retention=semantic_retention,
+                step_latency_ms=step_timings,
+                latency_ms=total_latency_ms,
+                retryable=retryable,
+                error=error_message,
+            )
+        )
 
     # Mirror last output as normal message
     if trimmed and trimmed[-1]["role"] == "assistant":

@@ -47,7 +47,7 @@ LLM入出力の基盤機能（前処理・多段推論・人格YAML・最適化�
 - **FR-04**：Trim（最後Nターン保持）＋圧縮率表示
 - **FR-05**：chain=single|reflect（3段Step表示）
 - **FR-06**：ログ：`req_id, model, token_in/out, compress_ratio, step_latency_ms`
-  - **注記（2025-10-21 現在）**：ログ要件はアプリ未実装であり、現行リリースは対象フィールドを出力していない。実装タスクとギャップ解消手順は [`TASK.2025-10-21-0003.md`](../TASK.2025-10-21-0003.md) を参照。
+  - **注記（2025-10-22 更新）**：`src/core_ext/logging.py` の `StructuredLogger` と `src/app.py` の `REQUEST_LOGGER` が要件フィールド（`req_id`/`model`/`token_in`/`token_out`/`compress_ratio`/`step_latency_ms`/`retryable`/`latency_ms`）を JSON で出力する。検証は `tests/app/test_logging.py` で自動化済み。
 - **FR-07**：`/healthz`・`/metrics`（M1以降）
 - **FR-08（M2）**：`/evolve`（BERTScore→ROUGE→ルール順） ※M2予定・現状未実装。
 

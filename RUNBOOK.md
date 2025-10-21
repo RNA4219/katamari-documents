@@ -40,7 +40,8 @@ Guardrails の「準備→実行→検証」順で進める。
 1. `chainlit run src/app.py --watch`
 2. Persona YAML を `personas/` からロードし、UI で切替を検証する。
 3. Chainlit の標準出力を監視し、必要に応じて `LOG_LEVEL` を調整しながら `chainlit run --debug`（または `DEBUG=1 chainlit run ...`）で詳細ログを取得する。標準出力は `chainlit run src/app.py --watch --debug | tee logs/chainlit.log` のように `tee` を使って保存し、Trim/Reflect チェーンのトークン削減率を記録する。
-4. Provider を切り替え、`docs/addenda/F_Provider_Matrix.md` の互換チェックを行う。
+4. 構造化ログを確認する。ルートロガーを INFO 以上に設定した状態で `katamari.request` 行を抽出し、`jq` などで JSON を整形する。例：`chainlit run src/app.py --watch --debug 2>&1 | tee logs/chainlit.log` の後に `grep "katamari.request" logs/chainlit.log | jq -R 'fromjson'` で `req_id`／`token_in`／`token_out`／`compress_ratio`／`step_latency_ms`／`retryable` を確認し、Runbook 記録に添付する。
+5. Provider を切り替え、`docs/addenda/F_Provider_Matrix.md` の互換チェックを行う。
 
 ### 3. 検証・障害対応
 1. `pytest` / `node:test` / `ruff` / `mypy --strict` を実行し、失敗時は Guardrails の最小差分方針で修正する。単独検証でもログを保管する。
