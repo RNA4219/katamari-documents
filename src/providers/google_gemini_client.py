@@ -25,7 +25,11 @@ class GoogleGeminiProvider:
             )
         self._genai = module
         self._model_factory = model_factory or (lambda mod, name: mod.GenerativeModel(name))
-        api_key_value = api_key or os.getenv("GOOGLE_GEMINI_API_KEY")
+        api_key_value = (
+            api_key
+            or os.getenv("GOOGLE_GEMINI_API_KEY")
+            or os.getenv("GEMINI_API_KEY")
+        )
         if api_key_value:
             self._genai.configure(api_key=api_key_value)
 
