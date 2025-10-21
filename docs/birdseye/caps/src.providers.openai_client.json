@@ -8,8 +8,7 @@
     "OpenAIProvider.complete()"
   ],
   "deps_out": [
-    "openai.AsyncOpenAI",
-    "os.getenv"
+    "src/app.py"
   ],
   "deps_in": [
     "src/app.py"
@@ -19,5 +18,5 @@
     "OPENAI_API_KEY 未設定時は初期化が例外を投げる",
     "OpenAI SDK の breaking change に追随する必要がある"
   ],
-  "generated_at": "2025-10-19T22:53:20Z"
+  "generated_at": "00007"
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-19T22:53:20Z",
+  "generated_at": "00001",
   "nodes": {
     "src/app.py": {
       "role": "entrypoint",
@@ -33,14 +33,41 @@
     }
   },
   "edges": [
-    ["src/app.py", "src/core_ext/context_trimmer.py"],
-    ["src/app.py", "src/core_ext/multistep.py"],
-    ["src/app.py", "src/core_ext/persona_compiler.py"],
-    ["src/app.py", "src/core_ext/prethought.py"],
-    ["src/app.py", "src/providers/openai_client.py"],
-    ["src/core_ext/context_trimmer.py", "src/app.py"],
-    ["src/core_ext/persona_compiler.py", "src/app.py"],
-    ["src/core_ext/prethought.py", "src/app.py"],
-    ["src/providers/openai_client.py", "src/app.py"]
+    [
+      "src/app.py",
+      "src/core_ext/context_trimmer.py"
+    ],
+    [
+      "src/app.py",
+      "src/core_ext/multistep.py"
+    ],
+    [
+      "src/app.py",
+      "src/core_ext/persona_compiler.py"
+    ],
+    [
+      "src/app.py",
+      "src/core_ext/prethought.py"
+    ],
+    [
+      "src/app.py",
+      "src/providers/openai_client.py"
+    ],
+    [
+      "src/core_ext/context_trimmer.py",
+      "src/app.py"
+    ],
+    [
+      "src/core_ext/persona_compiler.py",
+      "src/app.py"
+    ],
+    [
+      "src/core_ext/prethought.py",
+      "src/app.py"
+    ],
+    [
+      "src/providers/openai_client.py",
+      "src/app.py"
+    ]
   ]
 }

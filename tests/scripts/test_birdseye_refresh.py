@@ -50,20 +50,23 @@ def test_cli_handles_original_edges_without_typeerror(birdseye_workspace: Path) 
     assert "TypeError" not in stderr
 
 
-def test_generated_at_is_synchronized(birdseye_workspace: Path) -> None:
+def test_generated_at_is_sequential(birdseye_workspace: Path) -> None:
     _run_cli(birdseye_workspace)
 
     index = _load_json(birdseye_workspace / "index.json")
     hot = _load_json(birdseye_workspace / "hot.json")
     cap_files = sorted((birdseye_workspace / "caps").glob("*.json"))
 
-    generated_values = {
+    generated_values = [
         index["generated_at"],
-        hot["generated_at"],
         *(_load_json(path)["generated_at"] for path in cap_files),
-    }
+        hot["generated_at"],
+    ]
 
-    assert len(generated_values) == 1
+    assert all(isinstance(value, str) and value.isdigit() and len(value) == 5 for value in generated_values)
+
+    expected = {f"{offset:05d}" for offset in range(1, len(generated_values) + 1)}
+    assert set(generated_values) == expected
 
 
 def test_caps_dependencies_follow_index_edges(birdseye_workspace: Path) -> None:

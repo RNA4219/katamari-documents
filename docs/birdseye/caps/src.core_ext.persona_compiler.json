@@ -6,12 +6,10 @@
     "compile_persona_yaml()"
   ],
   "deps_out": [
-    "yaml.safe_load",
-    "re"
+    "src/app.py"
   ],
   "deps_in": [
-    "src/app.py",
-    "tests/test_persona_compiler.py"
+    "src/app.py"
   ],
   "tests": [
     "pytest tests/test_persona_compiler.py"
@@ -19,5 +17,5 @@
   "risks": [
     "YAML パース失敗時はデフォルトプロンプトへフォールバックし警告を返す"
   ],
-  "generated_at": "2025-10-19T22:53:20Z"
+  "generated_at": "00005"
 }
