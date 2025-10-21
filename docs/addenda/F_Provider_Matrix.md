@@ -4,7 +4,7 @@
 | 項目 | GPT-5系（OpenAI） | Gemini 2.5系（Google） |
 |---|---|---|
 | ストリーミング | SSE / SDKストリーム | SSE / SDKストリーム |
-| Reasoning拡張 | `reasoning.effort`, `parallel` | `reasoning: true/level` 相当（要マッピング） |
+| Reasoning拡張 | 未サポート（M2 以降で `reasoning.effort`/`parallel` を段階導入予定） | 未サポート（M2 以降で `reasoning` マッピングを検討） |
 | 推奨Fast | `gpt-5-main(-mini)` | `gemini-2.5-flash` |
 | 推奨Thinking | `gpt-5-thinking(-mini/-nano/-pro)` | `gemini-2.5-pro`（思考は限定的） |
 | トークン上限 | family依存 | family依存 |

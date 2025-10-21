@@ -6,3 +6,4 @@
 - `PORT`
 - Chainlit の詳細ログが必要な場合は `.env` に一時的に `DEBUG=1` を追加するか、CLI 実行時に `chainlit run src/app.py --debug` を付与する
 - `model_registry.json`：`id/provider/family/type/reasoning/(parallel)/maxTokens/price*`
+  - ※ `reasoning`/`parallel` は将来対応予定の予約フィールド（現状は読み飛ばし）
