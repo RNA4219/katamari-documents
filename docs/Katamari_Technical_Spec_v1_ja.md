@@ -39,7 +39,7 @@ class ProviderClient(Protocol):
 - Step境界で`system`メッセージに段階ヒントを追加（短く・安全に）
 
 ## 5. 評価器（M2）
-- **BERTScore**：`xlm-roberta-large` 既定（軽量化にfallback用モデルを併設）
+- **BERTScore**：`xlm-roberta-large` 既定（軽量化にfallback用モデルを併設）※M2予定・現状未実装。
 - **ROUGE**：`rouge-l`, `rouge-1/2`、日本語は正規化ベースから開始
 - **ルール**：語彙一致・構造検査（JSON/Markdown/字数）
 

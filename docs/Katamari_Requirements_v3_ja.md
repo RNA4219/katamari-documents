@@ -9,7 +9,7 @@
 - **モデル初期セット**：
   - **GPT-5 系**：`gpt-5-main` / `gpt-5-main-mini` / `gpt-5-thinking` / `gpt-5-thinking-mini` / `gpt-5-thinking-nano` / `gpt-5-thinking-pro`
   - **Gemini 2.5 系**：`gemini-2.5-*` 一式
-- **評価器の実装順（難→易）**：**BERTScore → ROUGE → ルールベース**
+- **評価器の実装順（難→易）**：**BERTScore → ROUGE → ルールベース** ※M2予定・現状未実装。
 - **Upstream**：Chainlit/chainlit（Apache-2.0）最新安定タグを追従
 
 ## 0. 概要 / 目的
@@ -18,7 +18,7 @@ LLM入出力の基盤機能（前処理・多段推論・人格YAML・最適化�
 - **ai-persona-compiler**（YAML→System）
 - **prethought-analyzer**（意図/制約/期待の分解）
 - **multistep-controller**（draft→critique→final）
-- **prompt-evolution**（M2：BERTScore/ROUGE/ルールで評価し進化）
+- **prompt-evolution**（M2：BERTScore/ROUGE/ルールで評価し進化）※M2予定・現状未実装。
 
 ## 1. スコープ
 ### 1.1 含む
@@ -49,7 +49,7 @@ LLM入出力の基盤機能（前処理・多段推論・人格YAML・最適化�
 - **FR-06**：ログ：`req_id, model, token_in/out, compress_ratio, step_latency_ms`
   - **注記（2025-10-21 現在）**：ログ要件はアプリ未実装であり、現行リリースは対象フィールドを出力していない。実装タスクとギャップ解消手順は [`TASK.2025-10-21-0003.md`](../TASK.2025-10-21-0003.md) を参照。
 - **FR-07**：`/healthz`・`/metrics`（M1以降）
-- **FR-08（M2）**：`/evolve`（BERTScore→ROUGE→ルール順）
+- **FR-08（M2）**：`/evolve`（BERTScore→ROUGE→ルール順） ※M2予定・現状未実装。
 
 ## 4. 非機能（NFR）
 - UI反映遅延 ≤ 300ms（SSE→描画）
@@ -85,7 +85,7 @@ notes: |
 - **M0（6h）**：Settings/SSE/Trim/Persona簡易/Reflect/`/models`/最小ログ
 - **M1（8h）**：prethought・保持率推定（埋め込み）・`/metrics`・Header Auth・Healthz ※保持率は UI / `/metrics` とも暫定ダミー値（精度検証待ち）
 - **M1.5（4–6h）**：OAuth・厳密トークンカウント・UI微調整
-- **M2（12–16h）**：prompt-evolution（BERTScore→ROUGE→ルール）・スコアボード
+- **M2（12–16h）**：prompt-evolution（BERTScore→ROUGE→ルール）・スコアボード ※M2予定・現状未実装。
 - **M2.5（8–12h 任意）**：Postgres永続化
 - **M3（6–8h）**：Docker/Helm/CI・FORK_NOTES/UPSTREAM整備
 **合計**：36–46h（約4.5〜6営業日）
