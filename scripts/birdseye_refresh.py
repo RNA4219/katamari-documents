@@ -5,7 +5,6 @@ import argparse
 import json
 from collections import defaultdict
 from collections.abc import Iterable as IterableABC
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, DefaultDict, Iterable, List, Sequence, Set, Tuple
 
@@ -39,10 +38,6 @@ def _dump_json(path: Path, data: Any) -> None:
 
 def _serialize(data: Any) -> str:
     return json.dumps(data, sort_keys=True, ensure_ascii=False)
-
-
-def _current_timestamp() -> str:
-    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
 def _build_edge_maps(edges: Iterable[Tuple[str, str]]) -> Tuple[DefaultDict[str, Set[str]], DefaultDict[str, Set[str]]]:
@@ -83,38 +78,64 @@ def _apply_if_changed(path: Path, before: str, data: Any, dry_run: bool, changed
     changed.append(path)
 
 
+def _assign_sequence_numbers(entries: Iterable[Tuple[Path, Any]]) -> dict[Path, str]:
+    ordered: List[Tuple[Path, Any]] = []
+    numeric_bucket: List[Tuple[int, Path, Any]] = []
+    fallback_bucket: List[Tuple[Path, Any]] = []
+
+    for path, data in entries:
+        raw = data.get("generated_at")
+        if isinstance(raw, str) and raw.isdigit():
+            numeric_bucket.append((int(raw), path, data))
+        else:
+            fallback_bucket.append((path, data))
+
+    numeric_bucket.sort(key=lambda item: (item[0], str(item[1])))
+    ordered.extend((path, data) for _, path, data in numeric_bucket)
+    ordered.extend(fallback_bucket)
+
+    return {path: f"{index:05d}" for index, (path, _) in enumerate(ordered, start=1)}
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     args = _parse_args(argv)
     docs_dir: Path = args.docs_dir
     dry_run: bool = args.dry_run
 
-    timestamp = _current_timestamp()
     changed: List[Path] = []
 
     index_path = docs_dir / "index.json"
     index_data = _load_json(index_path)
     index_before = _serialize(index_data)
     edges = _normalize_edges(index_data.get("edges", []))
-    index_data["generated_at"] = timestamp
-    _apply_if_changed(index_path, index_before, index_data, dry_run, changed)
 
     outgoing, incoming = _build_edge_maps(edges)
 
     caps_dir = docs_dir / "caps"
+    cap_entries: List[Tuple[Path, Any, str]] = []
     for cap_path in sorted(caps_dir.glob("*.json")):
         cap_data = _load_json(cap_path)
         cap_before = _serialize(cap_data)
         node_id = str(cap_data.get("id", ""))
-        cap_data["generated_at"] = timestamp
         cap_data["deps_out"] = sorted(outgoing.get(node_id, set()))
         cap_data["deps_in"] = sorted(incoming.get(node_id, set()))
-        _apply_if_changed(cap_path, cap_before, cap_data, dry_run, changed)
+        cap_entries.append((cap_path, cap_data, cap_before))
 
     hot_path = docs_dir / "hot.json"
     hot_data = _load_json(hot_path)
     hot_before = _serialize(hot_data)
-    hot_data["generated_at"] = timestamp
-    _apply_if_changed(hot_path, hot_before, hot_data, dry_run, changed)
+
+    targets: List[Tuple[Path, Any, str]] = [
+        (index_path, index_data, index_before),
+        *cap_entries,
+        (hot_path, hot_data, hot_before),
+    ]
+
+    sequence_map = _assign_sequence_numbers((path, data) for path, data, _ in targets)
+
+    for path, data, before in targets:
+        data["generated_at"] = sequence_map[path]
+        _apply_if_changed(path, before, data, dry_run, changed)
 
     action = "would change" if dry_run else "updated"
     print(f"{len(changed)} file(s) {action}.")

@@ -6,9 +6,7 @@
     "get_chain_steps()",
     "system_hint_for_step()"
   ],
-  "deps_out": [
-    "core_ext.multistep.CHAINS"
-  ],
+  "deps_out": [],
   "deps_in": [
     "src/app.py"
   ],
@@ -16,5 +14,5 @@
   "risks": [
     "CHAINS に未知のキーを追加すると UI 側の選択肢と不整合になる"
   ],
-  "generated_at": "2025-10-19T22:53:20Z"
+  "generated_at": "00004"
 }

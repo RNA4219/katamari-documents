@@ -9,15 +9,17 @@
     "on_message()"
   ],
   "deps_out": [
-    "core_ext.prethought.analyze_intent",
-    "core_ext.context_trimmer.trim_messages",
-    "core_ext.persona_compiler.compile_persona_yaml",
-    "core_ext.multistep.get_chain_steps",
-    "core_ext.multistep.system_hint_for_step",
-    "providers.openai_client.OpenAIProvider"
+    "src/core_ext/context_trimmer.py",
+    "src/core_ext/multistep.py",
+    "src/core_ext/persona_compiler.py",
+    "src/core_ext/prethought.py",
+    "src/providers/openai_client.py"
   ],
   "deps_in": [
-    "tests/app/test_metrics_healthz.py"
+    "src/core_ext/context_trimmer.py",
+    "src/core_ext/persona_compiler.py",
+    "src/core_ext/prethought.py",
+    "src/providers/openai_client.py"
   ],
   "tests": [
     "pytest tests/app/test_metrics_healthz.py"
@@ -26,5 +28,5 @@
     "Chainlit フックと FastAPI ルータの順序を壊すと /metrics が重複登録される",
     "OPENAI_API_KEY 未設定時はプロバイダ初期化が失敗する"
   ],
-  "generated_at": "2025-10-19T22:53:20Z"
+  "generated_at": "00002"
 }

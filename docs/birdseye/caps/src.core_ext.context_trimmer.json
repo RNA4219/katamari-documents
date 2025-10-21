@@ -6,13 +6,10 @@
     "trim_messages()"
   ],
   "deps_out": [
-    "tiktoken",
-    "core_ext.context_trimmer._TokenCounter",
-    "core_ext.context_trimmer._register_ascii_encoding"
+    "src/app.py"
   ],
   "deps_in": [
-    "src/app.py",
-    "tests/core_ext/test_context_trimmer.py"
+    "src/app.py"
   ],
   "tests": [
     "pytest tests/core_ext/test_context_trimmer.py"
@@ -20,5 +17,5 @@
   "risks": [
     "tiktoken 未導入環境ではヒューリスティックカウントにフォールバックする"
   ],
-  "generated_at": "2025-10-19T22:53:20Z"
+  "generated_at": "00003"
 }
