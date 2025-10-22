@@ -20,7 +20,7 @@
 - SLA/アラートの常時監視（SRE 評価に委譲）。
 
 ## 評価ステップ
-1. `RUNBOOK.md` に従って環境を起動し、`pytest` / `pnpm run test` / `ruff` / `mypy --strict` を実行する。Cypress ベースの E2E テストは `pnpm run test` で統合的に実施する。個人環境ではログ保存先とファイルパスを Task Seed に記入する（例: `pnpm run test` の結果を `/tmp/katamari-pnpm-test.log` に保存）。
+1. `RUNBOOK.md` に従って環境を起動し、`pytest` / `pnpm run test`（必要に応じて `cd upstream/chainlit`）/ `ruff` / `mypy --strict` を実行する。Cypress ベースの Node E2E テストは `pnpm run test` で統合的に実施する。個人環境ではログ保存先とファイルパスを Task Seed に記入する（例: `pnpm run test` の結果を `/tmp/katamari-pnpm-test.log` に保存）。
 2. `scripts/perf/collect_metrics.py` や Chainlit ログから性能指標を取得し、要件値と比較する。例: `python scripts/perf/collect_metrics.py --metrics-url http://127.0.0.1:8787/metrics --output /tmp/katamari-metrics.json`
 3. `docs/Release_Checklist.md` と `docs/Security_Review_Checklist.md` の結果を確認し、未完了項目があれば Task Seed に登録する。
 4. 判定結果を Issue / PR / `CHANGELOG.md` に記録し、必要なら `RUNBOOK.md`・`CHECKLISTS.md` を更新する。

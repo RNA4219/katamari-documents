@@ -34,7 +34,7 @@
 
 ## チェックリスト
 ### Development
-- [ ] テストを先に追加し、`pytest` / `node:test` が成功した。
+- [ ] テストを先に追加し、`pytest` / `pnpm run test`（必要に応じて `cd upstream/chainlit`）が成功した。
 - [ ] `mypy --strict` と `ruff` を通過（またはスキップ理由を記録）。
 - [ ] 公開 API 変更がない、または段階移行フラグを設定した。
 - [ ] Birdseye index/caps を更新し、該当ノードの要約を最新化した。
