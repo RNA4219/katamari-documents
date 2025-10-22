@@ -37,10 +37,10 @@ Guardrails の「準備→実行→検証」順で進める。
 5. Birdseye index/caps を確認し、必要であれば `python scripts/birdseye_refresh.py --dry-run` で差分を確認してから `python scripts/birdseye_refresh.py` を実行する。単独作業の場合でも更新日時を共通化し、実行結果を Task Seed に記録する。
 
 ### 2. 実行
-1. `chainlit run src/app.py --watch`
+1. `chainlit run src/app.py --watch --host 0.0.0.0 --port 8787`
 2. Persona YAML を `personas/` からロードし、UI で切替を検証する。
-3. Chainlit の標準出力を監視し、必要に応じて `LOG_LEVEL` を調整しながら `chainlit run --debug`（または `DEBUG=1 chainlit run ...`）で詳細ログを取得する。標準出力は `mkdir -p logs && chainlit run src/app.py --watch --debug | tee logs/chainlit.log` のように `tee` を使って保存し、Trim/Reflect チェーンのトークン削減率を記録する。
-4. 構造化ログを確認する。ルートロガーを INFO 以上に設定した状態で `katamari.request` 行を抽出し、`jq` などで JSON を整形する。例：`mkdir -p logs && chainlit run src/app.py --watch --debug 2>&1 | tee logs/chainlit.log` の後に `grep "katamari.request" logs/chainlit.log | jq -R 'fromjson'` で `req_id`／`token_in`／`token_out`／`compress_ratio`／`step_latency_ms`／`retryable` を確認し、Runbook 記録に添付する。
+3. Chainlit の標準出力を監視し、必要に応じて `LOG_LEVEL` を調整しながら `chainlit run --debug`（または `DEBUG=1 chainlit run ...`）で詳細ログを取得する。標準出力は `mkdir -p logs && chainlit run src/app.py --watch --host 0.0.0.0 --port 8787 --debug | tee logs/chainlit.log` のように `tee` を使って保存し、Trim/Reflect チェーンのトークン削減率を記録する。
+4. 構造化ログを確認する。ルートロガーを INFO 以上に設定した状態で `katamari.request` 行を抽出し、`jq` などで JSON を整形する。例：`mkdir -p logs && chainlit run src/app.py --watch --host 0.0.0.0 --port 8787 --debug 2>&1 | tee logs/chainlit.log` の後に `grep "katamari.request" logs/chainlit.log | jq -R 'fromjson'` で `req_id`／`token_in`／`token_out`／`compress_ratio`／`step_latency_ms`／`retryable` を確認し、Runbook 記録に添付する。
 5. Provider を切り替え、`docs/addenda/F_Provider_Matrix.md` の互換チェックを行う。
 
 ### 3. 検証・障害対応
