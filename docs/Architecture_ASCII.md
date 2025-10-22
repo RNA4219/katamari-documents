@@ -21,6 +21,7 @@
   | trimmer      |           +----------------+
   | prethought   |
   | multistep    |
+  | retention (M1 計画中) |
   | evolve (M2)  |
   +--------------+
 ```

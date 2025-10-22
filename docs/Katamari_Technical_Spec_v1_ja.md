@@ -13,12 +13,15 @@ repo
 │  │  ├─ context_trimmer.py
 │  │  ├─ prethought.py
 │  │  ├─ multistep.py
+│  │  ├─ retention.py
 │  │  └─ evolve.py
 │  └─ providers/
 │     ├─ openai_client.py
 │     └─ google_gemini_client.py
 └─ docs / config
 ```
+
+**備考**：`src/core_ext/retention.py` はチャット履歴保持率推定の計画中モジュール（未配線）。
 
 ## 2. Provider 抽象
 ```python
