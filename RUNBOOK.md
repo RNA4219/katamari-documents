@@ -44,7 +44,7 @@ Guardrails の「準備→実行→検証」順で進める。
 5. Provider を切り替え、`docs/addenda/F_Provider_Matrix.md` の互換チェックを行う。
 
 ### 3. 検証・障害対応
-1. `pytest` / `node:test` / `ruff` / `mypy --strict` を実行し、失敗時は Guardrails の最小差分方針で修正する。単独検証でもログを保管する。
+1. `pytest` / `pnpm run test`（必要に応じて `cd upstream/chainlit`）/ `ruff` / `mypy --strict` を実行し、失敗時は Guardrails の最小差分方針で修正する。Cypress ベースの Node テストは `pnpm run test` で網羅的に実施し、単独検証でもログを保管する。
 2. SSE 遅延が閾値を超えた場合、`docs/addenda/J_Runbook.md` のトラブルシュート手順を参照する。
 3. 重大障害は `CHANGELOG.md` と Task Seed に記録し、必要なら `RUNBOOK.md` を更新する。記録は自分宛の TODO でもよいが日時と判断根拠を残す。
 
@@ -57,7 +57,7 @@ Guardrails の「準備→実行→検証」順で進める。
 
 ## 受入基準
 - 起動直後に Persona 選択と Trim/Reflect チェーンが UI に表示される。
-- `ruff`・`mypy --strict`・`pytest`・`node:test` が成功、またはスキップ理由が記録されている。
+- `ruff`・`mypy --strict`・`pytest`・`pnpm run test`（必要に応じて `cd upstream/chainlit`）が成功、またはスキップ理由が記録されている。
 - SSE 遅延とトークン削減率が `docs/Katamari_Requirements_v3_ja.md` の目標を満たす。
 - Guardrails RUNBOOK の `Procedure / Acceptance` 記述と矛盾がない。
 
