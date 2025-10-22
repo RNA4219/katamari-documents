@@ -15,7 +15,7 @@
 - 実装完了後、Functional Spec / Requirements / CHECKLISTS の暫定注記を撤回する。
 
 ## チェックリスト
-- [ ] `pytest` / `node:test` でログ出力のユニットテスト・統合テストを追加し、`req_id` と token カウントが一致することを確認した。
+- [ ] `pytest` / `cd upstream/chainlit && pnpm run test` でログ出力のユニットテスト・統合テストを追加し、`req_id` と token カウントが一致することを確認した。
 - [ ] `mypy --strict` / `ruff` を通過し、型安全なログフォーマット定義を導入した。
 - [ ] エラー時のログ出力が既存例外階層と整合することを確認した。
 - [ ] Functional Spec / Requirements / CHECKLISTS の暫定注記を撤回し、実装手順を `RUNBOOK.md` に追記した。
