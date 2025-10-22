@@ -1,0 +1,23 @@
+{
+  "id": "src/providers/google_gemini_client.py",
+  "role": "provider",
+  "summary": "Google Generative AI(Gemini) モデル向けに Chainlit からのメッセージを変換し、非同期でストリーム/単発応答を取得するプロバイダ実装。",
+  "public_api": [
+    "GoogleGeminiProvider"
+  ],
+  "deps_out": [
+    "src/app.py"
+  ],
+  "deps_in": [
+    "src/app.py"
+  ],
+  "tests": [
+    "pytest tests/providers/test_google_gemini_provider.py",
+    "pytest tests/app/test_get_provider.py"
+  ],
+  "risks": [
+    "google-generativeai ライブラリの API 変更でストリーム処理が壊れる",
+    "API キー未設定時に初期化が例外で停止する"
+  ],
+  "generated_at": "00010"
+}

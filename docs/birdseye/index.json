@@ -16,6 +16,11 @@
       "caps": "docs/birdseye/caps/src.core_ext.multistep.json",
       "mtime": "2025-10-19T22:53:20Z"
     },
+    "src/core_ext/logging.py": {
+      "role": "logging",
+      "caps": "docs/birdseye/caps/src.core_ext.logging.json",
+      "mtime": "2025-10-19T22:53:20Z"
+    },
     "src/core_ext/persona_compiler.py": {
       "role": "persona",
       "caps": "docs/birdseye/caps/src.core_ext.persona_compiler.json",
@@ -29,6 +34,11 @@
     "src/providers/openai_client.py": {
       "role": "provider",
       "caps": "docs/birdseye/caps/src.providers.openai_client.json",
+      "mtime": "2025-10-19T22:53:20Z"
+    },
+    "src/providers/google_gemini_client.py": {
+      "role": "provider",
+      "caps": "docs/birdseye/caps/src.providers.google_gemini_client.json",
       "mtime": "2025-10-19T22:53:20Z"
     }
   },
@@ -51,7 +61,15 @@
     ],
     [
       "src/app.py",
+      "src/core_ext/logging.py"
+    ],
+    [
+      "src/app.py",
       "src/providers/openai_client.py"
+    ],
+    [
+      "src/app.py",
+      "src/providers/google_gemini_client.py"
     ],
     [
       "src/core_ext/context_trimmer.py",
@@ -66,7 +84,15 @@
       "src/app.py"
     ],
     [
+      "src/core_ext/logging.py",
+      "src/app.py"
+    ],
+    [
       "src/providers/openai_client.py",
+      "src/app.py"
+    ],
+    [
+      "src/providers/google_gemini_client.py",
       "src/app.py"
     ]
   ]
