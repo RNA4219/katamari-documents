@@ -18,5 +18,6 @@
     "OPENAI_API_KEY 未設定時は初期化が例外を投げる",
     "OpenAI SDK の breaking change に追随する必要がある"
   ],
-  "generated_at": "00007"
+  "generated_at": "00007",
+  "mtime": "00007"
 }
