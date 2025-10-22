@@ -8,7 +8,7 @@
 - BLUEPRINT/RUNBOOK/EVALUATION/CHECKLISTS を個人+AI 運用向けガードレールとして更新し、再試行可否や責務分担を明示する。
 - README と `docs/ROADMAP_AND_SPECS.md` から上記ドキュメントへの導線を追加し、最小読込手順に組み込む。
 - Guardrails 文書の更新理由と AI 提案採否を Task Seed に記録し、Birdseye 更新と同日にコミットする。
-- Lint/Type/Test（`ruff`/`mypy --strict`/`pytest`/`node:test`）の実行計画を RUNBOOK に揃え、結果ログ保存先を Task Seed で管理する。
+- Lint/Type/Test（`ruff`/`mypy --strict`/`pytest`/`pnpm run test`）の実行計画を RUNBOOK に揃え、結果ログ保存先を Task Seed で管理する。
 - 評価時に参照する指標とチェックリストの差分が発生した場合は直ちに Task Seed にフォローアップを追加し、後続タスクへ切り出す。
 
 ## 想定コマンド
@@ -16,9 +16,9 @@
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 pip install -r requirements-eval.txt  # CI ワークフローのローカル検証
-cd upstream/chainlit && pnpm install  # node:test が必要な場合
+cd upstream/chainlit && pnpm install  # `pnpm run test` を実行する場合に必要
 pytest
-pnpm run test -- --watch=false  # node:test の雛形
+pnpm run test -- --watch=false  # 正式なテスト実行手順（`pnpm run test -- --watch=false`）
 ruff check .
 mypy --strict
 rg -n "BLUEPRINT" third_party/Day8/workflow-cookbook/GUARDRAILS.md
