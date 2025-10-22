@@ -39,8 +39,8 @@ Guardrails の「準備→実行→検証」順で進める。
 ### 2. 実行
 1. `chainlit run src/app.py --watch`
 2. Persona YAML を `personas/` からロードし、UI で切替を検証する。
-3. Chainlit の標準出力を監視し、必要に応じて `LOG_LEVEL` を調整しながら `chainlit run --debug`（または `DEBUG=1 chainlit run ...`）で詳細ログを取得する。標準出力は `chainlit run src/app.py --watch --debug | tee logs/chainlit.log` のように `tee` を使って保存し、Trim/Reflect チェーンのトークン削減率を記録する。
-4. 構造化ログを確認する。ルートロガーを INFO 以上に設定した状態で `katamari.request` 行を抽出し、`jq` などで JSON を整形する。例：`chainlit run src/app.py --watch --debug 2>&1 | tee logs/chainlit.log` の後に `grep "katamari.request" logs/chainlit.log | jq -R 'fromjson'` で `req_id`／`token_in`／`token_out`／`compress_ratio`／`step_latency_ms`／`retryable` を確認し、Runbook 記録に添付する。
+3. Chainlit の標準出力を監視し、必要に応じて `LOG_LEVEL` を調整しながら `chainlit run --debug`（または `DEBUG=1 chainlit run ...`）で詳細ログを取得する。標準出力は `mkdir -p logs && chainlit run src/app.py --watch --debug | tee logs/chainlit.log` のように `tee` を使って保存し、Trim/Reflect チェーンのトークン削減率を記録する。
+4. 構造化ログを確認する。ルートロガーを INFO 以上に設定した状態で `katamari.request` 行を抽出し、`jq` などで JSON を整形する。例：`mkdir -p logs && chainlit run src/app.py --watch --debug 2>&1 | tee logs/chainlit.log` の後に `grep "katamari.request" logs/chainlit.log | jq -R 'fromjson'` で `req_id`／`token_in`／`token_out`／`compress_ratio`／`step_latency_ms`／`retryable` を確認し、Runbook 記録に添付する。
 5. Provider を切り替え、`docs/addenda/F_Provider_Matrix.md` の互換チェックを行う。
 
 ### 3. 検証・障害対応
@@ -68,7 +68,7 @@ Guardrails の「準備→実行→検証」順で進める。
 - [ ] 失敗テストの理由と再実行計画が Task Seed に記録されている。
 - [ ] Guardrails RUNBOOK 節（`third_party/Day8/workflow-cookbook/GUARDRAILS.md`）の手順と本書のガードレール項目が一致する。
 - [ ] AI から提案された運用手順の採用可否を記録し、判断根拠を Task Seed に残した。
-- [ ] Chainlit の標準出力を保存（例: `chainlit run ... --debug | tee logs/chainlit.log`）して Trim/Reflect チェーンのログを取得した証跡がある。
+- [ ] Chainlit の標準出力を保存（例: `mkdir -p logs && chainlit run ... --debug | tee logs/chainlit.log`）して Trim/Reflect チェーンのログを取得した証跡がある。
 
 ## 参照
 - [docs/ROADMAP_AND_SPECS.md](docs/ROADMAP_AND_SPECS.md)
