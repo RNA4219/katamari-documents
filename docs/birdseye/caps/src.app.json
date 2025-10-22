@@ -34,5 +34,6 @@
     "Chainlit フックと FastAPI ルータの順序を壊すと /metrics が重複登録される",
     "OPENAI_API_KEY 未設定時はプロバイダ初期化が失敗する"
   ],
-  "generated_at": "00002"
+  "generated_at": "00002",
+  "mtime": "00002"
 }

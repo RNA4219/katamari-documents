@@ -14,5 +14,6 @@
   "risks": [
     "CHAINS に未知のキーを追加すると UI 側の選択肢と不整合になる"
   ],
-  "generated_at": "00004"
+  "generated_at": "00004",
+  "mtime": "00004"
 }

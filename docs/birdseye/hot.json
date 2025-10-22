@@ -13,5 +13,6 @@
       "id": "src/providers/openai_client.py",
       "reason": "モデル/エンドポイント切替やキー運用に直結するプロバイダ層で環境変更時に必ず見直す"
     }
-  ]
+  ],
+  "mtime": "00008"
 }
