@@ -13,6 +13,7 @@ repo
 │  │  ├─ context_trimmer.py
 │  │  ├─ prethought.py
 │  │  ├─ multistep.py
+│  │  ├─ logging.py        # 実行ログ集約
 │  │  ├─ retention.py
 │  │  └─ evolve.py
 │  └─ providers/
