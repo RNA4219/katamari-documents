@@ -1,0 +1,58 @@
+読みやすく成型しています。
+
+入力：
+本リポジトリのmdは緻密です。
+実装のタスク化を振られた時、参考にするべきmdと
+実装時のタスク消化をするときに参考にすべきmdファイルを
+
+それぞれ
+本リポジトリ内仕様書
+Day8のmd群
+Cookbookのmd群
+のそれぞれ3つずつ、挙げ、
+
+実装のタスク化を振られた時、参考にするべきmdの上位2位と
+実装時のタスク消化をするときに参考にすべきmdの上位2位を提示してください。
+
+
+出力：
+実装タスク化（計画）で参照すべきMD
+・本リポジトリ内仕様書
+ - docs/Katamari_Requirements_v3_ja.md：スコープ境界・ユースケース・受け入れ条件がまとまっており、タスク粒度を決める判断材料になる。 
+ - docs/Katamari_Functional_Spec_v1_ja.md：画面仕様とユースケースの流れが整理されており、ユーザーストーリー起点のタスク分解に有効。 
+ - docs/Katamari_Technical_Spec_v1_ja.md：アーキテクチャ構成と主要モジュールが明示され、担当範囲を切り出す際の基盤になる。 
+
+・Day8のmd群
+ - third_party/Day8/docs/day8/spec/01_requirements.md：Day8ワークフローの必須機能・NFRが列挙され、タスク種別ごとの要求整理に役立つ。 
+ - third_party/Day8/docs/day8/spec/02_spec.md：標準ディレクトリと反省DSLの雛形が載っており、作業対象ファイルの初期特定に便利。 
+ - third_party/Day8/docs/day8/design/03_architecture.md：Day8コンポーネント分割とシーケンスがまとまり、依存関係を考慮したタスク切り出しに使える。 
+
+・Cookbookのmd群
+ - third_party/Day8/workflow-cookbook/BLUEPRINT.md：問題設定・Scope・I/O契約の枠があり、タスク記述のテンプレートとして機能。 
+ - third_party/Day8/workflow-cookbook/TASK.codex.md：Task Seed テンプレと受入基準・想定コマンドが網羅され、タスク起票時の必読資料。 
+ - third_party/Day8/workflow-cookbook/GUARDRAILS.md：目的定義からスコープ固定、タスク配布までの手順がまとまっており、計画段階のガードレール確認に最適。 
+
+・上位2位（計画段階）
+ - docs/Katamari_Requirements_v3_ja.md — Katamari本体のScope/要件/マイルストーンを一望でき、タスク分割の出発点になる。 
+ - third_party/Day8/workflow-cookbook/TASK.codex.md — タスク起票フォーマットと受入条件が揃い、Day8流のタスク化要件を外さない。 
+
+
+実装タスク消化（実装・検証）で参照すべきMD
+・本リポジトリ内仕様書
+ - docs/Katamari_Technical_Spec_v1_ja.md：モジュール構成・プロバイダ抽象・性能/セキュリティ要件を押さえ、実装時の設計判断に必須。 
+ - docs/addenda/D_Trim_Design.md：Trim戦略・保持率算出・TODOが具体化されており、機能実装時の仕様差異を抑えられる。 
+ - docs/addenda/I_Test_Cases.md：機能/性能/セキュリティの試験観点が列挙され、テスト観点の抜け漏れ防止に使える。 
+
+・Day8のmd群
+ - third_party/Day8/docs/day8/ops/04_ops.md：失敗時切り分けやサブディレクトリ運用の手順が書かれており、実装後の運用確認に有効。 
+ - third_party/Day8/docs/day8/quality/06_quality.md：必須メトリクスとPRゲート条件がまとまっていて、品質ゲートを満たす実装確認に役立つ。 
+ - third_party/Day8/docs/day8/security/05_security.md：ガバナンス方針や禁止操作が示され、実装がポリシー逸脱しないかのチェックに活用できる。 
+
+・Cookbookのmd群
+ - third_party/Day8/workflow-cookbook/RUNBOOK.md：準備→実行→確認・観測・ロールバック手順が載り、実装動作確認の段取りを統一できる。 
+ - third_party/Day8/workflow-cookbook/CHECKLISTS.md：デイリー/リリース/ハイジーンのチェック項目があり、作業完了判定に使える。 
+ - third_party/Day8/workflow-cookbook/EVALUATION.md：Acceptance Criteria とテストアウトラインがまとまり、実装後の検収ラインを明確化できる。 
+
+・上位2位（実装段階）
+ - docs/Katamari_Technical_Spec_v1_ja.md — 実装対象モジュールの構造・性能・セキュリティ要件を一度に確認でき、開発判断の基準になる。 
+ - third_party/Day8/workflow-cookbook/GUARDRAILS.md — 実装原則・自己検証・Birdseye運用までまとまっており、Day8準拠で作業を進める際の必携ガイド。 
