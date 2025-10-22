@@ -15,7 +15,7 @@
 
 ## チェックリスト
 - [ ] Header Auth 実装のテスト（`pytest`）を追加し、トークン不正時の挙動を検証した。
-- [ ] OAuth 設定の統合テスト（可能なら `node:test` もしくはモック）を準備した。
+- [ ] OAuth 設定の統合テスト（可能なら `pnpm run test`（必要なら `cd upstream/chainlit`）もしくはモック）を準備した。
 - [ ] `/healthz` `/metrics` の公開方針を決定し、必要に応じてアクセス制御を設定した。
 - [ ] ドキュメントに追加した暫定注記を撤回し、最新構成を反映した。
 - [ ] Guardrails 文書（`RUNBOOK.md` / `CHECKLISTS.md` / `EVALUATION.md`）と整合させた。
