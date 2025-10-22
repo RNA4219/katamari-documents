@@ -61,6 +61,8 @@ Cookbookのmd群
 
 
 ◆開発タスク割り振りプロンプト
+補足：こちらのタスク割り振りプロンプトは安定しないため、再現性が低いです。
+入力の試行錯誤や回数を重ねてお勧めのタスクの中に入ることを祈るか、直接編集してタスクを実行してください。
 ---
 
 ### 入力
@@ -93,15 +95,7 @@ third_party/Day8/workflow-cookbook/GUARDRAILS.md
 
 Katamari 要件定義 v3 と Day8 の Task Seed テンプレートを踏まえ、以下のタスクを起票します。
 
-```
-docs/Katamari_Technical_Spec_v1_ja.md  
-— 実装対象モジュールの構造・性能・セキュリティ要件を一度に確認でき、開発判断の基準になる。  
 
-third_party/Day8/workflow-cookbook/GUARDRAILS.md  
-— 実装原則・自己検証・Birdseye運用までまとまっており、Day8準拠で作業を進める際の必携ガイド。  
-
-以上2つのファイルを参照しながら、設計をしてください。
-```
 
 ---
 
@@ -112,7 +106,11 @@ third_party/Day8/workflow-cookbook/GUARDRAILS.md
 1. `tests/app/test_logging.py` に `compute_semantic_retention` が 0.8 などの値を返すケースを追加し、`on_message` がログと `METRICS_REGISTRY` に値を反映することを検証する（monkeypatch で保持率計算をスタブ）。
 2. `src/core_ext/context_trimmer.py` の `trim_messages` で返す `metrics` に `semantic_retention` キーを明示的に追加し、既定値は `None` にする。
 3. `src/app.py` に保持率算出ヘルパーを追加し、トリム直後に `compute_semantic_retention` を `asyncio.to_thread` など非同期安全な手段で呼び出して `metrics`・`METRICS_REGISTRY`・`REQUEST_LOGGER` を更新する。
-4. `SEMANTIC_RETENTION_PROVIDER` 未設定時は従来どおりプレースホルダ（1.0 または `None`）になることをテストで保証する。
+4. `SEMANTIC_RETENTION_PROVIDER` 未設定時は従来どおりプレースホルダ（1.0 または `None`）になることをテストで保証する。docs/Katamari_Technical_Spec_v1_ja.md  
+— 実装対象モジュールの構造・性能・セキュリティ要件を一度に確認でき、開発判断の基準になる。  
+
+third_party/Day8/workflow-cookbook/GUARDRAILS.md  
+— 実装原則・自己検証・Birdseye運用までまとまっており、Day8準拠で作業を進める際の必携ガイド。  
 
 ---
 
@@ -123,7 +121,11 @@ third_party/Day8/workflow-cookbook/GUARDRAILS.md
 1. `tests/test_persona_compiler.py` に禁則語を含む入力を追加し、`issues` に警告が入ることを検証する。
 2. `config/persona_forbidden_patterns.json`（正規表現文字列配列）を新設し、禁則語リストを管理する。
 3. `src/core_ext/persona_compiler.py` で上記リストを読み込み、name/style/notes/forbid を走査してマッチした語を `issues` に追加する。重複はまとめ、既存の型検査ロジックと両立させる。
-4. 必要なら `tests/app/test_logging.py` に `[persona issues]` メッセージが表示されることを検証するテストを追加する。
+4. 必要なら `tests/app/test_logging.py` に `[persona issues]` メッセージが表示されることを検証するテストを追加する。docs/Katamari_Technical_Spec_v1_ja.md  
+— 実装対象モジュールの構造・性能・セキュリティ要件を一度に確認でき、開発判断の基準になる。  
+
+third_party/Day8/workflow-cookbook/GUARDRAILS.md  
+— 実装原則・自己検証・Birdseye運用までまとまっており、Day8準拠で作業を進める際の必携ガイド。  
 
 ---
 
@@ -134,7 +136,11 @@ third_party/Day8/workflow-cookbook/GUARDRAILS.md
 1. `tests/core_ext/test_context_trimmer.py` に `min_turns` を指定した際の保持ケースを追加する。
 2. `src/core_ext/context_trimmer.py` に `min_turns: int = 0` を追加し、最低ターン数分を残すようにループ条件を調整する。
 3. `src/app.py` の ChatSettings に最小保持ターン設定スライダを追加し、セッションに保存・適用する。
-4. 設定反映後も既存の動作が破綻しないことをテストで確認する。
+4. 設定反映後も既存の動作が破綻しないことをテストで確認する。docs/Katamari_Technical_Spec_v1_ja.md  
+— 実装対象モジュールの構造・性能・セキュリティ要件を一度に確認でき、開発判断の基準になる。  
+
+third_party/Day8/workflow-cookbook/GUARDRAILS.md  
+— 実装原則・自己検証・Birdseye運用までまとまっており、Day8準拠で作業を進める際の必携ガイド。  
 
 ---
 
@@ -144,7 +150,11 @@ third_party/Day8/workflow-cookbook/GUARDRAILS.md
 
 1. `tests/app/test_get_provider.py` に thinking 系モデル選択時のスタブテストを追加し、`provider.stream` が `reasoning` 引数を受け取ることを検証する。
 2. `src/app.py` に判定ヘルパーを追加し、対象モデルで `reasoning={"effort": "medium", "parallel": True}` を付与する。
-3. `src/providers/openai_client.py` と `src/providers/google_gemini_client.py` がこのパラメータを下流 API へ中継することを確認するテストを用意する。
+3. `src/providers/openai_client.py` と `src/providers/google_gemini_client.py` がこのパラメータを下流 API へ中継することを確認するテストを用意する。docs/Katamari_Technical_Spec_v1_ja.md  
+— 実装対象モジュールの構造・性能・セキュリティ要件を一度に確認でき、開発判断の基準になる。  
+
+third_party/Day8/workflow-cookbook/GUARDRAILS.md  
+— 実装原則・自己検証・Birdseye運用までまとまっており、Day8準拠で作業を進める際の必携ガイド。  
 
 ---
 
@@ -154,7 +164,11 @@ third_party/Day8/workflow-cookbook/GUARDRAILS.md
 
 1. `tests/app/test_logging.py` もしくは新規テストで、空文字の `persona_yaml` を渡したときに既定プロンプトへ戻ることを検証する。
 2. `src/app.py` の `apply_settings` を修正し、空文字や空白のみなら既定プロンプトへ戻す。
-3. `[persona issues]` メッセージでリセットを通知し、既存挙動の後方互換を維持する。
+3. `[persona issues]` メッセージでリセットを通知し、既存挙動の後方互換を維持する。docs/Katamari_Technical_Spec_v1_ja.md  
+— 実装対象モジュールの構造・性能・セキュリティ要件を一度に確認でき、開発判断の基準になる。  
+
+third_party/Day8/workflow-cookbook/GUARDRAILS.md  
+— 実装原則・自己検証・Birdseye運用までまとまっており、Day8準拠で作業を進める際の必携ガイド。  
 
 ---
 
