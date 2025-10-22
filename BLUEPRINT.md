@@ -20,7 +20,7 @@
 - 個別テストケースや CI 手順（`RUNBOOK.md`, `CHECKLISTS.md` に委譲）。
 
 ## システム像
-- Persona 設定とユーザー入力を `src/core_ext/persona` で整形し、Trim/Reflect パイプラインに投入する。
+- Persona 設定 (YAML) を persona_compiler モジュールでシステムプロンプトへ変換し、禁則リストを検査したうえで Trim/Reflect パイプラインに投入する。
 - SSE は `src/app.py` をエントリとしてストリームし、UI ではテーマ (`themes/`) の設定で描画を制御する。
 - Provider 切替は SPI (`src/providers/`) の共通インターフェースで行い、`third_party/Day8/workflow-cookbook/BLUEPRINT.md` の構成図と整合させる。
 
