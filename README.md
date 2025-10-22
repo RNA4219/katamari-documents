@@ -67,7 +67,7 @@ make dev
 ### Step 2: アプリのローカル起動
 
 1. `.env` に必要な値を設定した状態で `make run` を実行する。
-2. Chainlit が `http://localhost:8787` で立ち上がる。ポートを変更したい場合は `chainlit run src/app.py --host 0.0.0.0 --port <port>` を直接実行するか、`Makefile` の `run` ターゲットを調整する。現状は Chainlit 既定の HTTP（`--host 0.0.0.0 --port 8787`）のみで提供しており、HTTPS / HTTP/2 / CORS 対応は将来導入予定であるため、ローカル含め無暗号通信となる点に留意する。
+2. Chainlit が `http://localhost:8787` で立ち上がる。ポートを変更したい場合は `chainlit run src/app.py --host 0.0.0.0 --port <port>` を直接実行するか、`Makefile` の `run` ターゲットを調整する。現状は Chainlit 既定の HTTP（`--host 0.0.0.0 --port 8787`）のみで提供しており、HTTPS / HTTP/2 / CORS 対応は将来導入予定（[`docs/Security_Review_Checklist.md`](docs/Security_Review_Checklist.md) の「CORS limited」は未実装（計画中）のため現状確認不要）であるため、ローカル含め無暗号通信となる点に留意する。
 3. 停止するときは実行ターミナルで `Ctrl + C` を送る。
 
 ```bash
