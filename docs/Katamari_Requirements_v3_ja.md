@@ -82,7 +82,7 @@ notes: |
 - AC-05：Apache-2.0遵守（LICENSE/NOTICE/変更点）
 
 ## 7. マイルストーン / 工数（1名）
-- **M0（6h）**：Settings/SSE/Trim/Persona簡易/Reflect/`/models`/最小ログ
+- **M0（6h）**：Settings/SSE/Trim/Persona簡易/Reflect/最小ログ（`/healthz`・`/metrics` 実装）
 - **M1（8h）**：prethought・保持率推定（埋め込み）・`/metrics`・Header Auth・Healthz ※保持率は UI 未表示／`/metrics` は暫定ダミー値（精度検証待ち）
 - **M1.5（4–6h）**：OAuth・厳密トークンカウント・UI微調整
 - **M2（12–16h）**：prompt-evolution（BERTScore→ROUGE→ルール）・スコアボード ※M2予定・現状未実装。
