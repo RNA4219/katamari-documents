@@ -10,18 +10,24 @@
   ],
   "deps_out": [
     "src/core_ext/context_trimmer.py",
+    "src/core_ext/logging.py",
     "src/core_ext/multistep.py",
     "src/core_ext/persona_compiler.py",
     "src/core_ext/prethought.py",
+    "src/providers/google_gemini_client.py",
     "src/providers/openai_client.py"
   ],
   "deps_in": [
     "src/core_ext/context_trimmer.py",
+    "src/core_ext/logging.py",
     "src/core_ext/persona_compiler.py",
     "src/core_ext/prethought.py",
+    "src/providers/google_gemini_client.py",
     "src/providers/openai_client.py"
   ],
   "tests": [
+    "pytest tests/app/test_get_provider.py",
+    "pytest tests/app/test_logging.py",
     "pytest tests/app/test_metrics_healthz.py"
   ],
   "risks": [
