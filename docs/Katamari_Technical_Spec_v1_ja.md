@@ -55,7 +55,7 @@ class ProviderClient(Protocol):
 ## 7. セキュリティ
 - ENV キーのみ使用、フロント露出なし
 - `CHAINLIT_AUTH_SECRET`、CORS制限、Rate Limit、HTTPS
-  - **現状**：上記の CORS / Rate Limit / HTTPS / `CHAINLIT_AUTH_SECRET` は未導入。詳細は `TASK.2025-10-19-0002.md`（認証導入タスク）を参照。
+  - **現状**：上記の CORS / Rate Limit / HTTPS / `CHAINLIT_AUTH_SECRET` は未導入。詳細は `TASK.2025-10-19-0002.md`（認証導入タスク）を参照[^oauth-task]。
   - **実装後に更新すべき項目**：
     - 本節の導入状況と設定内容
     - 8章「デプロイ」のプロダクション要件（TLS終端 / Rate Limit 運用）
@@ -66,4 +66,6 @@ class ProviderClient(Protocol):
 - prod: Docker/Helm（M3）、リバースプロキシでHTTP/2・Keep-Alive
 
 ## 9. 受け入れ試験（抜粋）
-- Settings反映・Trim圧縮率・Reflect順序・Header/OAuth・メトリクス出力（`semantic_retention` は未実装・計画中）
+- Settings反映・Trim圧縮率・Reflect順序・Header/OAuth（未実装・計画中[^oauth-task]）・メトリクス出力（`semantic_retention` は未実装・計画中）
+
+[^oauth-task]: Header/OAuth 認証は `TASK.2025-10-19-0002.md` で導入予定。タスク完了後は (1) 本節の「未実装・計画中」注記を削除し、(2) 7章セキュリティの導入状況と設定内容を更新して認証状態の説明を整合させる。
