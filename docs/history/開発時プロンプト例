@@ -1,5 +1,7 @@
 読みやすく成型しています。
+Codexでやり取りを行っています。
 
+◆ファイル参照プロンプト
 入力：
 本リポジトリのmdは緻密です。
 実装のタスク化を振られた時、参考にするべきmdと
@@ -56,3 +58,103 @@ Cookbookのmd群
 ・上位2位（実装段階）
  - docs/Katamari_Technical_Spec_v1_ja.md — 実装対象モジュールの構造・性能・セキュリティ要件を一度に確認でき、開発判断の基準になる。 
  - third_party/Day8/workflow-cookbook/GUARDRAILS.md — 実装原則・自己検証・Birdseye運用までまとまっており、Day8準拠で作業を進める際の必携ガイド。 
+
+
+◆開発タスク割り振りプロンプト
+---
+
+### 入力
+
+```
+- docs/Katamari_Requirements_v3_ja.md  
+  — Katamari本体のScope/要件/マイルストーンを一望でき、タスク分割の出発点になる。  
+
+- third_party/Day8/workflow-cookbook/TASK.codex.md  
+  — タスク起票フォーマットと受入条件が揃い、Day8流のタスク化要件を外さない。  
+
+以上2つのファイルを参照しながら実装タスクのタスク化をお願いします。上限は7個までとします。
+```
+
+タスク化をする際、以下の一文を加えてください。
+
+```
+docs/Katamari_Technical_Spec_v1_ja.md  
+— 実装対象モジュールの構造・性能・セキュリティ要件を一度に確認でき、開発判断の基準になる。  
+
+third_party/Day8/workflow-cookbook/GUARDRAILS.md  
+— 実装原則・自己検証・Birdseye運用までまとまっており、Day8準拠で作業を進める際の必携ガイド。  
+
+以上2つのファイルを参照しながら、設計をしてください。
+```
+
+---
+
+### 出力
+
+Katamari 要件定義 v3 と Day8 の Task Seed テンプレートを踏まえ、以下のタスクを起票します。
+
+```
+docs/Katamari_Technical_Spec_v1_ja.md  
+— 実装対象モジュールの構造・性能・セキュリティ要件を一度に確認でき、開発判断の基準になる。  
+
+third_party/Day8/workflow-cookbook/GUARDRAILS.md  
+— 実装原則・自己検証・Birdseye運用までまとまっており、Day8準拠で作業を進める際の必携ガイド。  
+
+以上2つのファイルを参照しながら、設計をしてください。
+```
+
+---
+
+#### 1. Trim結果が `semantic_retention` を埋めないまま `app.py` で常に `None` 扱いになっており、保持率推定モジュールが未配線の状態が続いています。
+
+**お勧めのタスク：semantic_retention 指標をトリム結果へ算出・記録する**
+
+1. `tests/app/test_logging.py` に `compute_semantic_retention` が 0.8 などの値を返すケースを追加し、`on_message` がログと `METRICS_REGISTRY` に値を反映することを検証する（monkeypatch で保持率計算をスタブ）。
+2. `src/core_ext/context_trimmer.py` の `trim_messages` で返す `metrics` に `semantic_retention` キーを明示的に追加し、既定値は `None` にする。
+3. `src/app.py` に保持率算出ヘルパーを追加し、トリム直後に `compute_semantic_retention` を `asyncio.to_thread` など非同期安全な手段で呼び出して `metrics`・`METRICS_REGISTRY`・`REQUEST_LOGGER` を更新する。
+4. `SEMANTIC_RETENTION_PROVIDER` 未設定時は従来どおりプレースホルダ（1.0 または `None`）になることをテストで保証する。
+
+---
+
+#### 2. Persona コンパイラが禁則語の正規表現検査を行わず、仕様で求められる警告ログが出力されません。
+
+**お勧めのタスク：禁則語検査機能を追加する**
+
+1. `tests/test_persona_compiler.py` に禁則語を含む入力を追加し、`issues` に警告が入ることを検証する。
+2. `config/persona_forbidden_patterns.json`（正規表現文字列配列）を新設し、禁則語リストを管理する。
+3. `src/core_ext/persona_compiler.py` で上記リストを読み込み、name/style/notes/forbid を走査してマッチした語を `issues` に追加する。重複はまとめ、既存の型検査ロジックと両立させる。
+4. 必要なら `tests/app/test_logging.py` に `[persona issues]` メッセージが表示されることを検証するテストを追加する。
+
+---
+
+#### 3. Trim パイプラインが `min_turns` 制御を持たず、最低保持ターン数の要件を満たせません。
+
+**お勧めのタスク：trim_messages に min_turns サポートを追加する**
+
+1. `tests/core_ext/test_context_trimmer.py` に `min_turns` を指定した際の保持ケースを追加する。
+2. `src/core_ext/context_trimmer.py` に `min_turns: int = 0` を追加し、最低ターン数分を残すようにループ条件を調整する。
+3. `src/app.py` の ChatSettings に最小保持ターン設定スライダを追加し、セッションに保存・適用する。
+4. 設定反映後も既存の動作が破綻しないことをテストで確認する。
+
+---
+
+#### 4. Thinking 系モデルに `reasoning` パラメータを渡しておらず、仕様にある推論設定が有効化されません。
+
+**お勧めのタスク：thinking 系モデルへ reasoning パラメータを渡す**
+
+1. `tests/app/test_get_provider.py` に thinking 系モデル選択時のスタブテストを追加し、`provider.stream` が `reasoning` 引数を受け取ることを検証する。
+2. `src/app.py` に判定ヘルパーを追加し、対象モデルで `reasoning={"effort": "medium", "parallel": True}` を付与する。
+3. `src/providers/openai_client.py` と `src/providers/google_gemini_client.py` がこのパラメータを下流 API へ中継することを確認するテストを用意する。
+
+---
+
+#### 5. Settings で Persona YAML を空に戻しても `apply_settings` が既定 System Prompt へリセットせず、UC-03 の即時差し替え要件を満たしません。
+
+**お勧めのタスク：Persona YAML 解除時に既定 System Prompt へリセットする**
+
+1. `tests/app/test_logging.py` もしくは新規テストで、空文字の `persona_yaml` を渡したときに既定プロンプトへ戻ることを検証する。
+2. `src/app.py` の `apply_settings` を修正し、空文字や空白のみなら既定プロンプトへ戻す。
+3. `[persona issues]` メッセージでリセットを通知し、既存挙動の後方互換を維持する。
+
+---
+
