@@ -26,6 +26,8 @@
     "src/providers/openai_client.py"
   ],
   "tests": [
+    "pytest tests/app/test_get_provider.py",
+    "pytest tests/app/test_logging.py",
     "pytest tests/app/test_metrics_healthz.py"
   ],
   "risks": [
