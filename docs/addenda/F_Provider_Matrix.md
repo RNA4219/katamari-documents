@@ -1,13 +1,14 @@
 # 付録F: Provider互換表（初期）
 **Status: 2025-10-19 JST**
 
-| 項目 | GPT-5系（OpenAI） | Gemini 2.5系（Google） |
+| レジストリキー | GPT-5系（OpenAI） | Gemini 2.5系（Google） |
 |---|---|---|
-| ストリーミング | SSE / SDKストリーム | SSE / SDKストリーム |
-| Reasoning拡張 | 未サポート（M2 以降で `reasoning.effort`/`parallel` を段階導入予定） | 未サポート（M2 以降で `reasoning` マッピングを検討） |
-| 推奨Fast | `gpt-5-main(-mini)` | `gemini-2.5-flash` |
-| 推奨Thinking | `gpt-5-thinking(-mini/-nano/-pro)` | `gemini-2.5-pro`（思考は限定的） |
-| トークン上限 | family依存 | family依存 |
-| 料金表記 | `priceIn/priceOut`（任意） | 同左 |
+| `id` | `gpt-5-main`, `gpt-5-main-mini`, `gpt-5-thinking`, `gpt-5-thinking-mini`, `gpt-5-thinking-nano`, `gpt-5-thinking-pro` | `gemini-2.5-pro`, `gemini-2.5-flash` |
+| `provider` | `openai` | `google` |
+| `family` | `gpt-5` | `gemini-2.5` |
+| `type` | `fast`, `fast-mini`, `thinking`, `thinking-mini`, `thinking-nano`, `thinking-pro` | `general`, `fast` |
+| `reasoning` | `false`（fast系）, `true`（thinking系） | `false` |
+| `parallel` | `true`（`gpt-5-thinking`, `gpt-5-thinking-pro`）, `false`（上記以外） | `false` |
 
 ※ 実際のパラメタ名の差は `providers/*_client.py` で吸収する。
+※ 料金関連フィールドは将来追加予定のため、現在のレジストリには含まれていません。
